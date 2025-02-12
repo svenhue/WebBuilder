@@ -1,8 +1,8 @@
 node_modules
 
 
-./MindCode
-./AIServices
+/MindCode
+/AIServices
 /modules/Canvas
 /modules/Resources
 /modules/ConversionalAI

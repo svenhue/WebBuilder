@@ -1,6 +1,6 @@
-# Started this project to learn TS, Nodejs, Nitro, Tailwind, Vue, Nuxt and Quasar
+Started this project to learn TS, Nodejs, Nitro, Tailwind, Vue, Nuxt and Quasar
 
-# Core functionality: Building web applications with an visual interface
+Core functionality: Building web applications with an visual interface
 
 
 ![UI](gitassets/UIScreenshot.png)
