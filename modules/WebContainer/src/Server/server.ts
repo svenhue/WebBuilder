@@ -26,16 +26,16 @@ export class BuildEnvironment{
       
       const terminal = this.terminal
       const installProcess = await api.spawn('npm', ['install'],{
-        terminal: {
+       /* terminal: {
           cols: this.terminal.cols,
           rows: this.terminal.rows,
-        }
+        }*/
       }).catch((e) => console.log(e));
 
       if(logInConsole){
         installProcess.output.pipeTo(new WritableStream({
           write(chunk) {
-            terminal.write(chunk)
+            //terminal.write(chunk)
           }
         
         }))
@@ -46,18 +46,18 @@ export class BuildEnvironment{
     
     public async RunCommand(api: WebContainer, command: string, args: string[], logInConsole: boolean = false, callbackKeyWord?: string, callback?: void){
       const result = await api.spawn(command, args,
-        {
+       /* {
           terminal: {
             cols: this.terminal.cols,
             rows: this.terminal.rows,
           }
-        }
+        }*/
       );
       const terminal = this.terminal;
       if(logInConsole){
         result.output.pipeTo(new WritableStream({
           write(chunk) {
-            terminal.write(chunk)
+            //terminal.write(chunk)
             if(chunk.includes(callbackKeyWord)){
               if(callback != undefined){
                 callback();
