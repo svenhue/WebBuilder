@@ -3,7 +3,7 @@
 # Core functionality: Building web applications with an visual interface
 
 
-![alt text](https://github.com/[svenhue]/[WebBuilder]/blob/[master]/gitassets/UIScreenshot.png?raw=true)
+![UI](gitassets/UIScreenshot.png)
 
 
 ## Features
