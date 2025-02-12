@@ -2,6 +2,10 @@
 
 # Core functionality: Building web applications with an visual interface
 
+
+![alt text](https://github.com/[svenhue]/[WebBuilder]/blob/[master]/gitassets/UIScreenshot.png?raw=true)
+
+
 ## Features
 
 - Export your created solution as an nuxtjs project (in the browser, with WebContainers!) - you will get an project with the common nuxtjs file structure with the difference that the views in the generated page files a rendererd dynamically based on the configuration (json) in AppConfigs/pages.ts
