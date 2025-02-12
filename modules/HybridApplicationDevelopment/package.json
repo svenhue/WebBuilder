@@ -1,0 +1,86 @@
+{
+    "name": "hybridappdev",
+    "version": "1.0.2",
+    "type": "module",
+    "main": "index.ts",
+    "types": "./index.d.ts",
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "nodenext",
+    "scripts": {
+        "build": "vite build",
+        "lint": "eslint --ext .js,.ts,.vue ./",
+        "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+        "test": "echo \"No test specified\" && exit 0"
+    },
+    "exports": {
+        "./assets": {
+            "require": "./assets/*",
+            "import": "./assets/*"
+        },
+        ".": {
+            "types": "./index.d.ts",
+            "require": "./index.ts",
+            "import": "./index.ts"
+        },
+        "./module.js": {
+            "types": "./src/HybridApplicationDevelopmentModule.ts",
+            "require": "./src/HybridApplicationDevelopmentModule.ts",
+            "import": "./src/HybridApplicationDevelopmentModule.ts"
+        },
+        "./vitePlugin.js": {
+            "types": "./src/vitePlugin.ts",
+            "require": "./src/vitePlugin.ts",
+            "import": "./src/vitePlugin.ts"
+        },
+        "./src/*": {
+            "types": "./src/*",
+            "require": "./src/*",
+            "import": "./src/*"
+        },
+        "./nuxt": {
+            "import": "./nuxt.js"
+        }
+    },
+    "devDependencies": {
+        "reflect-metadata": "^0.2.1",
+        "sass": "^1.72.0",
+        "typescript": "^4.9.5"
+    },
+    "dependencies": {
+        "@nuxt/kit": "^3.15.1",
+        "@syncfusion/ej2-richtexteditor": "^27.1.57",
+        "@tiptap/core": "^2.9.1",
+        "@tiptap/extension-bold": "^2.9.1",
+        "@tiptap/pm": "^2.9.1",
+        "@tiptap/starter-kit": "^2.9.1",
+        "@typescript-eslint/eslint-plugin": "^6.7.2",
+        "@typescript-eslint/parser": "^6.7.2",
+        "alphanodes": "file:../Nodes",
+        "alphautils": "file:../Utils",
+        "alphaviewlibrary": "file:../ViewLibrary",
+        "cms": "file:../CMS",
+        "eslint-plugin-vue": "^9.17.0",
+        "file-saver": "^2.0.5",
+        "inversify": "^6.0.2",
+        "json-editor-vue": "^0.10.16",
+        "jsoneditor": "^10.0.2",
+        "jszip": "^3.10.1",
+        "lodash-es": "^4.17.21",
+        "monaco-editor": "^0.46.0",
+        "nuxi": "^3.9.1",
+        "pinia": "^2.1.6",
+        "quasar": "^2.12.7",
+        "typescript": "^4.5.4",
+        "typescript-eslint": "^0.0.1-alpha.0",
+        "uuid": "^10.0.0",
+        "vite": "^5.1.6",
+        "vue": "^3.3.4",
+        "vue-codemirror": "^6.1.1",
+        "vue-i18n": "^9.14.0",
+        "vue-router": "^4.2.5",
+        "webcontainer": "file:../WebContainer",
+        "xterm": "^5.3.0",
+        "xterm-addon-fit": "^0.8.0"
+    }
+}

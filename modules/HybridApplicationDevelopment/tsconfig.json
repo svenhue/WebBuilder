@@ -1,0 +1,32 @@
+{
+
+  "compilerOptions": {
+    
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "rootDir": "src",
+    //"moduleResolution": "E",
+    "target": "ES6",
+        "lib": ["ES6", "DOM"],
+        
+        "module": "commonjs",
+       "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+      //"allowImportingTsExtensions":true,
+      "paths":{
+        "." : ["./index.ts"],
+        "view": ["./view/*.ts"],
+        "./data" : ["./data/*"],
+        "utils" : ["./utils/*.ts"],
+        "services": ["./services/*.ts"],
+      }
+  },
+  "include": [
+    "src",
+  ]
+  
+}
+

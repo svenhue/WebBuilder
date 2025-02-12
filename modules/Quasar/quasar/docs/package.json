@@ -1,0 +1,48 @@
+{
+  "name": "quasar.dev",
+  "version": "2.0.0",
+  "description": "Official Quasar Docs Website",
+  "productName": "quasar-docs",
+  "author": "Razvan Stoenescu <razvan.stoenescu@gmail.com>",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare-docs": "node build/copy-quasar-api.js",
+    "dev": "pnpm prepare-docs && quasar dev",
+    "dev:ssr": "pnpm prepare-docs && quasar dev -m ssr",
+    "build": "pnpm prepare-docs && node build/search.js && quasar build -m ssr && node build/fix-ssr-manifest.js && mkdir -p dist/quasar.dev/client/examples/ && cp -R src/examples/* dist/quasar.dev/client/examples/ && node build/ssg.js",
+    "relnotes": "node build/release-notes/index.js",
+    "lint": "eslint --ext .js,.vue ./ --report-unused-disable-directives --fix",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1",
+    "quasar": "^2",
+    "prismjs": "^1.29.0",
+    "register-service-worker": "^1.7.2",
+    "vue": "3.4.20",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@quasar/app-vite": "^2.0.0-beta.5",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.7",
+    "eslint": "^8.57.0",
+    "eslint-config-quasar": "^0.0.1",
+    "eslint-plugin-quasar": "^1.1.0",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
+    "gray-matter": "^4.0.3",
+    "markdown-ast": "^0.3.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-container": "^4.0.0",
+    "toml": "^3.0.0",
+    "vite-plugin-checker": "^0.7.2",
+    "workbox-build": "^7.1.1"
+  },
+  "engines": {
+    "node": "^20 || ^18 || ^16",
+    "npm": ">= 6.14.12",
+    "yarn": ">= 1.17.3"
+  }
+}

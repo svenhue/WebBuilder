@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 487.11 277.33">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-size: 79.78px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #fff;
+        stroke: #fff;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: 6px;
+      }
+    </style>
+  </defs>
+  <line class="cls-2" x1="133.13" y1="183.11" x2="352.69" y2="183.11"/>
+  <rect class="cls-3" width="487.11" height="277.33"/>
+  <text class="cls-1" transform="translate(164.56 153) scale(1.13 1)"><tspan x="0" y="0">Link</tspan></text>
+</svg>

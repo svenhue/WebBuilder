@@ -1,0 +1,20 @@
+{
+  
+  "compilerOptions": {
+      "baseUrl": "src",
+      "paths": {
+        "#assets/*": ["assets/*"],
+        "#plugins/*": ["plugins/*"],
+        "#utils/*": ["utils/*"],
+        "#/src*": ["/*"]
+      },
+      
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "target": "ES5",
+      "moduleResolution": "NodeNext",
+      "module": "NodeNext",
+            "resolveJsonModule": true
+    }
+}

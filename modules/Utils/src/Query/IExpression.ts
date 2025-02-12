@@ -1,0 +1,1 @@
+export type IExpression = (value: object | string | number) => boolean;

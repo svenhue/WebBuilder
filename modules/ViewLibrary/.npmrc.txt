@@ -1,0 +1,3 @@
+//npm.pkg.github.com/:_authToken=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
+@svenhue:registry=https://npm.pkg.github.com
+always-auth = true

@@ -1,0 +1,471 @@
+
+{
+    "name": "ViewLibraryDevConfigurations",
+    "viewConfigs": [
+        {
+            "type": "viewdefinition:Basic:DialogComponent",
+            "definitions":[
+                {
+                    "level": "ui",
+                    "name": "ComponentMethods",
+                    "value": ["ChangeVisibility"]
+                },
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Dialog is a popup that can be used to display information or ask for user input."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Action:ToolbarComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The toolbar is usually part of the layout header and footer, but it can be used anywhere on the page."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Structure:ContainerComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "A container is used to group components together."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Structure:TabbedContainerComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "You can use the tabbed container to use tabs functionality without the usage of page navigation."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Structure:SectionComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The section component is used to group components together and to separate them from other components."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Layout:DrawerComponent",
+            "definitions":[
+                {
+                    "level": "ui",
+                    "name": "ComponentMethods",
+                    "value": ["ChangeVisibility"]
+                },
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The drawer is the sidebar of your application Layout. It can be toggled by an event that executes an 'Control Component' action."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Navigation:LinkComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Link component is used to navigate to another page."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Typography:BlockQuoteComponent",
+            "definitions":[
+                {
+                    "level": "dev",
+                    "name": "contentTextAttribute",
+                    "value": "content.text"
+                },
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "Display a quote in block format."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Typography:HeadingComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Heading component is used to display a heading."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Typography:TextlinkComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "Display text as a link."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Typography:ParagraphComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Paragraph component is used to display a paragraph."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Typography:BlockQuoteComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "Display a quote in block format."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Layout:HeaderComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Header component is used to display the header of your site."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Layout:FooterComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Footer component is used to display the footer of your site."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Layout:Toolbar",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Toolbar component is used to display a toolbar."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Navigation:DropdownMenuComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Dropdown Menu is a button that opens a dropdown menu."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Media:IconComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Icon component is used to display an icon."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Media:ImageComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Image component is used to display an image."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Media:VideoComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Video component is used to display a video."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Media:CarouselComponent",
+            "definitions":[
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Carousel component is used to display a carousel."
+                    }
+                }
+            ]
+        },
+
+        {
+            "type": "default",
+            "definitions":[
+
+            ]
+        },
+        {
+            "type": "viewdefinition:Basic:DivBlockComponent",
+            "isTextable": true,
+            "definitions":[ {
+                "level": "info",
+                "name": "View Information",
+                "value":{
+                    "text": "The DivBlock is an simple HTML Div element that can be used to group other components together."
+                }
+            }]
+        },
+        {
+            "type": "viewdefinition:Basic:ListComponent",
+            "isTextable": true,
+            "definitions":[ {
+                "level": "info",
+                "name": "View Information",
+                "value":{
+                    "text": "The List is an component that can be used to display a list of items. It can be used in combination with the List Item component"
+                }
+            }]
+        },
+        {
+            "type": "viewtemplate:Basic:ListItemComponent",
+            "isTextable": true,
+            "definitions":[ {
+                "level": "info",
+                "name": "View Information",
+                "value":{
+                    "text": "The List Item is an component that can only be used in a List."
+                }
+            }]
+        },
+        {
+            "type": "viewtemplate:Basic:ListItem",
+            "definitions":[ {
+                "level": "info",
+                "name": "View Information",
+                "value":{
+                    "text": "The List Item is an component that can only be used in a List."
+                }
+            }]
+        },
+        {
+            "type": "viewtemplate:Basic:ExpansionItemComponent",
+            "definitions":[ {
+                "level": "info",
+                "name": "View Information",
+                "value":{
+                    "text": "With the Expansion Component you can expand and kompress content."
+                }
+            }]
+        },
+        {
+            "type": "viewtemplate:Basic:AvatarComponent",
+            "definitions":[ {
+                "level": "info",
+                "name": "View Information",
+                "value":{
+                    "text": "The Avatar is used to show a user image or icon."
+                }
+            }]
+        },
+        {
+            "type": "viewtemplate:Basic:CardComponent",
+            "definitions":[ {
+                "level": "info",
+                "name": "View Information",
+                "value":{
+                    "text": "The Card component is a great way to display important pieces of grouped content."
+                }
+            }]
+        },
+        {
+            "type": "viewtemplate:Basic:BadgeComponent",
+            "definitions":[ {
+                "level": "info",
+                "name": "View Information",
+                "value":{
+                    "text": "The Badge component allows you to create a small badge for adding information like contextual data that needs to stand out and get noticed. It is also often useful in combination with other elements like a user avatar to show a number of new messages."
+                }
+            }]
+        },
+        {
+            "type": "viewtemplate:Basic:DropdownButtonComponent",
+            "definitions":[ {
+                "level": "info",
+                "name": "View Information",
+                "value":{
+                    "text": "The Dropdown component is a very convenient dropdown button. Goes very well with QList as dropdown content, but it’s by no means limited to it."
+                }
+            }]
+        },
+        
+        {
+            "type": "viewdefinition:Basic:ButtonComponent",
+            "definitions":[
+                {
+                    "level": "ui",
+                    "name": "HostPriority",
+                    "value": 50
+                },
+                {
+                    "level": "ui",
+                    "name": "actionTypes",
+                    "value": ["Control component", "Trigger event"]
+                },
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "A simple Button component that is mainly used to trigger events."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Navigation:NavBarComponent",
+            "definitions":[
+                {
+                    "level": "ui",
+                    "name": "HostPriority",
+                    "value": 2
+                },
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Navigation Bar is typically used for a simple navigation through your application."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Form:InputComponent",
+            "definitions":[
+                {
+                    "level": "ui",
+                    "name": "CanBeChildOf",
+                    "value": ["viewdefinition:Form:FormComponent"]
+                },
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Input Component is a simple input field that can be used in a form and supports all the input types you need."
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewdefinition:Form:FormComponent",
+            "definitions":[
+                {
+                    "level": "ui",
+                    "name": "actionTypes",
+                    "value": ["Control component", "Run script", "Go to url"]
+                },
+                {
+                    "level": "ui",
+                    "name": "ComponentMethods",
+                    "value": 
+                    [
+                        {
+                            "name": "Submit"
+                        },
+                        {
+                            "name": "Clear"
+                        },
+                        {
+                            "name": "Clear validation"
+                        },
+                        {
+                            "name": "Reset"
+                        },
+                        {
+                            "name": "Validate"
+                        },
+                        {
+                            "name": "Set Data"
+                        }
+                    ]
+                },
+                {
+                    "level": "ui",
+                    "name": "CustomEvents",
+                    "value": [
+                        {
+                            "name": "Submit"
+                        }
+                    ]
+                },
+                {
+                    "level": "info",
+                    "name": "View Information",
+                    "value":{
+                        "text": "The Form component is used to bind multiple Input components to an event."
+                    }
+                }
+            ]
+        }
+        
+ 
+    ]
+}

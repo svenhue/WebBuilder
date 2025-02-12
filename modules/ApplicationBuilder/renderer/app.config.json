@@ -1,0 +1,48 @@
+
+{
+    "name": "TestProject",
+    "plugins":[
+        {
+            "position": 0,
+            "file": "unhead"
+        },
+        {
+            "position": 1,
+            "file": "pinia"
+        },
+        {
+            "position": 2,
+            "file": "AlphaUIAppExtension"
+        },
+        {
+            "file": "quasar",
+            "position": 3
+        }
+        
+    ],
+    "pages": [
+        {
+            "name": "TestName",
+            "route": "/",
+            "appName": "TestProject",
+            "meta":{
+                "title": "TeeestTitle",
+                "description": "TestDescription",
+                "keywords": "TestKeywords",
+                "charset": "utf-8",
+                "language": "en"
+            },
+            "views":[
+                {
+                    "id": 1,
+                    "name": "TestViewvv",
+                    "tag": "component:ButtonComponent",
+                    "appName": "TestProject",
+                    "content": {
+                        "label": "TestLabel"
+                    }
+                }
+            ]
+        }
+    ]
+}

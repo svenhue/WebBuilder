@@ -1,0 +1,1 @@
+export type IRequestData = string | JSON | XMLDocument

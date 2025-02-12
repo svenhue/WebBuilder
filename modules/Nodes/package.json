@@ -1,0 +1,41 @@
+{
+  "name": "alphanodes",
+  "version": "1.0.2",
+  "type": "commonjs",
+  "main": "index.ts",
+  "types": "./index.d.ts",
+  "module": "index.ts",
+  "target": "esnext",
+  "scripts": {
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsx ./src/server/main.ts"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "body-parser": "^1.20.3",
+    "eslint-plugin-vue": "^9.17.0",
+    "express": "^4.21.2",
+    "inversify": "^6.1.4",
+    "nvm": "^0.0.4",
+    "reflect-metadata": "^0.2.2",
+    "sharp": "^0.33.5",
+    "typescript": "^4.5.2",
+    "vite": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "typescript": "^4.2.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.ts",
+      "import": "./index.ts"
+    }
+  },
+  "author": "",
+  "license": "ISC"
+}

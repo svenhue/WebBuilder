@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "allowJs": true,
+    "target": "esnext",
+    "module": "nodenext",
+    "skipLibCheck": true,
+    "outDir": "./dist"
+  },
+  "include": ["./src/**/*"]
+}

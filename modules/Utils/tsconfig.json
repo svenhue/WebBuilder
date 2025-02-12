@@ -1,0 +1,35 @@
+{
+
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "rootDir": "src",
+    //"moduleResolution": "E",
+    "target": "ES2022",
+        "lib": ["ES2022", "DOM"],
+        
+        "module": "commonjs",
+       "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+      //"allowImportingTsExtensions":true,
+      "types":["web-bluetooth"],
+      "paths":{
+        "." : ["./index.ts"],
+        "view": ["./view/*.ts"],
+        "./data" : ["./data/*"],
+        "utils" : ["./utils/*.ts"],
+        "services": ["./services/*.ts"],
+      }
+  },
+  "include": [
+    "src",
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  
+  
+}
+

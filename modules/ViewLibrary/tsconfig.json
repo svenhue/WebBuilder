@@ -1,0 +1,39 @@
+{
+  "module": "esnext",
+  "type": "module",
+  "ts-node": {
+    "compilerOptions": {
+      "experimentalDecorators": true,
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    
+    "baseUrl": ".",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "moduleResolution": "Node16",
+    "target": "ES6",
+        "lib": ["ES6", "DOM"],
+        "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+        "module": "NodeNext",
+       // "moduleResolution": "Bundler",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noEmit": true
+
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+, "src/quasar/QuasarButtonComponent.js"  ],
+  
+  
+}
+

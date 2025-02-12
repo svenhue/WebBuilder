@@ -1,0 +1,26 @@
+{
+  "module": "esnext",
+  "type": "module",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "rootDir": "src",
+    //"moduleResolution": "E",
+    "target": "ES6",
+        "lib": ["ES6", "DOM"],
+        
+        "module": "NodeNext",
+       
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noEmit": true
+      //"allowImportingTsExtensions":true,
+  
+  },
+  "include": [
+    "src",
+  ]
+  
+}
+

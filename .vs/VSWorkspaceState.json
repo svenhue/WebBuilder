@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\modules",
+    "\\modules\\Utils\\src",
+    "\\modules\\Utils\\src\\View",
+    "\\modules\\ViewLibrary",
+    "\\modules\\ViewLibrary\\src",
+    "\\modules\\ViewLibrary\\src\\Data"
+  ],
+  "SelectedNode": "\\modules\\ViewLibrary\\src\\Data\\TableComponent.vue",
+  "PreviewInSolutionExplorer": false
+}

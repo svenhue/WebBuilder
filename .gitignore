@@ -1,0 +1,55 @@
+node_modules
+
+
+./MindCode
+./AIServices
+/modules/Canvas
+/modules/Resources
+/modules/ConversionalAI
+/modules/IntelligentAutomation
+/modules/SocialMediaMarketing
+/modules/WebAutomateIntelligence
+
+/Apps/Nodes_Ui
+/Apps/NuxtText
+/Apps/VoiceAI
+/teststaticserver
+
+
+.DS_Store
+.Thumbs.db
+*.sublime*
+.idea/
+debug.log
+
+ui/.vscode/
+
+node_modules/
+yarn.lock
+package-lock.json
+
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+

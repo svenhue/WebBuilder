@@ -1,0 +1,135 @@
+// app global css in SCSS form
+.body{
+
+}
+.app {
+  overflow: hidden;
+  height: 100%;
+  background-color: orange;
+
+   
+}
+.app-header{
+  background-color: theme('colors.primary');
+}
+.left-toolbar {
+  background-color: green;
+  position: relative;
+}
+.default-app-view {
+  position: relative;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 100%;
+}
+.decision-btn-left {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.drag-icon {
+  &:hover {
+    cursor: move;
+  }
+}
+
+.focussed-element {
+  outline-color: blue;
+  outline-style: groove;
+  outline-width: 3px;
+  z-index: 15;
+  outline-offset: 1px;
+
+  
+  
+}
+
+.focussed-element > .q-btn__content *{
+  outline-color: blue;
+  outline-style: groove;
+  outline-width: 3px;
+  z-index: 15;
+  outline-offset: 3px;
+}
+
+.c-brightgrey {
+  background-color: theme('colors.brightgrey');
+  color: theme('colors.brightgrey');
+}
+
+.c-darkgrey {
+  background-color: theme('colors.darkgrey');
+  color: theme('colors.darkgrey')
+}
+.targetDropDown {
+  outline-color: black;
+  outline-offset: 3px;
+  outline-width: 3px
+}
+
+.showTargetPositionLeftTop{
+  box-shadow: -3px -3px 0px 3px red;
+  margin: 3px;
+}
+
+.showTargetPositionRightBottom{
+  box-shadow: 3px 3px 0px 3px #FF0505;
+  margin: 3px;
+}
+
+.drawer-header {
+  position: relative;
+  font-size: x-large;
+  background-color: theme('colors.brightgrey');
+  width: 100%;
+  display: inline-flex;
+  padding-left: 10px;
+  .close-btn {
+    position: absolute;
+    vertical-align: middle;
+    top: 5px;
+    right: 15px;
+  }
+  .expand-btn {
+    position: absolute;
+    vertical-align: middle;
+    top: 5px;
+    right: 45px;
+  }
+}
+
+.small-block-header {
+  margin-left: 10px;
+  font-size: small;
+
+  >div>div{
+    font-size: medium;
+  }
+}
+
+.icon-wrapper {
+  width: 40px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.active-container {
+  background-color:theme('colors.darkgrey');
+}
+
+.disable-hindering-events {
+  
+}
+
+.drop_before {
+  border-left: 3px solid theme('colors.primary') !important;
+  border-top: 3px solid theme('colors.primary') !important;
+
+}
+
+.drop_after {
+  border-bottom: 3px solid theme('colors.primary') ;
+  border-right: 3px solid theme('colors.primary');
+}

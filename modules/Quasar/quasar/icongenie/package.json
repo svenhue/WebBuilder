@@ -1,0 +1,73 @@
+{
+  "name": "@quasar/icongenie",
+  "version": "4.0.0",
+  "description": "A Quasar tool for generating all your Quasar App's icons and splashscreens",
+  "bin": {
+    "icongenie": "./bin/icongenie.js"
+  },
+  "type": "module",
+  "scripts": {
+    "lint": "eslint --ext .js ./ --fix --report-unused-disable-directives"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quasarframework/quasar.git"
+  },
+  "engines": {
+    "node": ">= 18.12.0"
+  },
+  "keywords": [
+    "vuejs",
+    "vue",
+    "icons",
+    "quasar",
+    "js",
+    "phone",
+    "tablet",
+    "desktop",
+    "spa",
+    "pwa",
+    "website",
+    "electron",
+    "bex"
+  ],
+  "author": "Razvan Stoenescu <razvan.stoenescu@gmail.com>",
+  "contributors": [
+    "Razvan Stoenescu <razvan.stoenescu@gmail.com>",
+    "Daniel Thompson-Yvetot <35242872+nothingismagick@users.noreply.github.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/quasarframework/quasar/issues"
+  },
+  "homepage": "https://quasar.dev/icongenie/introduction",
+  "dependencies": {
+    "joi": "^17.13.0",
+    "cross-spawn": "^7.0.2",
+    "elementtree": "^0.1.7",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
+    "imagemin": "^8.0.1",
+    "imagemin-pngquant": "^9.0.2",
+    "is-png": "^3.0.1",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "png2icons": "^2.0.1",
+    "potrace": "^2.1.5",
+    "read-chunk": "^4.0.3",
+    "sharp": "^0.32.6",
+    "svgo": "^3.2.0",
+    "untildify": "^5.0.0",
+    "update-notifier": "^7.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-n": "^16.6.2"
+  },
+  "resolutions": {
+    "minimist": "^1.2.8"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

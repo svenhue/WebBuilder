@@ -1,0 +1,1 @@
+//https://blog.logrocket.com/generating-json-schema-typescript-types/

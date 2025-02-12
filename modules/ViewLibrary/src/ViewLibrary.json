@@ -1,0 +1,614 @@
+{
+  "name": "ViewLibrary",
+  "views": [
+    {
+        "type": "viewdefinition:Application:DefaultRootComponent",
+        "tag": "component:DefaultRootComponent",
+        "name": "Default Root Component",
+        "htmlattributes":{
+          
+        },
+        "style": {
+          "height": "1000px",
+          "width": "900px"
+
+        }
+    },
+    {
+      "clientActions":[
+            {
+              "config":{
+                "actionIdentifier": "Login",
+                "actionType": "SendRequestAction"
+              },
+              "trigger":{
+                "identifier": "onClick",
+                "type": "domEvent"
+              },
+              "options":{
+                "request":{
+                  "url": "/Users",
+                  "method": "GET",
+                  "networkname": "mainbackend"
+                }
+              }
+            }
+      ],
+      "createTransaction": true,
+      "name": "Form Block",
+      "icon": "FormBlock.svg",
+      "class": "FormViewElement",
+      "tag": "component:FormComponent",
+      "type": "viewdefinition:Form:FormComponent",
+      "modelValue":{
+
+      },
+        "style":{
+          "width": "100%",
+          "margin-Top": "0px"
+        }
+      
+    },
+    {
+      "name": "Icon",
+      "type": "viewdefinition:Media:IconComponent",
+      "tag": "component:IconComponent"
+    },
+    {
+      "name": "Minimal Calendar",
+      "tag": "component:MinimalCalendarComponent",
+      "type": "viewdefinition:Advanced:MinimalCalendarComponent",
+      "htmlattributes": {
+        "label": "Minimal Calendar"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+
+    },
+    {
+      "name" : "Rating",
+      "tag" : "component:RatingComponent",
+      "type" : "viewdefinition:Form:RatingComponent",
+      "htmlattributes" : {
+        "label" : "Rating"
+      },
+      "specifications" : {
+        "data-atomic" : true
+      },
+      "properties":{
+        "size": "20px"
+      }
+    },
+    {
+      "name": "Code Editor",
+      "tag": "component:CodeEditorComponent",
+      "type": "viewdefinition:Editor:CodeEditorComponent",
+      "htmlattributes": {
+        "label": "Code Editor"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Page Header",
+      "tag": "component:HeaderComponent",
+      "type": "viewdefinition:Layout:HeaderComponent",
+      "style": {
+        "width": "100%",
+        "min-height": "50px",
+        "height": "min-content",
+        "position": "sticky",
+        "top": "0px",
+        "display": "flex",
+        "align-items": "center"
+
+      }
+    },
+    {
+      "name": "JSON Editor",
+      "tag": "component:JSONEditorComponent",
+      "type": "viewdefinition:Editor:JSONEditorComponent",
+      "htmlattributes": {
+        "label": "JSON Editor"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "WYSIWYGEditor",
+      "isDisabled": true,
+      "tag" : "component:WYSIWYGEditorComponent",
+      "type": "viewdefinition:Typography:WYSIWYGEditorComponent",
+      "htmlattributes": {
+        "label": "WYSIWYGEditor"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Table",
+      "tag": "component:TableComponent",
+      "type": "viewdefinition:Data:TableComponent",
+      "icon": "bx-table.svg",
+      "properties":{
+
+        "rowsPerPageOptions": [5, 10, 25]
+      }
+      
+    },
+    {
+      "name": "Page Footer",
+      "tag": "component:FooterComponent",
+      "type": "viewdefinition:Layout:FooterComponent",
+      "style": {
+
+        "backgroundColor": "red"
+
+      }
+    },
+    {
+      "name": "Input",
+      "icon": "Input.svg",
+      "class": "InputView",
+      "tag": "component:InputComponent",
+      "type": "viewdefinition:Form:InputComponent",
+      "content":{
+        "label": "Input"
+      },
+      "properties":{
+        "showLabelInField": false,
+        "showLabelBefore": true
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Toolbar",
+      "tag": "component:ToolbarComponent",
+      "type": "viewdefinition:Layout:ToolbarComponent",
+      "style":{
+        "width": "100%",
+        "min-height": "30px"
+      }
+    },
+    {
+      "name": "Checkbox",
+      "icon": "Checkbox.svg", 
+      "tag": "component:CheckBoxComponent",
+      "type": "viewdefinition:Form:CheckboxComponent",
+      "content":{
+        "label": "Checkbox"
+      },
+      "htmlattributes": {
+        
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "FormButton",
+      "icon": "FormButton.svg", 
+      "tag": "component:FormButtonComponent",
+      "type": "viewdefinition:Form:FormButtonComponent",
+      "htmlattributes": {
+        "label": "FormButton"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Select",
+      "icon": "Select.svg",
+      "tag": "component:SelectComponent",
+      "type": "viewdefinition:Form:SelectComponent",
+      "htmlattributes": {
+        "style": {
+          "width": "200px"
+        }
+      },
+      "content": {
+        "label": "Select Label"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Text Area",
+      "icon": "TextArea.svg",
+      "tag": "component:TextAreaComponent",
+      "type": "viewdefinition:Form:TextAreaComponent",
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "List",
+      "icon": "List.svg",
+      "tag": "component:ListComponent",
+      "type": "viewdefinition:Basic:ListComponent",
+
+        "style": {
+          "min-width": "100px",
+          "min-height": "100px",
+          "width": "100%",
+          "height": "min-content"
+        }
+    },
+    {
+      "name": "List Item",
+      "icon":"LtItisem.svg",
+      "tag": "component:ListItemComponent",
+      "type": "viewdefinition:Basic:ListItemComponent",
+      "style":{
+        "height": "50px"
+      },
+      "htmlattributes": {
+        "label": "List Item"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Expansion Item",
+      "tag": "component:ExpansionItemComponent",
+      "type": "viewdefinition:Basic:ExpansionItemComponent",
+      "content": {
+        "label": "Expansion Item"
+      }
+    },
+    {
+      "name": "Image",
+      "icon": "Image.svg",
+      "tag": "component:ImageComponent",
+      "type": "viewdefinition:Media:ImageComponent",
+      "htmlattributes": {
+        "label": "Image"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "YouTube",
+      "icon": "YouTube.svg",
+      "tag": "component:YouTubeComponent",
+      "type": "viewdefinition:Media:YouTubeComponent",
+      "htmlattributes": {
+        "label": "Image"
+      },
+      "style":{
+        "width": "300px",
+        "height": "150px"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Video",
+      "icon": "Video.svg",
+      "tag": "component:VideoComponent",
+      "type": "viewdefinition:Media:VideoComponent",
+      "htmlattributes": {
+        "label": "Video"
+      },
+      "specifications": {
+        "data-atomic": true
+      },
+      "style":{
+        "width": "300px",
+        "height": "150px"
+      }
+    },
+    {
+      "name": "Container",
+      "icon": "Container.svg",
+      "tag": "component:ContainerComponent",
+      "type": "viewdefinition:Structure:ContainerComponent",
+      "htmlattributes": {
+        
+      },
+      "style": {
+        "height": "250px",
+        "width": "250px"
+
+      }
+    },
+    {
+      "name": "TabbedContainer",
+      "tag": "component:TabbedContainerComponent",
+      "type": "viewdefinition:Structure:TabbedContainerComponent",
+      "children": [
+        {
+          "name": "First Tab",
+          "type": "viewdefinition:Structure:ContainerComponent",
+          "htmlattributes": {
+           
+          },
+          "style": {
+            "width": "100%",
+            "height": "100px"
+          },
+          "properties": {
+            "label": "First Tab"
+          },
+          "tag": "tag:div"
+        },
+        {
+          "name": "Second Tab",
+          "label": "Second Tab",
+          "type": "viewdefinition:Structure:ContainerComponent",
+          "htmlattributes": {
+           
+          },
+          "style": {
+            "width": "100%",
+            "height": "100%"
+          },
+          "properties": {
+            "label": "Second Tab"
+          }
+        },
+        {
+          "name": "Third Tab",
+          "label": "Third Tab",
+          "type": "viewdefinition:Structure:ContainerComponent",
+          "htmlattributes": {
+           
+          },
+          "style": {
+            "width": "100%",
+            "height": "100%"
+          },
+          "properties": {
+            "label": "Third Tab"
+          }
+        }
+      ],
+        "isRoutable": false,
+        "appearance": {
+          "dense": true,
+          "alignment": "justify",
+          "isVertical": false
+        },
+        "modelValue": "First Tab"
+    },
+
+    {
+      "name": "Section",
+      "icon": "Section.svg",
+      "tag": "component:SectionComponent",
+      "type": "viewdefinition:Structure:SectionComponent",
+      "htmlattributes": {
+        "label": "Section"
+      },
+      "style":{
+        "width": "100%",
+        "height": "250px"
+      }
+    },
+    {
+      "name": "Block Quote",
+      "icon": "BlockQuote.svg",
+      "tag": "component:BlockQuoteComponent",
+      "type": "viewdefinition:Typography:BlockQuoteComponent",
+      "htmlattributes": {
+        "label": "Block Quote"
+      },
+      "style":{
+        "border-left": "5px solid black !important"
+      },
+      "content": 
+      {
+        "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Accordion",
+      "isDisabled": true,
+      "icon": "Accordion.svg",
+      "tag": "component:AccordionComponent",
+      "type": "viewdefinition:Basic:AccordionComponent",
+      "style":{
+        "width": "200px",
+        "min-height": "60px"
+      }     
+    },
+    {
+      "name": "Heading",
+      "icon": "Heading.svg",
+      "tag": "component:HeadingComponent",
+      "type": "viewdefinition:Typography:HeadingComponent",
+      "content": {
+        "text" : "Lorem ipsum!"
+      },
+      "style":{
+        "width": "min-content",
+        "height": "min-content",
+        "margin-Top": "0px",
+        "margin-Bottom": "0px"
+      },
+      "properties": {
+        "headingTag": "h1"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Text Link",
+      "icon": "TextLink.svg",
+      "tag": "component:TextLinkComponent",
+      "type": "viewdefinition:Typography:TextLinkComponent",
+      "htmlattributes": {
+        "label": "Heading"
+      },
+      "properties":{
+        "hasInternalTarget": true
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name" : "Avatar",
+      "tag" : "component:AvatarComponent",
+      "type" : "viewdefinition:Basic:AvatarComponent",
+      "style": {
+        
+      }
+    },
+    {
+      "type": "viewdefinition:Layout:DrawerComponent",
+      "name": "Drawer",
+      "tag": "component:DrawerComponent",
+      "specifications":{
+          "noOverrideStyle": true
+      }
+    },
+    {
+      "name" : "Carousel",
+      "tag" : "component:CarouselComponent",
+      "type" : "viewdefinition:Media:CarouselComponent",
+      "behavior": {
+        "autoPlay": 20,
+        "animated": true,
+        "infinite": true
+      },
+      "content":{
+        "arrows": true,
+        "navigation": true
+      }
+    },
+    {
+      "name" : "Link",
+      "tag" : "component:LinkComponent",
+      "type" : "viewdefinition:Navigation:LinkComponent",
+      "content":{
+        "url": "https://google.com",
+        "text": "Your text"
+      }
+    },
+    {
+      "name" : "Dialog",
+      "tag" : "component:DialogComponent",
+      "type" : "viewdefinition:Basic:DialogComponent",
+      "properties":{
+        "persistent": false,
+        "noescdismiss": false,
+        "nobackdropdismiss": true,
+        "noroutedismiss": true,
+        "autoclose": true,
+        "norefocus": true,
+        "nofocus": true,
+        "fullwidth": true,
+        "fulheight": true,
+        "maximized": false
+      }
+    },
+    {
+      "name" : "Card",
+      "tag" : "component:CardComponent",
+      "type" : "viewdefinition:Basic:CardComponent",
+      "style":{
+        "height": "150px",
+        "width": "120px"
+      }
+    },
+    {
+      "name" : "Badge",
+      "tag" : "component:BadgeComponent",
+      "type" : "viewdefinition:Basic:BadgeComponent"
+    },
+    {
+      "name": "Paragraph",
+      "icon": "Paragraph.svg",
+      "tag": "component:ParagraphComponent",
+      "type": "viewdefinition:Typography:ParagraphComponent",
+      "content": {
+        "text": "<strong>123</strong>111"
+      },
+      "style": {
+          "width": "max-content",
+          "height": "min-content"
+      },
+      "specifications": {
+        "data-atomic": true
+      }
+    },
+    {
+      "name": "Rich Text",
+      "isDisabled": true,
+      "icon": "RichText.svg",
+      "tag": "component:RichTextComponent",
+      "type": "viewdefinition:Typography:RichTextComponent",
+      "htmlattributes": {
+        "label": "Rich Text"
+      }
+    },
+
+    
+    {
+      "name": "Button",
+      "icon": "Button.svg",
+      "tag": "component:ButtonComponent",
+      "type": "viewdefinition:Basic:ButtonComponent",
+      "content":"Button",
+      "htmlattributes": {
+        
+      }
+    },
+    {
+      "name": "Div Block",
+      "icon": "DivBlock.svg",
+      "tag": "component:DivBlockComponent",
+      "type": "viewdefinition:Basic:DivBlockComponent",
+      "htmlattributes": {
+        "style": {
+          "width": "100px",
+          "height": "100px"
+        }
+      }
+    },
+    {
+      "name": "Navigation Bar",
+      "tag": "component:NavBarComponent",
+      "type": "viewdefinition:Navigation:NavBarComponent",
+      "style":{
+        "width": "100%",
+        "height": "min-content",
+        "min-height": "30px"
+      }
+    },
+    {
+      "name": "Grid Element",
+      "tag": "tag:div",
+      "type": "viewdefinition:RawHTML:GridElement"
+    },
+    {
+      "name": "Dropdown Menu",
+      "tag": "component:DropdownMenuComponent",
+      "type": "viewdefinition:Navigation:DropdownMenuComponent",
+      "style":{
+        "width": "max-content",
+        "height": "min-content",
+        "min-height": "30px"
+      },
+      "content":{
+        "label": "Menu"
+      }
+    }
+  ]
+}

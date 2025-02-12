@@ -1,0 +1,72 @@
+{
+  "name": "@quasar/cli",
+  "version": "2.4.1",
+  "description": "Quasar Framework - the Global CLI",
+  "type": "module",
+  "bin": {
+    "quasar": "./bin/quasar.js"
+  },
+  "scripts": {
+    "lint": "eslint --ext .js ./ --fix --report-unused-disable-directives"
+  },
+  "files": [
+    "assets",
+    "bin",
+    "lib"
+  ],
+  "keywords": [
+    "quasar",
+    "cli",
+    "web",
+    "spa",
+    "pwa",
+    "electron",
+    "vue",
+    "vuejs",
+    "cordova"
+  ],
+  "author": {
+    "name": "Razvan Stoenescu",
+    "email": "razvan.stoenescu@gmail.com",
+    "url": "https://github.com/quasarframework"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quasarframework/quasar"
+  },
+  "license": "MIT",
+  "bugs": "https://github.com/quasarframework/quasar/issues",
+  "homepage": "https://quasar.dev",
+  "funding": {
+    "type": "github",
+    "url": "https://donate.quasar.dev"
+  },
+  "engines": {
+    "node": ">= 16",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "dependencies": {
+    "@quasar/ssl-certificate": "workspace:^",
+    "ci-info": "^4.0.0",
+    "compression": "^1.7.4",
+    "connect-history-api-fallback": "^2.0.0",
+    "cors": "^2.8.5",
+    "cross-spawn": "^7.0.3",
+    "express": "^4.21.0",
+    "fs-extra": "^11.2.0",
+    "http-proxy-middleware": "^2.0.6",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "open": "^9.1.0",
+    "route-cache": "^0.5.0",
+    "update-notifier": "^6.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-quasar": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

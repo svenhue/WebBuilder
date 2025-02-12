@@ -1,0 +1,423 @@
+{
+    "views":[
+        {
+            "name" : "Dialog",
+            "tag" : "component:DialogComponent",
+            "type" : "viewtemplate:Basic:DialogComponent",
+            "children":[
+                {
+                    "type": "viewdefinition:Structure:ContainerComponent",
+                    "style":{
+                        "display": "flex",
+                        "flex-direction": "column",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "height": "300px",
+                        "width": "300px"
+                    }
+                }
+            ]
+          },
+        {
+            "type": "viewtemplate:Basic:ListComponent",
+            "children":[
+                {
+                    "position": 0,
+                    "type": "viewdefinition:Basic:ListItemComponent",
+                    "tag": "component:ListItemComponent",
+                    "name": "List Item",
+                    "icon":"ListItem.svg",
+                    "content":{
+                        "label":"List Item"
+                    }
+                },
+                {
+                    "position": 1,
+                    "type": "viewdefinition:Basic:ListItemComponent",
+                    "tag": "component:ListItemComponent",
+                    "name": "List Item",
+                    "icon":"ListItem.svg",
+                    "content":{
+                        "label":"List Item"
+                    }
+                },
+                {
+                    "position": 2,
+                    "type": "viewdefinition:Basic:ListItemComponent",
+                    "tag": "component:ListItemComponent",
+                    "name": "List Item",
+                    "icon":"ListItem.svg",
+                    "content":{
+                        "label":"List Item"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewtemplate:Basic:AccordionComponent",
+            "children":[
+                {
+                    "type": "viewdefinition:Basic:ExpansionItemComponent",
+                    "properties":{
+                        "switchToggleSide" : true
+                    },
+                    "children":[
+                        {
+                            "type": "viewdefinition:Typography:ParagraphComponent",
+                            "content": {
+                                "text": "First Paragraph"
+                            
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "viewdefinition:Basic:ExpansionItemComponent",
+                    "properties":{
+                        "switchToggleSide" : true
+                    },
+                    "children":[
+                        {
+                            "type": "viewdefinition:Typography:ParagraphComponent",
+                            "content": {
+                                "text": "First Paragraph"
+                            
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "viewdefinition:Basic:ExpansionItemComponent",
+                    "properties":{
+                        "switchToggleSide" : true
+                    },
+                    "children":[
+                        {
+                            "type": "viewdefinition:Typography:ParagraphComponent",
+                            "content": {
+                                "text": "First Paragraph"
+                            
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+     
+        {
+            
+            "type": "viewtemplate:Navigation:NavBarComponent",
+            "publicidentifier" : "Navbar_1",
+            "children":[
+                
+                {
+                    "tag": "tag:div",
+                    "name": "Container",
+                    "position": 2,
+                    "children":[
+                        {
+                            "position": 1,
+                            "type": "viewdefinition:Basic:ButtonComponent",
+                            "tag": "component:ButtonComponent",
+                            "name": "Button",
+                            "icon":"Button.svg",
+                            "templateIdentifier": "Button_2"
+                        },
+                        {
+                            "position": 2,
+                            "type": "viewdefinition:Basic:ButtonComponent",
+                            "tag": "component:ButtonComponent",
+                            "name": "Button",
+                            "icon":"Button.svg",
+                            "templateIdentifier": "Button_3"
+                        },
+                        {
+                            "position": 3,
+                            "type": "viewdefinition:Navigation:DropdownMenuComponent",
+                            "template": "viewtemplate:Navigation:DropdownMenuComponent"
+                        }
+                    ]
+                },
+               
+                {
+                    "type": "viewdefinition:Layout:DrawerComponent",
+                    "name": "Drawer",
+                    "tag": "component:DrawerComponent",
+                    "position": 3,
+                    "templateIdentifier": "NavabrTemplate:DrawerComponent_01",
+                    "specifications":{
+                        "noOverrideStyle": true
+                    },
+                    "children":[
+                        {
+                            "tag": "component:ListComponent",
+                            "type": "viewdefinition:Basic:ListComponent",
+                            "style":{
+                              "height": "100px",
+                              "min-height": "30px"
+                            },
+                            "content":{
+                              "label": "Menu"
+                            },
+                            "children":[
+                                {
+                                    "position": 0,
+                                    "name": "Menu Item",
+                                    "tag": "component:ListItemComponent",
+                                    "type": "viewdefinition:Basic:ListItemComponent",
+                                    "content":{
+                                        "label": "Menu Item"
+                                    }
+                                },
+                                {
+                                    "position": 1,
+                                    "name": "Menu Item",
+                                    "tag": "component:ListItemComponent",
+                                    "type": "viewdefinition:Basic:ListItemComponent",
+                                    "content":{
+                                        "label": "Menu Item"
+                                    }
+                                },
+                                {
+                                    "position": 2,
+                                    "name": "Menu Item",
+                                    "icon": "MenuItem.svg",
+                                    "tag": "component:ListItemComponent",
+                                    "type": "viewdefinition:Basic:ListItemComponent",
+                                    "content":{
+                                        "label": "Menu Item"
+                                    }
+                                },
+                                {
+                                    "position": 3,
+                                    "name": "Menu Item",
+                                    "icon": "MenuItem.svg",
+                                    "tag": "component:ListItemComponent",
+                                    "type": "viewdefinition:Basic:ListItemComponent",
+                                    "content":{
+                                        "label": "Submenu"
+                                    },
+                                    "properties":{
+                                        "clickable":true,
+                                        "sideIcon":"keyboard_arrow_right"
+                                    },
+                                    "children":[
+                                        {
+                                            "name": "Submenu",
+                                            "tag": "component:DropdownMenuComponent",
+                                            "type": "viewdefinition:Navigartion:DropdownMenuComponent",
+                                            "content":{
+                                                "label": "Submenu"
+                                            },
+                                            "properties":{
+                                                "anchor": "top right",
+                                                "self": "top left"
+                                            },
+                                            "children":[
+                                                {
+                                                    "position": 0,
+                                                    "name": "Submenu Item",
+                                                    "tag": "component:ListItemComponent",
+                                                    "type": "viewdefinition:Basic:ListItemComponent",
+                                                    "content":{
+                                                        "label": "Submenu Item"
+                                                    }
+                                                },
+                                                {
+                                                    "position": 1,
+                                                    "name": "Submenu Item",
+                                                    "tag": "component:ListItemComponent",
+                                                    "type": "viewdefinition:Basic:ListItemComponent",
+                                                    "content":{
+                                                        "label": "Submenu Item"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "viewtemplate:Layout:FooterComponent",
+            "children":[
+                {
+                    "type": "viewdefinition:Structure:SectionComponent",
+                    "style": {
+                        "display": "flex",  
+                        "height": "250px",
+                        "margin": "20px"
+                    },
+                    "children":[
+                        {
+                            "type": "viewdefinition:Structure:ContainerComponent",
+                            "style": {
+                                "width": "200px"
+                            },
+                            "children":[{
+                                "type": "viewdefinition:Typography:HeadingComponent",
+                                "content":{
+                                    "text": "Your Company Name"
+                                }
+                            }]
+                        },
+                        {
+                            "type": "viewdefinition:Structure:ContainerComponent",
+                            "style": {
+                                "width": "200px"
+                            },
+                            "children":[{
+                                "type": "viewdefinition:Typography:HeadingComponent",
+                                "content":{
+                                    "text": "Your Company Name"
+                                }
+                            }]
+                        },
+                        {
+                            "type": "viewdefinition:Structure:ContainerComponent",
+                            "style": {
+                                "width": "200px"
+                            },
+                            "children":[{
+                                "type": "viewdefinition:Typography:HeadingComponent",
+                                "content":{
+                                    "text": "Your Company Name"
+                                }
+                            }]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "viewtemplate:Form:FormComponent",
+            "children":[
+                {
+                    "type": "viewdefinition:Form:InputComponent"
+                },
+                {
+                    "type": "viewdefinition:Form:InputComponent"
+                },
+                {
+                    "type": "viewdefinition:Form:InputComponent"
+                },
+                {
+                    "type": "viewdefinition:Basic:ButtonComponent",
+                    "content": "Submit",
+                    "interaction":{
+
+                    }
+                }
+            ]
+        },
+        {
+            "type": "viewtemplate:Layout:HeaderComponent",
+            "children":[
+                {
+                    "position": 2,
+                    "type": "viewdefinition:Navigation:NavBarComponent",
+                    "template": "viewtemplate:Navigation:NavBarComponent"
+                },
+                {
+                    "type": "viewdefinition:Media:IconComponent",
+                    "name": "Icon Component",
+                    "tag": "component:IconComponent",
+                    "position": 1,
+                    "style":{
+                        "width": "50px",
+                        "height": "50px"
+                    },
+                    "properties":{
+                        "iconName": "menu"
+                    },
+                    "templateIdentifier": "Button_1"
+                }
+            ]
+        },
+        {
+
+            "type": "viewtemplate:Navigation:DropdownMenuComponent",
+            "tag": "component:DropdownMenuComponent",
+            "style":{
+                "min-width": "100px",
+                "min-height": "30px",
+                "height": "min-content"
+            },
+            "properties":{
+                "flat": true
+            },
+            "content":{
+                "label": "Menu"
+            },
+            
+            "children":[
+        
+                        {
+                            "name": "Menu Item",
+                            "tag": "component:ListItemComponent",
+                            "type": "viewdefinition:Basic:ListItemComponent",
+                            "content":{
+                                "label": "Menu Item"
+                            }
+                        },
+                        {
+                            "name": "Menu Item",
+                            "tag": "component:ListItemComponent",
+                            "type": "viewdefinition:Basic:ListItemComponent",
+                            "content":{
+                                "label": "Menu Item"
+                            }
+                        },
+                        {
+                            "name": "Menu Item",
+                            "icon": "MenuItem.svg",
+                            "tag": "component:ListItemComponent",
+                            "type": "viewdefinition:Basic:ListItemComponent",
+                            "content":{
+                                "label": "Menu Item"
+                            }
+                        },
+              
+                                {
+                                    "name": "Submenu",
+                                    "tag": "component:DropdownMenuComponent",
+                                    "type": "viewdefinition:Basic:DropdownMenuComponent",
+                                    "content":{
+                                        "label": "Submenu"
+                                    },
+                                    "properties":{
+                                        "anchor": "top right",
+                                        "self": "top left"
+                                    },
+                                    "children":[
+                                        {
+                                            "name": "Submenu Item",
+                                            "tag": "component:ListItemComponent",
+                                            "type": "viewdefinition:Basic:ListItemComponent",
+                                            "content":{
+                                                "label": "Submenu Item"
+                                            }
+                                        },
+                                        {
+                                            "name": "Submenu Item",
+                                            "tag": "component:ListItemComponent",
+                                            "type": "viewdefinition:Basic:ListItemComponent",
+                                            "content":{
+                                                "label": "Submenu Item"
+                                            }
+                                        }
+                                    ]
+                                }
+                            
+                        
+                    
+                
+             
+            ]
+        }
+    ]
+}
