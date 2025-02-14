@@ -35,7 +35,7 @@ export class BuildEnvironment{
       if(logInConsole){
         installProcess.output.pipeTo(new WritableStream({
           write(chunk) {
-            //terminal.write(chunk)
+            console.log(chunk)
           }
         
         }))
@@ -57,7 +57,7 @@ export class BuildEnvironment{
       if(logInConsole){
         result.output.pipeTo(new WritableStream({
           write(chunk) {
-            //terminal.write(chunk)
+            console.log("Command", chunk)
             if(chunk.includes(callbackKeyWord)){
               if(callback != undefined){
                 callback();

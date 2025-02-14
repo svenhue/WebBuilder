@@ -8,6 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "start": "nuxt start",
     "generatePages": "npx tsx modules/AlphaApp/GeneratePagesScript.ts --experimentalDecorators"
   },
   "dependencies": {

@@ -197,7 +197,7 @@ export class ApplicationService extends BaseServiceProvider{
         config.ssr = false
         config.components = [];
         config.mode = ApplicationModes.shadow;
-        config.deploymentMode = 'spaclient'; // use Enum, why doesnt work?
+        config.deploymentMode = 'mpa'; // use Enum, why doesnt work?
         config.pages = [
             {
                 name: 'Your Page',

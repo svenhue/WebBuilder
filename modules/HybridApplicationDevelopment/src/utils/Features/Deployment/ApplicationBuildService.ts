@@ -8,6 +8,7 @@ import { i } from "vite/dist/node/types.d-FdqQ54oU";
 import { LocalesFileBuilder } from "../Internationalization/LocalesFileBuilder";
 import { ILanguageFileString } from "../Internationalization/ILanguageFileString";
 import { Terminal } from 'xterm';
+import { files as Files } from './files'
 export class ApplicationBuildService extends WebContainerService{
 
     private readonly _buildOutputDirectory: string = './.output';
@@ -20,7 +21,7 @@ export class ApplicationBuildService extends WebContainerService{
         if(this.isReady.value != true && config == undefined){
             throw new Error("Container isnt ready")
         }else{
-            await this.Build(config, files, Load)
+            await this.Build(config, Files, files, Load)
         }
 
         async function Load(self: ApplicationBuildService){
@@ -38,7 +39,7 @@ export class ApplicationBuildService extends WebContainerService{
         if(this.isReady.value != true && config == undefined){
             throw new Error("Container isnt ready")
         }else{
-            await this.Build(config, files, Load)
+            await this.Build(config, Files, files, Load)
         }
 
         async function Load(self: ApplicationBuildService){
@@ -197,10 +198,10 @@ export class ApplicationBuildService extends WebContainerService{
         // delete all content-length headers for chunks in public/_nuxt because they are partially wrong
         //todo workaround?
         try{
-            const runtimePath = this._buildOutputDirectory + "/server/chunks/runtime.mjs"
+            const runtimePath = this._buildOutputDirectory + "/server/chunks/nitro/nitro.mjs"
             const dir: string[] = await this.api.containerInstance.fs.readdir(this._buildOutputDirectory + '/public/_nuxt', { encoding: 'utf-8'})
 
-            let oldFileString: string = await this.api.containerInstance.fs.readFile(runtimePath, "utf-8");
+            let oldFileString: string = await this.api.containerInstance.fs.readFile(runtimePath, "utf-8")
            
             for(const fileName of dir.filter(x => x.endsWith(".js") || x.endsWith(".css"))){  
            

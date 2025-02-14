@@ -36,7 +36,6 @@ export const useViewPositioning = (
 
     function setNextViewElement(element: MouseEventDetails){
         currentTarget.value = element;
-        console.log(123, element)
     }
     function onMouseChangedTrigger(details: MouseEventDetails){
 

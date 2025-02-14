@@ -19,12 +19,16 @@ Core functionality: Building web applications with an visual interface
 ## Roadmap (potentially, if this repo gets some traction and users want it)
 
 - bug fixes (undo/redo on global state, application export)
+- evaluate a clear path for stylesheet approach (at the moment a mixture of quasar and tailwind)
+- reduce dependencies 
 - code refactoring of the modules Utils and HybridApplicationDevelopment
 - convert the HybridApplicationModule into an reusable nuxtjs module so it can be integrated in any nuxtjs project
 - implementing ai capabilities to use generative ai for the design (theming, layout)
 - larger template library and marketplace with ready-to-use components for advanced websites
 - implement versioning with github
--
+
+## Bottleneck
+- the solutions builds projects with an native node runtime in the browser with webcontainers, which means that everytime you export a project, all dependencies are fetched and installed. This can take some time and is not optimal for larger projects. There are multiple solutions for this problem, but I have to evaluate them first.
 
 ## Development
 

@@ -7,7 +7,7 @@ import { BaseServiceProvider, TabService } from 'alphautils';
 
 export default defineNuxtPlugin({
     order: 10,
-    dependsOn: ['nuxt:revive-payload:client', 'nuxt:revive-payload:server', 'nuxt:chunk-reload'], // required to access pinia on client and server side
+    //dependsOn: ['nuxt:revive-payload:client', 'nuxt:revive-payload:server', 'nuxt:chunk-reload'], // required to access pinia on client and server side
     name: 'appextension',
     enforce: 'pre', // or 'post'
     async setup (nuxtApp) {
