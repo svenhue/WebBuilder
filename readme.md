@@ -15,6 +15,15 @@ Core functionality: Building web applications with an visual interface
 - The exported project can be served as SPA, MPA, PWA and with electron
 - some other cool stuff
 
+## Roadmap (potentially, if this repo gets some traction and users want it)
+
+- bug fixes (undo/redo on global state, application export)
+- code refactoring of the modules Utils and HybridApplicationDevelopment
+- implementing ai capabilities to use generative ai for the design (theming, layout)
+- larger template library and marketplace with ready-to-use components for advanced websites
+- implement versioning with github
+-
+
 ## Development
 
 Before start, you need to install the dependencies of all modules and of Apps/NuxtApplicationSkeleton
