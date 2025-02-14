@@ -19,6 +19,7 @@ Core functionality: Building web applications with an visual interface
 
 - bug fixes (undo/redo on global state, application export)
 - code refactoring of the modules Utils and HybridApplicationDevelopment
+- convert the HybridApplicationModule into an reusable nuxtjs module so it can be integrated in any nuxtjs project
 - implementing ai capabilities to use generative ai for the design (theming, layout)
 - larger template library and marketplace with ready-to-use components for advanced websites
 - implement versioning with github
