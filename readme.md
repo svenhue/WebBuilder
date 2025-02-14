@@ -12,8 +12,9 @@ Core functionality: Building web applications with an visual interface
 - Create as many pages as you want with the visual builder
 - Custom theming
 - Create events for components and let call an action (Control component, go to url, call function ...)
+- Multilingualism
 - The exported project can be served as SPA, MPA, PWA and with electron
-- some other cool stuff
+- some other useful stuff
 
 ## Roadmap (potentially, if this repo gets some traction and users want it)
 
