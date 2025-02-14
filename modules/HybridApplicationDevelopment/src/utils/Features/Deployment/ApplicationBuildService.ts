@@ -203,21 +203,24 @@ export class ApplicationBuildService extends WebContainerService{
 
             let oldFileString: string = await this.api.containerInstance.fs.readFile(runtimePath, "utf-8")
            
-            for(const fileName of dir.filter(x => x.endsWith(".js") || x.endsWith(".css"))){  
+            for (const fileName of dir.filter(x => x.includes(".js") || x.includes(".css"))){  
            
            
                 const indexStart = oldFileString.indexOf("/_nuxt/" + fileName)
-
+                if(indexStart == -1){
+                    continue;
+                }
                 const sizeIndex = oldFileString.indexOf("size", indexStart);
 
                 const indexComma = oldFileString.indexOf(",", sizeIndex);
 
-                const stringToReplace = oldFileString.substring(sizeIndex, indexComma +1 )
+                const stringToReplace = oldFileString.substring(sizeIndex-1, indexComma +1 )
 
-                oldFileString.replace(stringToReplace, "")
-                await this.api.containerInstance.fs.writeFile(runtimePath, oldFileString);
+                oldFileString = oldFileString.replace(stringToReplace, "")
+                
 
             }
+            await this.api.containerInstance.fs.writeFile(runtimePath, oldFileString);
 
         }catch(err){
         }

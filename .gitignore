@@ -42,7 +42,7 @@ node_modules
 # Logs
 logs
 *.log
-
+npmrc
 # Misc
 .DS_Store
 .fleet
