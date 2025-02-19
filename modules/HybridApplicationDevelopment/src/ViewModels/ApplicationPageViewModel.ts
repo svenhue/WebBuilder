@@ -76,6 +76,7 @@ export class ApplicationPageViewModel{
         }
         return newView;
     }
+
     public UpdateView(id: number, view: IViewConfiguration, oldValue?: IViewConfiguration, commitHIstory = true, addToHistory = true){
         const newv = this.viewDataAdapter.Update(id, view, this.contextid, oldValue, addToHistory)
         const i = this.model.views.findIndex(v => v.id == id)
@@ -139,11 +140,11 @@ export class ApplicationPageViewModel{
     }
     public PreparePageConfig(){
         
-        this.model.views = [];
-
+        /*
         for(const view of this.model.flatterndViews){
             this.model.views.push(view)
         }
+        */
 
         PageConfigurationHelper.validatePage(this.model)
     }

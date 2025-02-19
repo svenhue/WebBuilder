@@ -330,7 +330,7 @@ export class RunTimeVueApplicationViewModel{
     
         for(const pageVM of this.pageViewModels){
             pageVM.PreparePageConfig();
-            //this.model.pages.push(pageVM.page.value)    
+            this.model.pages.push(pageVM.model)    
         }
 
         this.languageViewModel.PrepareConfig(this.model)

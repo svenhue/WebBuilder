@@ -27,7 +27,7 @@ export class ApplicationBuildService extends WebContainerService{
         async function Load(self: ApplicationBuildService){
             const result = await self.GetBuildDirectory()
             
-            const zip = await self.CreateZip(result)
+            const zip = await self.CreateZip(result.subDirs.find(x => x.name.includes('.output')))
             await zip.generateAsync({ type: 'blob', compression: "STORE" }).then(function (content) {
                 FileSaver.saveAs(content, 'download.zip');
             });
@@ -124,7 +124,7 @@ export class ApplicationBuildService extends WebContainerService{
 
         
 
-    private async GetBuildDirectory(): Promise<Dir>{
+    private async GetBuildDirectory(subpath?: string): Promise<Dir>{
         
         const result = await copyDirOrFile(this._buildOutputDirectory, this)
         async function copyDirOrFile(dirPath, self: ApplicationBuildService){
