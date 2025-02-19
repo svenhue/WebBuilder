@@ -70,8 +70,7 @@ function addNuxtConfig(dirs){
       devtools: { enabled: true },
       modules:['nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n"],
       quasar:{
-        plugins: ['Notify'],
-        sassVariables: './css/sassvariables.scss'
+        plugins: ['Notify']
       },
       i18n:{
         vueI18n: './i18n.config.ts',
