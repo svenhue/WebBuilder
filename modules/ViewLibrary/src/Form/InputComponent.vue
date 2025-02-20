@@ -4,7 +4,7 @@
     dense
     :required="view.properties?.required ?? false"
     :type="view.content.dataType ?? 'text'"
-    :label="view.properties?.showLabelInInput == true ? t(view.content.label) : undefined" 
+    :label="view.properties?.showLabelInInput == true ? t(viewElement.ResolveTemplateProperty(view.content.label)) : undefined" 
     :model-value="view.modelValue" 
     v-bind="view.htmlattributes"
     :rules="viewElement.ValidateRules()"
@@ -12,8 +12,8 @@
     >
     <template v-if="view.properties?.showLabelBefore == true" v-slot:before>
         
-        <span textnode v-html="view.content?.label">
-            
+        <span textnode>
+                {{ t(viewElement.ResolveTemplateProperty(view.content.label)) }}
         </span>
     </template>
 
@@ -44,9 +44,9 @@ const viewElement = new ValueValidationViewElement(view);
 const viewModel = new BaseViewModel(viewElement.GetConfiguration().contextid);
 
 const formViewModel = inject('form', undefined) as FormViewModel;
-
 onMounted(() => {
     viewElement.bind();
+
 })
 
 onUnmounted(() => {

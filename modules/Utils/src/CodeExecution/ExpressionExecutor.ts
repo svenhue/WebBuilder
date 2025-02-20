@@ -1,7 +1,7 @@
 import { ComputedRef, computed } from 'vue';
 import { IExecutionContextProvider } from './IExecutionContextProvider.js';
 import { ExpressionValidator } from './ExpressionValidator.js';
-
+import { get } from 'lodash-es'
 //move the context resolve logic in value resolver. this should only execute a valid expression
 export function ExpressionExecutor(contextProvider: IExecutionContextProvider, contextid: number, expression: string, requestingComponent? ) : ComputedRef<string | number | boolean>{
 
@@ -88,16 +88,14 @@ export function ExpressionExecutor(contextProvider: IExecutionContextProvider, c
                     const nextDotIndex = expression.indexOf('.', i + 1)  != - 1 ? expression.indexOf('.', i + 1) :  expression.indexOf(' ', i + 1) != -1 ? expression.indexOf(' ', i + 1) : expression.indexOf(')', i + 1)  != -1 ? expression.indexOf(')', i + 1) : expression.length
                     const valueBetWeenDots = expression.substring(i + 1, nextDotIndex)
                    
-                    if(result[valueBetWeenDots] === undefined){
-                        
-                    }else{
+              
                         valuePath += '.' + valueBetWeenDots
-                        result = result[valueBetWeenDots]
-                    }
+                      
+                    
                    
                 }
             }
-            expression = expression.replace('component.' + match + valuePath, result);
+            expression = expression.replace('component' + valuePath, get(result, expression.replace('component.', '')));
         })
 
         expression.match(/(?<=app\.)[\w-]+(?=(\.|$|\s))/g)?.forEach((match) => {

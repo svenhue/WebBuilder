@@ -51,7 +51,6 @@ const service = BaseServiceProvider.ServiceWithContext<ICodeEditorService>("Code
 let editor = null as monaco.editor.IStandaloneCodeEditor | null
 
 onMounted(() => {  
-    
     editor = service.OpenEditorForExpression(refEditor, props.contextid, props.value, undefined, props.requestingComponent)
 })
 

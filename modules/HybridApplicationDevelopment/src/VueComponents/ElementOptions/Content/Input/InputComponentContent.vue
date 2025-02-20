@@ -4,6 +4,7 @@
         :contextid="currentElement.contextid"
         :label="'Text'" 
         :value="currentElement?.content?.label" 
+        :requestingComponent="currentElement"
         @updateValue="(values) => $emit('updateElement', [{key: 'content.label', value: values}])">
         </TextInputEditorComponent>
         <DataTypeComponent
@@ -14,7 +15,6 @@
         :label="'Zeige Label im Feld'"
         @update:model-value="(v) => $emit('updateElement', [{key: 'properties.showLabelInInput', value: v}])"
         >
-
         </q-checkbox>
     </div>
 </template>

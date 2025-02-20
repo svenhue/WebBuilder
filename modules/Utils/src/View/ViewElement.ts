@@ -123,11 +123,23 @@ export class ViewElement extends BaseView implements IViewElement, IEventHandler
         }
         return {contextProvider: this.viewContextProvider, contextid: this.GetConfiguration().contextid};
     }
-    public ResolveTemplateProperty(propertyValue: string){
+    public ResolveTemplateProperty(propertyValue: string): string{
         if(this.viewContextProvider == undefined){
             this.viewContextProvider = this.GetService<IExecutionContextProvider>('ExecutionContextProvider');
         }
-            return ValueResolver(this.viewContextProvider, this.GetConfiguration().contextid, propertyValue);
+        const result =  ValueResolver(this.viewContextProvider, this.GetConfiguration().contextid, propertyValue, this.GetConfiguration());
+
+        if(typeof result != 'string' && typeof result != 'number'){
+            switch(typeof result){
+                case 'object':
+                    return JSON.stringify(result);
+                case 'boolean':
+                    return result.toString();
+                default:
+                    return 'Unsupported type';
+            }
+        }
+        return result;
     }
 
     public ResolverObjectProperty(propertyValue: object){

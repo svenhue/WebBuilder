@@ -25,7 +25,7 @@ export class CodeCompletionProvider{
     }
     public GetViewContextCompletions(model: monaco.editor.ITextModel, position: monaco.IPosition, contextid: number, requestingComponent?: IViewConfiguration){
         this.contextid = contextid;
-        this.state = this.contextProvider.GetContext(this.contextid);
+        this.state = this.contextProvider.GetContext(this.contextid, requestingComponent);
         
 
         
@@ -77,7 +77,15 @@ export class CodeCompletionProvider{
                         
                         suggestions: objectPropsProposals(requestingComponent, range)
                     }
-                }else if(wantComponents.word == 'app'){
+                }else if(textUntilPosition.includes('component.') && textUntilPosition.endsWith('.') == true){
+                    const property = wantComponents.word
+
+                    return {
+                        suggestions: objectPropsProposals(requestingComponent[property], range)
+                    }
+                }
+                
+                else if(wantComponents.word == 'app'){
                     return { 
                         
                         suggestions: objectPropsProposals(this.state.app, range)
