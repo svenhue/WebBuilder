@@ -25,7 +25,6 @@
 import { BaseServiceProvider, TabService } from 'alphautils';
 import '../css/app.scss'
 import {  ref } from 'vue';
-import EssentialLink from './EssentialLink.vue';
 
 let tabService: TabService;
 
