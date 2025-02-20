@@ -143,6 +143,9 @@ export class ViewElement extends BaseView implements IViewElement, IEventHandler
     }
 
     public ResolverObjectProperty(propertyValue: object){
+        if(propertyValue == undefined){
+            return undefined;
+        }
         if(this.viewContextProvider == undefined){
             this.viewContextProvider = this.GetService<IExecutionContextProvider>('ExecutionContextProvider');
         }
