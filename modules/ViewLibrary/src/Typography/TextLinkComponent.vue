@@ -4,7 +4,7 @@
     textnode
     :to="view?.properties?.link != undefined ? view?.properties?.link : ''"
     v-bind="view?.htmlattributes"
-    :style="view?.style"
+    :style="viewElement.ResolverObjectProperty(view.style)"
       v-html="t(view?.content?.text)"
     ref="viewRef">
     

@@ -3,14 +3,15 @@
     <QuasarButtonComponent 
     v-if="view.properties?.isSubMenu != true"
     v-bind="view.htmlattributes"
-    dense 
+    dense
+    :style="viewElement.ResolverObjectProperty(view.style)" 
     :label="view.content.label">
         <q-menu 
         dense 
         :model-value="view?.modelValue ?? false"
         v-bind="view?.htmlattributes" 
         ref="viewRef" 
-        :style="view.style" 
+    
         :no-parent-event="view.properties?.noParentElement" 
         :target="view?.properties?.target"
         :auto-close="view.properties?.autoClose"

@@ -6,7 +6,7 @@
     :overlay="view.properties?.overlay"
     :mini="true"
     ref="viewRef" 
-    :style="view.style">
+    :style="viewElement.ResolverObjectProperty(view.style)">
         <BaseViewTreeRenderer
         v-for="child in children" :key="child.id"
         :view="child"

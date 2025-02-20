@@ -1,5 +1,5 @@
 <template>
-    <div v-bind="view?.htmlattributes" :style="view?.style" ref="viewRef">
+    <div v-bind="view?.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)" ref="viewRef">
         <div  v-if="view?.isRoutable == false || view?.isRoutable == undefined">
         <q-tabs
        :vertical="view?.appearance?.isVertical ?? false"

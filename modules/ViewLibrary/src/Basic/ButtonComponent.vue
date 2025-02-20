@@ -7,9 +7,10 @@
     :class="view?.class"
     :label="t(view?.content ?? 'Button')"
     ref="viewRef"
+   
     :icon="view?.iconName"
     :flat="view?.properties?.flat ?? false"
-    :style="view.style"
+    :style="viewelement.ResolverObjectProperty(view.style)"
     v-bind="view?.htmlattributes"
     :round="view?.appearence?.round ?? false"
     :unelevated="view?.appearence?.unelevated ?? false"

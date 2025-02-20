@@ -1,6 +1,6 @@
 <template>
     <q-toolbar 
-    :style="view.style"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     v-bind="view.htmlattributes"
     ref="viewRef">
         <BaseViewTreeRenderer

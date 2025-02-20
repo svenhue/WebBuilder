@@ -2,7 +2,7 @@
     <q-select 
     :rules="viewElement.ValidateRules()"
     dense
-   
+    :style="viewElement.ResolverObjectProperty(view.style)"
     :label="t(viewElement.ResolveTemplateProperty(view.content.label))" 
     :model-value="view.modelValue ?? ''"
     @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'modelValue', value:val})"

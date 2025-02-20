@@ -1,5 +1,5 @@
 <template>
-        <div v-bind="props.view.htmlattributes">
+        <div v-bind="props.view.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)">
           
         </div>
 </template>

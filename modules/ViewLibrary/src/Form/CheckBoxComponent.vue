@@ -8,6 +8,7 @@
     :unchecked-icon="view.properties?.uncheckedIcon"
     :name="view.properties?.name"
     textnode
+    :style="viewElement.ResolverObjectProperty(view.style)"
     :label="view?.content?.label"
     :disable="view.properties?.disable ?? false"
     :size="view.properties?.size"

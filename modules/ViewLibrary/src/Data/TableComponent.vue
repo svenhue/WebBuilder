@@ -1,6 +1,6 @@
 <template>
     <q-table
-    :style="viewConfig?.style"
+    :style="viewElement.ResolverObjectProperty(viewConfig.style)"
     v-bind="viewConfig?.htmlattributes"
     :rows="viewModel.GetRows().value"
     :rows-per-page-options="viewModel.GetRowsPerPageOptions().value"

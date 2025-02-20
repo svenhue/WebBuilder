@@ -6,6 +6,7 @@
     :icon-selected="view?.properties?.iconSelected"
     :icon-half="view?.properties?.iconHalf"
     :max="view?.properties?.max"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     :readonly="view?.properties?.readonly"
     :disable="view?.properties?.disable"
     @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'modelValue', value:val})"

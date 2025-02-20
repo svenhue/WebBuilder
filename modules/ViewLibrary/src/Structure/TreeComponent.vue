@@ -10,7 +10,7 @@
         :children-key="view.properties?.childrenKey"
         :icon="view.properties?.icon"
         :filter="view.properties?.filter"
-
+        :style="viewElement.ResolverObjectProperty(view.style)"
         :selected="viewModel.selected"
         :expanded="viewModel.expanded"
         :ticked="viewModel.ticket"
@@ -42,18 +42,18 @@ const props = defineProps({
 
 const viewRef = ref<HTMLElement>();
 
-const { config } = useViewConfiguration(props.viewId, props.contextid);
+const { view } = useViewConfiguration(props.viewId, props.contextid);
 
-const view = new TreeViewElement(config);
+const viewElement = new TreeViewElement(config);
 const viewModel = new TreeViewModel(view);
 
 
 onMounted(() => {
-    view.bind(viewRef);
+    viewElement.bind(viewRef);
 })
 
 onUnmounted(() => {
-    view.unbind();
+    viewElement.unbind();
 })
 
 

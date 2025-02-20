@@ -1,5 +1,5 @@
 <template>
-    <q-card v-bind="view?.htmlattributes" ref="viewRef" :style="view?.style">
+    <q-card v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
         <q-card v-for="child in children" :key="child.id">
         
         <BaseViewTreeRenderer

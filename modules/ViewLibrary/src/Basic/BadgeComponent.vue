@@ -1,6 +1,6 @@
 <template>
     <q-badge
-    :style="view?.style"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     ref="viewRef"
     v-bind="view?.htmlattributes"
     :label="view.content?.label  ?? 'batch label'">

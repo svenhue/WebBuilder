@@ -1,5 +1,5 @@
 <template>
-    <blockquote v-bind="view.htmlattributes" :style="view?.style" ref="viewRef" textnode   v-html="t(view?.content?.text)">
+    <blockquote v-bind="view.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)" ref="viewRef" textnode   v-html="t(view?.content?.text)">
         
     </blockquote>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div v-bind="view.htmlattributes" :style="view?.style" ref="viewRef">
+    <div v-bind="view.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)" ref="viewRef">
         <router-link :to="view?.properties?.to != undefined ? view?.properties?.to : ''">
 
         </router-link>

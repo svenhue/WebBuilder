@@ -2,6 +2,7 @@
     <QuasarInputComponent
     ref="test"
     dense
+    :style="viewElement.ResolverObjectProperty(view.style)"
     :required="view.properties?.required ?? false"
     :type="view.content.dataType ?? 'text'"
     :label="view.properties?.showLabelInInput == true ? t(viewElement.ResolveTemplateProperty(view.content.label)) : undefined" 

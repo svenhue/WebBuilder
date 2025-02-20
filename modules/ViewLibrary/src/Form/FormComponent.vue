@@ -2,7 +2,7 @@
     
     <q-form 
     ref="viewRef"
-    :style="view.style"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     v-bind="view.htmlattributes">
         <BaseViewTreeRenderer
         v-for="child in children" :key="child.id"

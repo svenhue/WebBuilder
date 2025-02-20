@@ -1,5 +1,5 @@
 <template>
-        <q-list dense v-bind="view?.htmlattributes" :style="view.style" ref="viewRef">
+        <q-list dense v-bind="view?.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)" ref="viewRef">
            <q-expansion-item dense v-for="child in children" :key="child.id">
                 <BaseViewTreeRenderer 
             

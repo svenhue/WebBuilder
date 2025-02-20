@@ -6,7 +6,7 @@
     :label="view?.content?.label ?? 'Button'"
     ref="viewRef"
     :flat="view?.properties?.flat ?? false"
-    :style="view.style"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     v-bind="view?.htmlattributes"
     >
         <BaseViewTreeRenderer

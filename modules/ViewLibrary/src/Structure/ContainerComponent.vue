@@ -1,5 +1,5 @@
 <template>
-    <div v-bind="view?.htmlattributes" ref="viewRef" :style="view.style">
+    <div v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
         <BaseViewTreeRenderer 
         v-for="component in children" :key="component"
         :contextid="contextid"

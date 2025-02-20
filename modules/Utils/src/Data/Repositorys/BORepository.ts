@@ -230,7 +230,7 @@ export class BORepository implements IRepository{
         ){
                 //idgas
                         let oldValues = new SimpleNameValueCollection()
-                        if(oldValue?.keyValuePairs == undefined){
+                        if(oldValue?.keyValuePairs == undefined && oldValue != undefined){
                                 const old = JSON.parse(JSON.stringify(oldValue))
                                 for(const keyValue of newValues.keyValuePairs){
                                         oldValues.add(keyValue.key, get(old, keyValue.key))

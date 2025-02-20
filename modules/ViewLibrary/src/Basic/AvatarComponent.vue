@@ -1,6 +1,6 @@
 <template>
     <q-avatar
-    :style="view?.style"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     v-bind="view?.htmlattributes"
     ref="viewRef"
     :icon="view?.properties?.icon ?? 'account_circle'" >

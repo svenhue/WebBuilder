@@ -1,7 +1,7 @@
 <template>
     <q-video
     :class="view?.class"
-    :style="view.style"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     v-bind="view.htmlattributes"
     textnode
     :title="view.content?.title ?? ''"

@@ -1,5 +1,5 @@
 <template>
-    <div     :style="view?.style"
+    <div     :style="viewElement.ResolverObjectProperty(view.style)"
         v-bind="view?.htmlattributes"
       >
         <q-carousel

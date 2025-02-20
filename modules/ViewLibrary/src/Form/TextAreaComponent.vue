@@ -4,7 +4,7 @@
     :value="view.content?.text"
     @input="(val) => viewModel.PartialUpdate(view, {key:'content.text', value:val.target.value})"
     v-bind="view.htmlattributes"
-    :style="view.style"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     >
         
     </textarea>

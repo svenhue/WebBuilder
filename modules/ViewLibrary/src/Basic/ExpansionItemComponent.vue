@@ -2,12 +2,13 @@
     <q-expansion-item 
     :switch-toggle-side="view.properties?.switchToggleSide != undefined ? view.properties.switchToggleSide : false"
     :label="view.content.label"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     :caption="view.content.caption"
     expand-separator
     dense-toggle
     dense 
     v-bind="view.htmlattributes"
-    :style="view?.style" 
+   
     :model-value="view.modelValue" 
     @update:model-value="(val) => viewModel.PartialUpdate(view, {key: 'modelValue', value: val})">
         

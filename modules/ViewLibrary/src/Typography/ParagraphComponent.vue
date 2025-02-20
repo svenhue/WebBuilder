@@ -1,5 +1,5 @@
 <template>
-    <p textnode v-bind="view?.htmlattributes" :style="view.style" ref="viewRef"   v-html="t(view?.content?.text)">
+    <p textnode v-bind="view?.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)" ref="viewRef"   v-html="t(view?.content?.text)">
        
     </p>
 </template>

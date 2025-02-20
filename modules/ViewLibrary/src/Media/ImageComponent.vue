@@ -1,5 +1,5 @@
 <template>
-    <q-img v-bind="view.htmlattributes" :style="view.style" :src="view.properties.src" >
+    <q-img v-bind="view.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)" :src="view.properties.src" >
 
     </q-img>
 </template>

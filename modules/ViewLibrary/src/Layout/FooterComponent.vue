@@ -1,6 +1,6 @@
 
 <template>
-    <q-footer v-bind="view?.htmlattributes" ref="viewRef" :style="view?.style">
+    <q-footer v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
         <BaseViewTreeRenderer
         v-for="child in children" :key="child.id"
         :view="child"

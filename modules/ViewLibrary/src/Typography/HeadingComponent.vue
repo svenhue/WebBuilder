@@ -2,6 +2,7 @@
         <h1
         v-if="view?.properties.headingTag == 'h1'" 
         textnode
+        
         v-html="t(view?.content?.text)"
         v-bind="view?.htmlattributes" :style="view?.style" >
            

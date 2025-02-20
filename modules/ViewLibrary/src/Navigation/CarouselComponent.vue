@@ -1,5 +1,5 @@
 <template>
-    <q-carousel  v-bind="view?.htmlattributes" ref="viewRef" :style="view.style">
+    <q-carousel  v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
         <CarouselSlideComponent
         v-for="child in children" :key="child.id"
         :viewId="child.id"

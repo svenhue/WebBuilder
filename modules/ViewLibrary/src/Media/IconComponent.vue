@@ -1,7 +1,7 @@
 <template>
     <q-icon
     v-bind="view.htmlattributes"
-    :style="view.style"
+    :style="viewElement.ResolverObjectProperty(view.style)"
     :name="view.properties.iconName">
 
     </q-icon>
