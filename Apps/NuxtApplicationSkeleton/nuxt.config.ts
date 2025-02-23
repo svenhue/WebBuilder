@@ -9,19 +9,24 @@ export default defineNuxtConfig({
     client: true
   },
 
-  ssr: config.deploymentMode == 'spaclient' ? false : true,
+  ssr: false,
   devtools: { enabled: true },
-  modules:['nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
+  modules:[/*'nuxt-electron',*/ 'nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
 
   tailwindcss:{
     exposeConfig: true,
     cssPath: ['~/assets/css/tailwind.css', { injectPosition: "first" }],
     configPath: 'tailwind.config.ts',
   },
-
+  electron: {
+    build: [
+      {
+        // Main-Process entry file of the Electron App.
+        entry: 'electron/main.ts',
+      },
+    ],
+  },
   quasar:{
-    plugins: ['Notify'],
-   
     plugins: ['Notify']
   },
 
