@@ -7,12 +7,16 @@ interface IHistoryEntry{
     value: IBOInstance;
     oldValue?: IBOInstance;
     timestamp?: number;
+    commandName?: string
     stateChangeType: StateChangeTypes
 }
 
 interface IHistoryEntrys{
     entrys: Array<IHistoryEntry>;
     timestamp?: number;
+    isCommited?: boolean;
+    guid?: string;
+    reverseGuid?: string;
 }
 
 interface IHistoryStack{

@@ -93,7 +93,7 @@ export class UITreeProviderService extends BaseServiceProvider{
             if(collection == undefined){
                 return []
             }
-            return this.PrepareViews(this.flatViews.value.filter(v => collection.value?.includes(v.id) ))
+            return this.PrepareViews(this.flatViews.value.filter(v => v.parentId == view.value.id ))
         })
         return { view: view, children: children}
     }
@@ -145,7 +145,6 @@ export class UITreeProviderService extends BaseServiceProvider{
         return views.filter(v => v.properties?.isActive != false)
     }
     private sortViews(views: Array<IViewConfiguration>){
-
         return views.sort((a, b) => {
             // If position is undefinded for a or b, place it at the end
             if (a.position === undefined) return 1;

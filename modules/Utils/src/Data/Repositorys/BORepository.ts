@@ -20,6 +20,7 @@ import { StateHistory } from '../StateManagement/StateHistory/StateHistory.js';
 import { HistorySteps } from '../StateManagement/StateHistory/HistorySteps.js';
 import { IHistoryEntry, IHistoryEntrys } from '../StateManagement/StateHistory/IHistoryStack.js';
 import { IStateHistoryCommands } from '../StateManagement/StateHistory/IStateHistoryCommands.js';
+import { KeyValuePair } from '../KeyValuePair.js';
 
 @injectable()
 export class BORepository implements IRepository{
@@ -42,6 +43,36 @@ export class BORepository implements IRepository{
             this.history = new Array();
         }
     
+        public static MergeKeyValueCollection(newvalues: KeyValuePair[], oldValue: IBOInstance): IBOInstance{
+                for(const keyValuePair of newvalues){
+                        const old = get(oldValue, keyValuePair.key)
+
+                        if(old == undefined){
+                                set(oldValue, keyValuePair.key, keyValuePair.value)
+                                continue;
+                        }
+                        else if(Array.isArray(keyValuePair.value)){
+                                if(!Array.isArray(old)){
+                                        set(oldValue, keyValuePair.key, keyValuePair.value) 
+                                }else{
+                                        for(const value of keyValuePair.value.filter(v => old.includes(v) == false)){
+                                                old.push(value)
+                                        }
+                                }
+                        }else if(typeof old == 'object'){
+                                throw new Error("Object merge not implemented")
+                        }else if(typeof old == 'number' || typeof old == 'string'){
+                                set(oldValue, keyValuePair.key, keyValuePair.value)
+                        }
+                        else{
+                                throw new Error(`${typeof old} merge not implemented`)
+                        }
+                }
+                return oldValue
+        }
+
+        //todo merge objects ( from non-partial update)
+
         public Create(value: IBOInstance, persistslocalStore = false, contextid: number = null, useHistory = true){
                 this.Publish(value.id, value, StateChangeTypes.create, contextid, undefined, undefined, true)
 
@@ -86,24 +117,14 @@ export class BORepository implements IRepository{
 
                         //todo: config that only parent can update childs or child context can only update their historystackentrys?
 
-        private GetHistoryToStack(contextid: number){
-                let history = this.history.find(h => h.contextid == contextid);
-                if(history == undefined){
-                        const appContext = this.contextManager.GetRootContext()
 
-                        if(appContext == undefined){
-                                throw new Error('No context with id ' + contextid + ' found');
-                        }
-                        history = this.history.find(h => h.contextid == appContext.contextid);
-                }
-                return history;
-        }
         public GetHistoryComputed(contextid: number){
                 return computed(() => {
                         const stack = this.GetHistoryToStack(contextid);      
                         return {
                                 redoStack: stack?.redoStack,
-                                undoStack: stack?.undoStack
+                                undoStack: stack?.undoStack,
+                                history: stack?.history
                         }
                 })
         }
@@ -115,44 +136,13 @@ export class BORepository implements IRepository{
                 const history = this.GetHistoryToStack(contextid);
                 return history.Redo();
         }
-        //todo oimplement this logic directly in historystack class
-        private AddToHistory(
-                contextid: number,
-                v: IBOInstance | SimpleNameValueCollection, 
-                stateChangeType: StateChangeTypes, 
-                oldV?: IBOInstance | SimpleNameValueCollection, 
-                id:number){
-                const value = toValue(v);
-                const oldValue = toValue(oldV);
-                const history = this.GetHistoryToStack(contextid);
-                if(history == undefined){
-                        return;
-                }
-                const entry: IHistoryEntrys = {
-                        entrys: [ { 
-                                id: v.id ?? id,                     
-                                stateChangeType: GetStateChangeType(stateChangeType),
-                                oldValue: oldValue,
-                                value: value,
-                                timestamp: Date.now()
-                                }]
 
-                }
-                function GetStateChangeType(stateChangeType: StateChangeTypes){
-                        switch(stateChangeType){
-                                case StateChangeTypes.create:
-                                        return StateChangeTypes.delete;
-                                case StateChangeTypes.delete:
-                                        return StateChangeTypes.create;
-                                case StateChangeTypes.update:
-                                        return StateChangeTypes.update;
-                                case StateChangeTypes.updatePartial:
-                                        return StateChangeTypes.updatePartial;
-                        }
-                }
-                history.AddToUndoStack(entry);
-    
+
+        public ManualHistoryUndo(contextid: number, item: IHistoryEntrys){
+                const history = this.GetHistoryToStack(contextid);
+                return history.ManualHistoryUndo(item);
         }
+
         public Get(boName: string, expression?: Expression, contextid: number = null){
                 let container: IDataContainer;
                 if(contextid == null){
@@ -201,7 +191,10 @@ export class BORepository implements IRepository{
                 contextid: number = null,
                 addToHistory = true        
                 ){
-                
+                if(value == undefined){
+                        //todo this edge case shouldnt be needed
+                        return;
+                }
                 this.Publish(value.id, value, StateChangeTypes.delete, contextid, undefined, undefined, true)
 
                 if(persistslocalStore == true){
@@ -219,6 +212,7 @@ export class BORepository implements IRepository{
                         this.AddToHistory(contextid, value, StateChangeTypes.delete, undefined)
                 }
         }
+
         public UpdatePartial(
                 id:number, 
                 newValues: SimpleNameValueCollection, 
@@ -235,6 +229,7 @@ export class BORepository implements IRepository{
                                 for(const keyValue of newValues.keyValuePairs){
                                         oldValues.add(keyValue.key, get(old, keyValue.key))
                                 }
+                                //BORepository.MergeKeyValueCollection(newValues.keyValuePairs, old)
                         }else{
                                 oldValues = oldValue;
                         }
@@ -245,6 +240,12 @@ export class BORepository implements IRepository{
                 if(persistLocalStorage == true){
                         
                         let i = this.store.containers.findIndex(c => c.value.findIndex(v => v.id == id) != -1);
+
+                        if(i == -1){
+                                //bo already deleted
+                                //edge case!?
+                                return;
+                        }
                         const bo = this.store.containers[i].value.find(v => v.id == id);
                         if(i == -1){
                                 throw new Error('No BO with id ' + id + ' found');
@@ -266,6 +267,30 @@ export class BORepository implements IRepository{
                if(addToHistory){
                         this.AddToHistory(contextid, newValues, StateChangeTypes.updatePartial, oldValues, id)
                }
+        }
+
+        public Subscribe(subscriber: IDataAdapter){
+                subscriber.id = this.subscribers.length+1;
+                this.subscribers.push(subscriber);
+        }
+        public Unsubscribe(subscriber: IDataAdapter){
+                this.subscribers = this.subscribers.filter(s => s.id == subscriber.id);
+        }
+        private CreateContainer(value: IBOInstance, contextid?:number){
+
+                let boType: BusinessObject;
+                if(value.boType == undefined && value.boName != undefined){
+                        boType = new BusinessObject({
+                                name: value.boName,
+                                propertys: []
+                        })
+                }else if (value.boType != undefined){
+                        boType = value.boType;
+                }
+                const container = new BODataContainer(boType, [])
+                container.contextid = contextid;
+                this.store.AddContainer(container);
+                return container.id;                
         }
         private async Publish(
                 id:number, 
@@ -300,28 +325,31 @@ export class BORepository implements IRepository{
                         adapter?.HandleStateChange(id, value, changeType, oldValue);
                 }
         }
-        public Subscribe(subscriber: IDataAdapter){
-                subscriber.id = this.subscribers.length+1;
-                this.subscribers.push(subscriber);
-        }
-        public Unsubscribe(subscriber: IDataAdapter){
-                this.subscribers = this.subscribers.filter(s => s.id == subscriber.id);
-        }
-        private CreateContainer(value: IBOInstance, contextid?:number){
+        private GetHistoryToStack(contextid: number){
+                let history = this.history.find(h => h.contextid == contextid);
+                if(history == undefined){
+                        const appContext = this.contextManager.GetRootContext()
 
-                let boType: BusinessObject;
-                if(value.boType == undefined && value.boName != undefined){
-                        boType = new BusinessObject({
-                                name: value.boName,
-                                propertys: []
-                        })
-                }else if (value.boType != undefined){
-                        boType = value.boType;
+                        if(appContext == undefined){
+                                throw new Error('No context with id ' + contextid + ' found');
+                        }
+                        history = this.history.find(h => h.contextid == appContext.contextid);
                 }
-                const container = new BODataContainer(boType, [])
-                container.contextid = contextid;
-                this.store.AddContainer(container);
-                return container.id;                
+                return history;
+        }
+                //todo oimplement this logic directly in historystack class
+        private AddToHistory(
+                contextid: number,
+                v: IBOInstance | SimpleNameValueCollection, 
+                stateChangeType: StateChangeTypes, 
+                oldV?: IBOInstance | SimpleNameValueCollection, 
+                id:number){
+                const value = toValue(v);
+                const oldValue = toValue(oldV);
+                const history = this.GetHistoryToStack(contextid);
+                
+                history.AddHistoryEntry(id, value, oldValue, stateChangeType)
+        
         }
         
 }

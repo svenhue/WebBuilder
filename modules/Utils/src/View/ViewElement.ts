@@ -70,6 +70,7 @@ export class ViewElement extends BaseView implements IViewElement, IEventHandler
        
         const config = this.GetConfiguration();
         if(config == undefined){
+            return;
             throw new Error('ViewElement configuration is undefined');
         }
 

@@ -1,3 +1,5 @@
+import { r } from "~/tests/output/public/_nuxt/BJjtGlwS";
+
 export  const config = {
   internationalization: {
     enabled: true,
@@ -36,6 +38,17 @@ export  const config = {
       tag: 'component:RootLayout',
       isRoot: true,
       children:[
+        {
+          name: 'WebCreator',
+          id: 22,
+          tag: 'component:WebCreator',
+          isRoutable: true,
+          route:{
+            path: '/webcreator',
+            name: 'webcreator',
+            parentName: 'index'
+          }
+        },
         {
           name: 'marketplace',
           id: 7,

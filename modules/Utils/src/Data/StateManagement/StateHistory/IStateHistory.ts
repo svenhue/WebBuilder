@@ -2,6 +2,7 @@ import { Ref } from "vue";
 import { IHistoryStack } from "./IHistoryStack";
 
 export interface IStateHistory{
+    history: Ref<IHistoryStack>;
     redoStack: Ref<IHistoryStack>;
     undoStack: Ref<IHistoryStack>;
     contextid: number;

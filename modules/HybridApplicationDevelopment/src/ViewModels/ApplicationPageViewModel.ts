@@ -1,6 +1,6 @@
 //@ts-ignore
 //@ts-nocheck
-import { BusinessObject, DataAdapter, IPageConfiguration, IViewConfiguration, KeyValuePair, SimpleNameValueCollection } from "alphautils";
+import { BORepository, BusinessObject, DataAdapter, IPageConfiguration, IViewConfiguration, KeyValuePair, SimpleNameValueCollection } from "alphautils";
 import { reactive, Ref, ref } from "vue";
 import { interfaces } from "inversify";
 import { ViewConfigurationService } from "../utils/Services/ViewConfigurationService";
@@ -96,10 +96,11 @@ export class ApplicationPageViewModel{
         commitHistory = true,
         addToHistory = true    
     ){
-        const view = this.model.views.find(v => v.id == id)
-        for(const keyValue of values.keyValuePairs){
-            set(view, keyValue.key, keyValue.value)
-        }
+        let view = this.model.views.find(v => v.id == id)
+        //problem: when the state changed after the history stack entry, undo will resume in incorrect state
+        //todo if array, remove/ add only the double values
+        BORepository.MergeKeyValueCollection(values.keyValuePairs, view)
+        
         this.viewDataAdapter.UpdatePartial(id, values, this.contextid, undefined, oldValue, addToHistory)
 
         if(commitHistory){
@@ -113,15 +114,15 @@ export class ApplicationPageViewModel{
         if(i == undefined){
             throw new Error('No view with id ' + id + ' found')
         }
-        this.viewDataAdapter.UpdatePartial(this.model.flatterndViews[i].id, new SimpleNameValueCollection([{key: 'properties.isActive', value: false}]), undefined, undefined, [{key: 'properties.isActive', value: undefined}], addToHistory)
-        setTimeout(() => {
-            this.viewDataAdapter.Delete(this.model.flatterndViews[i], this.contextid, addToHistory)
+        this.viewDataAdapter.UpdatePartial(this.model.views[i].id, new SimpleNameValueCollection([{key: 'properties.isActive', value: false}]), undefined, undefined, [{key: 'properties.isActive', value: undefined}], addToHistory)
+        //setTimeout(() => {
+            this.viewDataAdapter.Delete(this.model.views[i], this.contextid, addToHistory)
             this.model.views.splice(i, 1)
 
             if(commitHistory){
                 this.viewDataAdapter.CommitHistory()
             }
-        }, 10)
+        //}, 10)
         return [true]
         
     }
