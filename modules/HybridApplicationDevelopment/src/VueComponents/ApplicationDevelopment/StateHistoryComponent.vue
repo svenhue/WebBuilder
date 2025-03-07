@@ -73,7 +73,7 @@ const changeDescription = (item: IHistoryEntrys) => {
     if(item?.entrys != undefined && item?.entrys?.length == 1){
         return item.entrys[0].stateChangeType
     }
-    return `Number of changes: ${item.entrys.length}`
+    return `Model: ${item?.entrys[0]?.value?.boName}  Changes: ${item.entrys.length}`
 }
 
 const boRepository = BaseServiceProvider.ServiceWithContext<BORepository>('BORepository', props.contextid)

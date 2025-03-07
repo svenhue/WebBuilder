@@ -29,7 +29,8 @@ export class ApplicationPageViewModel{
         dataAdapterConstructor: interfaces.Newable<DataAdapter>,
         viewService: ViewConfigurationService,
         container,
-        addToHistory = true){
+        addToHistory = true,
+        commitHistory = true){
         this.viewservice = viewService
         this.dataAdapter = new dataAdapterConstructor({
             boType: this.boType,
@@ -59,7 +60,9 @@ export class ApplicationPageViewModel{
                 this.model.views.push(newV)
             }
         }
-        console.log(this.model)
+        if(commitHistory){
+            this.dataAdapter.CommitHistory()
+        }
     }
     private AddNestedViews(views: Array<IViewConfiguration>){
     
@@ -126,18 +129,25 @@ export class ApplicationPageViewModel{
         return [true]
         
     }
-    public DeletePage(){
+    public DeletePage(commitHistory = true, addToHistory = true){
         this.dataAdapter.Delete(this.model, this.contextid)
 
         for(const view of this.model.flatterndViews){
-            this.viewDataAdapter.UpdatePartial(view.id, new SimpleNameValueCollection([{key: 'properties.isActive', value: false}]))
+            this.viewDataAdapter.UpdatePartial(view.id, new SimpleNameValueCollection([{key: 'properties.isActive', value: false}]), undefined, undefined, undefined, addToHistory)
+        }
+        if(commitHistory){
+            this.dataAdapter.CommitHistory()
         }
     }
-    public UpdatePage(values: Array<KeyValuePair>){
+    public UpdatePage(values: Array<KeyValuePair>, commitHistory = true, addToHistory = true){
         for(const pair of values){
             set(this.model, pair.key, pair.value)
         }
-        this.dataAdapter.UpdatePartial(this.model.id, new SimpleNameValueCollection(values), this.contextid)
+        this.dataAdapter.UpdatePartial(this.model.id, new SimpleNameValueCollection(values), this.contextid, undefined, undefined, addToHistory)
+
+        if(commitHistory){
+            this.dataAdapter.CommitHistory()
+        }
     }
     public PreparePageConfig(){
         

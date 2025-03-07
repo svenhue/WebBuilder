@@ -1,11 +1,11 @@
 
 <template>
-    <q-layout>
+    <q-layout v-if="viewModel.isReady.value">
     <div class="development-root-component" id="XXX" ref="XXX">
         <LeftDevelopmentOptionsBar 
         :viewModel="viewModel"
         ref="leftBar"
-        :contextid="viewModel.currentPage.value"
+        :contextid="viewModel?.currentPage?.value"
         v-show="showleftBar" 
         @focusView="(view) => viewModel.focusView(view, true)"
         @add-component="(e, type) =>{leftBar.CloseAllTabs(), StartAddNewElement(e, type)}">
@@ -44,11 +44,11 @@
             @mousedown="(e) => tryFocus(e, true)"
             :id="'developmentcomponent_' + viewModel.model.contextid"
            >
-            <ApplicationDevelopmentToolbar  :view-model="viewModel" :contextid="viewModel.currentPage.value" :route="useRoute()">
+            <ApplicationDevelopmentToolbar  :view-model="viewModel" :contextid="viewModel?.currentPage?.value" :route="useRoute()">
 
             </ApplicationDevelopmentToolbar>
             <div class="app-container">
-            <BackgroundFacadeComponent :contextid="viewModel.model.contextid" class="appbase"ref="facade" v-if="viewModel.currentPage.value != -1"  id="development-container">
+            <BackgroundFacadeComponent :contextid="viewModel?.model?.contextid" class="appbase"ref="facade" v-if="viewModel?.currentPage?.value != -1"  id="development-container">
                 <template #default>
                     <div :style="{
                         width: '100%',
@@ -63,7 +63,7 @@
                             width: '100%',
                             height: '100%',
                            
-                            display: viewModel.currentPage.value == page ? '' : 'none'
+                            display: viewModel?.currentPage?.value == page ? '' : 'none'
                          
                         }"
                         >
@@ -71,7 +71,7 @@
                     
                         <KeepAlive>
                             <ComponentTreeBase
-                            v-if="viewModel.currentPage.value == page"
+                            v-if="viewModel?.currentPage?.value == page"
                             :contextid="page"
                             :view="viewModel.GetRootView(page)">
                             </ComponentTreeBase>
@@ -99,7 +99,7 @@
 
         
         <DevelopmentContextBarComponent
-        :contextid="viewModel.currentPage.value"
+        :contextid="viewModel?.currentPage?.value"
         :element="viewModel.GetFocussedElement().value"
         @delete-element="() => viewModel.DeleteElement(viewModel.GetFocussedElement().value?.id)"
         :targetId="'development-container'">
@@ -143,6 +143,7 @@ const XXX = ref<HTMLElement>(null)
 const solutionname = route.params.appName
 
 const viewModel = new RunTimeVueApplicationViewModel(solutionname, facade, useI18n(), "mountpoint")
+
 
 const positioningHelper = new ViewPositioningHelper(viewModel)
 
@@ -211,7 +212,7 @@ const height = computed(() => {
     if(el == undefined){
         return "80%"
     }
-    return el.offsetHeight - 136 + 'px'
+    return el?.offsetHeight ?? 0 - 136 + 'px'
 })
 defineExpose({
        
@@ -247,7 +248,7 @@ defineExpose({
             margin:auto;
             position: relative;
             width:80%;
-            height:v-bind(height);
+      
            
 
             .appbase{

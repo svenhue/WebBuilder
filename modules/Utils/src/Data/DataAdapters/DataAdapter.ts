@@ -35,7 +35,6 @@ export class DataAdapter implements IDataAdapter {
         if(iotContainer == undefined){
             throw new Error('No iot container found for appcontext: ' + this.options.contextId)
         }
-
         this.repository = iotContainer.get<IRepository>(UtilityServices.BORepository) as BORepository
         if(this.options.subscribe != undefined){
             this.Subscribe()

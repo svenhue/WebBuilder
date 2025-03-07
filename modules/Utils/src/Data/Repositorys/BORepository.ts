@@ -107,6 +107,7 @@ export class BORepository implements IRepository{
         }
         //todo the state shadowonwer (most cases the viewmodel) has to provide undo/ redo functions for all types of bos
         public CreateHistory(contextid: number, commands: IStateHistoryCommands){
+                console.log("new history", contextid)
                 const history = new StateHistory(contextid, commands);
                 this.history.push(history);
         }
@@ -334,6 +335,9 @@ export class BORepository implements IRepository{
                                 throw new Error('No context with id ' + contextid + ' found');
                         }
                         history = this.history.find(h => h.contextid == appContext.contextid);
+                }
+                if(history == undefined){
+                        throw new Error('No history found for context ' + contextid);
                 }
                 return history;
         }

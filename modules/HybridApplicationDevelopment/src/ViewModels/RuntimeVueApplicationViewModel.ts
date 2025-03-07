@@ -37,6 +37,7 @@ import { PageModel } from '../Models/PageModel';
 import { NodeApplicationServerService } from '../utils/Services/Development/Runtime/NodeApplicationServerService';
 export class RunTimeVueApplicationViewModel{
     
+    public isReady: Ref<boolean> = ref(false);
     FocussedViewService: FocussedViewContextService
     private service: ApplicationService;
     private serviceProvider: BaseServiceProvider;
@@ -109,13 +110,21 @@ export class RunTimeVueApplicationViewModel{
         this.repository = this.UseService<IRepository>('BORepository');
         this.repository.CreateHistory(
             this.model.contextid,
-            {
+            [{boName: 'ViewConfiguration',
                 create: (value, addToHistory) => this.AddRawViewElement(value, false, addToHistory),
                 delete: (id, contextid, addToHistory) => this.DeleteElement(id, contextid, false, addToHistory),
                 update: (id, value, oldValue, addToHistory) => this.UpdateView(id, value, oldValue, false, addToHistory),
                 updatePartial: (id, value, oldValues, addToHistory) => this.PartialUpdateView(id, value, oldValues, false, addToHistory)
-            } as IStateHistoryCommands
-            );
+            } as IStateHistoryCommands,
+            {
+                boName: 'Page',
+                create: (value, addToHistory) => this.AddPage(value, false, addToHistory),
+                delete: (id, contextid, addToHistory) => this.DeletePage(id, contextid, false, addToHistory),
+                update: (id, value, oldValue, addToHistory) => this.UpdatePage(id, value, oldValue, false, addToHistory),
+                updatePartial: (id, value, oldValues, addToHistory) => this.PartialUpdatePage(id, value, oldValues, false, addToHistory)
+            }
+            ]    
+        );
 
         //this._codeViewModel = new NodeViewModel(this.model.contextid, this.model.querys);
 
@@ -371,7 +380,7 @@ export class RunTimeVueApplicationViewModel{
     }
     private InitializePages(pages: Array<IPageConfiguration>){
         for(const page of pages){
-            const pageViewModel = new ApplicationPageViewModel(page, this.UseService<interfaces.Newable<IDataAdapter>>('DataAdapterConstructor'), this.viewService, this.app.container, false);
+            const pageViewModel = new ApplicationPageViewModel(page, this.UseService<interfaces.Newable<IDataAdapter>>('DataAdapterConstructor'), this.viewService, this.app.container, false, false);
             this.pagesContextRef.value.push(pageViewModel.contextid);
             this.pageViewModels.push(pageViewModel);
         }
@@ -393,7 +402,7 @@ export class RunTimeVueApplicationViewModel{
         this.customCss.value = this.model.stylesheets?.css ?? ''
         this.NavigateToPage(landingPage.name);
 
-        
+        this.isReady.value = true
 
     }
     public GetPageEntitys(){
@@ -416,7 +425,7 @@ export class RunTimeVueApplicationViewModel{
         this.InitializePages(config.pages)
     }
     public RemoveNodeFromParentChildren(node: IViewConfiguration, addToHistory = true){
-        const parent = this.GetViews().find(c => c?.id == node.parentId);
+        const parent = this.GetViews().find(c => c?.id == node?.parentId);
         if(parent == undefined){
             return;
         }
@@ -568,7 +577,9 @@ export class RunTimeVueApplicationViewModel{
         return app;
     }
     public DeleteElement(id: number, commitHistory = true, addToHistory = true){
-        const page = this.pageViewModels.find(p => p.contextid == this.currentPage.value);
+        const element = this.GetViews().find(c => c.id == id);
+        
+        const page = this.pageViewModels.find(p => p.model.views.find(v => v.id == id) != undefined);
         const node = this.GetViews().find(c => c.id == id); 
         this.RemoveNodeFromParentChildren(node, addToHistory)
         page.DeleteView(id, commitHistory, addToHistory);
@@ -579,27 +590,33 @@ export class RunTimeVueApplicationViewModel{
         //todo remove this logic?? duplicate with in viewconfigurationservice
         return 'element_' + view.id;
     }
-    public DeletePage(name: string){
-        const page = this.pageViewModels.find(p => p.model.name == name);
+    public DeletePage(id: number, commitHistory = true, addToHistory = true){
+        const page = this.pageViewModels.find(p => p.model.id == id);
         if(page == undefined){
             return;
         }
         this.pagesContextRef.value.splice(this.pagesContextRef.value.indexOf(page.contextid), 1);
-        page.DeletePage();
+        page.DeletePage(commitHistory, addToHistory);
         const i = this.pageViewModels.indexOf(page);
         this.pageViewModels.splice(i, 1);
         this.currentPage.value = -1;
+
+        return [true]
     }
-    public UpdatePage(id: number, values: Array<KeyValuePair>){
+    public UpdatePage(id: number, values: Array<KeyValuePair>, commitHistory = true, addToHistory = true){
         const page = this.pageViewModels.find(p => p.model.id == id);
-        page.UpdatePage(values);
+        page.UpdatePage(values, commitHistory, addToHistory);
+
+        return [true]
     }
-    public AddPage(config?: IPageConfiguration){
+    public AddPage(config?: IPageConfiguration, commitHistory = true, addToHistory = true){
         const page = PageService.CreatePageConfig(config);
-        const vM =new ApplicationPageViewModel(page, this.dataAdapterConstructor, this.viewService, this.app.container);
+        const vM = new ApplicationPageViewModel(page, this.dataAdapterConstructor, this.viewService, this.app.container, addToHistory, commitHistory);
         this.pageViewModels.push(vM);
         this.pagesContextRef.value.push(vM.contextid);
-        
+
+        return [true]
+  
     }
     private UseService<T>(name: string): T{
         if(this.model == undefined){

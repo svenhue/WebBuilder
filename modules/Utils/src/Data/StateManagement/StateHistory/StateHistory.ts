@@ -1,6 +1,6 @@
 import { isRef, ref, Ref, resolveDirective, toValue } from "vue";
 import { IStateHistory } from "./IStateHistory";
-import { IHistoryEntrys, IHistoryStack } from "./IHistoryStack";
+import { IHistoryEntry, IHistoryEntrys, IHistoryStack } from "./IHistoryStack";
 import { IBOInstance } from "../../IBOInstance";
 import { StateChangeTypes } from "../../Repositorys/StateChangeTypes";
 import { IStateHistoryCommands } from "./IStateHistoryCommands";
@@ -16,11 +16,11 @@ export class StateHistory implements IStateHistory{
     public redoStackPreCommit: Ref<IHistoryStack>;
     public undoStackPreCommit: Ref<IHistoryStack>;
 
-    private commands: IStateHistoryCommands;
+    private commands: Array<IStateHistoryCommands>;
 
     constructor(
         contextid: number, 
-        commands: IStateHistoryCommands
+        commands: Array<IStateHistoryCommands>
         ){
         this.contextid = contextid;
         this.redoStack = ref({values: []});
@@ -99,31 +99,35 @@ export class StateHistory implements IStateHistory{
             throw new Error('Undo entry not found')
         }
 
-        for(const entry of undoEntry.entrys){
+        
+        for(const entry of this.GetEntrysByCreatedOrder(undoEntry.entrys)){
+            const commandSet = this.GetCommandSet(entry.value.boName);
             let result;
+            
+
             switch(entry.stateChangeType){
 
                 case StateChangeTypes.create:
-                    result = this.commands.create(entry.value, false);
+                    result = commandSet.create(entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                     }
                     break;
                 case StateChangeTypes.delete:
-                    result = this.commands.delete(entry.value.id, false);
+                    result = commandSet.delete(entry.value.id, false);
                     if(!result[0]){
                         //todo handlerror
                     }
                     break;
                 case StateChangeTypes.update:
-                    result = this.commands.update(entry.value.id, entry.oldValue, entry.value, false);
+                    result = commandSet.update(entry.value.id, entry.oldValue, entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                         
                     }
                     break;
                 case StateChangeTypes.updatePartial:
-                    result = this.commands.updatePartial(entry.id, entry.oldValue, entry.value, false);
+                    result = commandSet.updatePartial(entry.id, entry.oldValue, entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                        
@@ -146,18 +150,20 @@ export class StateHistory implements IStateHistory{
         if(entrys == null){
             return null;
         }
-        for(const entry of entrys.entrys){
+        
+        for(const entry of this.GetEntrysByCreatedOrder(entrys.entrys)){
+            const commandSet = this.GetCommandSet(entry.value.boName);
             let result;
             switch(entry.stateChangeType){
 
                 case StateChangeTypes.create:
-                    result = this.commands.create(entry.value, false);
+                    result = commandSet.create(entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                     }
                     break;
                 case StateChangeTypes.delete:
-                    result = this.commands.delete(entry.value.id, false);
+                    result = commandSet.delete(entry.value.id, false);
                     if(!result[0]){
                         //todo handlerror
                     }
@@ -167,7 +173,7 @@ export class StateHistory implements IStateHistory{
                         //we dont need to update an already deleted element
                         break;
                     }
-                    result = this.commands.update(entry.value.id, entry.oldValue, entry.value, false);
+                    result = commandSet.update(entry.value.id, entry.oldValue, entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                         
@@ -178,7 +184,7 @@ export class StateHistory implements IStateHistory{
                         //we dont need to update an already deleted element
                         break;
                     }
-                    result = this.commands.updatePartial(entry.id, entry.oldValue, entry.value, false);
+                    result = commandSet.updatePartial(entry.id, entry.oldValue, entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                        
@@ -207,33 +213,35 @@ export class StateHistory implements IStateHistory{
         if(entrys == null){
             return null;
         }
-        for(const entry of entrys.entrys){
+        
+        for(const entry of this.GetEntrysByCreatedOrder(entrys.entrys)){
+            const commandSet = this.GetCommandSet(entry.value.boName);
             let result;
             switch(entry.stateChangeType){
                 
                 case StateChangeTypes.create:
-                    result = this.commands.create(entry.value, false);
+                    result = commandSet.create(entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                         return null;
                     }
                     break;
                 case StateChangeTypes.delete:
-                    result = this.commands.delete(entry.value, false);
+                    result = commandSet.delete(entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                         return null;
                     }
                     break;
                 case StateChangeTypes.update:
-                    result = this.commands.update(entry.value.id, entry.value, entry.oldValue, false);
+                    result = commandSet.update(entry.value.id, entry.value, entry.oldValue, false);
                     if(!result[0]){
                         //todo handlerror
                         return null;
                     }
                     break;
                 case StateChangeTypes.updatePartial:
-                    result = this.commands.updatePartial(entry.id, entry.value, entry.oldValue, false);
+                    result = commandSet.updatePartial(entry.id, entry.value, entry.oldValue, false);
                     if(!result[0]){
                         //todo handlerror
                     }
@@ -308,6 +316,13 @@ export class StateHistory implements IStateHistory{
         }
         return guid;
 
+    }
+    private GetCommandSet(boName: string){
+        const commandSet = this.commands.find(c => c.boName == boName);
+        if(commandSet == undefined){
+            throw new Error('Command not found')
+        }
+        return commandSet;
     }
     private CreateRedoEntry(entry: IHistoryEntrys){
         const redoEntry: IHistoryEntrys = {entrys: []};
@@ -394,5 +409,12 @@ export class StateHistory implements IStateHistory{
         }
         return undoEntry;
     }
-
+    private GetEntrysByCreatedOrder(entrys: Array<IHistoryEntry>){
+        return entrys.sort((a, b) => {
+            if (a.timestamp === b.timestamp) {
+                return b.id - a.id; // Sort by id descending if timestamps are equal
+            }
+            return b.timestamp - a.timestamp; // Sort by timestamp descending
+        });
+    }
 }

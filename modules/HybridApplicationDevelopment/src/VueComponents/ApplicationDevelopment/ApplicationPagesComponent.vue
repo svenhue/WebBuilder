@@ -51,7 +51,7 @@
                     </q-card-section>
                     <q-card-actions align="right">
                         <q-btn label="Cancel" color="primary" @click="showDeletePageDialog = false"></q-btn>
-                        <q-btn label="Delete" color="negative" @click="() =>{ viewModel.DeletePage(selectedPage.name), showDeletePageDialog = false}"></q-btn>
+                        <q-btn label="Delete" color="negative" @click="() =>{ viewModel.DeletePage(selectedPage.id), showDeletePageDialog = false}"></q-btn>
                     </q-card-actions>
                 </q-card>
             </q-dialog>
