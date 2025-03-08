@@ -66,6 +66,7 @@
         "json-editor-vue": "^0.10.16",
         "jsoneditor": "^10.0.2",
         "jszip": "^3.10.1",
+        "localversioncontrol": "file:../../plugins/LocalVersionControl",
         "lodash-es": "^4.17.21",
         "monaco-editor": "^0.46.0",
         "nuxi": "^3.9.1",

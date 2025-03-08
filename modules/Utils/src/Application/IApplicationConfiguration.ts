@@ -29,6 +29,11 @@ export interface IApplicationConfiguration{
     internationalization: IInternationalization
     ssr: boolean;
     querys?: Array<ITask>
+    version: string;
+    remoteRepository?: {
+        source: string
+        properties: Array<{key: string, value: string}>
+    }
     
 
 }

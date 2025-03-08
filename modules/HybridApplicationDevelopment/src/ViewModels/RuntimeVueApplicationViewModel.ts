@@ -35,6 +35,7 @@ import { NodeApplicationServerModel } from '../Models/NodeApplicationServerModel
 import { ApplicationModel } from '../Models/ApplicationModel';
 import { PageModel } from '../Models/PageModel';
 import { NodeApplicationServerService } from '../utils/Services/Development/Runtime/NodeApplicationServerService';
+import { VersionManager } from 'localversioncontrol';
 export class RunTimeVueApplicationViewModel{
     
     public isReady: Ref<boolean> = ref(false);
@@ -68,7 +69,7 @@ export class RunTimeVueApplicationViewModel{
 
     viewDataAdapter: IDataAdapter
 
-
+    versionManager: VersionManager
 
     constructor(
         solutionname: string,
@@ -82,7 +83,9 @@ export class RunTimeVueApplicationViewModel{
         this.service = BaseServiceProvider.Service<ApplicationService>('ApplicationService') as ApplicationService;
         this.viewService = this.UseService<ViewConfigurationService>('ViewConfigurationService');
         this.viewChangedAgendProvider = this.UseService<ViewChangedAgendsProvider>('ViewChangedAgendsProvider');
-        const config = this.service.GetApplicationConfigByName(solutionname);
+        const config: IApplicationConfiguration = this.service.GetApplicationConfigByName(solutionname);
+
+        this.versionManager = new VersionManager(config.remoteRepository)
         //this.currentRoute = currentRoute;
       
         this.model = reactive(new ApplicationModel(config));

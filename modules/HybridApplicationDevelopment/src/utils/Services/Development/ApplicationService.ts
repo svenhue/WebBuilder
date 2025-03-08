@@ -55,6 +55,7 @@ export class ApplicationService extends BaseServiceProvider{
     }
     public CreateNewApplication(config: IApplicationConfiguration){
       
+        config.version = '0.0.1'
         config.boType = new BusinessObject({
             name: 'Application',
         })
