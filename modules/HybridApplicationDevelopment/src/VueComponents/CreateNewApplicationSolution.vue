@@ -49,7 +49,7 @@ const apptypes = Object.values(ApplicationTypes)
 const service = BaseServiceProvider.Service<ApplicationService>('ApplicationService')
 
 function createSolution(){
-    const repository = repositoryconfig.value.model
+    const repository = repositoryconfig.value.getModel()
     if(repository == undefined){
         throw new Error('Repository is not defined')
     }

@@ -8,10 +8,16 @@ export class VersionManager{
 
     public model: RemoteRepositoryModel
 
-    constructor(model){
+    constructor(model: RemoteRepositoryModel){
         
         if(model == undefined){
             throw new Error("Model is undefined")
+        }
+        if(model.source == undefined){
+            throw new Error("Source is undefined")
+        }
+        if(model.properties == undefined){
+            throw new Error("Properties are undefined")
         }
         this.model = model;
     }

@@ -1,12 +1,12 @@
 class GitHubAPI{
 
-    public baseURL: string = 'https://api.github.com/'
+    public baseURL: string = 'https://api.github.com'
     private repositoryUrl: string
     private endpoint: string
     private token: string
     constructor(repositoryUrl: string, token: string){
         this.repositoryUrl = repositoryUrl
-        this.endpoint = this.convertUrlToApiEndpoint(repositoryUrl, '')
+        this.endpoint = this.baseURL + this.convertUrlToApiEndpoint(repositoryUrl, '')
         this.token = token
     }
 
@@ -54,7 +54,7 @@ class GitHubAPI{
 
     public async pushFile(path: string, content: string, message: string) {
         // Get the SHA of the file if it exists
-        const getFileResponse = await fetch(`${this.repositoryUrl} ${path}`, {
+        const getFileResponse = await fetch(`${this.endpoint} ${path}`, {
             method: 'GET',
             headers: {
                 'Authorization': `token ${this.token}`,
@@ -69,7 +69,7 @@ class GitHubAPI{
         }
 
         // Create or update the file
-        const response = await fetch(`${this.repositoryUrl} ${path}`, {
+        const response = await fetch(`${this.endpoint} ${path}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `token ${this.token}`,

@@ -3,7 +3,7 @@ import { Sources } from "./Sources";
 export class RemoteRepositoryModel{
 
     source: Sources
-    properties: Array<{key: string, value: string}>
+    properties: Array<{key: string, value: string}> = []
 
     public setSource(source: Sources){
         this.source = source

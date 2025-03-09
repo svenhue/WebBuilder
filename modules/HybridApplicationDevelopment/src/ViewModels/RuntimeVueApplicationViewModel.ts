@@ -36,6 +36,7 @@ import { ApplicationModel } from '../Models/ApplicationModel';
 import { PageModel } from '../Models/PageModel';
 import { NodeApplicationServerService } from '../utils/Services/Development/Runtime/NodeApplicationServerService';
 import { VersionManager } from 'localversioncontrol';
+import { ApplicationVersionManager } from '../utils/Features/VersionManagement/ApplicationVersionManager';
 export class RunTimeVueApplicationViewModel{
     
     public isReady: Ref<boolean> = ref(false);
@@ -69,7 +70,7 @@ export class RunTimeVueApplicationViewModel{
 
     viewDataAdapter: IDataAdapter
 
-    versionManager: VersionManager
+    versionManager: ApplicationVersionManager
 
     constructor(
         solutionname: string,
@@ -85,10 +86,14 @@ export class RunTimeVueApplicationViewModel{
         this.viewChangedAgendProvider = this.UseService<ViewChangedAgendsProvider>('ViewChangedAgendsProvider');
         const config: IApplicationConfiguration = this.service.GetApplicationConfigByName(solutionname);
 
-        this.versionManager = new VersionManager(config.remoteRepository)
+        this.versionManager = new ApplicationVersionManager(config.remoteRepository)
+       
         //this.currentRoute = currentRoute;
       
         this.model = reactive(new ApplicationModel(config));
+
+        this.versionManager.SyncRepository(this.model)
+
         this.currentPage = ref();        
         this.pagesContextRef = ref([])
         this.sessioncontextid = this.model.contextid;

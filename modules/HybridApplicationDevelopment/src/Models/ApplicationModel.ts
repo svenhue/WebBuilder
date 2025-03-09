@@ -29,13 +29,19 @@ export class ApplicationModel implements IApplicationConfiguration{
     public isProduction: boolean;
     public internationalization: IInternationalization;
     
-
-    public initialize(): void {
-        throw new Error("Method not implemented.");
-    }
     constructor(
         config: IApplicationConfiguration
     ){
         Object.assign(this, config)
     }
+
+    public initialize(): void {
+        throw new Error("Method not implemented.");
+    }
+
+
+    public toTS(){
+        return `export const config = ${JSON.stringify(this)}`
+    }
+    
 }

@@ -13,6 +13,7 @@ import { RemoteRepositoryModel, Sources } from 'localversioncontrol'
 import { computed, reactive } from 'vue';
 import GithubRemoteComponent from './GithubRemoteComponent.vue';
 
+
 const model = reactive<RemoteRepositoryModel>(new RemoteRepositoryModel())
 
 const sources = [
@@ -23,7 +24,9 @@ const sources = [
 ]
 
 defineExpose({
-    model
+    getModel(){
+        return model
+    }
 })
 
 </script>

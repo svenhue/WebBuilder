@@ -1,5 +1,4 @@
-export interface IRepositoryChanges{
-
+export interface IRepositoryChanges {
     changes: Array<{
         path: string,
         content: string,
