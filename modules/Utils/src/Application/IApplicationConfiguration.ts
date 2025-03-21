@@ -30,10 +30,10 @@ export interface IApplicationConfiguration{
     ssr: boolean;
     querys?: Array<ITask>
     version: string;
-    remoteRepository?: {
-        source: string
-        properties: Array<{key: string, value: string}>
-    }
+    
+    versionControlProvider: string
+    versionControlToken: string
+    repositoryUrl: string
     
 
 }

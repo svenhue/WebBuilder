@@ -5,8 +5,8 @@ import { ApplicationModel } from "src/Models/ApplicationModel";
 
 export class ApplicationVersionManager extends VersionManager{
 
-    constructor(model: RemoteRepositoryModel){
-        super(model)
+    constructor(model: ApplicationModel){
+        super(new RemoteRepositoryModel(model.remoteRepository))
     }
 
     public SyncRepository(model: ApplicationModel){

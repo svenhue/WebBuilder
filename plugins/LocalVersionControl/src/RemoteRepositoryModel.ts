@@ -5,6 +5,9 @@ export class RemoteRepositoryModel{
     source: Sources
     properties: Array<{key: string, value: string}> = []
 
+    constructor(model: RemoteRepositoryModel){
+        Object.assign(this, model)
+    }
     public setSource(source: Sources){
         this.source = source
     }

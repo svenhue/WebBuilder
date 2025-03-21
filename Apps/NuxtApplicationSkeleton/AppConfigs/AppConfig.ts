@@ -4,12 +4,12 @@ import { ApplicationConfiguration, UtilityModule, IApplicationConfiguration, IPa
 import { ApplicationModes } from 'alphautils';
 import { config } from './pages';
 import { AuthenticationMechanism } from 'alphautils';
-import { WebAutomateIntelligenceModule } from 'webautomateintelligence'
+
  class WebBuilderApplicationConfiguration extends ApplicationConfiguration implements IApplicationConfiguration {
   name = 'WebBuilderr';
   deploymentMode= ApplicationDeploymentModes.spaclient;
   mode = ApplicationModes.extension;
-  modules = [new UtilityModule(), new HybridAppDevelopmentApplicationModule(), new WebAutomateIntelligenceModule()];
+  modules = [new UtilityModule(), new HybridAppDevelopmentApplicationModule()];
   networkConfigs = [
     {
       name: "WebCreatorBackend",
