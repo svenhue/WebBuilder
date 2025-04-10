@@ -1,6 +1,6 @@
 
 <template>
-    <q-layout v-if="viewModel.isReady.value">
+    <q-layout v-if="viewModel?.isReady.value">
     <div class="development-root-component" id="XXX" ref="XXX">
         <LeftDevelopmentOptionsBar 
         :viewModel="viewModel"

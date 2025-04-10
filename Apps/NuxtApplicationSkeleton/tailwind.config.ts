@@ -1,13 +1,19 @@
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
-  prefix: 'tw-',
-  
+  content: [
+    
+  ],
+ //prefix: 'tw-',
+  daisyui:{
+    themes: [
+      "business"
+    ]
+  },
   theme: {
-
+    
       colors: {
-        'primary': '#181cb4',
+        'primary': 'red',
         'purple': '#7e5bef',
         'pink': '#ff49db',
         'orange': '#ff7849',

@@ -39,6 +39,16 @@ export  const config = {
       isRoot: true,
       children:[
         {
+          id: 24,
+          tag: 'component:Login',
+          isRoutable: true,
+          route:{
+            path: '/login',
+            name: 'login',
+            parentName: 'index'
+          }
+        },
+        {
           name: 'WebCreator',
           id: 22,
           tag: 'component:WebCreator',

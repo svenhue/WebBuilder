@@ -48,7 +48,9 @@ import { HybridAppDevPlugin } from './src/vitePlugin.js';
 import RootLayout from './src/VueComponents/RootLayout.vue';
 import MarketplaceOverviewComponent from './src/Marketplace/MarketplaceOverviewComponent.vue';
 import AppCreatorHome from './src/VueComponents/Home/AppCreatorHome.vue';
+
 export {
+
     AppCreatorHome,
     RootLayout,
     HybridAppDevPlugin,

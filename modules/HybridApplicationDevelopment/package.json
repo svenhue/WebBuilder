@@ -39,7 +39,7 @@
             "import": "./src/*"
         },
         "./nuxt": {
-            "import": "./nuxt.js"
+            "import": "./nuxt.ts"
         }
     },
     "devDependencies": {

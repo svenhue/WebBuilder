@@ -7,6 +7,7 @@ import { AuthenticationMechanism } from "../../Application/Authentication/Authen
 import { IHTTPClientService } from "../../HTTP/IHTTPClientService.js";
 import { ICallAbleServiceAction } from "../../ClientActions/Actions/CallService/ICallAbleServiceAction.js";
 import { IApplicationConfiguration } from "src/Application/IApplicationConfiguration.js";
+import { IUserIdentity } from "../Identity/IUserIdentity.js";
 
 @injectable()
 class AuthenticationService implements ICallAbleServiceAction{
@@ -15,6 +16,8 @@ class AuthenticationService implements ICallAbleServiceAction{
     private token = undefined;
     private service: IHTTPClientService;
     private config: IAuthenticationConfiguration;
+
+    private store: ReturnType<typeof useIdentityStore>;
 
     constructor(
         service: IHTTPClientService,
@@ -40,20 +43,23 @@ class AuthenticationService implements ICallAbleServiceAction{
             throw new Error('Authentication failed')
         }
     }
-    public isAuthenticated(): boolean{
-        return this.store.isAuthenticated
-    }
-    private AuthenticateOAuth2(username: string, password: string){
-        const token = this.RequestToken(username, password);
-        this.SetToken(token);
-    }
-    private SetToken(token: string){
-        this.token = token;
-    }
     public GetToken(): string{
-        return this.token;
+        return this.store.getIdentity()?.access_token
     }
-    private RequestToken(username: string, password: string): string{
+    public isAuthenticated(): boolean{
+        return this.store.isAuthenticated()
+    }
+    public async AuthenticateOAuth2(username: string, password: string, successHandler?: () => void, ErrorHandler?: () => void): Promise<void>{
+        const data = await this.RequestToken(username, password);
+        this.SetIdentity(data);
+
+        successHandler();
+    }
+    private SetIdentity(data: IUserIdentity){
+        this.store.setIdentity(data)
+    }
+
+    private async RequestToken(username: string, password: string): {access_token: string, expires_in: string, token_type: string}{
         const formdata =  
             {
                 client_id: 'WebCreator_App', 
@@ -71,19 +77,17 @@ class AuthenticationService implements ICallAbleServiceAction{
             formBody.push(encodedKey + '=' + encodedValue);
         }
 
-        const result = this.service.sendRequest(
+        const result = await this.service.sendRequest(
             {
-            url: this.tokenEndpoint, 
+                isCompleteUrl: true,
+            url: this.config.tokenEndpoint, 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'  
             },
             data: formBody.join('&')
             })
-        
-            console.log(result)
-
-        return result.data['access_token']
+        return result.data
     }
 }
 

@@ -57,16 +57,23 @@ export class AxiosWrapper{
     }
     public sendRequest(options: IRequestConfig, callback?: (response: AxiosResponse) => Promise<AxiosResponse>){
         const config = this.createAxiosConfig(options);
+        let url;
+
+        if(options.isCompleteUrl){
+            url = options.url;
+        }else{
+            url = this.config.url + options.url;
+        }
         try{
             switch(options.method){
                 case "GET":
-                    return this.Get(this.config.url, config, callback);
+                    return this.Get(url, config, callback);
                 case "POST":
-                    return this.Post(this.config.url + options.url,config);
+                    return this.Post(url,config);
                 case "PUT":
-                    return this.Put(this.config.url,config);
+                    return this.Put(url,config);
                 case "DELETE":
-                    return this.Delete(this.config.url,config);
+                    return this.Delete(url,config);
             }
         }catch(error){
             console.log(error)

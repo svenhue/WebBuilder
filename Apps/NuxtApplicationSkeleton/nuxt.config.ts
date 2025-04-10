@@ -4,11 +4,8 @@ import { resolve } from 'path'
 import { config } from './AppConfigs/pages'
 const prefix = `monaco-editor/esm/vs`;
 export default defineNuxtConfig({
-  sourcemap:{
-    server: true,
-    client: true
-  },
 
+ 
   ssr: false,
   devtools: { enabled: true },
   modules:[/*'nuxt-electron',*/ 'nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
@@ -54,6 +51,7 @@ export default defineNuxtConfig({
   },
 
   vite: {
+   
     //plugins: [nodePolyfills()],
     resolve: {
       alias:{
@@ -74,8 +72,8 @@ export default defineNuxtConfig({
       }
     },
     optimizeDeps:{
-      force: true,
-      exclude: ['alphautils', 'hybridappdev', 'alphaviewlibrary',  '@webcontainer', "vue-i18n",'@webcontainer' ],
+   
+      exclude: ['alphautils', 'hybridappdev', 'alphaviewlibrary',  '@webcontainer', "vue-i18n",'@webcontainer', 'monaco-editor' ],
 
       //only requiredexclude: ['alphautils', 'hybridappdev', 'alphaviewlibrary', 'file-saver', 'jszip', '@webcontainer'],
       esbuildOptions: {
@@ -85,14 +83,7 @@ export default defineNuxtConfig({
             experimentalDecorators: true
           }
         }
-      },
-      include: [
-        `${prefix}/language/json/json.worker`,
-        `${prefix}/language/css/css.worker`,
-        `${prefix}/language/html/html.worker`,
-        `${prefix}/language/typescript/ts.worker`,
-        `${prefix}/editor/editor.worker`,
-      ]
+      }
     },
     
 

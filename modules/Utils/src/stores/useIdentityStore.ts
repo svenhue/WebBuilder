@@ -1,19 +1,26 @@
 
 import { defineStore } from 'pinia';
+import { type IUserIdentity } from '../Services/Identity/IUserIdentity';
+
+export const useIdentityStore = defineStore('identity', () => {
+
+    const identity =  {} as IUserIdentity
 
 
-export const useIdentityStore = defineStore('identity',{
-
-    state: () => ({
-        authenticated: false,
-        user: {},
-
-    }),
-    getters: {
-        isAuthenticated: (state) => state.authenticated,
+    function isAuthenticated(state){
+        return state.authenticated
+    }
         
-    },
-    actions: {
-
+    function getIdentity(){
+        return identity
+    }
+    function setIdentity (identity) {
+        identity = identity;
+    }
+    
+    return {
+        getIdentity,
+        setIdentity,
+        isAuthenticated
     }
 })

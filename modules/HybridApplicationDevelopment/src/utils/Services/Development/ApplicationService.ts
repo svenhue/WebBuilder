@@ -195,6 +195,9 @@ export class ApplicationService extends BaseServiceProvider{
             locale: 'de-DE',
             locales:[]
         }
+        config.remoteRepository = {
+            source: 'github'
+        }
         config.ssr = false
         config.components = [];
         config.mode = ApplicationModes.shadow;

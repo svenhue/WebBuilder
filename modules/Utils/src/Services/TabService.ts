@@ -6,7 +6,7 @@ import { ComputedRef, Ref, computed, ref } from 'vue';
 @injectable()
 export class TabService{
     
-    public tabs: Ref<Array<{name: string, title: string}>>
+    public tabs: Ref<Array<{name: string, title: string, path: string}>>
     private navigationHandler: (tab: object) => void;
     private activeTab: Ref<{name: string, title: string}>
     constructor(){
@@ -24,7 +24,7 @@ export class TabService{
         this.OpenTab(tab);
     }
 
-    public AddTab(newTab: {name: string, title: string}){
+    public AddTab(newTab: {name: string, title: string, path: string}){
         this.tabs.value.push(newTab);
     }
 
@@ -44,7 +44,7 @@ export class TabService{
         })
     }
 
-    public SetNavigationHandler(navigationHandler: (tab: object) => void){      
+    public SetNavigationHandler(navigationHandler: (tab: object) => void){    
         this.navigationHandler = navigationHandler;
     }
 }

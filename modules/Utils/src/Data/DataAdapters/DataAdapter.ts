@@ -132,6 +132,18 @@ export class DataAdapter implements IDataAdapter {
         this.repository.CommitHistory(this.contextid ?? this.options.contextId)
     }
 
+    public static getComputed(boName: string, expression?: Expression, contextid?: number){
+        const iotContainer = BaseServiceProvider.ServiceWithAppContext("BORepository", contextid)
+        if(iotContainer == undefined){
+            throw new Error('No iot container found for appcontext: ' + contextid)
+        }
+        const repository = iotContainer.get<IRepository>(UtilityServices.BORepository) as BORepository
+        const result = this.repository.Get(this.options.boType.name, expression, contextid)
+        if(result?.length == 1){
+            return result[0]
+        }
+        return result
+    }
     
 
 

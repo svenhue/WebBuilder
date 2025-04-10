@@ -34,6 +34,8 @@ export interface IApplicationConfiguration{
     versionControlProvider: string
     versionControlToken: string
     repositoryUrl: string
+
+    initializeServices?(): void;
     
 
 }

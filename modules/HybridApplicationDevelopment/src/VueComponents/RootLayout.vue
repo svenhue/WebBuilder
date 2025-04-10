@@ -1,21 +1,7 @@
 <template>
 
         <div class="app-header" elevated :style="{zIndex: 999, display:'flex', alignItems: 'center'}">
-            <q-toolbar>
-                <q-btn
-                flat
-                dense
-                round
-               
-                icon="menu"
-                aria-label="Menu"
-                @click="toggleLeftDrawer"
-                />
-                <div id="dev-toolbar">
-
-                </div>
-
-            </q-toolbar>
+            
         </div>     
 
 </template>

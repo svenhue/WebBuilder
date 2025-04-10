@@ -166,7 +166,9 @@ import { RestrictedServiceProvider} from './src/Services/Provider/RestrictedServ
 import { ObjectValueResolver } from './src/CodeExecution/ObjectValueResolver.js';
 import {CodeExecutor} from './src/CodeExecution/CodeExecutor.js';
 import { type IExecutionContextProvider } from './src/CodeExecution/IExecutionContextProvider.js';
+import { AuthenticationService } from './src/Services/Auth/AuthenticationService.js'
 export {
+    AuthenticationService,
     IPageHeader,
     IPageMeta, 
     IExecutionContextProvider,

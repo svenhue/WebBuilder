@@ -27,14 +27,25 @@ export class HTTPClientService implements IHTTPClientService{
     private GetOrCreateClient(request: IRequestConfig): AxiosWrapper
     {
         let client = this.clients.find((client) => {
-            return client.config.name == request.networkname;
+            return request.url.includes(client.config.url);
         })
         if(client == undefined){
-            const network = this.networks.find((network) => {
-                return network.name == request.networkname;
+            let network = this.networks.find((network) => {
+                return request.url.includes(network.url);
             })
-            if(network == undefined){
+            const isAuthNetwork = this.networks.find((network) => {
+                return network.authentication != undefined && request.url == network.authentication.tokenEndpoint;
+            })
+            if(network == undefined && isAuthNetwork == undefined){
                 throw new Error('No network found with name: ' + request.networkname)
+            }
+            
+            if(network == undefined){
+                network = {
+                    url: request.url,
+                    name: request.networkname,
+                    headers: isAuthNetwork.headers
+                }
             }
             client = this.createClient(network);
             this.clients.push(client); 
@@ -43,7 +54,6 @@ export class HTTPClientService implements IHTTPClientService{
     }
 
     public async sendRequest<T = {}>(request: IRequestConfig): AxiosResponse<T>{
-        console.log(this.networks)
         const client = this.GetOrCreateClient(request);
         const result = await client.sendRequest(request) as Promise<AxiosResponse>;
 

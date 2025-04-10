@@ -13,6 +13,7 @@ export class VersionManager{
         if(model == undefined){
             throw new Error("Model is undefined")
         }
+        console.log(model)
         if(model.source == undefined){
             throw new Error("Source is undefined")
         }

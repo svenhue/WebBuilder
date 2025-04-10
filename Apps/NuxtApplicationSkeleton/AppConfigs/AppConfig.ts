@@ -16,8 +16,8 @@ import { AuthenticationMechanism } from 'alphautils';
       url: "https://localhost:44314/",
       authentication:{
         mechanism: AuthenticationMechanism.UserCredentials,
-        tokenEndpoint: "https://localhost:44314/connect/token/",
-        authEndpoint: "https://localhost:44314/connect/authorize",
+        tokenEndpoint: "https://localhost:44369/connect/token/",
+        authEndpoint: "https://localhost:44369/connect/authorize",
         client_id: "WebCreator_App",
         client_secret: "",
         grant_type: "password",
@@ -26,7 +26,8 @@ import { AuthenticationMechanism } from 'alphautils';
 
       },
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       }
     } as IExternalNetworkConfiguration
   ] as Array<IExternalNetworkConfiguration>

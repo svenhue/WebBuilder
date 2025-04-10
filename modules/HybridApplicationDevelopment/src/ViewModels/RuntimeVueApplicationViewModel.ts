@@ -85,7 +85,7 @@ export class RunTimeVueApplicationViewModel{
         this.viewService = this.UseService<ViewConfigurationService>('ViewConfigurationService');
         this.viewChangedAgendProvider = this.UseService<ViewChangedAgendsProvider>('ViewChangedAgendsProvider');
         const config: IApplicationConfiguration = this.service.GetApplicationConfigByName(solutionname);
-
+            console.log(config)
         this.versionManager = new ApplicationVersionManager(config.remoteRepository)
        
         //this.currentRoute = currentRoute;
