@@ -15,18 +15,19 @@ import TextLinkComponent from './src/Typography/TextLinkComponent.vue'
 import * as ViewConfigs from './src/ViewLibrary.json'
 import FormViewOptionsComponent from './src/Form/Form/FormViewOptionsComponent.vue'
 import { ViewLibrary } from './src/vitePlugin.ts' */
-
+import { ChatComponent } from './index.js'
 import { type IComponentResolver } from './src/Renderer/IComponentResolver.js'
 import { BaseComponentResolver } from './src/Renderer/BaseComponentResolver.js'
 declare module 'alphaviewlibrary'{
     export{
-        IComponentResolver, BaseComponentResolver
+        IComponentResolver, BaseComponentResolver,
+        ChatComponent,
     
     }
 }
 
 export{
-    IComponentResolver, BaseComponentResolver
+    IComponentResolver, BaseComponentResolver,ChatComponent
 
 }
 //export { ViewLibrary, FormViewOptionsComponent, ViewConfigs, TextLinkComponent, BlockQuoteComponent, ParagraphComponent, HeadingComponent, TabbedContainerComponent, DefaultRootComponent, ButtonComponent, DivBlockComponent, ListComponent, ListItemComponent, SectionComponent, TreeComponent, QuickStackComponent, ContainerComponent }
