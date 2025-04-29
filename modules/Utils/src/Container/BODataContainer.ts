@@ -35,5 +35,8 @@ export class BODataContainer implements IDataContainer{
             throw new Error("Value not found");
         }
     }
+    public HasBoWithId(bo: IBOInstance){
+        return this.value.findIndex(x => x.id == bo.id) > -1;
+    }
 
 }

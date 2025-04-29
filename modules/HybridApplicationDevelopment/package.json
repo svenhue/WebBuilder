@@ -1,10 +1,13 @@
 {
+    "files": [
+        "dist"
+    ],
     "name": "hybridappdev",
     "version": "1.0.2",
     "type": "module",
-    "main": "index.ts",
-    "types": "./index.d.ts",
-    "module": "esnext",
+    "main": "./dist/index.cjs",
+    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
     "target": "esnext",
     "moduleResolution": "nodenext",
     "scripts": {
@@ -14,41 +17,20 @@
         "test": "echo \"No test specified\" && exit 0"
     },
     "exports": {
-        "./assets": {
-            "require": "./assets/*",
-            "import": "./assets/*"
-        },
         ".": {
-            "types": "./index.d.ts",
-            "require": "./index.ts",
-            "import": "./index.ts"
-        },
-        "./module.js": {
-            "types": "./src/HybridApplicationDevelopmentModule.ts",
-            "require": "./src/HybridApplicationDevelopmentModule.ts",
-            "import": "./src/HybridApplicationDevelopmentModule.ts"
-        },
-        "./vitePlugin.js": {
-            "types": "./src/vitePlugin.ts",
-            "require": "./src/vitePlugin.ts",
-            "import": "./src/vitePlugin.ts"
-        },
-        "./src/*": {
-            "types": "./src/*",
-            "require": "./src/*",
-            "import": "./src/*"
-        },
-        "./nuxt": {
-            "import": "./nuxt.ts"
+            "require": "./dist/index.cjs",
+            "import": "./dist/index.js"
         }
     },
     "devDependencies": {
         "reflect-metadata": "^0.2.1",
         "sass": "^1.72.0",
-        "typescript": "^4.9.5"
+        "typescript": "^4.9.5",
+        "vite-plugin-dts": "^4.5.3"
     },
     "dependencies": {
         "@nuxt/kit": "^3.15.1",
+        "@rollup/rollup-win32-x64-msvc": "^4.40.1",
         "@syncfusion/ej2-richtexteditor": "^27.1.57",
         "@tiptap/core": "^2.9.1",
         "@tiptap/extension-bold": "^2.9.1",
@@ -56,6 +38,7 @@
         "@tiptap/starter-kit": "^2.9.1",
         "@typescript-eslint/eslint-plugin": "^6.7.2",
         "@typescript-eslint/parser": "^6.7.2",
+        "@vitejs/plugin-vue": "^5.2.3",
         "alphanodes": "file:../Nodes",
         "alphautils": "file:../Utils",
         "alphaviewlibrary": "file:../ViewLibrary",

@@ -2,7 +2,7 @@
     <div class="chat-container">
         <div class="chat-header">
             <h2>{{ viewModel.currentSession.value ? viewModel.currentSession.value.name : 'Chat' }}</h2>
-            <button @click="viewModel.createNewSession" class="new-session-btn">New Chat</button>
+            <button class="new-session-btn">New Chat</button>
         </div>
         
         <div class="sessions-list" v-if="viewModel.showSessions.value">

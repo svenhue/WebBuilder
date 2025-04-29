@@ -2,26 +2,31 @@ from flask_socketio import Namespace, emit
 from flask import request
 from flask_socketio import join_room, leave_room
 
-from .models import db, User, ChatSession, Message
+from .models import db, User, Conversation, Message
 from datetime import datetime
 from flask_socketio import ConnectionRefusedError
 
 
 class ChatNamespace(Namespace):
 
-    def handle_connect():
-        """Handle client connection"""
+
+
+    def on_connect(self):
+        """on client connection"""
         print('Client connected:', request.sid)
         emit('connection_response', {'status': 'connected', 'sid': request.sid})
 
+    def on_getMessages(self, data):
+        messages = Conversation.
+        emit('getMessages_response', {'status': 'connected', 'sid': request.sid})
 
-    def handle_disconnect():
-        """Handle client disconnection"""
+    def on_disconnect(self):
+        """on client disconnection"""
         print('Client disconnected:', request.sid)
 
 
-    def handle_join(data):
-        """Handle client joining a chat session"""
+    def on_join(data):
+        """on client joining a chat session"""
         session_id = data.get('session_id')
         if session_id:
             join_room(f"session_{session_id}")
@@ -29,16 +34,16 @@ class ChatNamespace(Namespace):
             print(f"Client {request.sid} joined session {session_id}")
 
 
-    def handle_leave(data):
-        """Handle client leaving a chat session"""
+    def on_leave(data):
+        """on client leaving a chat session"""
         session_id = data.get('session_id')
         if session_id:
             leave_room(f"session_{session_id}")
             emit('leave_response', {'status': 'left', 'session_id': session_id}, room=request.sid)
             print(f"Client {request.sid} left session {session_id}")
 
-    def handle_message(data):
-        """Handle new message from client"""
+    def on_message(self, data):
+        """on new message from client"""
         content = data.get('content')
         session_id = data.get('session_id')
         user_id = data.get('user_id')
@@ -78,8 +83,8 @@ class ChatNamespace(Namespace):
         emit('new_message', message_data, room=f"session_{session_id}")
         print(f"New message in session {session_id}: {content}")
 
-    def handle_typing(data):
-        """Handle typing notification"""
+    def on_typing(data):
+        """on typing notification"""
         session_id = data.get('session_id')
         user_id = data.get('user_id')
         username = data.get('username', 'Anonymous')

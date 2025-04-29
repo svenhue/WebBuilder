@@ -9,17 +9,16 @@
 </template>
 
 <script setup lang="ts">
-import { RemoteRepositoryModel, Sources } from 'localversioncontrol'
 import { computed, reactive } from 'vue';
 import GithubRemoteComponent from './GithubRemoteComponent.vue';
 
 
-const model = reactive<RemoteRepositoryModel>(new RemoteRepositoryModel())
+const model = reactive()
 
 const sources = [
     {
         name: 'Github',
-        value: Sources.github
+       
     }
 ]
 

@@ -2,6 +2,7 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   ssr: {
@@ -16,6 +17,7 @@ export default defineConfig({
       name: 'hybridappdev',
       // the proper extensions will be added
       fileName: 'index',
+      formats: ['es', 'cjs'],
     },
 
     rollupOptions: {
@@ -35,5 +37,5 @@ export default defineConfig({
     }, 
     
   },
-  plugins: [vue()]
+  plugins: [vue(), dts()]
 })

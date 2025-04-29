@@ -1,23 +1,22 @@
 import { IApplicationConfiguration } from "alphautils";
-import { RemoteRepositoryModel, VersionManager } from "localversioncontrol";
-import { IRemoteRepository } from "localversioncontrol/src/IRepository";
+
 import { ApplicationModel } from "src/Models/ApplicationModel";
 
-export class ApplicationVersionManager extends VersionManager{
+export class ApplicationVersionManager{
 
-    constructor(model: RemoteRepositoryModel){
-        super(new RemoteRepositoryModel(model))
+    constructor(model){
+        
     }
 
     public SyncRepository(model: ApplicationModel){
 
         if(model.version == '0.0.1'){
-            this.PushContent(this.createVirtualRepository(model as ApplicationModel))
+            
         }
     }
 
     private createVirtualRepository(model: ApplicationModel){
-        const repository: IRemoteRepository = {
+        const repository = {
             contents: []
         }
         

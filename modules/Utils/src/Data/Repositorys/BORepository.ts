@@ -71,9 +71,31 @@ export class BORepository implements IRepository{
                 return oldValue
         }
 
+
+        public CreateMany(bos: Array<IBOInstance>, persistslocalStore = false, contextid:number = null, useHistory = true){
+                for(const bo of bos){
+                        this.Create(bo, persistslocalStore, contextid, useHistory);
+                }
+        }
+
         //todo merge objects ( from non-partial update)
 
         public Create(value: IBOInstance, persistslocalStore = false, contextid: number = null, useHistory = true){
+                if(persistslocalStore == true){
+                        let containerId = this.store.containers.find(c => c.boType?.name == value.boName)?.id;
+
+                        if(containerId == undefined){
+                                containerId = this.CreateContainer(value, contextid);
+                        }
+                        const container = this.store.containers.find(c => c.id == containerId) as IDataContainer;
+
+                        if(container.HasBoWithId(value)){
+                                return this.Update(value.id, value, persistslocalStore, contextid, undefined, false)
+
+                        }
+                }
+
+
                 this.Publish(value.id, value, StateChangeTypes.create, contextid, undefined, undefined, true)
 
                 if(contextid == null){

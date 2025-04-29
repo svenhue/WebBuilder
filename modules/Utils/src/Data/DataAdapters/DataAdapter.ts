@@ -14,6 +14,8 @@ import { HTTPClientService } from '../../HTTP/HTTPClientService.js';
 import { BaseServiceProvider } from '../../Services/Provider/BaseServiceProvider.js';
 import { BORepository } from '../Repositorys/BORepository.js';
 import { GlobalDataSynchronizer } from './GlobalDataSynchronizer.js';
+import {IHTTPClientService} from '../../HTTP/IHTTPClientService';
+import { IRequestConfig } from '../../HTTP/IRequestConfig.js';
 
 @injectable()
 export class DataAdapter implements IDataAdapter {
@@ -133,16 +135,30 @@ export class DataAdapter implements IDataAdapter {
     }
 
     public static getComputed(boName: string, expression?: Expression, contextid?: number){
-        const iotContainer = BaseServiceProvider.ServiceWithAppContext("BORepository", contextid)
-        if(iotContainer == undefined){
-            throw new Error('No iot container found for appcontext: ' + contextid)
+        const repository = BaseServiceProvider.Service("BORepository", contextid)
+        if(repository == undefined){
+            throw new Error('No iot repository found for appcontext: ' + contextid)
         }
-        const repository = iotContainer.get<IRepository>(UtilityServices.BORepository) as BORepository
-        const result = this.repository.Get(this.options.boType.name, expression, contextid)
+        const result = repository.Get(boName, expression, contextid)
         if(result?.length == 1){
             return result[0]
         }
         return result
+    }
+
+    public static async FetchAndStore(url:string){
+        const httpService = BaseServiceProvider.Service<IHTTPClientService>("HTTPClientService")
+        const config = {
+            method: "GET",
+            url: url
+        } as IRequestConfig
+        const result = await httpService.sendRequest(config)
+
+        if(result?.data == undefined){
+            throw new Error('No data found for url: ' + url)
+        }
+        const respository = BaseServiceProvider.Service<BORepository>("BORepository")
+        return respository.CreateMany(result.data, true)
     }
     
 

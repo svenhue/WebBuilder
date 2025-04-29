@@ -1,6 +1,6 @@
 //@ts-ignore
 //@ts-nocheck
-import { ApplicationModule, IExternalNetworkConfiguration } from 'alphautils';
+import {ApplicationModule, DataAdapter, IExternalNetworkConfiguration} from 'alphautils';
 import { useWebNodeTemplateStore } from 'alphautils';
 import { ViewConfigs as templates, type ICodeEditorService } from 'alphaviewlibrary'
 import { Container, ContainerModule } from 'inversify';
@@ -32,6 +32,9 @@ export class HybridAppDevelopmentApplicationModule extends ApplicationModule imp
   register(app: object, pinia: Pinia){
     const store = useWebNodeTemplateStore(pinia)
     store.addTemplates(templates.default.views);
+  }
+  async startup(container: Container){
+      DataAdapter.FetchAndStore("api/syncClient")
   }
   async InitializeServices(container: Container){
   

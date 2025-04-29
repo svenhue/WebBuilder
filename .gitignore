@@ -1,6 +1,7 @@
 node_modules
 venv
-
+logs
+infra/AlphaGitlab/
 MindCode
 AIServices
 /modules/Canvas
@@ -53,3 +54,7 @@ npmrc
 .env.*
 !.env.example
 
+
+.nx/installation
+.nx/cache
+.nx/workspace-data

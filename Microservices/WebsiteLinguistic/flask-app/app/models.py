@@ -1,31 +1,28 @@
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import mongoengine as db
 
-db = SQLAlchemy()
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), unique=True, nullable=False)
-    messages = db.relationship('Message', backref='author', lazy='dynamic')
+class User(db.Document):
+    id = db.StringField(required=True)
+    conversationIds = db.ListField(db.StringField())
 
     def __repr__(self):
         return f'<User {self.username}>'
 
-class ChatSession(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    messages = db.relationship('Message', backref='chat_session', lazy='dynamic')
+class UserSession(db.Document):
+    id = db.StringField(required=True)
+    user_id = db.StringField(required=True)
+    created_at = db.DateTimeField(default=datetime.utcnow)
 
     def __repr__(self):
+
         return f'<ChatSession {self.id}>'
 
-class Message(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.Text, nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    session_id = db.Column(db.Integer, db.ForeignKey('chat_session.id'))
+class Conversation(db.Document):
+    id = db.St(db.Integer, primary_key=True)
+    value = db.DictField()
+    timestamp = db.DateTimeField(default=datetime.utcnow)
+    user_id = db.StringField(required=True)
+    session_id = db.StringField(required=True)
 
     def __repr__(self):
         return f'<Message {self.id}>'

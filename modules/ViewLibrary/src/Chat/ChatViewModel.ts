@@ -26,8 +26,8 @@ export interface Message {
 
 export class ChatViewModel {
     // API endpoint base URL
-    private apiBaseUrl = 'https://localhost:5005/chat/api';
-    
+    private apiBaseUrl = 'http://localhost:5005/api';
+    private wsBaseUrl = 'ws://localhost:5005/chat/api';
     // Socket.io connection
     private socket: Socket | null = null;
     
@@ -55,19 +55,21 @@ export class ChatViewModel {
         // Fetch available chat sessions
         //await this.fetchSessions();
         
+        this.createNewSession();
+        
         this.connectSocket()
         // Connect to Socket.io server
         //this.connectSocket();
         
         // If there are sessions, select the first one
         if (this.sessions.value.length > 0) {
-            this.selectSession(this.sessions.value[0].id);
+             this.selectSession(this.sessions.value[0].id);
         }
     }
     
     // Connect to Socket.io server
     private connectSocket(): void {
-        this.socket = io('ws://localhost:5005');
+        this.socket = io('ws://localhost:5005/chat');
         
         // Set up socket event listeners
         this.socket.on('connect', () => {
@@ -124,6 +126,7 @@ export class ChatViewModel {
         
         // Find the session in our list
         const session = this.sessions.value.find(s => s.id === sessionId);
+        console.log(123, session)
         if (session) {
             this.currentSession.value = session;
             
@@ -140,12 +143,9 @@ export class ChatViewModel {
     // Fetch messages for a session
     public async fetchMessages(sessionId: number): Promise<void> {
         try {
-            const response = await fetch(`${this.apiBaseUrl}/messages/${sessionId}`);
-            if (response.ok) {
-                this.messages.value = await response.json();
-            } else {
-                console.error('Failed to fetch messages:', response.statusText);
-            }
+            this.socket.emit('getMessages', {sessionId: sessionId}, (response) => {
+                console.log('Messages:', response);
+            })
         } catch (error) {
             console.error('Error fetching messages:', error);
         }
@@ -193,24 +193,7 @@ export class ChatViewModel {
                 user_id: this.currentUser.id
             });
         }
-        
-        // Also send via REST API as a fallback
-        try {
-            await fetch(`${this.apiBaseUrl}/messages`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    content: messageContent,
-                    session_id: this.currentSession.value.id,
-                    user_id: this.currentUser.id
-                })
-            });
-        } catch (error) {
-            console.error('Error sending message via API:', error);
-        }
-        
+
         // Send typing stopped notification
         this.sendTypingNotification(false);
     }
