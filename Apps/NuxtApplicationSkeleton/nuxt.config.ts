@@ -15,14 +15,6 @@ export default defineNuxtConfig({
     cssPath: ['~/assets/css/tailwind.css', { injectPosition: "first" }],
     configPath: 'tailwind.config.ts',
   },
-  electron: {
-    build: [
-      {
-        // Main-Process entry file of the Electron App.
-        entry: 'electron/main.ts',
-      },
-    ],
-  },
   quasar:{
     plugins: ['Notify']
   },

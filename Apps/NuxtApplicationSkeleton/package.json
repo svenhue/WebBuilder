@@ -2,13 +2,12 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
-  "main": "dist-electron/main.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "buildElectron": "nuxt generate && electron-builder",
     "postinstall": "nuxt prepare",
     "start": "nuxt start",
     "generatePages": "npx tsx modules/AlphaApp/GeneratePagesScript.ts --experimentalDecorators"
@@ -19,8 +18,6 @@
     "@pinia/nuxt": "^0.5.1",
     "@quasar/extras": "^1.16.9",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@tiptap/pm": "^2.9.1",
-    "@tiptap/starter-kit": "^2.9.1",
     "alphanodes": "file:../../../modules/Nodes",
     "alphaviewlibrary": "file:../../modules/ViewLibrary",
     "axios": "^1.6.8",
@@ -39,13 +36,8 @@
     "webautomateintelligence": "file:../../modules/WebAutomateIntelligence"
   },
   "devDependencies": {
-    "electron": "^34.2.0",
-    "electron-builder": "^25.1.8",
-    "nuxt-electron": "^0.7.0",
     "nuxt-quasar-ui": "^2.0.8",
     "tsx": "^4.11.0",
-    "vite-plugin-electron": "^0.29.0",
-    "vite-plugin-electron-renderer": "^0.14.6",
     "vite-plugin-node-polyfills": "^0.22.0",
     "webbuilderalphautils": "file:../../modules/Utils"
   }
