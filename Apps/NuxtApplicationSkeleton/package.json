@@ -13,7 +13,7 @@
     "generatePages": "npx tsx modules/AlphaApp/GeneratePagesScript.ts --experimentalDecorators"
   },
   "dependencies": {
-    "@nuxtjs/i18n": "^8.3.1",
+    "@nuxtjs/i18n": "^9.1.3",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@pinia/nuxt": "^0.5.1",
     "@quasar/extras": "^1.16.9",
@@ -25,13 +25,13 @@
     "inversify": "^6.0.2",
     "jszip": "^3.10.1",
     "lodash-es": "^4.17.21",
-    "nuxt": "^3.11.1",
+    "nuxt": "^3.16.0",
     "pinia": "^2.1.7",
     "quasar": "^2.15.1",
     "reflect-metadata": "^0.2.1",
     "sass": "^1.72.0",
     "vue": "^3.4.21",
-    "vue-i18n": "^9.13.1",
+    "vue-i18n": "^11.1.3",
     "vue-router": "^4.3.0",
     "webautomateintelligence": "file:../../modules/WebAutomateIntelligence"
   },
