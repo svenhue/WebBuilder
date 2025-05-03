@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     exposeConfig: true,
     cssPath: ['~/assets/css/tailwind.css', { injectPosition: "first" }],
     configPath: 'tailwind.config.ts',
+    viewer: true,
   },
   quasar:{
     plugins: ['Notify']

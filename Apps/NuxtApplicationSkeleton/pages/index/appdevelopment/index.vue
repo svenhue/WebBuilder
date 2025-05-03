@@ -16,6 +16,13 @@
               required:true
             }
           })
+          definePageMeta({
+            middleware:[
+              
+            ],
+            auth: { requiresAuth: false, redirect:"/auth/login"}
+          })
+
           const resolver = new ComponentResolver()
           const viewId = 2 as Number
           

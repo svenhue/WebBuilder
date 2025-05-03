@@ -2,18 +2,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    
+     './pages/**/*.{html,js,vue}',
+  './components/**/*.{html,js,vue}'
   ],
- //prefix: 'tw-',
+  plugins: [require("daisyui")],
+  prefix: 'tw-',
   daisyui:{
+    
     themes: [
       "business"
     ]
   },
   theme: {
-    
+      extend: {
       colors: {
-        'primary': 'red',
+        'primary': 'blue',
         'purple': '#7e5bef',
         'pink': '#ff49db',
         'orange': '#ff7849',
@@ -35,7 +38,8 @@ export default {
         'info': '#31ccec',
         'warning': '#f2c037'
 
-      },
+      }
+    }
   }
 }
 

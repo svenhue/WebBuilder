@@ -24,7 +24,7 @@
           })
 
           const resolver = new ComponentResolver()
-          const viewId = 22 as Number
+          const viewId = 24 as Number
           
       
           </script>

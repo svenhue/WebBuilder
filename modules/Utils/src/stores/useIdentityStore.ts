@@ -5,10 +5,10 @@ import { type IUserIdentity } from '../Services/Identity/IUserIdentity';
 export const useIdentityStore = defineStore('identity', () => {
 
     const identity =  {} as IUserIdentity
+    const isAuthenticatedBool = false
 
-
-    function isAuthenticated(state){
-        return state.authenticated
+    function isAuthenticated(){
+        return isAuthenticatedBool
     }
         
     function getIdentity(){

@@ -10,6 +10,7 @@
 <script setup lang="ts">
 
 definePageMeta({
-    layout: 'tablayout'
+    layout: 'tablayout',
+    middleware: 'auth'
 })
 </script>

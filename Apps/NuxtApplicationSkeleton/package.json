@@ -21,6 +21,7 @@
     "alphanodes": "file:../../../modules/Nodes",
     "alphaviewlibrary": "file:../../modules/ViewLibrary",
     "axios": "^1.6.8",
+    "daisyui": "^5.0.35",
     "hybridappdev": "file:../../modules/HybridApplicationDevelopment",
     "inversify": "^6.0.2",
     "jszip": "^3.10.1",

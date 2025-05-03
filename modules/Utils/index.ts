@@ -20,7 +20,7 @@ import { type IHTTPClientService } from "./src/HTTP/IHTTPClientService.js";
 import { type IRequestConfig } from "./src/HTTP/IRequestConfig.js";
 
 import { LoggingService } from "./src/Logging/LoggingService.js";
-
+import { useIdentityStore } from "./src/stores/useIdentityStore.js";
 
 
 
@@ -168,6 +168,7 @@ import {CodeExecutor} from './src/CodeExecution/CodeExecutor.js';
 import { type IExecutionContextProvider } from './src/CodeExecution/IExecutionContextProvider.js';
 import { AuthenticationService } from './src/Services/Auth/AuthenticationService.js'
 export {
+    useIdentityStore,
     AuthenticationService,
     IPageHeader,
     IPageMeta, 

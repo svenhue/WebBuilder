@@ -108,6 +108,13 @@ class PagesGenerator{
               required:true
             }
           })
+          definePageMeta({
+            middleware:[
+              ${page.requiresAuth?.auth == true ? '"auth"' : ''}
+            ],
+            auth: { requiresAuth: ${page.requiresAuth?.auth ?? false}, redirect:"${page.requiresAuth?.redirect ?? '/auth/login'}"}
+          })
+
           const resolver = new ComponentResolver()
           const viewId = ${JSON.stringify(page.id)} as Number
           
