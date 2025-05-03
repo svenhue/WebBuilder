@@ -8,7 +8,7 @@ export default defineNuxtConfig({
  
   ssr: false,
   devtools: { enabled: true },
-  modules:[/*'nuxt-electron',*/ 'nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
+  modules:[/*'nuxt-electron',*/ '@nuxt/ui','nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
 
   tailwindcss:{
     exposeConfig: true,

@@ -1,3 +1,4 @@
+import { IApplicationConfiguration, IPageConfiguration } from "webbuilderalphautils";
 import { r } from "~/tests/output/public/_nuxt/BJjtGlwS";
 
 export  const config = {
@@ -109,6 +110,10 @@ export  const config = {
           id:3,
           tag: 'component:CreateNewApplicationSolution',
           isRoutable: true,
+          requiresAuth:{
+            auth: true,
+            redirect: '/auth/login'
+          },
           route:{
             path: '/createApp',
             name: 'createApp',
@@ -117,6 +122,6 @@ export  const config = {
         },
       ]
     } 
-  ] 
+  ] as Array<IPageConfiguration>
 
 } 
