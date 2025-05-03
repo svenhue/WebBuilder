@@ -3,12 +3,11 @@ import { resolve } from 'path'
 
 export default defineNuxtModule({
 
+  
   setup(options){
     const resolver = createResolver(import.meta.url)
-  
     extendPages((pages => {
       const homePage = pages.find(page => page.path === '/home')
-      console.log(123, pages)
       if (homePage) {
         if (!homePage.children) {
           homePage.children = []

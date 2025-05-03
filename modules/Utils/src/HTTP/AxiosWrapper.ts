@@ -38,7 +38,7 @@ export class AxiosWrapper{
             
     }
     public Post(url: string, config?: AxiosRequestConfig){
-        return this.instance?.post(url,JSON.parse(JSON.stringify(config.data)),config);
+        return this.instance?.post(url,config.data,config);
     }
     public Put(url: string, config?: AxiosRequestConfig){
         return this.instance?.put(url,config);
@@ -76,7 +76,7 @@ export class AxiosWrapper{
                     return this.Delete(url,config);
             }
         }catch(error){
-            console.log(error)
+            console.log(error, options)
             return error;
         }
     }

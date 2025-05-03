@@ -17,6 +17,8 @@ export default {
       extend: {
       colors: {
         'primary': 'blue',
+        'primary-dark': '#1E1E2F',
+        'primary-white': '#ffffff',
         'purple': '#7e5bef',
         'pink': '#ff49db',
         'orange': '#ff7849',

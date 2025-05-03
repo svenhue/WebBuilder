@@ -18,7 +18,7 @@
 
 import { ref, onMounted, onUnmounted, inject } from 'vue';
 
-import * as monaco from 'monaco-editor';
+
 import { BaseServiceProvider } from 'alphautils';
 import { ICodeEditorService } from 'alphaviewlibrary';
 import { StyleService } from '../../../../utils/Services/Designer/StyleService';
@@ -39,7 +39,7 @@ const props = defineProps({
 const emit = defineEmits(['updateValue', 'close'])
 const service = BaseServiceProvider.ServiceWithContext<ICodeEditorService>("CodeEditorService", props.contextid) as ICodeEditorService
 const viewModel = inject('applicationViewModel') as RunTimeVueApplicationViewModel
-let editor = null as monaco.editor.IStandaloneCodeEditor | null
+let editor = null 
 
 onMounted(() => { 
 

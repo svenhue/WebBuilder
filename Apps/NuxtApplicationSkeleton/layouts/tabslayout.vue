@@ -28,7 +28,6 @@ tabService.AddTab({
     title: 'Creations'
 })
 
-console.log(tabService)
 </script>
 
 <style lang="scss">

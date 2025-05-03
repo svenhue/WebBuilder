@@ -6,9 +6,8 @@ const prefix = `monaco-editor/esm/vs`;
 export default defineNuxtConfig({
 
  
-  ssr: false,
   devtools: { enabled: true },
-  modules:[/*'nuxt-electron',*/ '@nuxt/ui','nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
+  modules:[/*'nuxt-electron',*/ 'nuxt-monaco-editor', '@nuxt/ui','nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
 
   tailwindcss:{
     exposeConfig: true,
@@ -22,11 +21,15 @@ export default defineNuxtConfig({
 
   i18n:{
     vueI18n: './i18n.config.ts',
+    defaultLocale: 'en',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root' // recommended
-    }
+    },
+    locales: [
+      { code: 'en', name: 'English', file: 'en-US.json' },
+    ]
   },
 
   nitro:{
@@ -65,7 +68,6 @@ export default defineNuxtConfig({
       }
     },
     optimizeDeps:{
-   
       exclude: ['alphautils', 'hybridappdev', 'alphaviewlibrary',  '@webcontainer', "vue-i18n",'@webcontainer', 'monaco-editor' ],
 
       //only requiredexclude: ['alphautils', 'hybridappdev', 'alphaviewlibrary', 'file-saver', 'jszip', '@webcontainer'],

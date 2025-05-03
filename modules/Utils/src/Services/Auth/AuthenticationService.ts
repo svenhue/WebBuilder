@@ -54,6 +54,7 @@ class AuthenticationService implements ICallAbleServiceAction{
         this.SetIdentity(data);
 
         successHandler();
+        this.store.setIsAuthenticated(true)
     }
     private SetIdentity(data: IUserIdentity){
         this.store.setIdentity(data)
@@ -69,12 +70,10 @@ class AuthenticationService implements ICallAbleServiceAction{
                 password: password,
             };
 
-        const formBody = [];
+        const params = new URLSearchParams();
 
         for(const property in formdata){
-            const encodedKey = encodeURIComponent(property);
-            const encodedValue = encodeURIComponent(formdata[property]);
-            formBody.push(encodedKey + '=' + encodedValue);
+            params.append(property, formdata[property]);
         }
 
         const result = await this.service.sendRequest(
@@ -85,7 +84,7 @@ class AuthenticationService implements ICallAbleServiceAction{
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'  
             },
-            data: formBody.join('&')
+            data: params 
             })
         return result.data
     }

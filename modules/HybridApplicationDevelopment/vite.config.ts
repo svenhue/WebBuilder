@@ -6,7 +6,7 @@ import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   ssr: {
-    noExternal: ['monaco-editor']
+   
     //,external: ['alphaviewlibrary']
   },
   build: {

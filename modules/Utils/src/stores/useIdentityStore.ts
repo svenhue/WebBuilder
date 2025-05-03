@@ -1,26 +1,30 @@
 
 import { defineStore } from 'pinia';
 import { type IUserIdentity } from '../Services/Identity/IUserIdentity';
+import { reactive, ref } from 'vue';
 
 export const useIdentityStore = defineStore('identity', () => {
 
-    const identity =  {} as IUserIdentity
-    const isAuthenticatedBool = false
+    const identity = ref<IUserIdentity>({})
+    const isAuthenticatedBool = ref(false)
 
     function isAuthenticated(){
-        return isAuthenticatedBool
+        return isAuthenticatedBool.value
     }
         
     function getIdentity(){
         return identity
     }
-    function setIdentity (identity) {
-        identity = identity;
+    function setIdentity (i) {
+        identity.value = i;
     }
-    
+    function setIsAuthenticated (isAuthenticated) {
+        isAuthenticatedBool.value = isAuthenticated;
+    }
     return {
         getIdentity,
         setIdentity,
-        isAuthenticated
+        isAuthenticated,
+        setIsAuthenticated
     }
 })

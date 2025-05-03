@@ -47,7 +47,7 @@ import { InternationalizationViewModel } from '../../../utils/Features/Internati
 import { inject, onUnmounted, ref } from 'vue';
 import { ICodeEditorService } from 'alphaviewlibrary';
 import { ILanguageFileString } from '../../../utils/Features/Internationalization/ILanguageFileString';
-import * as monaco from 'monaco-editor';
+
 import AddNewLocaleComponent from './AddNewLocaleComponent.vue';
 
 
@@ -61,7 +61,7 @@ const tab = ref(undefined);
 const viewModel = inject('languageVM_' + props.contextid) as InternationalizationViewModel
 const service = BaseServiceProvider.ServiceWithContext<ICodeEditorService>("CodeEditorService", 0) as ICodeEditorService
 const refEditorX = ref<HTMLElement | null>(null);
-let editor = null as monaco.editor.IStandaloneCodeEditor | null
+let editor = null 
 const showButtons = ref(false)
 
 function OpenLocaleString(locale: ILanguageFileString){
