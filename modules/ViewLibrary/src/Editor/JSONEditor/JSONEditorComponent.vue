@@ -6,7 +6,12 @@
 
 <script setup lang="ts">
 import { waitForElm } from 'alphautils';
-import * as JSONEditor  from 'jsoneditor'
+let JSONEditor = null;
+if (typeof window !== 'undefined') {
+    import('jsoneditor').then((module) => {
+        JSONEditor = module.default;
+    });
+}
 
 const props = defineProps({
     contextid: {

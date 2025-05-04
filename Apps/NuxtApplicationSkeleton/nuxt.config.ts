@@ -5,9 +5,13 @@ import { config } from './AppConfigs/pages'
 const prefix = `monaco-editor/esm/vs`;
 export default defineNuxtConfig({
 
- 
+  ssr: true, // Enable server-side rendering
   devtools: { enabled: true },
   modules:[/*'nuxt-electron',*/ 'nuxt-monaco-editor', '@nuxt/ui','nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
+  
+  build: {
+    transpile: ['monaco-editor'],
+  },
 
   tailwindcss:{
     exposeConfig: true,
@@ -68,6 +72,7 @@ export default defineNuxtConfig({
       }
     },
     optimizeDeps:{
+
       exclude: ['alphautils', 'hybridappdev', 'alphaviewlibrary',  '@webcontainer', "vue-i18n",'@webcontainer', 'monaco-editor' ],
 
       //only requiredexclude: ['alphautils', 'hybridappdev', 'alphaviewlibrary', 'file-saver', 'jszip', '@webcontainer'],

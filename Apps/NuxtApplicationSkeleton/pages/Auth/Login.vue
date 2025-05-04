@@ -45,14 +45,14 @@ const rememberMe = ref(false)
 const service = BaseServiceProvider.ServiceWithContext<AuthenticationService>('AuthenticationService', 0)
 
 const route = useRoute()
-console.log(route.redirectedFrom)
+
 function login() {
   if(!userName.value || !password.value) {
     //todo handle error
     return
   }
   service.AuthenticateOAuth2(userName.value, password.value, () => {
-    console.log('login success')
+    
     return navigateTo(route.redirectedFrom)
   }), () =>{
     //todo handle error

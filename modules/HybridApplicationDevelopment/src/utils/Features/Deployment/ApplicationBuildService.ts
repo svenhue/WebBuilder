@@ -1,7 +1,7 @@
 import { ApplicationDeploymentModes, IApplicationConfiguration } from "alphautils";
 import { Dir } from "./IDirsAndFiles";
 import { WebContainerService } from "./WebContainerService";
-import FileSaver from 'file-saver';
+
 import JSZip, { file } from 'jszip';
 import { IInternationalization } from "alphautils/src/Application/Localization/IInternationalization";
 import { i } from "vite/dist/node/types.d-FdqQ54oU";
@@ -9,6 +9,14 @@ import { LocalesFileBuilder } from "../Internationalization/LocalesFileBuilder";
 import { ILanguageFileString } from "../Internationalization/ILanguageFileString";
 import { Terminal } from 'xterm';
 import { files as Files } from './files'
+
+let FileSaver = null;
+
+if(typeof window !== 'undefined'){
+   import('file-saver').then((m) => {
+        FileSaver = m;
+    })
+}
 export class ApplicationBuildService extends WebContainerService{
 
     private readonly _buildOutputDirectory: string = './.output';

@@ -1,3 +1,11 @@
 {
-    "MyCompanyName": "My Company Name"
+    "MyCompanyName": "My Company Name",
+    "Sign in to your account": "Sign in to your account",
+    "Don't have an account yet?": "Don't have an account yet?",
+    "Your email": "Your email",
+    "Password": "Password",
+    "Forgot password": "Forgot password",
+    "Create an account": "Create an account",
+    "Remember me": "Remember me",
+    "Login": "Login"
 }

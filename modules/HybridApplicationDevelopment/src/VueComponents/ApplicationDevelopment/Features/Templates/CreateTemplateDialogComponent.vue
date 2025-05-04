@@ -36,9 +36,16 @@ import { BaseServiceProvider, IApplicationConfiguration, IDataAdapter, IHTTPClie
 import { TemplateDto } from './TemplateDto';
 import { UITemplateTypes } from './UITemplateTypes';
 import { interfaces} from 'inversify';
-import * as JsonEditor from 'jsoneditor';
+
 import { QUploader, useQuasar } from 'quasar';
 import { FocussedViewContextService } from 'alphautils';
+
+let JsonEditor = null;
+if (typeof window !== 'undefined') {
+    import('jsoneditor').then((module) => {
+        JsonEditor = module.default;
+    });
+}
 const props = defineProps({
     contextid: {
         type: Number,

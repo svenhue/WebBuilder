@@ -2,13 +2,44 @@
 import { injectable, inject } from "inversify";
 import { Ref } from "vue";
 import { CodeCompletionProvider } from "./CodeCompletionProvider";
-import * as monaco from 'monaco-editor';
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
-import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
-import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
-import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
-import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
+
 import { IViewConfiguration } from "alphautils";
+
+
+if(typeof window !== 'undefined') {
+  let monaco: any = null;
+  
+    import('monaco-editor').then((m) => {
+        monaco = m;
+    })
+  let editorWorker = null;
+  import('monaco-editor/esm/vs/editor/editor.worker?worker').then((m) => {
+    editorWorker = m;
+  })
+
+  let jsonWorker = null;
+  import('monaco-editor/esm/vs/language/json/json.worker?worker').then((m) => {
+    jsonWorker = m;
+  })
+
+  let cssWorker = null;
+  import('monaco-editor/esm/vs/language/css/css.worker?worker').then((m) => {
+    cssWorker = m;
+  })
+
+  let htmlWorker = null;
+  import('monaco-editor/esm/vs/language/html/html.worker?worker').then((m) => {
+    htmlWorker = m;
+  })
+
+  let tsWorker = null;
+  import('monaco-editor/esm/vs/language/typescript/ts.worker?worker').then((m) => {
+    tsWorker = m;
+  })
+
+
+
+
 self.MonacoEnvironment = {
   getWorker(_, label) {
     if (label === 'json') {
@@ -27,6 +58,7 @@ self.MonacoEnvironment = {
   }
 }
 
+}
 
 @injectable()
 export class CodeEditorService {

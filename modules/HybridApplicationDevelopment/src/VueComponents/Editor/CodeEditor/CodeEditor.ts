@@ -1,6 +1,12 @@
 //@ts-ignore
 import {  Ref } from 'vue';
-import * as monaco from 'monaco-editor';
+
+let monaco: any = null;
+if(typeof window !== 'undefined'){
+	import('monaco-editor').then((m) => {
+		monaco = m;
+	})
+}
 
 
 export const Editor = (ref: Ref): monaco.editor.IStandaloneCodeEditor => {
