@@ -1,5 +1,6 @@
 
 <template>
+    <ClientOnly>
     <q-layout v-if="viewModel?.isReady.value">
     <div class="development-root-component" id="XXX" ref="XXX">
         <LeftDevelopmentOptionsBar 
@@ -110,6 +111,7 @@
         </div>
     </div>
 </q-layout>
+</ClientOnly>
 </template>
 
 <script setup lang="ts">   

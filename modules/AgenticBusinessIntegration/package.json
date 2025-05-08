@@ -1,0 +1,24 @@
+{
+    "name": "agenticBusinessIntegration",
+    "version": "0.0.1",
+    "description": "Agentic Business Integration module for WebBuilder",
+    "main": "index.ts",
+    "types": "./index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./index.d.ts",
+            "require": "./index.ts",
+            "import": "./index.ts"
+        },
+        "./src/*": {
+            "types": "./src/*",
+            "require": "./src/*",
+            "import": "./src/*"
+        }
+    },
+    "dependencies": {
+        "@anthropic-ai/sdk": "^0.40.1",
+        "@vue/compiler-sfc": "^3.5.13",
+        "vue": "^3.5.13"
+    }
+}
