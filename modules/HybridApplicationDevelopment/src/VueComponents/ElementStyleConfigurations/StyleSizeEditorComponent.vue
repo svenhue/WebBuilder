@@ -1,8 +1,9 @@
 <template>
     <div class="sdec">
         <table>
+            <colgroup>
             <col width="30"><col width="50"><col width="50"><col width="50"><col width="50">
-
+        </colgroup>
             <tbody>
             <tr >
                 <td>

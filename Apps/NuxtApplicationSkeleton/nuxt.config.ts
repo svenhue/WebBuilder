@@ -3,11 +3,12 @@
 import { resolve } from 'path'
 import { config } from './AppConfigs/pages'
 const prefix = `monaco-editor/esm/vs`;
+
 export default defineNuxtConfig({
 
   ssr: true, // Enable server-side rendering
   devtools: { enabled: true },
-  modules:[/*'nuxt-electron',*/ 'nuxt-monaco-editor', '@nuxt/ui','nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
+  modules:[/*'nuxt-electron',*/  'alphaauthmodule'  ,'nuxt-monaco-editor', '@nuxt/ui','nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt", "webautomateintelligence/nuxt"],
   
   build: {
     transpile: ['monaco-editor'],
@@ -51,7 +52,6 @@ export default defineNuxtConfig({
   },
 
   vite: {
-   
     //plugins: [nodePolyfills()],
     resolve: {
       alias:{
@@ -85,10 +85,7 @@ export default defineNuxtConfig({
         }
       }
     },
-    
-
     esbuild: {
-
       tsconfigRaw: {
         compilerOptions: {
           experimentalDecorators: true

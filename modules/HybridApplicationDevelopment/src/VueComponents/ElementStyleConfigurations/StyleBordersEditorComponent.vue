@@ -24,6 +24,7 @@
         </div>
         <div v-show="allCorners == false">
             <table>
+                <tbody>
                 <tr>
                     <td>
                         <q-input
@@ -89,6 +90,7 @@
                                 </q-input>
                     </td>
                 </tr>
+            </tbody>
             </table>
             <div>
                 <div class="small-block-header">

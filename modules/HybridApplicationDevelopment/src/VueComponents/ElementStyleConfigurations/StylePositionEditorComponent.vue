@@ -26,6 +26,7 @@
         </div>
         <div v-show="styles.position != 'static' && styles.position != ''">
             <table>
+                <tbody>
                 <tr>
                 <td>
                     Left
@@ -138,6 +139,7 @@
 
                 </td>
             </tr>
+        </tbody>
             </table>
 
         </div>

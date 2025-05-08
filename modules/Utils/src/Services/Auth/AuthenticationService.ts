@@ -60,7 +60,7 @@ class AuthenticationService implements ICallAbleServiceAction{
         this.store.setIdentity(data)
     }
 
-    private async RequestToken(username: string, password: string): {access_token: string, expires_in: string, token_type: string}{
+    public async RequestToken(username: string, password: string): Promise<{access_token: string, expires_in: string, token_type: string}>{
         const formdata =  
             {
                 client_id: 'WebCreator_App', 
@@ -76,7 +76,11 @@ class AuthenticationService implements ICallAbleServiceAction{
             params.append(property, formdata[property]);
         }
 
-        const result = await this.service.sendRequest(
+        const result = await this.service.sendRequest<{
+            access_token: string, 
+            expires_in: string, 
+            token_type: string
+        }>(
             {
                 isCompleteUrl: true,
             url: this.config.tokenEndpoint, 

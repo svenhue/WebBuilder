@@ -1,6 +1,7 @@
 <template>
     <div class="style-layout-editor">
-        <table>
+    <table>
+        <tbody>
             <tr>
                 <td>
         <div class="small-block-header">
@@ -77,10 +78,12 @@
         </q-btn>
     </td>
     </tr>
+</tbody>
         </table>
         
         <div v-show="styles.display == 'flex'" class="edit-flex-layout">
             <table>
+                <tbody>
                 <tr>
                     <td>
                         <div class="small-block-header">
@@ -112,8 +115,10 @@
                             </q-btn>
                     </td>
                 </tr>
+            </tbody>
             </table>
             <table>
+                <tbody>
                 <tr>
                     <td>
                         <div class="small-block-header">
@@ -369,6 +374,7 @@
                     </td>
 
                 </tr>
+            </tbody>
             </table>
             
         </div>

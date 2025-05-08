@@ -14,6 +14,7 @@
             </div>
             <div class="sb-settings" v-show="iAgVisibility == true" :style="{position: 'absolute'}">
                 <table>
+                    <tbody>
                     <tr>
                         <td>
                             <div class="small-block-header">
@@ -259,6 +260,7 @@
                     </q-input>
                 </td>
                     </tr>
+                </tbody>
                 </table>
                 
             </div>

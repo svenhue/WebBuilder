@@ -1,0 +1,62 @@
+{
+
+    "name": "alphaauthmodule",
+
+    "version": "1.0.2",
+
+    "type": "module",
+
+    "main": "index.ts",
+
+    "module": "index.ts",
+
+    "scripts": {
+
+        "build": "vite build",
+
+        "lint": "eslint --ext .js,.ts,.vue ./",
+
+        "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+
+        "test": "echo \"No test specified\" && exit 0"
+
+    },
+
+    "exports": {
+
+        ".": {
+
+            "import": "./src/module.ts",
+
+            "require": "./src/module.ts"
+
+        }
+
+    },
+
+    "devDependencies": {
+
+        "reflect-metadata": "^0.2.1",
+
+        "sass": "^1.72.0",
+
+        "typescript": "^4.9.5"
+
+    },
+
+    "dependencies": {
+
+        "@nuxt/kit": "^3.15.3",
+
+        "alphautils": "file:../Utils",
+
+        "alphaviewlibrary": "file:../ViewLibrary",
+
+        "nuxi": "^3.9.1",
+
+        "nuxt": "^3.17.2"
+
+    }
+
+}
+

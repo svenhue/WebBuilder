@@ -1,6 +1,7 @@
 <template>
     <div class="stc">
         <table>
+            <tbody>
             <tr>
                 <td >
                     <div class="small-block-header">
@@ -212,6 +213,7 @@
                         </div>
                     </td>
             </tr>
+        </tbody>
         </table>
     </div>
 </template>
