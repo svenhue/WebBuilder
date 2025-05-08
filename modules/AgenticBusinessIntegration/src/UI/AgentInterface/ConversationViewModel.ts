@@ -1,3 +1,4 @@
+import { IAgent } from "../../Agents/IAgent";
 import { IFrontLineAgent } from "../../Agents/IFrontLineAgent";
 import { OrchestrationAgent } from "../../Agents/OrchestrationAgent";
 import { IChatHistory } from "../../Data/IChatHistory";
@@ -9,14 +10,14 @@ export class ConversationViewModel {
     private orchestrator: IFrontLineAgent;
     public newMessage = ref<string>("");
 
-    constructor() {
+    constructor(agents?: Array<IAgent>) {
         this.history = ref<IChatHistory>({
             entries: []
 
         });
         this.orchestrator = new OrchestrationAgent(
             [
-
+                agents ?? ...agents,
             ],
             new ClaudeApi()
         );

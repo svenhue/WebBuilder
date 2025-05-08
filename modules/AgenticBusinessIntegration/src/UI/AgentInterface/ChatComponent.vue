@@ -20,8 +20,15 @@
 <script setup lang="ts">
 import { Ref } from 'vue';
 import { ConversationViewModel } from './ConversationViewModel';
+import { IAgent } from '../../Agents/IAgent';
 
-const viewModel = new ConversationViewModel();
+const props = defineProps({
+    agents: {
+        type: () => Array<IAgent>,
+        required: false
+    }
+});
+const viewModel = new ConversationViewModel(props.agents);
 
 
 </script>

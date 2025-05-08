@@ -37,16 +37,13 @@ export class ClaudeApi implements ILLMApi{
     }
 
     async getChatMessageAsync(
-        message: string
+        messages: Anthropic.Message[],
+        tools: Anthropic.Tool[],
     ): Promise<string> {
         const response = await this.client.messages.create({
+            tools: tools,
             model: "claude-3-7-sonnet-latest",
-            messages: [
-                {
-                    role: "user",
-                    content: message
-                }
-            ],
+            messages: messages,
             max_tokens: 2000
         })
         let contentString = ""
