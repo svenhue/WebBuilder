@@ -12,7 +12,6 @@ export class TabService{
     constructor(){
         this.tabs = ref<Array<{name: string, title: string}>>([])
         this.activeTab  = ref({name: "", title: ""});
-        console.log(123)
     }
     
     public ActiveTab: ComputedRef<{name: string, title: string}> = computed(() => {

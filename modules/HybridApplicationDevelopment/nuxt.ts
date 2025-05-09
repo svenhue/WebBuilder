@@ -18,7 +18,6 @@ export default defineNuxtModule({
           path: 'Creations', // relative path (no slash!)
           file: resolver.resolve('src/pages/Creations.vue')
         })
-        console.log(homePage)
       } else {
         console.warn('Parent /Home route not found')
       }

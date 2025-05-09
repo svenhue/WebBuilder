@@ -11,7 +11,6 @@ export function HybridAppDevPlugin() {
       },
       load(id) {
         if (id === resolvedVirtualModuleId) {
-            console.log("load module")
           return `export * from ../index.ts"`
         }
       },

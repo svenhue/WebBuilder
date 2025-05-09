@@ -102,7 +102,6 @@ export class StateHistory implements IStateHistory{
 
         
         for(const entry of this.GetEntrysByCreatedOrder(undoEntry.entrys)){
-            console.log(entry)
             const commandSet = this.GetCommandSet( entry.boName);
             let result;
             
@@ -154,7 +153,6 @@ export class StateHistory implements IStateHistory{
         }
         
         for(const entry of this.GetEntrysByCreatedOrder(entrys.entrys)){
-                console.log(entry)
             const commandSet = this.GetCommandSet( entry.boName);
             let result;
             switch(entry.stateChangeType){
@@ -218,7 +216,6 @@ export class StateHistory implements IStateHistory{
         }
         
         for(const entry of this.GetEntrysByCreatedOrder(entrys.entrys)){
-            console.log("redo", entry)
             const commandSet = this.GetCommandSet(entry.boName);
             let result;
             switch(entry.stateChangeType){
@@ -255,7 +252,6 @@ export class StateHistory implements IStateHistory{
 
 
         const value = this.redoStack.value.values.pop()
-        console.log("XX", entrys)
         this.undoStack.value.values.push(this.CreateUndoEntry(entrys));
         
         this.history.value.values.push(entrys)

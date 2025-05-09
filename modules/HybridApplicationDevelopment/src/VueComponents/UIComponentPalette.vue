@@ -361,7 +361,6 @@ function bindDragElementToMouse(event: MouseEvent){
     element.style.top = event.clientY + "px"
     element.style.left = event.clientX + "px"
     
-    console.log(element.style.y, element.style.x)
 }
 
 </script>

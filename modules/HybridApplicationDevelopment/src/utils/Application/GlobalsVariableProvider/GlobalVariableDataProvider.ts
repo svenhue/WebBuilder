@@ -85,7 +85,6 @@ export class GlobalVariableDataProvider{
     public GetVariables(contextid: number){
         const store = useDataStore();
         const appContext = this.contextManager.findClosestContextById(contextid);
-        console.log(store.containers)
         const container = store.containers?.find(c => c.contextid == appContext.contextid && c.boType.name == 'GlobalVariable');
         const collection = container?.value[0] as SimpleNameValueCollection;
         return collection?.keyValuePairs;
