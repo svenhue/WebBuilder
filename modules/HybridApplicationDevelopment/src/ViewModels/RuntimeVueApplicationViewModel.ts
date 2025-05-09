@@ -19,7 +19,7 @@ import { useRouter } from 'vue-router';
 import { DefaultRuntimeApplicationStartup } from '../utils/Application/Startups/DefaultRuntimeApplicationStartup';
 import { ApplicationPageViewModel } from './ApplicationPageViewModel';
 import { interfaces } from 'inversify';
-import { ViewChangedAgendsProvider } from '../utils/Agents/DesignerAgents/ViewChangedAgendsProvider';
+
 import { StyleService } from '../utils/Services/Designer/StyleService';
 import { PageService } from '../utils/Services/Development/PageService';
 import { getActivePinia } from 'pinia';
@@ -44,7 +44,7 @@ export class RunTimeVueApplicationViewModel{
     private service: ApplicationService;
     private serviceProvider: BaseServiceProvider;
     public viewService: ViewConfigurationService
-    private viewChangedAgendProvider: ViewChangedAgendsProvider
+
     styleManager: StyleManagerViewModel
     private facadeRef: typeof BackgroundFacadeComponent
     private factory: ApplicationFactory
@@ -83,7 +83,7 @@ export class RunTimeVueApplicationViewModel{
         this.facadeRef = facadeRef;
         this.service = BaseServiceProvider.Service<ApplicationService>('ApplicationService') as ApplicationService;
         this.viewService = this.UseService<ViewConfigurationService>('ViewConfigurationService');
-        this.viewChangedAgendProvider = this.UseService<ViewChangedAgendsProvider>('ViewChangedAgendsProvider');
+
         const config: IApplicationConfiguration = this.service.GetApplicationConfigByName(solutionname);
             console.log(config)
         this.versionManager = new ApplicationVersionManager(config.remoteRepository)
@@ -118,7 +118,8 @@ export class RunTimeVueApplicationViewModel{
         this.repository = this.UseService<IRepository>('BORepository');
         this.repository.CreateHistory(
             this.model.contextid,
-            [{boName: 'ViewConfiguration',
+            [
+                {boName: 'ViewConfiguration',
                 create: (value, addToHistory) => this.AddRawViewElement(value, false, addToHistory),
                 delete: (id, contextid, addToHistory) => this.DeleteElement(id, contextid, false, addToHistory),
                 update: (id, value, oldValue, addToHistory) => this.UpdateView(id, value, oldValue, false, addToHistory),
@@ -162,7 +163,6 @@ export class RunTimeVueApplicationViewModel{
         if(this.currentPage.value == page.contextid){
             return;
         }
-        this.viewChangedAgendProvider.setContext(page.contextid);
 
         this.currentPage.value = page.contextid;
     }

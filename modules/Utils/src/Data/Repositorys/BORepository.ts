@@ -123,7 +123,7 @@ export class BORepository implements IRepository{
                 }
                 this.Publish(value.id, value, StateChangeTypes.create, contextid, undefined, undefined, false)
                 if(useHistory){
-                        this.AddToHistory(contextid, value, StateChangeTypes.create, undefined)
+                        this.AddToHistory(contextid, value, StateChangeTypes.create, undefined, undefined, value.boName)
                 }
                 return value;
         }
@@ -204,7 +204,7 @@ export class BORepository implements IRepository{
                 }
                 this.Publish(id, newValue, StateChangeTypes.update, contextid, undefined, oldValue, false)
                 if(addToHistory){
-                        this.AddToHistory(contextid, newValue, StateChangeTypes.update, oldValue)
+                        this.AddToHistory(contextid, newValue, StateChangeTypes.update, oldValue, undefined, newValue.boName)
                 }
                 return newValue;
         }
@@ -232,7 +232,7 @@ export class BORepository implements IRepository{
                 }
                 this.Publish(value.id, value, StateChangeTypes.delete, contextid, undefined, undefined, false)
                 if(addToHistory){
-                        this.AddToHistory(contextid, value, StateChangeTypes.delete, undefined)
+                        this.AddToHistory(contextid, value, StateChangeTypes.delete, undefined, undefined, value.boName)
                 }
         }
 
@@ -288,7 +288,7 @@ export class BORepository implements IRepository{
                 this.Publish(id, newValues, StateChangeTypes.updatePartial, contextid, optionalBoName, oldValues, false)
                 
                if(addToHistory){
-                        this.AddToHistory(contextid, newValues, StateChangeTypes.updatePartial, oldValues, id)
+                        this.AddToHistory(contextid, newValues, StateChangeTypes.updatePartial, oldValues, id, optionalBoName)
                }
         }
 
@@ -369,12 +369,13 @@ export class BORepository implements IRepository{
                 v: IBOInstance | SimpleNameValueCollection, 
                 stateChangeType: StateChangeTypes, 
                 oldV?: IBOInstance | SimpleNameValueCollection, 
-                id:number){
+                id:number,
+        boName: string){
                 const value = toValue(v);
                 const oldValue = toValue(oldV);
                 const history = this.GetHistoryToStack(contextid);
                 
-                history.AddHistoryEntry(id, value, oldValue, stateChangeType)
+                history.AddHistoryEntry(id, value, oldValue, stateChangeType, undefined, boName);
         
         }
         

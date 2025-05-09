@@ -15,7 +15,7 @@ import { MediaResourceManager } from './utils/Services/Resources/MediaResourceMa
 import { CodeCompletionProvider } from './VueComponents/Editor/CodeEditor/CodeCompletionProvider';
 import { CodeEditorService } from './VueComponents/Editor/CodeEditor/CodeEditorService';
 import { CodeContextProvider } from 'alphautils';
-import { ViewChangedAgendsProvider } from './utils/Agents/DesignerAgents/ViewChangedAgendsProvider';
+
 import { Pinia } from 'pinia';
 import { AuthenticationMechanism } from 'alphautils';
 import { ApplicationDevelopmentSettingsService } from './VueComponents/ApplicationDevelopment/ApplicationSettings/ApplicationDevelopmentSettingsService';
@@ -57,8 +57,6 @@ export class HybridAppDevelopmentApplicationModule extends ApplicationModule imp
           bind<ICodeEditorService>("CodeEditorService").to(CodeEditorService).inSingletonScope();
 
           bind<CodeContextProvider>("CodeContextProvider").to(CodeContextProvider).inSingletonScope();
-
-          bind<ViewChangedAgendsProvider>("ViewChangedAgendsProvider").to(ViewChangedAgendsProvider).inSingletonScope();
 
           bind<ApplicationDevelopmentSettingsService>("ApplicationDevelopmentSettingsService").to(ApplicationDevelopmentSettingsService).inSingletonScope();
 

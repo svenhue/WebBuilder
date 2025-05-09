@@ -104,7 +104,7 @@ export class ApplicationPageViewModel{
         //todo if array, remove/ add only the double values
         BORepository.MergeKeyValueCollection(values.keyValuePairs, view)
         
-        this.viewDataAdapter.UpdatePartial(id, values, this.contextid, undefined, oldValue, addToHistory)
+        this.viewDataAdapter.UpdatePartial(id, values, this.contextid, "ViewConfiguration", oldValue, addToHistory)
 
         if(commitHistory){
             this.viewDataAdapter.CommitHistory()

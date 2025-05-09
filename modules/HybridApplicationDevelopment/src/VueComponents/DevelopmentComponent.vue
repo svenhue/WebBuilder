@@ -1,117 +1,120 @@
 
 <template>
     <ClientOnly>
-    <q-layout v-if="viewModel?.isReady.value">
-    <div class="development-root-component" id="XXX" ref="XXX">
-        <LeftDevelopmentOptionsBar 
-        :viewModel="viewModel"
-        ref="leftBar"
-        :contextid="viewModel?.currentPage?.value"
-        v-show="showleftBar" 
-        @focusView="(view) => viewModel.focusView(view, true)"
-        @add-component="(e, type) =>{leftBar.CloseAllTabs(), StartAddNewElement(e, type)}">
-            
-        </LeftDevelopmentOptionsBar>
-        <Teleport :to="'body'">
-            <TreePathComponent
-            @focus-view="(id) => viewModel.focusView(id, true)">
-                
-            </TreePathComponent>
-        </Teleport>
-        <div
-     
-        class="component-navigation-wrapper"
-        >
-                <q-btn dense rounded :icon="optionsBar == true ? 'close' : 'menu_open'"  no-caps  @click="optionsBar = !optionsBar"
-                    :style="buttonStyle">
-                    </q-btn>
-                <q-drawer side="right"  v-model="optionsBar" :width="350" no-swipe-close no-swipe-backdrop no-swipe-open >
-                  
-                    <DevelopmentOptionsDrawer
-                    :style="{
-                        position: 'absolute',
-                    }"
-                    @focusView="(view) => viewModel.focusView(view, true)"
-                    @updateelement="(values) => viewModel.UpdateFocusedElement(values)"
-                    :contextid="viewModel.model.contextid"
-                    :currentElement="viewModel.GetFocussedElement()">
-                    </DevelopmentOptionsDrawer>
-                </q-drawer>
-   
-            <div
-            class="component-wrapper"
-            ref="componentWrapper"
-             @mousemove="(e) => tryFocus(e, false)" 
-            @mousedown="(e) => tryFocus(e, true)"
-            :id="'developmentcomponent_' + viewModel.model.contextid"
-           >
-            <ApplicationDevelopmentToolbar  :view-model="viewModel" :contextid="viewModel?.currentPage?.value" :route="useRoute()">
+        <q-layout v-if="viewModel?.isReady.value">
+            <q-header>
+            <div id="dev-toolbar">
 
-            </ApplicationDevelopmentToolbar>
-            <div class="app-container">
-            <BackgroundFacadeComponent :contextid="viewModel?.model?.contextid" class="appbase"ref="facade" v-if="viewModel?.currentPage?.value != -1"  id="development-container">
-                <template #default>
-                    <div :style="{
-                        width: '100%',
-                        height: '100%',
-                       zIndex: 10
-                    }">
-
-                     <div
-                        v-for="page of viewModel.GetPages().value" :key="page"
-                        id="mountpoint"
-                        :style="{
-                            width: '100%',
-                            height: '100%',
-                           
-                            display: viewModel?.currentPage?.value == page ? '' : 'none'
-                         
-                        }"
-                        >
-                      
+            </div>
+        </q-header>
+        <q-page-container>
+            <q-btn dense rounded :icon="optionsBar == true ? 'close' : 'menu_open'"  no-caps  @click="optionsBar = !optionsBar"
+                            :style="buttonStyle">
+                </q-btn>
+            <q-drawer side="right"  v-model="optionsBar" :width="350" no-swipe-close no-swipe-backdrop no-swipe-open >
+                        
+                            <DevelopmentOptionsDrawer
+                            @focusView="(view) => viewModel.focusView(view, true)"
+                            @updateelement="(values) => viewModel.UpdateFocusedElement(values)"
+                            :contextid="viewModel.model.contextid"
+                            :currentElement="viewModel.GetFocussedElement()">
+                            </DevelopmentOptionsDrawer>
+                        </q-drawer>
+            <div class="development-root-component" id="XXX" ref="XXX">
+                <LeftDevelopmentOptionsBar 
+                :viewModel="viewModel"
+                ref="leftBar"
+                :contextid="viewModel?.currentPage?.value"
+                v-show="showleftBar" 
+                @focusView="(view) => viewModel.focusView(view, true)"
+                @add-component="(e, type) =>{leftBar.CloseAllTabs(), StartAddNewElement(e, type)}">
                     
-                        <KeepAlive>
-                            <ComponentTreeBase
-                            v-if="viewModel?.currentPage?.value == page"
-                            :contextid="page"
-                            :view="viewModel.GetRootView(page)">
-                            </ComponentTreeBase>
-                        </KeepAlive>
+                </LeftDevelopmentOptionsBar>
+                <Teleport :to="'body'">
+                    <TreePathComponent
+                    @focus-view="(id) => viewModel.focusView(id, true)">
+                        
+                    </TreePathComponent>
+                </Teleport>
+                <div
+            
+                class="component-navigation-wrapper"
+                >
+                    <div
+                    class="component-wrapper"
+                    ref="componentWrapper"
+                    @mousemove="(e) => tryFocus(e, false)" 
+                    @mousedown="(e) => tryFocus(e, true)"
+                    :id="'developmentcomponent_' + viewModel.model.contextid"
+                >
+                    <ApplicationDevelopmentToolbar  :view-model="viewModel" :contextid="viewModel?.currentPage?.value" :route="useRoute()">
+
+                    </ApplicationDevelopmentToolbar>
+                    <div class="app-container">
+                    <BackgroundFacadeComponent :contextid="viewModel?.model?.contextid" class="appbase"ref="facade" v-if="viewModel?.currentPage?.value != -1"  id="development-container">
+                        <template #default>
+                            <div :style="{
+                                width: '100%',
+                                height: '100%',
+                            zIndex: 10
+                            }">
+
+                            <div
+                                v-for="page of viewModel.GetPages().value" :key="page"
+                                id="mountpoint"
+                                :style="{
+                                    width: '100%',
+                                    height: '100%',
+                                
+                                    display: viewModel?.currentPage?.value == page ? '' : 'none'
+                                
+                                }"
+                                >
+                            
+                            
+                                <KeepAlive>
+                                    <ComponentTreeBase
+                                    v-if="viewModel?.currentPage?.value == page"
+                                    :contextid="page"
+                                    :view="viewModel.GetRootView(page)">
+                                    </ComponentTreeBase>
+                                </KeepAlive>
+                            </div>
+                        
+                            </div>
+                        </template>
+                    </BackgroundFacadeComponent>
+                    <div v-else>
+                        <div>
+                            Oops! Nothing to see here. Please select a page to start developing.
+                        </div>
                     </div>
-                  
+                </div>
+                    
+            
                     </div>
-                </template>
-            </BackgroundFacadeComponent>
-            <div v-else>
-                <div>
-                    Oops! Nothing to see here. Please select a page to start developing.
+                </div>
+                
+                <FocussedViewOptionsComponent
+                :app-name="viewModel.model.name">
+
+                </FocussedViewOptionsComponent>
+
+                
+                <DevelopmentContextBarComponent
+                :contextid="viewModel?.currentPage?.value"
+                :element="viewModel.GetFocussedElement().value"
+                @delete-element="() => viewModel.DeleteElement(viewModel.GetFocussedElement().value?.id)"
+                :targetId="'development-container'">
+
+                </DevelopmentContextBarComponent>
+                <div :id="'developmentcomponent_container' + viewModel?.model.name">
+
                 </div>
             </div>
-        </div>
-            
-       
-            </div>
-        </div>
-        
-        <FocussedViewOptionsComponent
-        :app-name="viewModel.model.name">
-
-        </FocussedViewOptionsComponent>
-
-        
-        <DevelopmentContextBarComponent
-        :contextid="viewModel?.currentPage?.value"
-        :element="viewModel.GetFocussedElement().value"
-        @delete-element="() => viewModel.DeleteElement(viewModel.GetFocussedElement().value?.id)"
-        :targetId="'development-container'">
-
-        </DevelopmentContextBarComponent>
-        <div :id="'developmentcomponent_container' + viewModel?.model.name">
-
-        </div>
-    </div>
-</q-layout>
-</ClientOnly>
+        </q-page-container>
+    </q-layout>
+    </ClientOnly>
 </template>
 
 <script setup lang="ts">   
@@ -201,10 +204,10 @@ function tryFocus(e, fixed = false){
 }
 const buttonStyle = computed(() => {
     if(optionsBar.value == true){
-        return {position:'absolute', zIndex:1001, top:'20px', right:'355px', width:'30px',  height:'30px'}
+        return {position:'absolute', zIndex:1001, top:'50px', right:'355px', width:'30px',  height:'30px'}
     }
     else{
-        return {position:'absolute', top:'20px', right:'10px', width:'30px', height:'20px', zIndex:1001}
+        return {position:'absolute', top:'50px', right:'10px', width:'30px', height:'20px', zIndex:1001}
     }
 })
 

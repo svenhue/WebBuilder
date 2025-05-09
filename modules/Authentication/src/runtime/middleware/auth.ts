@@ -5,6 +5,7 @@ import { useAuthState } from '../composables/useAuthState';
 
 export default defineNuxtRouteMiddleware((to, from) => {
     
+  return 
   const options = to.meta.auth as AuthMiddlewareRouteOptions
   
   if(!options || options?.requiresAuth === false){

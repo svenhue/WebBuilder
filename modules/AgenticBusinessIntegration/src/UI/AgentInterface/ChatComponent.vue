@@ -24,7 +24,7 @@ import { IAgent } from '../../Agents/IAgent';
 
 const props = defineProps({
     agents: {
-        type: () => Array<IAgent>,
+        type: Object as () => Array<IAgent>,
         required: false
     }
 });

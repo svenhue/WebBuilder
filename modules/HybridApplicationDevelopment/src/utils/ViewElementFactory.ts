@@ -129,9 +129,9 @@ export class ViewElementFactory {
       this.views = [];
       const node = this.createNode(type, values, parentid, useTemplateDeclarative);
       this.views.push(node);
-      
+      node.boName = 'ViewConfiguration'
       for(const view in this.views){
-      
+        this.views[view].boName = 'ViewConfiguration'
         this.AddTemplatePlaceholderChilds(this.views[view]);
         this.SetPubblicIdentifier(this.views[view]);
       }

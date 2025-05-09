@@ -49,6 +49,8 @@ import RootLayout from './src/VueComponents/RootLayout.vue';
 import MarketplaceOverviewComponent from './src/Marketplace/MarketplaceOverviewComponent.vue';
 import AppCreatorHome from './src/VueComponents/Home/AppCreatorHome.vue';
 
+export * from './src/Agentic/index.js'
+
 export {
 
     AppCreatorHome,

@@ -28,6 +28,7 @@ export  const config = {
   pages: [
     {
       id:1,
+      clientOnly: true,
       name: 'index',
         route:{
           path: '/',
@@ -52,6 +53,7 @@ export  const config = {
         {
           name: 'WebCreator',
           id: 22,
+           clientOnly: true,
           tag: 'component:WebCreator',
           isRoutable: true,
           route:{
@@ -84,6 +86,7 @@ export  const config = {
         },
         {
           id:2,
+           clientOnly: true,
           name: 'appdevelopment',
           tag: 'component:MainDevelopmentLayout',
           isRoutable: true,
@@ -94,6 +97,7 @@ export  const config = {
           },
           children:[
             {
+               clientOnly: true,
               name: 'development',
               id:4,
               tag: 'component:DevelopmentComponent',
@@ -108,6 +112,7 @@ export  const config = {
         },
         {
           id:3,
+           clientOnly: true,
           tag: 'component:CreateNewApplicationSolution',
           isRoutable: true,
           requiresAuth:{

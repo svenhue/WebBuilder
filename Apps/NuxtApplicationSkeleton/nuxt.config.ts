@@ -6,7 +6,7 @@ const prefix = `monaco-editor/esm/vs`;
 
 export default defineNuxtConfig({
 
-  ssr: true, // Enable server-side rendering
+  ssr: false, // Enable server-side rendering
   devtools: { enabled: true },
   modules:[/*'nuxt-electron',*/  'alphaauthmodule'  ,'nuxt-monaco-editor', '@nuxt/ui','nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt"],
   

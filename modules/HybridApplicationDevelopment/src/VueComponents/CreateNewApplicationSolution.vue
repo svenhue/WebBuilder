@@ -10,21 +10,12 @@
                 <q-select for="pöUJbowqleriub2341245123" :options="typeoptions" option-value="1" v-model="ApplicationSolutionObject.type" label="Type"></q-select>
                 <q-select for="pöUJbowqleriub234124512341"  v-show="ApplicationSolutionObject.type == 'Application'" :options="apptypes" option-value="1" v-model="ApplicationSolutionObject.deploymentMode" label="Application Type"></q-select>
 
-                <q-stepper-navigation>
-                    <q-btn @click="step = 2" label="Continue"></q-btn>
-                </q-stepper-navigation>
-            </div>
-        </q-step>
-        <q-step :name="2" title="Select storage" :done="step > 2">
-            <div class="application-dialog">
-                <ConfigureRepository ref="repositoryconfig">
 
-                </ConfigureRepository>
-            </div>
             <q-stepper-navigation>
                     <q-btn @click="createSolution()" label="Create"></q-btn>
-            </q-stepper-navigation>
+            </q-stepper-navigation>            </div>
         </q-step>
+
     </q-stepper>
 </template>
 
@@ -49,11 +40,7 @@ const apptypes = Object.values(ApplicationTypes)
 const service = BaseServiceProvider.Service<ApplicationService>('ApplicationService')
 
 function createSolution(){
-    const repository = repositoryconfig.value.getModel()
-    if(repository == undefined){
-        throw new Error('Repository is not defined')
-    }
-    ApplicationSolutionObject.remoteRepository = repository;
+    //ApplicationSolutionObject.remoteRepository = repository;
 
     service.CreateNewApplication(ApplicationSolutionObject)
 }

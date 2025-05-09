@@ -32,8 +32,7 @@ export class StateHistory implements IStateHistory{
         this.commands = commands;
     }
 
-    public AddHistoryEntry(id: number, value: IBOInstance | SimpleNameValueCollection, oldValue: IBOInstance | SimpleNameValueCollection, stateChangeType: StateChangeTypes, commandName?: string){
-
+    public AddHistoryEntry(id: number, value: IBOInstance | SimpleNameValueCollection, oldValue: IBOInstance | SimpleNameValueCollection, stateChangeType: StateChangeTypes, commandName?: string, boName?: string){
         const entry: IHistoryEntrys = {
             isCommited: false,
             guid: uuidv4(),
@@ -41,6 +40,7 @@ export class StateHistory implements IStateHistory{
                         id: value.id ?? id,                     
                         stateChangeType: GetStateChangeType(stateChangeType),
                         oldValue: oldValue,
+                        boName: boName,
                         value: value,
                         timestamp: Date.now()
                         }]
@@ -70,6 +70,7 @@ export class StateHistory implements IStateHistory{
                     id: value.id,
                     stateChangeType: stateChangeType,
                     oldValue: oldValue,
+                    boName: boName,
                     value: value,
                     timestamp: Date.now()
                     }]
@@ -101,7 +102,8 @@ export class StateHistory implements IStateHistory{
 
         
         for(const entry of this.GetEntrysByCreatedOrder(undoEntry.entrys)){
-            const commandSet = this.GetCommandSet(entry.value.boName);
+            console.log(entry)
+            const commandSet = this.GetCommandSet( entry.boName);
             let result;
             
 
@@ -152,7 +154,8 @@ export class StateHistory implements IStateHistory{
         }
         
         for(const entry of this.GetEntrysByCreatedOrder(entrys.entrys)){
-            const commandSet = this.GetCommandSet(entry.value.boName);
+                console.log(entry)
+            const commandSet = this.GetCommandSet( entry.boName);
             let result;
             switch(entry.stateChangeType){
 
@@ -215,7 +218,8 @@ export class StateHistory implements IStateHistory{
         }
         
         for(const entry of this.GetEntrysByCreatedOrder(entrys.entrys)){
-            const commandSet = this.GetCommandSet(entry.value.boName);
+            console.log("redo", entry)
+            const commandSet = this.GetCommandSet(entry.boName);
             let result;
             switch(entry.stateChangeType){
                 
@@ -251,7 +255,7 @@ export class StateHistory implements IStateHistory{
 
 
         const value = this.redoStack.value.values.pop()
-            
+        console.log("XX", entrys)
         this.undoStack.value.values.push(this.CreateUndoEntry(entrys));
         
         this.history.value.values.push(entrys)
@@ -318,6 +322,7 @@ export class StateHistory implements IStateHistory{
 
     }
     private GetCommandSet(boName: string){
+        console.log(boName, this.commands)
         const commandSet = this.commands.find(c => c.boName == boName);
         if(commandSet == undefined){
             throw new Error('Command not found')
@@ -330,6 +335,7 @@ export class StateHistory implements IStateHistory{
             switch(e.stateChangeType){
                 case StateChangeTypes.create:
                         redoEntry.entrys.push({
+                                boName: e.boName,
                                 stateChangeType: StateChangeTypes.delete,
                                 value: e.value,
                                 oldValue: undefined,
@@ -338,6 +344,7 @@ export class StateHistory implements IStateHistory{
                         break;
                 case StateChangeTypes.delete:
                         redoEntry.entrys.push({
+                            boName: e.boName,
                                 stateChangeType: StateChangeTypes.create,
                                 value: e.value,
                                 oldValue: e.oldValue,
@@ -346,6 +353,7 @@ export class StateHistory implements IStateHistory{
                         break;
                 case StateChangeTypes.update:
                         redoEntry.entrys.push({
+                            boName: e.boName,
                                 id: e.id,
                                 stateChangeType: StateChangeTypes.update,
                                 value: e.value,
@@ -355,6 +363,7 @@ export class StateHistory implements IStateHistory{
                         break;
                 case StateChangeTypes.updatePartial:
                         redoEntry.entrys.push({
+                            boName: e.boName,
                                 id: e.id,
                                 stateChangeType: StateChangeTypes.updatePartial,
                                 value: e.value,
@@ -373,6 +382,7 @@ export class StateHistory implements IStateHistory{
             switch(e.stateChangeType){
                 case StateChangeTypes.create:
                         undoEntry.entrys.push({
+                            boName: e.boName,
                                 stateChangeType: StateChangeTypes.delete,
                                 value: e.value,
                                 oldValue: e.oldValue,
@@ -381,6 +391,7 @@ export class StateHistory implements IStateHistory{
                         break;
                 case StateChangeTypes.delete:
                         undoEntry.entrys.push({
+                            boName: e.boName,
                                 stateChangeType: StateChangeTypes.create,
                                 value: e.value,
                                 oldValue: e.value,
@@ -389,6 +400,7 @@ export class StateHistory implements IStateHistory{
                         break;
                 case StateChangeTypes.update:
                         undoEntry.entrys.push({
+                            boName: e.boName,
                                 stateChangeType: StateChangeTypes.update,
                                 value: e.oldValue,
                                 oldValue: e.value,
@@ -398,6 +410,7 @@ export class StateHistory implements IStateHistory{
                 case StateChangeTypes.updatePartial:
                    
                         undoEntry.entrys.push({
+                            boName: e.boName,
                                 stateChangeType: StateChangeTypes.updatePartial,
                                 value: e.oldValue,
                                 oldValue: e.value,

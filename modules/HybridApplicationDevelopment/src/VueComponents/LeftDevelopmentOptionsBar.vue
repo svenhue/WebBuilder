@@ -1,11 +1,16 @@
 <template>
     <div class="left-development-options-bar">
         <q-list dense :style="{width: '40px', height: '1000px'}" > 
-            <q-item  class="ldob-content-btn" dense>
-                <q-btn dense icon="add_circle_outline" @click="(e) => update(e, 'palette')">
+        <q-item  class="ldob-content-btn" dense>
+            <q-btn dense icon="add_circle_outline" @click="(e) => update(e, 'palette')">
 
-                </q-btn>
-            </q-item>
+            </q-btn>
+        </q-item>
+         <q-item  class="ldob-content-btn" dense>
+            <q-btn dense icon="smart_toy" @click="(e) => update(e, 'aichat')">
+
+            </q-btn>
+        </q-item>
         <q-item dense class="ldob-content-btn">
             <q-btn dense unelevated icon="notes" @click="(e) => update(e, 'structure')">
 
@@ -62,6 +67,13 @@
             v-show="tab == 'palette'">
 
             </UIComponentPalette>
+            <AgenticChatIntegrationComponent
+            @focusView="emits('focusView', $event)"
+            @close="tab = ''"
+            v-show="tab == 'aichat'"
+            >
+
+            </AgenticChatIntegrationComponent>
             <ApplicationUIStructure
             @focusView="emits('focusView', $event)"
             @close="tab = ''"
@@ -113,6 +125,7 @@ import ApplicationSettingsComponent from './ApplicationDevelopment/ApplicationSe
 import StateHistoryComponent from './ApplicationDevelopment/StateHistoryComponent.vue';
 import ApplicationCodeComponent from './ApplicationDevelopment/Code/ApplicationCodeComponent.vue';
 import { RunTimeVueApplicationViewModel } from '../ViewModels/RuntimeVueApplicationViewModel';
+import AgenticChatIntegrationComponent from '../Agentic/AgenticChatIntegrationComponent.vue';
 
 
 defineProps({

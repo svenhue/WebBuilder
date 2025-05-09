@@ -123,19 +123,21 @@ class PagesGenerator{
       `
       }
   
+      let fileName = "index.vue"
+      if(page?.clientOnly == true){
+        fileName = 'index.client.vue'
+      }
+      console.log(page.clientOnly)
       //index page
       if(page.route.path == '/'){
         mkdirSync(filePath + '/index', {recursive:true})
         console.log(filePath)
-        writeFileSync(filePath + '/index.vue', pageFile)
+        writeFileSync(filePath + '/' + fileName, pageFile)
         
-      }else{
-      
-        
+      }else{    
         const dirPath = filePath + '/' + path + '/' + page.route.name
         
-        
-  
+
         if(!existsSync(dirPath)){
           mkdirSync(dirPath)  
         }else{
@@ -145,7 +147,7 @@ class PagesGenerator{
           }
         }
         console.log("generated page" + dirPath + filePath)
-        writeFileSync(dirPath + '/' + 'index.vue', pageFile)
+        writeFileSync(dirPath + '/' + fileName, pageFile)
       }
 
       if(page.route.name != 'index'){

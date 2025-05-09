@@ -10,14 +10,14 @@ export class ConversationViewModel {
     private orchestrator: IFrontLineAgent;
     public newMessage = ref<string>("");
 
-    constructor(agents?: Array<IAgent>) {
+    constructor(agents: Array<IAgent>) {
         this.history = ref<IChatHistory>({
             entries: []
 
         });
         this.orchestrator = new OrchestrationAgent(
             [
-                agents ?? ...agents,
+                ...agents,
             ],
             new ClaudeApi()
         );

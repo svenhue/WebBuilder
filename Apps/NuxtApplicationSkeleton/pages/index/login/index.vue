@@ -6,24 +6,25 @@
       
       
           <script setup lang="ts">
-          
-
           import { useViewConfiguration } from 'alphautils' 
           import   {BaseViewTreeRenderer}   from 'alphaviewlibrary'
           import { ComponentResolver } from '@src/utils/ComponentResolver'
-          definePageMeta({
-            middleware: 'auth',
-          })
+          
           const props = defineProps({
             contextid: {
               type: Number,
               required:true
             }
           })
-          
+          definePageMeta({
+            middleware:[
+              
+            ],
+            auth: { requiresAuth: false, redirect:"/auth/login"}
+          })
 
           const resolver = new ComponentResolver()
-          const viewId = 3 as Number
+          const viewId = 24 as Number
           
       
           </script>
