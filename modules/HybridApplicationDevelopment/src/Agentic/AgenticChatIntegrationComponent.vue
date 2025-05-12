@@ -1,8 +1,11 @@
 <template>
-    <div>
+    <div :style="{
+        height: '100%'
+    }">
         <ChatComponent
+        :frontline-agent="WebsiteCreationAgent"
         :agents="[
-            ...agents
+            
         ]">
 
         </ChatComponent>
@@ -11,9 +14,7 @@
 
 <script setup lang="ts">
 import { ChatComponent } from 'agenticBusinessIntegration'
-import { WebsiteAgent } from './WebsiteAgent';
+import { WebsiteCreationAgent } from './WebsiteAgent';
 
-const agents = [
-    WebsiteAgent
-]
+
 </script>

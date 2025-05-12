@@ -24,7 +24,6 @@ export interface IViewConfiguration extends IBOInstance {
         redirect?: string
     }
     properties: {
-        isActive: boolean // todo remove this
         imageSrc: string
         iconName: string
         showIf: string
@@ -37,8 +36,6 @@ export interface IViewConfiguration extends IBOInstance {
     style?: object;
     role?: ViewRoles
     parentId?: number
-    dataConfig?: IViewDataConfiguration  // todo remove this
-    //parameterBindings?: Array<IParameterBinding>; // todo remove this
     children? : Array<IViewConfiguration>
 
     //remove this

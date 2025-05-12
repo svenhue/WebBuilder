@@ -1,5 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk"
 import { IChatHistory } from "../Data/IChatHistory"
+import { IChatEntry } from "../Data/IChatEntry"
+import { ITool } from "../Tools/ITool"
 
 export interface ILLMApi {
 
@@ -9,8 +11,8 @@ export interface ILLMApi {
     ) : Promise<void>
 
     getChatMessageAsync(
-        messages: Anthropic.Message[],
-        tools: Anthropic.Tool[],
+        messages: IChatEntry[],
+        tools?: ITool[],
     ): Promise<string>
 
 

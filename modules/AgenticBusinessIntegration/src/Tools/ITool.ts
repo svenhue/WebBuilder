@@ -5,7 +5,7 @@ export interface ITool {
     name:string
     description: string
     input_schema: {
-      type: string, // "object" "string"
+      type: 'object' // "object" "string"
       properties: {
         location: {
           type: string,

@@ -1,9 +1,9 @@
-import { WebsiteAgent } from "./WebsiteAgent";
-import { CreatePagesTool } from "./Tools/CreatePages";
+import { WebsiteCreationAgent } from "./WebsiteAgent";
+import { CreatePagesTool } from "./Tools/CRUDPages";
 
 
 export {
-    WebsiteAgent,
+    WebsiteCreationAgent,
     CreatePagesTool,
     // Add other exports here as needed
 }

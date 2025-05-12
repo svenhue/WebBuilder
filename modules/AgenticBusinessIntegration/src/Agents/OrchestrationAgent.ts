@@ -1,3 +1,4 @@
+import { IChatEntry } from "../Data/IChatEntry";
 import { IChatHistory } from "../Data/IChatHistory";
 import { IWorkGraphNode, IWorkOrder, WorkGraph, WorkStrategy } from "../Data/WorkGraph";
 import { ILLMApi } from "../LLM/ILLMApi";
@@ -84,7 +85,7 @@ export class OrchestrationAgent extends BaseAgent implements IFrontLineAgent{
 
         :Object:WorkOrder
         {
-            strategy: "planAndAct" // name of the selected work strategy
+            strategy: "planAndAct" // "planAndAct" or "actOnly" are the only possible values
             nodes: [
                 ... the nodes of the work graph
             ],
@@ -114,15 +115,29 @@ export class OrchestrationAgent extends BaseAgent implements IFrontLineAgent{
         message: string
     ): Promise<string> {
         const {answer, workOrder} = await this.createWorkOrder(message);
-        console.log("Work order: ", workOrder);
+        console.log(answer, workOrder);
+        return answer;
     }
 
+    getMessages(
+        newMessage: string, 
+        contextWindowDefinition?: any): Array<IChatEntry> {
+        
+        if(contextWindowDefinition == undefined){
+            return [{
+                role: "user",
+                content: newMessage,
+                timestamp: new Date()
+            }]
+        }else{
+            return //todo
+        }
+    }
     async createWorkOrder(
         message: string
     ): Promise<{answer: string, workOrder: IWorkOrder}>{
-        const answer = await this._llm.getChatMessageAsync(this.workStrategyDecisionPrompt(message))
+        const answer = await this._llm.getChatMessageAsync(this.getMessages(this.workStrategyDecisionPrompt(message)))
         const workOrderString = answer.split(":Object:End")[0].split(":Object:WorkOrder")[1];
-        console.log(answer, workOrderString)
         const workOrder = JSON.parse(workOrderString) as IWorkOrder;
         return {
             answer: answer.split(":Object:WorkOrder")[0],

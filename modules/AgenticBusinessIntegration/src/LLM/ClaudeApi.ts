@@ -1,13 +1,18 @@
+import { IChatEntry } from "../Data/IChatEntry";
 import { IChatHistory } from "../Data/IChatHistory";
+import { ITool } from "../Tools/ITool";
 import { ILLMApi } from "./ILLMApi";
 import Anthropic from '@anthropic-ai/sdk';
 
 export class ClaudeApi implements ILLMApi{
 
     client: Anthropic;
+    systemPrompt: string
 
-    constructor() {
-       this.client = new Anthropic({
+    constructor(systemPrompt?: string) {
+       this.systemPrompt = systemPrompt;
+        this.client = new Anthropic({
+        
         dangerouslyAllowBrowser: true,
             apiKey: "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"
        })
@@ -37,19 +42,44 @@ export class ClaudeApi implements ILLMApi{
     }
 
     async getChatMessageAsync(
-        messages: Anthropic.Message[],
-        tools: Anthropic.Tool[],
+        messages: IChatEntry[],
+        tools: ITool[],
     ): Promise<string> {
         const response = await this.client.messages.create({
+            system: this.systemPrompt,
             tools: tools,
             model: "claude-3-7-sonnet-latest",
-            messages: messages,
+            messages: this.convertMessagesToClaudeFormat(messages),
             max_tokens: 2000
-        })
+        },)
         let contentString = ""
         for (const chunk of response.content) {
             contentString += chunk.text
         }
         return contentString;
+    }
+
+    private convertMessagesToClaudeFormat(messages: IChatEntry[]): Array<Anthropic.Message> {
+        return messages.map((message) => {
+            return {
+             
+                model: message.model,
+                stop_reason: message.stop_reason,
+                stop_sequence: message.stop_sequence,
+                type: message.type,
+                usage: message.usage,
+                role: message.role,
+                content: message.content
+            }
+        })
+    }
+    private convertToolsToClaudeFormat(tools: ITool[]): Array<Anthropic.Tool> {
+        return tools.map((tool) => {
+            return {
+                name: tool.name,
+                description: tool.description,
+                input_schema: tool.input_schema
+            }
+        })
     }
 }

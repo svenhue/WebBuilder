@@ -10,12 +10,18 @@ export class ConversationViewModel {
     private orchestrator: IFrontLineAgent;
     public newMessage = ref<string>("");
 
-    constructor(agents: Array<IAgent>) {
+    constructor(agents: Array<IAgent>, frontlineAgent? : IFrontLineAgent) {
         this.history = ref<IChatHistory>({
             entries: []
 
         });
-        this.orchestrator = new OrchestrationAgent(
+        console.log(frontlineAgent)
+        this.orchestrator =  frontlineAgent != undefined ? new frontlineAgent(
+            [
+                ...agents
+            ]
+
+        ) : new OrchestrationAgent(
             [
                 ...agents,
             ],
@@ -23,12 +29,15 @@ export class ConversationViewModel {
         );
     }
     public async addMessage(message: string) {
-        const answer = await this.getAnswerAsync(message);
+        this.newMessage.value = "";
         this.history.value.entries.push({
             role: "user",
             content: message,
             timestamp: new Date(),
         });
+
+        const answer = await this.getAnswerAsync(message);
+        
         this.history.value.entries.push({
             role: "assistant",
             content: answer,

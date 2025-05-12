@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="chat-container">
         <ChatComponent :agents="[
             ...hybridAppDevAgents,
             // Add any other agents you want to include here
@@ -18,3 +18,12 @@ const hybridAppDevAgents = [
 ]
 
 </script>
+
+
+<style scoped lang="scss">
+
+.chat-container{
+    max-width: 500px;
+}
+
+</style>
