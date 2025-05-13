@@ -49,7 +49,18 @@ import RootLayout from './src/VueComponents/RootLayout.vue';
 import MarketplaceOverviewComponent from './src/Marketplace/MarketplaceOverviewComponent.vue';
 import AppCreatorHome from './src/VueComponents/Home/AppCreatorHome.vue';
 
+// Export Agentic module
 export * from './src/Agentic/index.js'
+
+// Export client tools
+export { clientToolsManager } from './src/Agentic/ClientTools'
+export { registerClientSideTools } from './src/Agentic/Tools/ClientSideTools'
+
+// Export composables
+export { useRuntimeVueApplicationViewModel } from './src/composables/useRuntimeVueApplicationViewModel'
+
+// Export WebsiteCreationAgent
+export { WebsiteCreationAgent } from './src/Agentic/WebsiteAgent'
 
 export {
 
