@@ -14,7 +14,7 @@ export class ClaudeApi implements ILLMApi{
         this.client = new Anthropic({
         
         dangerouslyAllowBrowser: true,
-            apiKey: "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"
+            apiKey: ""
        })
     }
     async getChatMessageStream(
