@@ -1,20 +1,12 @@
+import { ITool } from 'agenticBusinessIntegration';
 import { IApplicationConfiguration } from 'alphautils/src/Application/IApplicationConfiguration';
 import { IPageConfiguration } from 'alphautils/src/View/IPageConfiguration';
 import { IViewConfiguration } from 'alphautils/src/View/IViewConfiguration';
 
 /**
- * Interface for client-side tools
- */
-export interface IClientSideTool {
-  name: string;
-  description: string;
-  execute: (...args: any[]) => Promise<any>;
-}
-
-/**
  * Create a new view in the application
  */
-export class CreateViewTool implements IClientSideTool {
+export class CreateViewTool implements ITool {
   name = 'create_view';
   description = 'Create a new view in the application';
 
@@ -29,7 +21,7 @@ export class CreateViewTool implements IClientSideTool {
     cssClass?: string[]
   ): Promise<IViewConfiguration> {
     console.log(`Creating view of type: ${type} for page: ${pageId}`);
-    
+
     // Create a basic view configuration
     const view: IViewConfiguration = {
       id: Date.now(),
@@ -66,7 +58,7 @@ export class CreateViewTool implements IClientSideTool {
 /**
  * Create a new page in the application
  */
-export class CreatePageTool implements IClientSideTool {
+export class CreatePageTool implements ITool {
   name = 'create_page';
   description = 'Create a new page in the application';
 
@@ -265,7 +257,7 @@ export class CreatePageTool implements IClientSideTool {
 /**
  * Update a view in the application
  */
-export class UpdateViewTool implements IClientSideTool {
+export class UpdateViewTool implements ITool {
   name = 'update_view';
   description = 'Update a view in the application';
 
@@ -287,7 +279,7 @@ export class UpdateViewTool implements IClientSideTool {
 /**
  * Update a page in the application
  */
-export class UpdatePageTool implements IClientSideTool {
+export class UpdatePageTool implements ITool {
   name = 'update_page';
   description = 'Update a page in the application';
 
@@ -309,7 +301,7 @@ export class UpdatePageTool implements IClientSideTool {
 /**
  * Delete a view from the application
  */
-export class DeleteViewTool implements IClientSideTool {
+export class DeleteViewTool implements ITool {
   name = 'delete_view';
   description = 'Delete a view from the application';
 
@@ -328,7 +320,7 @@ export class DeleteViewTool implements IClientSideTool {
 /**
  * Delete a page from the application
  */
-export class DeletePageTool implements IClientSideTool {
+export class DeletePageTool implements ITool {
   name = 'delete_page';
   description = 'Delete a page from the application';
 
@@ -347,7 +339,7 @@ export class DeletePageTool implements IClientSideTool {
 /**
  * Get the current application configuration
  */
-export class GetApplicationConfigTool implements IClientSideTool {
+export class GetApplicationConfigTool implements ITool {
   name = 'get_application_config';
   description = 'Get the current application configuration';
 
@@ -364,7 +356,7 @@ export class GetApplicationConfigTool implements IClientSideTool {
 /**
  * Get a page by ID
  */
-export class GetPageTool implements IClientSideTool {
+export class GetPageTool implements ITool {
   name = 'get_page';
   description = 'Get a page by ID';
 
@@ -381,7 +373,7 @@ export class GetPageTool implements IClientSideTool {
 /**
  * Get a view by ID
  */
-export class GetViewTool implements IClientSideTool {
+export class GetViewTool implements ITool {
   name = 'get_view';
   description = 'Get a view by ID';
 
@@ -398,7 +390,7 @@ export class GetViewTool implements IClientSideTool {
 /**
  * Preview the application
  */
-export class PreviewApplicationTool implements IClientSideTool {
+export class PreviewApplicationTool implements ITool {
   name = 'preview_application';
   description = 'Preview the application';
 
@@ -414,78 +406,6 @@ export class PreviewApplicationTool implements IClientSideTool {
   }
 }
 
-/**
- * Export the application
- */
-export class ExportApplicationTool implements IClientSideTool {
-  name = 'export_application';
-  description = 'Export the application';
-
-  constructor(private exportCallback: () => Promise<string>) {}
-
-  async execute(): Promise<string> {
-    console.log('Exporting application');
-    
-    // Call the callback to export the application
-    return this.exportCallback();
-  }
-}
-
-/**
- * Import an application
- */
-export class ImportApplicationTool implements IClientSideTool {
-  name = 'import_application';
-  description = 'Import an application';
-
-  constructor(private importCallback: (applicationJson: string) => Promise<IApplicationConfiguration>) {}
-
-  async execute(applicationJson: string): Promise<IApplicationConfiguration> {
-    console.log('Importing application');
-    
-    // Call the callback to import the application
-    return this.importCallback(applicationJson);
-  }
-}
-
-/**
- * Create a client-side tool registry
- */
-export class ClientSideToolRegistry {
-  public tools: Map<string, IClientSideTool> = new Map();
-
-  /**
-   * Register a tool
-   */
-  registerTool(tool: IClientSideTool): void {
-    this.tools.set(tool.name, tool);
-  }
-
-  /**
-   * Get a tool by name
-   */
-  getTool(name: string): IClientSideTool | undefined {
-    return this.tools.get(name);
-  }
-
-  /**
-   * Get all tools
-   */
-  getAllTools(): IClientSideTool[] {
-    return Array.from(this.tools.values());
-  }
-
-  /**
-   * Execute a tool
-   */
-  async executeTool(name: string, ...args: any[]): Promise<any> {
-    const tool = this.getTool(name);
-    if (!tool) {
-      throw new Error(`Tool not found: ${name}`);
-    }
-    return tool.execute(...args);
-  }
-}
 
 /**
  * Create a default tool registry with all tools
@@ -518,9 +438,6 @@ export function createDefaultToolRegistry(
   registry.registerTool(new GetApplicationConfigTool(callbacks.getApplicationConfigCallback));
   registry.registerTool(new GetPageTool(callbacks.getPageCallback));
   registry.registerTool(new GetViewTool(callbacks.getViewCallback));
-  registry.registerTool(new PreviewApplicationTool(callbacks.previewCallback));
-  registry.registerTool(new ExportApplicationTool(callbacks.exportCallback));
-  registry.registerTool(new ImportApplicationTool(callbacks.importCallback));
   
   return registry;
 }

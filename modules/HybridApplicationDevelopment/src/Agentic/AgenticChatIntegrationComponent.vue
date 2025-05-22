@@ -1,233 +1,24 @@
 <template>
     <div class="agentic-chat-container">
-        <div v-if="!isConnected" class="connection-status">
-            <div class="status-message">
-                <p>Connecting to AgenticWebBuilder server...</p>
-                <div class="server-status">
-                    <span>Server URL: {{ serverUrl }}</span>
-                    <span :class="['status-indicator', isConnected ? 'connected' : 'disconnected']"></span>
-                </div>
-                <button @click="connect" class="connect-button">Connect</button>
-            </div>
-        </div>
-        <div v-else class="chat-interface">
-            <div class="chat-header">
-                <h2>Website Builder Assistant</h2>
-                <div class="tools-status">
-                    <span>Available Tools: {{ availableTools.length }}</span>
-                    <button @click="refreshTools" class="refresh-button">Refresh Tools</button>
-                </div>
-            </div>
+   
             <ChatComponent
-                :messages="chatMessages"
-                @message-sent="handleMessageSent"
-                @message-received="handleMessageReceived"
+                :config="props.config"
             >
-                <template #header>
-                    <div class="chat-instructions">
-                        <p>Chat with the AI to create and customize your website. You can:</p>
-                        <ul>
-                            <li>Ask to create a new website</li>
-                            <li>Request specific pages or components</li>
-                            <li>Modify existing elements</li>
-                            <li>Get suggestions for improvements</li>
-                        </ul>
-                    </div>
-                </template>
             </ChatComponent>
-        </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed, inject, watch } from 'vue';
+
 import { ChatComponent } from 'agenticBusinessIntegration';
-import { clientToolsManager } from './ClientTools';
-import { initializeAgenticTools } from './index';
-import { ClientSideToolRegistry } from './Tools/ClientSideTools';
-import { useRuntimeVueApplicationViewModel } from '../composables/useRuntimeVueApplicationViewModel';
+import { IConversationConfiguration } from 'agenticBusinessIntegration/src/UI/AgentInterface/ConversationViewModel';
+
+const props = defineProps({
+    config: Object as () => IConversationConfiguration
+})
 
 // Get the runtime view model
-const viewModel = useRuntimeVueApplicationViewModel();
-
-// Server URL
-const serverUrl = ref('http://localhost:3001');
-
-// Connection status
-const isConnected = ref(false);
-
-// Available tools
-const availableTools = ref([]);
-
-// Client-side tool registry
-const toolRegistry = ref<ClientSideToolRegistry | null>(null);
-
-// Chat messages
-const chatMessages = ref([]);
-
-// Connect to the backend server
-const connect = async () => {
-    try {
-        // Set the server URL
-        clientToolsManager.setServerUrl(serverUrl.value);
-        
-        // Connect to the server
-        await clientToolsManager.connect();
-        isConnected.value = true;
-        
-        // Initialize the agentic tools
-        toolRegistry.value = initializeAgenticTools(viewModel);
-        
-        // Get available tools
-        await refreshTools();
-    } catch (error) {
-        console.error('Failed to connect to server:', error);
-        isConnected.value = false;
-    }
-};
-
-// Refresh the available tools
-const refreshTools = async () => {
-    try {
-        const tools = await clientToolsManager.getAvailableTools();
-        availableTools.value = tools;
-        console.log('Available tools:', tools);
-    } catch (error) {
-        console.error('Failed to get available tools:', error);
-    }
-};
-
-// Execute a tool
-const executeTool = async (toolName: string, argsString: string) => {
-    try {
-        // Parse the arguments
-        let args: any[] = [];
-        if (argsString.trim()) {
-            try {
-                args = JSON.parse(`[${argsString}]`);
-            } catch (e) {
-                // If JSON parsing fails, split by commas
-                args = argsString.split(',').map(arg => arg.trim());
-            }
-        }
-        
-        // Execute the tool
-        if (toolRegistry.value) {
-            const result = await toolRegistry.value.executeTool(toolName, ...args);
-            console.log(`Tool ${toolName} executed successfully:`, result);
-            return result;
-        } else {
-            throw new Error('Tool registry not initialized');
-        }
-    } catch (error) {
-        console.error(`Error executing tool ${toolName}:`, error);
-        throw error;
-    }
-};
-
-// Send a message to the server
-const sendMessageToServer = async (content: string) => {
-    try {
-        // Add the message to the chat
-        const userMessage = {
-            id: Date.now().toString(),
-            role: 'user',
-            content,
-            timestamp: new Date()
-        };
-        chatMessages.value.push(userMessage);
-        
-        // Send the message to the server
-        const response = await clientToolsManager.executeServerTool('chat:message', {
-            text: content,
-            userId: 'user'
-        });
-        
-        // Add the response to the chat
-        const assistantMessage = {
-            id: (Date.now() + 1).toString(),
-            role: 'assistant',
-            content: response.text,
-            timestamp: new Date()
-        };
-        chatMessages.value.push(assistantMessage);
-        
-        return assistantMessage;
-    } catch (error) {
-        console.error('Error sending message to server:', error);
-        throw error;
-    }
-};
-
-// Handle message sent
-const handleMessageSent = async (message) => {
-    console.log('Message sent:', message);
-    
-    // Check if the message is a tool execution command
-    const toolCommandRegex = /^execute_tool\s+(\w+)(?:\s+(.+))?$/i;
-    const match = message.content.match(toolCommandRegex);
-    
-    if (match && toolRegistry.value) {
-        const toolName = match[1];
-        const argsString = match[2] || '';
-        
-        // Log the tool execution
-        console.log(`Tool execution requested: ${toolName} with args: ${argsString}`);
-        
-        try {
-            // Execute the tool
-            const result = await executeTool(toolName, argsString);
-            
-            // Format the result for display
-            const resultStr = typeof result === 'object' ? JSON.stringify(result, null, 2) : String(result);
-            
-            // Add the result to the chat
-            const resultMessage = `Tool ${toolName} executed successfully.\n\nResult:\n\`\`\`json\n${resultStr}\n\`\`\``;
-            
-            // Send the result to the server
-            await sendMessageToServer(resultMessage);
-            
-            console.log(`Tool result:`, result);
-        } catch (error) {
-            console.error(`Error executing tool:`, error);
-            
-            // Format the error for display
-            const errorMessage = `Error executing tool ${toolName}: ${error instanceof Error ? error.message : String(error)}`;
-            
-            // Send the error to the server
-            await sendMessageToServer(errorMessage);
-        }
-    } else {
-        // Send the message to the server
-        await sendMessageToServer(message.content);
-    }
-};
-
-// Handle message received
-const handleMessageReceived = (message) => {
-    console.log('Message received:', message);
-};
-
-// Connect on component mount
-onMounted(async () => {
-    try {
-        await connect();
-        
-        // Initialize the chat with a welcome message
-        setTimeout(async () => {
-            await sendMessageToServer('Hello, I would like to create a website.');
-        }, 1000); // Wait a second for everything to initialize
-    } catch (error) {
-        console.error('Failed to connect on mount:', error);
-    }
-});
-
-// Disconnect on component unmount
-onUnmounted(() => {
-    clientToolsManager.disconnect();
-});
 </script>
-
 <style scoped>
 .agentic-chat-container {
     display: flex;

@@ -2,6 +2,7 @@
     
           <template>
             <BaseViewTreeRenderer :view="useViewConfiguration(props.contextid, viewId).view.value" :contextid="props.contextid" :resolver="resolver" />
+            <NuxtPage />
           </template>
       
       

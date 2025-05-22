@@ -5,14 +5,11 @@
 
             </div>
 
-            <div class="chat-messages">
+            <div class="chat-messages" id="chatMessagesContainer" :ref="el">
                 <div v-for="message in viewModel.history.value.entries" :key="message.id" class="message">
                     <div :class="getMessageClass(message.role)">
+                        <div class="message-content" v-html="renderMarkdownHTML(message.content)"></div>    
                         
-
-                        <div class="message-content">{{ message.content }}</div>    
-                        
-
                     </div> 
                 </div>
             </div>
@@ -23,21 +20,27 @@
 
 
 <script setup lang="ts">
-import { Ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { ConversationViewModel } from './ConversationViewModel';
-import { IAgent } from '../../Agents/IAgent';
-import { IFrontLineAgent } from '../../Agents/IFrontLineAgent';
+import { IChatConfiguration } from './IChatConfiguration'
+import MarkdownIt from 'markdown-it';
 
 const props = defineProps({
-    agents: {
-        type: Object as () => Array<IAgent>,
-        required: false
-    },
-    frontlineAgent: {
-        type: Object as () => IFrontLineAgent,
-        required:false
+    config: {
+        type: Object as () => IChatConfiguration,
+        required: true,
+        default(rawProps) {
+            return {
+                initMessageName: "init",
+                tryInterruptMessageName: "tryinterrupt",
+                answerMessageName: "answer"
+            }
+        }
     }
 });
+const viewModel = new ConversationViewModel(props.config);
+const el = ref(null)
+const md = new MarkdownIt();
 
 function getMessageClass(messageRole: string){
     if(messageRole == 'user'){
@@ -47,8 +50,33 @@ function getMessageClass(messageRole: string){
     }
 }
 
+function isElementVerticallyScrollable(el: HTMLElement): boolean {
+  if (!el) {
+    console.warn(`Element  "${el}" not found.`);
+    return false;
+  }
+  return el.scrollHeight > el.clientHeight;
+}
 
-const viewModel = new ConversationViewModel(props.agents, props.frontlineAgent);
+function renderMarkdownHTML(markdown: string){
+    return md.render(markdown);
+}
+
+onMounted(() => {
+    watch(viewModel.history.value.entries, () => {
+        const el = document.getElementById("chatMessagesContainer");
+        console.log(23333)
+        setTimeout(() => {
+            el?.scroll({
+            top: el.scrollHeight,
+            behavior:'smooth'
+        })
+        }, 10)
+        
+    })
+})
+
+
 
 
 </script>
@@ -62,13 +90,18 @@ const viewModel = new ConversationViewModel(props.agents, props.frontlineAgent);
     position: relative;
     height: 100%;
     min-width: 300px;
-
+    background-color: #2B2B2B;
+    color:white;
     .chat-messages{
         width:100%;
         height: 100%;
-        
+        overflow-y: scroll;
+        margin-bottom: 50px;
         .chat-message{
             margin-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            min-width: 40px;
         }
         .user-message{
             align-self:end;
@@ -76,6 +109,8 @@ const viewModel = new ConversationViewModel(props.agents, props.frontlineAgent);
             text-align: right;
             width: fit-content;
             margin-left: auto;
+            background-color: #2B2B2B;
+            border-radius: 7px;
         }
         .assistant-message{
             align-self:start;

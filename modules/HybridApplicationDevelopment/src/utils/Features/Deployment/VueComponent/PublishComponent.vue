@@ -18,6 +18,7 @@
                 </q-tab-panel>
                 <q-tab-panel name="Download" label="Download">
                     <DownloadComponent
+                    @download-config="service.DownloadJson(viewModel.GetConfiguration())"
                     @download-project="service.DownloadProject(viewModel.GetConfiguration(), viewModel.languageViewModel.GetLanguageFileStrings())"
                     @download-bundle="service.Download(viewModel.GetConfiguration(), viewModel.languageViewModel.GetLanguageFileStrings())"
                     ></DownloadComponent>

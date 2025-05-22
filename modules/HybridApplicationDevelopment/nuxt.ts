@@ -21,6 +21,12 @@ export default defineNuxtModule({
       } else {
         console.warn('Parent /Home route not found')
       }
+      pages.push({
+          name: 'aihelper',
+          path: '/newwebsite',
+          file: resolver.resolve('src/Agentic/AgenticWebsiteCreationChatComponent.vue')
+      })
+     
     }))
   }
 })

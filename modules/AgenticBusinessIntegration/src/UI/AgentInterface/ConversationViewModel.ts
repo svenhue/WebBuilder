@@ -1,32 +1,64 @@
-import { IAgent } from "../../Agents/IAgent";
-import { IFrontLineAgent } from "../../Agents/IFrontLineAgent";
-import { OrchestrationAgent } from "../../Agents/OrchestrationAgent";
+
 import { IChatHistory } from "../../Data/IChatHistory";
-import { ClaudeApi } from "../../LLM/ClaudeApi";
+import { WSClient } from '../../ws.client/WSClient'
 import { ref, Ref } from 'vue';
-export class ConversationViewModel {
+import { ILLMAnswer } from './types'
+import { ITool } from "../../Tools/ITool";
+import { ClientSideToolRegistry } from '../../Tools/client/ClientSideToolRegistry'
+import { IClientSideActionSuggestion } from '../../Tools/client/IClientSideActionSuggestion'
+
+export interface IConversationConfiguration{
+    serverUrl: string
+    initMessageName: string
+    tryInterruptMessageName: string
+    answerMessageName: string,
+    getConversationDataName: string,
+    optionalHandleLLMAnswerCallback?: (answer: ILLMAnswer) => void  
+    clientSideTools: Array<ITool>
+}
+
+export class ConversationViewModel extends WSClient{
     
     public history: Ref<IChatHistory>;
-    private orchestrator: IFrontLineAgent;
     public newMessage = ref<string>("");
+    private thread_id: string
+    private config: IConversationConfiguration
+    private toolRegistry: ClientSideToolRegistry
+    constructor(
+        config: IConversationConfiguration
+    ) {
+        super(config.serverUrl)
+        this.toolRegistry = new ClientSideToolRegistry()
 
-    constructor(agents: Array<IAgent>, frontlineAgent? : IFrontLineAgent) {
+        if(config.clientSideTools){
+            for(const tool of config.clientSideTools){
+                this.toolRegistry.registerTool(tool)
+            }
+        }
+
+        this.config = config;
         this.history = ref<IChatHistory>({
             entries: []
 
         });
-        console.log(frontlineAgent)
-        this.orchestrator =  frontlineAgent != undefined ? new frontlineAgent(
-            [
-                ...agents
-            ]
+        this.init(config)
+      
+    }
+    private async init(config: IConversationConfiguration){
+        this.connect()
+        //todo userId session
+        this.socket.emit(config.initMessageName, {userId: "Hello World"})
 
-        ) : new OrchestrationAgent(
-            [
-                ...agents,
-            ],
-            new ClaudeApi()
-        );
+        this.socket.on(config.getConversationDataName, (data: {thread_id: string}) => {
+            if(data.thread_id == undefined){
+                throw new Error("Need thread-id")
+            }
+            this.thread_id = data.thread_id
+        })
+        //get stream messages
+        this.socket.on(config.answerMessageName, (answer) => {
+            this.handleLMMAnswer(answer)
+        })
     }
     public async addMessage(message: string) {
         this.newMessage.value = "";
@@ -36,18 +68,43 @@ export class ConversationViewModel {
             timestamp: new Date(),
         });
 
-        const answer = await this.getAnswerAsync(message);
+        await this.tryInterruptAssistant(message);
         
-        this.history.value.entries.push({
-            role: "assistant",
-            content: answer,
-            timestamp: new Date(),
-        });
     }
 
-    private async getAnswerAsync(message: string): Promise<string> {
-        const answer = await this.orchestrator.getAnswerAsync(message);
-        return answer;
+    private async tryInterruptAssistant(message: string){
+        this.socket.emit(this.config.tryInterruptMessageName, {
+            thread_id: this.thread_id,
+            userMessage: message
+        })
+    }
+
+    private handleLMMAnswer(answer: ILLMAnswer){
+        console.log(answer)
+        if(answer?.userMessage){
+            this.history.value.entries.push({
+                id: new Date().toISOString(),
+                role: 'assistant',
+                content: answer.userMessage,
+                timestamp: new Date()
+            })
+        }
+        if(answer.clientSideToolSuggestions){
+            for(const sugg of answer.clientSideToolSuggestions){
+                this.executeClientSideTool(sugg)
+            }
+        }
+        if(this.config.optionalHandleLLMAnswerCallback){
+            this.config.optionalHandleLLMAnswerCallback(answer)
+        }
+    }
+
+    private executeClientSideTool(sugg: IClientSideActionSuggestion){
+        if(sugg.needsUserConfirmation){
+                    //todo
+        }else{
+            this.toolRegistry.executeTool(sugg.action.toolName, ...sugg.action.input)
+        }
     }
 
 }

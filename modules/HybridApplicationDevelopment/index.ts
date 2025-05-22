@@ -60,7 +60,7 @@ export { registerClientSideTools } from './src/Agentic/Tools/ClientSideTools'
 export { useRuntimeVueApplicationViewModel } from './src/composables/useRuntimeVueApplicationViewModel'
 
 // Export WebsiteCreationAgent
-export { WebsiteCreationAgent } from './src/Agentic/WebsiteAgent'
+
 
 export {
 

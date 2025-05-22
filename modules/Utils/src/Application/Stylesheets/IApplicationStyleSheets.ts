@@ -3,5 +3,8 @@
 //@ts-nocheck
 export interface IApplicationStyleSheets{
     css: string
-    colors: Array<object>
+    colors: Array<{
+        key: string,
+        value: string
+    }>
 }

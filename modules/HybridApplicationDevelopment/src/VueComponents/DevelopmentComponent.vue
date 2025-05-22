@@ -36,8 +36,10 @@
                         
                     </TreePathComponent>
                 </Teleport>
+                <ApplicationDevelopmentToolbar  :view-model="viewModel" :contextid="viewModel?.currentPage?.value" :route="useRoute()">
+
+                </ApplicationDevelopmentToolbar>
                 <div
-            
                 class="component-navigation-wrapper"
                 >
                     <div
@@ -47,10 +49,8 @@
                     @mousedown="(e) => tryFocus(e, true)"
                     :id="'developmentcomponent_' + viewModel.model.contextid"
                 >
-                    <ApplicationDevelopmentToolbar  :view-model="viewModel" :contextid="viewModel?.currentPage?.value" :route="useRoute()">
-
-                    </ApplicationDevelopmentToolbar>
-                    <div class="app-container">
+                    
+                    
                     <BackgroundFacadeComponent :contextid="viewModel?.model?.contextid" class="appbase"ref="facade" v-if="viewModel?.currentPage?.value != -1"  id="development-container">
                         <template #default>
                             <div :style="{
@@ -63,15 +63,9 @@
                                 v-for="page of viewModel.GetPages().value" :key="page"
                                 id="mountpoint"
                                 :style="{
-                                    width: '100%',
-                                    height: '100%',
-                                
                                     display: viewModel?.currentPage?.value == page ? '' : 'none'
-                                
                                 }"
                                 >
-                            
-                            
                                 <KeepAlive>
                                     <ComponentTreeBase
                                     v-if="viewModel?.currentPage?.value == page"
@@ -89,9 +83,6 @@
                             Oops! Nothing to see here. Please select a page to start developing.
                         </div>
                     </div>
-                </div>
-                    
-            
                     </div>
                 </div>
                 
@@ -232,39 +223,27 @@ defineExpose({
    
     position: relative;
     width: 100%;
-    height: 100%;
-    
+    height: 95.3vh;
+    overflow: hidden;
     display:flex;
-    
+
     .component-navigation-wrapper{
         width: 100%;
         height: 100%;
         position: relative;
+        
        
         .component-wrapper{
             position: relative;
             width: 100%;
             height: 100%;
             margin-top: 10px;
-          
+       
             .app-container{
-            
-           
-            margin:auto;
-            position: relative;
-            width:80%;
-      
-           
-
-            .appbase{
-                
-                position: inherit;
-                left: 50%;
-                transform: translate(-50%);
-                
-            
-        }
-        }
+                margin:auto;
+                position: relative;
+                width:80%;
+            }
         }
         
         

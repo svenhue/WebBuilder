@@ -62,7 +62,9 @@ onMounted(() => {
     overflow-block: scroll;
     background-color: theme('colors.brightgrey');
     min-width: 200px;
-    
+    position: inherit;
+                    left: 50%;
+                    transform: translate(-50%);
     .background-facade{ 
 
 

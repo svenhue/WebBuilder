@@ -8,6 +8,7 @@ import { IBOInstance } from '../Data/IBOInstance.js';
 export const useDataStore = defineStore('data', () => {
 
     const containers = new Array<IDataContainer>()
+    
     const boTypes = useApplicationStore().boDeclarations?.boTypes
    
     function AddContainer(container: IDataContainer){

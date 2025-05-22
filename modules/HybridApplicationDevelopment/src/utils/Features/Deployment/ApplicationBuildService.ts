@@ -43,6 +43,10 @@ export class ApplicationBuildService extends WebContainerService{
             
 
     }
+    public async DownloadJson(config: IApplicationConfiguration){
+       var blob = new Blob([JSON.stringify(config)], {type: "text/plain;charset=utf-8"});
+        FileSaver.saveAs(blob, 'config.json');
+    }
     public async DownloadProject(config: IApplicationConfiguration, files: Array<ILanguageFileString>){
         if(this.isReady.value != true && config == undefined){
             throw new Error("Container isnt ready")
