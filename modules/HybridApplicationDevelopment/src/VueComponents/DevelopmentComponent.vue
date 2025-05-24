@@ -1,25 +1,44 @@
 
 <template>
     <ClientOnly>
-        <q-layout v-if="viewModel?.isReady.value">
-            <q-header>
-            <div id="dev-toolbar">
+        <q-layout v-if="viewModel?.isReady.value" view="hHh lpr fFr" >
+            <q-header class="dev-toolbar-header">
+                <div id="dev-toolbar">
+                    
+                    <ApplicationDevelopmentToolbar  :view-model="viewModel" :contextid="viewModel?.currentPage?.value" :route="useRoute()">
 
-            </div>
-        </q-header>
+                    </ApplicationDevelopmentToolbar>
+
+                </div>
+            </q-header>
+            <q-footer elevated class="dev-toolbar-footer">
+                
+                    123
+                    <TreePathComponent
+                    @focus-view="(id) => viewModel.focusView(id, true)">
+                        
+                    </TreePathComponent>
+           
+            </q-footer>
         <q-page-container>
-            <q-btn dense rounded :icon="optionsBar == true ? 'close' : 'menu_open'"  no-caps  @click="optionsBar = !optionsBar"
-                            :style="buttonStyle">
-                </q-btn>
+            <q-btn 
+            dense 
+           
+            :icon="optionsBar == true ? 'chevron_right' : 'menu_open'"  
+            no-caps  
+            @click="optionsBar = !optionsBar"
+            :style="buttonStyle">
+            </q-btn>
             <q-drawer side="right"  v-model="optionsBar" :width="350" no-swipe-close no-swipe-backdrop no-swipe-open >
                         
-                            <DevelopmentOptionsDrawer
-                            @focusView="(view) => viewModel.focusView(view, true)"
-                            @updateelement="(values) => viewModel.UpdateFocusedElement(values)"
-                            :contextid="viewModel.model.contextid"
-                            :currentElement="viewModel.GetFocussedElement()">
-                            </DevelopmentOptionsDrawer>
-                        </q-drawer>
+                <DevelopmentOptionsDrawer
+                @focusView="(view) => viewModel.focusView(view, true)"
+                @updateelement="(values) => viewModel.UpdateFocusedElement(values)"
+                :contextid="viewModel.model.contextid"
+                :currentElement="viewModel.GetFocussedElement()">
+                </DevelopmentOptionsDrawer>
+
+            </q-drawer>
             <div class="development-root-component" id="XXX" ref="XXX">
                 <LeftDevelopmentOptionsBar 
                 :viewModel="viewModel"
@@ -30,15 +49,7 @@
                 @add-component="(e, type) =>{leftBar.CloseAllTabs(), StartAddNewElement(e, type)}">
                     
                 </LeftDevelopmentOptionsBar>
-                <Teleport :to="'body'">
-                    <TreePathComponent
-                    @focus-view="(id) => viewModel.focusView(id, true)">
-                        
-                    </TreePathComponent>
-                </Teleport>
-                <ApplicationDevelopmentToolbar  :view-model="viewModel" :contextid="viewModel?.currentPage?.value" :route="useRoute()">
-
-                </ApplicationDevelopmentToolbar>
+                
                 <div
                 class="component-navigation-wrapper"
                 >
@@ -96,12 +107,14 @@
                 :contextid="viewModel?.currentPage?.value"
                 :element="viewModel.GetFocussedElement().value"
                 @delete-element="() => viewModel.DeleteElement(viewModel.GetFocussedElement().value?.id)"
-                :targetId="'development-container'">
+                :targetId="'development-container'"
+                >
 
                 </DevelopmentContextBarComponent>
                 <div :id="'developmentcomponent_container' + viewModel?.model.name">
 
                 </div>
+                
             </div>
         </q-page-container>
     </q-layout>
@@ -109,7 +122,7 @@
 </template>
 
 <script setup lang="ts">   
-//@ts-ignore 
+
 import { defineExpose, ref, computed, Ref } from 'vue';
 import { useRoute } from 'vue-router'
 import { RunTimeVueApplicationViewModel } from '../ViewModels/RuntimeVueApplicationViewModel'
@@ -195,23 +208,13 @@ function tryFocus(e, fixed = false){
 }
 const buttonStyle = computed(() => {
     if(optionsBar.value == true){
-        return {position:'absolute', zIndex:1001, top:'50px', right:'355px', width:'30px',  height:'30px'}
+        return {borderRadius: '15px',   border: '1px solid #1E1E2F', position:'absolute', zIndex:1001, top:'50px', right:'352px', width:'40px',  height:'40px'}
     }
     else{
-        return {position:'absolute', top:'50px', right:'10px', width:'30px', height:'20px', zIndex:1001}
+        return {borderRadius: '15px', border: '1px solid #1E1E2F', position:'absolute', top:'50px', right:'3px', width:'40px', height:'40px', zIndex:1001}
     }
-})
-
-const height = computed(() => {
-    const el = XXX.value
-
-    if(el == undefined){
-        return "80%"
-    }
-    return el?.offsetHeight ?? 0 - 136 + 'px'
 })
 defineExpose({
-       
         deleteFocussedView: () => viewModel.deleteFocussedView()
     })
 
@@ -219,6 +222,14 @@ defineExpose({
 </script>
 
 <style scoped lang="scss">
+
+.dev-toolbar-header{
+    background-color: theme('colors.primary-dark');
+}
+.dev-toolbar-footer{
+    background-color: theme('colors.primary-dark');
+    height: 30px;
+}
 .development-root-component{
    
     position: relative;
@@ -237,7 +248,6 @@ defineExpose({
             position: relative;
             width: 100%;
             height: 100%;
-            margin-top: 10px;
        
             .app-container{
                 margin:auto;

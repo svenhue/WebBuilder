@@ -1,7 +1,6 @@
 <template>
 
-    <Teleport v-if="ready == true" to="#dev-toolbar" class="dev-toolbar">
-
+    <div v-if="ready == true" to="#dev-toolbar" class="dev-toolbar">
         <div :style="{display: 'flex', alignItems: 'center'}">
                 <div>
                     <q-btn dense icon="undo" @click="() => viewModel.repository.Undo(viewModel.model.contextid)" :disable="history.undoStack.value?.values.length > 0 ? false : true">
@@ -33,7 +32,7 @@
 
                     </DeploymentComponent>
                 </div>
-    </Teleport>
+            </div>
 </template>
 
 <script setup lang="ts">
