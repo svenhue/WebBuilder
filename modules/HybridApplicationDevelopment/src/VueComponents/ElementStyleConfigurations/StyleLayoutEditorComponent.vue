@@ -12,10 +12,14 @@
         <q-btn dense unelevated 
         :class="styles.display == 'block' ? 'c-darkgrey' : 'c-brightgrey'"
         :style="{
-            display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
+            display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'
+            }" 
         @click="displayIsBlock = !displayIsBlock,   updateDisplay(displayIsBlock == true ? 'block' : '')"
         v-model="displayIsBlock">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/blockdisplay.svg" color="white">
+                    <q-tooltip>
+                        Block
+                    </q-tooltip>
                 </q-img>
         </q-btn>
     </td> 
@@ -27,6 +31,9 @@
         @click="displayIsFlex = !displayIsFlex,   updateDisplay(displayIsFlex == true ? 'flex' : '')"
         v-model="displayIsFlex">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/flexlayout.svg">
+                    <q-tooltip>
+                        Flex
+                    </q-tooltip>
                 </q-img>
         </q-btn>
     </td>
@@ -38,6 +45,9 @@
         @click="displayIsGrid = !displayIsGrid,   updateDisplay(displayIsGrid == true ? 'grid' : '')"
         v-model="displayIsGrid">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/GridLayout.svg">
+                    <q-tooltip>
+                        Grid
+                    </q-tooltip>
                 </q-img>
         </q-btn>
     </td>
@@ -49,6 +59,9 @@
         @click="displayIsInlineBlock = !displayIsInlineBlock,   updateDisplay(displayIsInlineBlock == true ? 'inline-block' : '')"
         v-model="displayIsInlineBlock">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/inlineblockdisplay.svg">
+                    <q-tooltip>
+                        Inline Block
+                    </q-tooltip>
                 </q-img>
         </q-btn>
 
@@ -61,6 +74,9 @@
         @click="displayIsInline = !displayIsInline,   updateDisplay(displayIsInline == true ? 'inline' : '')"
         v-model="displayIsInline">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/inlinedisplay.svg">
+                    <q-tooltip>
+                        Inline Flex
+                    </q-tooltip>
                 </q-img>
         </q-btn>
         

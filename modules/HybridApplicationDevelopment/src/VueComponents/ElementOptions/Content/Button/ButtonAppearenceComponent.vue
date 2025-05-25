@@ -3,6 +3,7 @@
         <q-list dense>
             <q-item dense>
                 <q-checkbox
+                
                 label="Unelevated"
                 @update:model-value="(val) => $emit('updateElement', [{key: 'appearence.unelevated', value: val}])"
                 :model-value="currentElement?.appearence?.unelevated">

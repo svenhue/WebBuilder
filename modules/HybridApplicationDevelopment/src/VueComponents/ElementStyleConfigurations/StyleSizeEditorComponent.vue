@@ -17,6 +17,9 @@
                      hide-bottom-space  dense class="spec-input">
                         <template v-slot:append>
                             <q-select dense 
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                             v-on:update:model-value="(v) => UpdateStyle('style.width', (styles.width + v))"
                                 v-model="styles.widthUnit"
                                 :options="styleManager.sizeUnits">
@@ -39,6 +42,9 @@
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
                             <q-select dense 
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                             @update:model-value="(v) => UpdateStyle('style.height', (styles.height + v))"
 
                                 v-model="styles.heightUnit"
@@ -64,6 +70,9 @@
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
                             <q-select dense 
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                             class="sp"
                             @update:model-value="(v) => UpdateStyle('style.minWidth', (styles.minWidth + v))"
                                 v-model="styles.minWidthUnit"
@@ -86,6 +95,9 @@
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
                             <q-select dense 
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                             @update:model-value="(v) => UpdateStyle('style.minHeight', ( styles.minHeight + v))"
                                 v-model="styles.minHeightUnit"
                                 :options="styleManager.sizeUnits">
@@ -110,6 +122,9 @@
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
                             <q-select dense 
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                             @update:model-value="(v) => UpdateStyle('style.maxWidth', (v + styles.maxWidth))"
 
                                 v-model="styles.maxWidthUnit"
@@ -134,6 +149,9 @@
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
                             <q-select dense 
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                             @update:model-value="(v) => UpdateStyle('style.maxHeight', (styles.maxHeight + v))"
                                 v-model="styles.maxWidthUnit"
                                 :options="styleManager.sizeUnits">
@@ -183,7 +201,13 @@
                 </td>
 
                 <td colspan="3">
-                    <q-select dense @update:model-value="(valuee) => emits('updateElement', [{key: 'style.objectFit', value: valuee}])" 
+                    <q-select 
+                    :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
+                    popup-content-class="fit-dropdown"
+                    class="fit-dropdown"
+                    dense @update:model-value="(valuee) => emits('updateElement', [{key: 'style.objectFit', value: valuee}])" 
                     v-model="styles.objectFit" :options="styleManager.objectFits">
 
                     </q-select>
@@ -310,5 +334,9 @@ function UpdateStyle(key: string, value: string){
      .sp{
          width: min-content;
      }
+     
  }
+ .fit-dropdown{
+        background-color: theme('colors.darkgrey');
+     }
 </style>

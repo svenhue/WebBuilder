@@ -16,6 +16,9 @@
                                 v-model="styles.borderRadiusAll">
                                     <template v-slot:append>
                                         <q-select dense 
+                                        :popup-content-style="{
+                                            backgroundColor: '#57595d'
+                                        }"
                                             v-model="styles.borderRadiusAllUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -35,6 +38,9 @@
                                 v-model="styles.borderRadiusTopLeft">
                                     <template v-slot:append>
                                         <q-select dense 
+                                        :popup-content-style="{
+                                            backgroundColor: '#57595d'
+                                        }"
                                             v-model="styles.borderRadiusTopLeftUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -50,6 +56,9 @@
                                 v-model="styles.borderRadiusTopRight">
                                     <template v-slot:append>
                                         <q-select dense 
+                                        :popup-content-style="{
+                                            backgroundColor: '#57595d'
+                                        }"
                                             v-model="styles.borderRadiusTopRightUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -67,6 +76,9 @@
                                 v-model="styles.borderRadiusBottomLeft">
                                     <template v-slot:append>
                                         <q-select dense 
+                                        :popup-content-style="{
+                                            backgroundColor: '#57595d'
+                                        }"
                                             v-model="styles.borderRadiusBottomLeftUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -83,6 +95,9 @@
                                 v-model="styles.borderRadiusBottomRight">
                                     <template v-slot:append>
                                         <q-select dense 
+                                        :popup-content-style="{
+                                            backgroundColor: '#57595d'
+                                        }"
                                             v-model="styles.borderRadiusBottomRightUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -121,6 +136,9 @@
                             Style
                         </div>
                         <q-select dense
+                        :popup-content-style="{
+                                            backgroundColor: '#57595d'
+                                        }"
                         :style="{width: '120px'}"
                         @update:model-value="(v) => updateSpecificBorder('Style', v)"
                         :options="styleManager.borderStyles"
@@ -139,6 +157,9 @@
                                 v-model="currentBorderWidth">
                                     <template v-slot:append>
                                         <q-select dense 
+                                        :popup-content-style="{
+                                            backgroundColor: '#57595d'
+                                        }"
                                             v-model="currentBorderWidthUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>

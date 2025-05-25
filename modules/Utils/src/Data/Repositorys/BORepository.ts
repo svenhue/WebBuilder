@@ -63,6 +63,8 @@ export class BORepository implements IRepository{
                                 throw new Error("Object merge not implemented")
                         }else if(typeof old == 'number' || typeof old == 'string'){
                                 set(oldValue, keyValuePair.key, keyValuePair.value)
+                        }else if(typeof old == 'boolean'){
+                                 set(oldValue, keyValuePair.key, keyValuePair.value)
                         }
                         else{
                                 throw new Error(`${typeof old} merge not implemented`)

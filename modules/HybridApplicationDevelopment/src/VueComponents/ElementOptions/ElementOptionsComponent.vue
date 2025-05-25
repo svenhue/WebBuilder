@@ -1,5 +1,5 @@
 <template>
-    <div v-if="viewCopy?.id != undefined">
+    <div v-if="viewCopy?.id != undefined" :style="{color: 'white!important'}">
         <div>
             <q-expansion-item dense label="Content" v-if="optionsComponent != undefined">
                 <component :is="optionsComponent" @updateElement="(values) => emits('updateElement', values)" :currentElement="viewCopy"></component>
@@ -24,6 +24,7 @@
                 " :id="'jsoneditor_1'">
                 
                     <TextInputEditorComponent
+                    :style="{color: 'white'}"
                     :contextid="viewCopy?.contextid"
                     :requestingComponent="view.value"
                     :mode="'onlyExpression'"
@@ -267,5 +268,6 @@ function UpdateShowIf(val){
 
 .editor-input-label{
     font-size: medium;
+    color:white;
 }
 </style>

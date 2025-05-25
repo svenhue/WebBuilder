@@ -235,7 +235,7 @@ defineExpose({
    
     position: relative;
     width: 100%;
-    height: 95.3vh;
+    height: 91vh;
     overflow: hidden;
     display:flex;
 

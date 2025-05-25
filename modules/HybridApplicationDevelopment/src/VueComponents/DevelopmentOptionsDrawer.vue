@@ -5,7 +5,7 @@
       width: '100%',
       border: '1px solid black',
       height: '100%',
-      color: 'white'
+      color: 'white!important'
     }"
   >
     <div>

@@ -7,6 +7,9 @@
                 Position
             </div>
             <q-select dense
+                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
             :style="{width: '120px'}"
             @update:model-value="(v) => emits('updateElement', [{key:'style.position', value: v}])"
             :options="styleManager.positionValues"
@@ -17,6 +20,9 @@
         </div>
         <div v-show="styles.position == 'relative' || styles.position == 'absolute'">
             <q-select
+                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
             dense
             v-model="positionPairKey"
             @update:model-value="(v) => updatePositionPair(v)"
@@ -39,6 +45,9 @@
                      hide-bottom-space  dense class="spec-input">
                         <template v-slot:append>
                             <q-select dense 
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                             @update:model-value="(v) => emits('updateElement', [{key:'style.left', value: styles.left + v}])"
 
                                 v-model="styles.leftUnit"
@@ -61,6 +70,9 @@
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
                             <q-select dense 
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                             @update:model-value="(v) => emits('updateElement', [{key:'style.right', value:  styles.right +v}])"
 
                                 v-model="styles.rightUnit"
@@ -87,6 +99,9 @@
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
                             <q-select dense 
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                             class="sp"
                             @update:model-value="(v) => emits('updateElement', [{key:'style.top', value:styles.top + v }])"
 
@@ -110,7 +125,10 @@
                     color="fontwhite"
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
-                            <q-select dense 
+                            <q-select dense
+                                 :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }" 
                             @update:model-value="(v) => emits('updateElement', [{key:'style.bottom', value: styles.bottom + v }])"
 
                                 v-model="styles.bottomUnit"

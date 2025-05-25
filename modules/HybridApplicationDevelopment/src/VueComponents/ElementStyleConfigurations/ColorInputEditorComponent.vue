@@ -8,15 +8,20 @@
             {{  label  }}
         </template>
         <template v-slot:after>
-            <q-btn-dropdown auto-close>
-            <q-list dense>
-                <q-item dense clickable @click="updateColor(color.key)" v-for="color in avaibleColors" :key="color.label">
-                    <q-item-section>
-                            {{ color.label }}
-                    </q-item-section>
-                </q-item>
-            </q-list>
-        </q-btn-dropdown>
+            <q-btn-dropdown  auto-close dense>
+                <q-list dense class="dropdown-list">
+                    <q-item dense clickable @click="updateColor(color.key)" v-for="color in avaibleColors" :key="color.label">
+                        <div 
+                        :style="{backgroundColor: color.value, marginTop: '8px', marginRight: '5px', width: '10px', height: '10px'}">
+                      
+                        </div>
+                        <q-item-section>
+                                {{ color.label }}
+                        </q-item-section>
+                        
+                    </q-item>
+                </q-list>
+            </q-btn-dropdown>
         </template>
 
     </q-input>
@@ -59,3 +64,10 @@ function updateColor(val){
     emits('updateColor', `{{ colors.${val} }}` )
 }
 </script>
+
+<style lang="scss" scoped>
+
+.dropdown-list{
+    background-color: theme('colors.brightgrey');
+}
+</style>

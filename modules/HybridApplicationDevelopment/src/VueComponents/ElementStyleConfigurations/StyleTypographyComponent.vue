@@ -10,6 +10,9 @@
                 </td>
                 <td colspan="4">
                     <q-select dense
+                         :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
                     autocomplete="true"
                     use-input
                     new-value-mode="add"
@@ -56,7 +59,11 @@
                     @update:model-value="(v) => emits('updateElement', [{key: 'style.fontSize', value: v + styles.fontSizeUnit}])"
                     >
                     <template v-slot:append>
-                                <q-select dense 
+                                <q-select 
+                                     :popup-content-style="{
+                                    backgroundColor: '#57595d'
+                                }"
+                                dense 
                                 hide-dropdown-icon
                                 :style="{width: '25px'}"
                                 v-model="styles.fontSizeUnit"
@@ -80,6 +87,9 @@
                     >
                     <template v-slot:append>
                                 <q-select dense 
+                                :popup-content-style="{
+                                    backgroundColor: '#57595d'
+                                }"
                                 hide-dropdown-icon
                                 :style="{width: '25px'}"
                                 v-model="styles.lineHeightUnit"

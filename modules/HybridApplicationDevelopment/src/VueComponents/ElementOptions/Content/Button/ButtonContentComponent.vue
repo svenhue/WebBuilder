@@ -1,6 +1,8 @@
 <template>
     <div>
         <q-input dense 
+     
+   
         :model-value="currentElement?.content" 
         @update:model-value="(val) => $emit('updateElement', [{key: 'content', value: val}])">
             <template v-slot:before>

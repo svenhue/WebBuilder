@@ -11,11 +11,7 @@
             <q-btn-dropdown dense>
 
             </q-btn-dropdown>
-
-        
-
-        </div>
-       
+        </div>   
     </div>
 
 </template>
