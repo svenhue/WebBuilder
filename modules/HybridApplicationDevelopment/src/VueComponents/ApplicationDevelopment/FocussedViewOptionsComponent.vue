@@ -3,7 +3,6 @@
         <div >
             <q-expansion-item 
             close
-            
             hide-expand-icon
             v-model="isExpanded"
             v-if="focussedView != undefined"
@@ -13,16 +12,6 @@
             header-class="f-component-options-header" 
             
             :label="focussedView?.tag.substring(focussedView?.tag.lastIndexOf(':')+ 1)">
-                <q-list dense>
-                    <q-item dense 
-                    @click="service.SetFocussedView(parent)"
-                    v-for=" parent in tree" :key="parent.id">
-                        <q-item-section
-                        @click="service.SetFocussedView(parent)">
-                            <q-item-label>{{ parent.tag.substring(parent.tag.lastIndexOf(':')+ 1) }}</q-item-label>
-                        </q-item-section>
-                    </q-item>
-                </q-list>
             </q-expansion-item>
         </div>
 
@@ -38,7 +27,7 @@
 <script setup lang="ts">
 import { IViewConfiguration, BaseServiceProvider, waitForElm } from 'alphautils';
 import { FocussedViewContextService } from '../../utils/Services/Designer/FocussedViewContextService';
-import { reactive, watch, ref, computed } from 'vue';
+import { reactive, watch,onMounted, ref, computed } from 'vue';
 
 
 const service = BaseServiceProvider.Service<FocussedViewContextService>('FocussedViewContextService') as FocussedViewContextService
@@ -75,6 +64,15 @@ watch(hoveredView, (newVal) => {
     SetStyle(newVal, true);
 })
 
+onMounted(() => {
+    waitForElm('#development-container').then((e) => {
+        e.addEventListener('scroll', handleScroll)
+    })
+    function handleScroll(){
+        SetPosition(focussedView.value)
+        SetPosition(hoveredView.value, true) 
+    }
+})
 
 
 function SetStyle(view: IViewConfiguration, hovered = false){
@@ -102,12 +100,7 @@ function SetStyle(view: IViewConfiguration, hovered = false){
     if(view == undefined){
         return;
     }
-
-   
-
     SetPosition(view);
-
-
 }
 
 function SetPosition(view: IViewConfiguration, hovered = false){

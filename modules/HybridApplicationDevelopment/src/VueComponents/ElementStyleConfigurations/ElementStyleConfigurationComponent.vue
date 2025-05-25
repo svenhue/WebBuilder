@@ -3,6 +3,8 @@
         <q-list dense>
             <q-expansion-item
             dense
+            :expand
+            :expand-icon-class="'expand-icon-class'"
             label="Colors">
                 <StyleColorEditorComponent
                 :contextid="contextid"
@@ -149,6 +151,10 @@ defineExpose({
      background-color: theme('colors.primary-dark');
      width:100%;
      padding-left: 10px;
+
+     .expand-icon-class{
+        background-color: 'red'
+     }
  }
 
 </style>

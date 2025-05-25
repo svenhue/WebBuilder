@@ -12,13 +12,10 @@
                 </div>
             </q-header>
             <q-footer elevated class="dev-toolbar-footer">
-                
-                    123
                     <TreePathComponent
                     @focus-view="(id) => viewModel.focusView(id, true)">
                         
                     </TreePathComponent>
-           
             </q-footer>
         <q-page-container>
             <q-btn 
@@ -227,6 +224,10 @@ defineExpose({
     background-color: theme('colors.primary-dark');
 }
 .dev-toolbar-footer{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    padding-left: 45px;
     background-color: theme('colors.primary-dark');
     height: 30px;
 }

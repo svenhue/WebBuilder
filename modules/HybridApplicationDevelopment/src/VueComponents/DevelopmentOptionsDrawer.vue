@@ -10,9 +10,9 @@
   >
     <div>
       <q-tabs v-model="tab" class="text-teal">
-        <q-tab name="edit" icon="brush"></q-tab>
-        <q-tab name="settings" icon="settings"></q-tab>
-        <q-tab name="actions" icon="bolt"></q-tab>
+        <q-tab name="edit" icon="brush" class="tab-class"></q-tab>
+        <q-tab name="settings" icon="settings" class="tab-class"></q-tab>
+        <q-tab name="actions" icon="bolt" class="tab-class"></q-tab>
       </q-tabs>
       <div :style="{padding: '10px'}"  v-if="currentElement?.value != undefined">
         Id: {{  currentElement?.value?.publicidentifier }} 
@@ -100,6 +100,9 @@ onMounted(() => {
 .development-options-drawer{
   background-color: theme('colors.primary-dark');
 
+  .tab-class{
+    color: theme('colors.primary');
+  }
   .tab-panels{
     background-color: theme('colors.primary-dark');
 

@@ -1,5 +1,5 @@
 <template>
-    <div :style="style" class="editor-background-facade">    
+    <div :style="style" id="editor-background-facade" class="editor-background-facade">    
             <slot></slot>
     </div>
 </template>

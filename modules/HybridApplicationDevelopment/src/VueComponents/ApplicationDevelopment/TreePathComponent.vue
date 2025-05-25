@@ -1,32 +1,55 @@
 <template>
     <div class="tree-path">
-        <q-breadcrumbs gutter="sm" class="q-pa-md q-gutter-sm tree-step">
+        <q-breadcrumbs  gutter="xs" class="tree-step">
             
-            <q-breadcrumbs-el v-for="el in tree" :key="el.id" :label="el.tag" @click="$emit('focusView', el.id, true)" >
+            <q-breadcrumbs-el 
+            v-for="el in tree" 
+            :class="getClass(el)"
+            :key="el.id" 
+            :label="formatElementTag(el.tag)" 
+            @click="$emit('focusView', el.id, true)" 
+            >
             </q-breadcrumbs-el>
         </q-breadcrumbs>
     </div>
 </template>
 
 <script setup lang="ts">
-import { BaseServiceProvider } from 'alphautils';
+import { BaseServiceProvider, IViewConfiguration } from 'alphautils';
 import { FocussedViewContextService } from '../../utils/Services/Designer/FocussedViewContextService';
 
 defineEmits(['focusView'])
 
 const service = BaseServiceProvider.Service<FocussedViewContextService>('FocussedViewContextService') as FocussedViewContextService
-
 const tree = service.GetTree();
 
+
+const formatElementTag = (tag: string) => {
+    const formatted = tag
+                        .replace('component:', '');
+    return formatted
+}
+function getClass(el: IViewConfiguration){
+    if(el.id == service.GetFocussedView()?.value?.id){
+        return 'focussed'
+    }
+    return 'parent'
+}
 
 </script>
 
 <style scoped lang="scss">
-
 .tree-path{
-    width: "min-content";
+
     .tree-step{
         cursor: pointer;
+
+        .focussed{
+            color: white
+        }
+        .parent{
+            color: white;
+        }
     }
 }
 

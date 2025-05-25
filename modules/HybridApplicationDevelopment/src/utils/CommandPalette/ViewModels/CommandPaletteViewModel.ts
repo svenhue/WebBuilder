@@ -57,7 +57,7 @@ export class CommandPaletteViewModel{
     constructor(
         @inject(CommandPaletteService) service: CommandPaletteService
     ){
-        this.modelValue = ref(null)
+        this.modelValue = ref("Commands comming soon!")
         this.service = service;
     }
 
