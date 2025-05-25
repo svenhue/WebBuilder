@@ -9,10 +9,7 @@ export default defineNuxtConfig({
   ssr: false, // Enable server-side rendering
   devtools: { enabled: true },
   modules:[/*'nuxt-electron',*/   'nuxt-monaco-editor', '@nuxt/ui','nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt"],
-  
-  build: {
-    transpile: ['monaco-editor'],
-  },
+
 
   tailwindcss:{
     exposeConfig: true,

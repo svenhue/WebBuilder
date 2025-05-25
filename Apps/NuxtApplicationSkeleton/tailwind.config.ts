@@ -32,7 +32,7 @@ export default {
 
         'fontwhite': '#ffffff',
         'darkgrey': '#57595d',
-        'brightgrey': '#9a9b9e',
+        'brightgrey': '#34373B',
 
 
         'dark': '#1d1d1d',

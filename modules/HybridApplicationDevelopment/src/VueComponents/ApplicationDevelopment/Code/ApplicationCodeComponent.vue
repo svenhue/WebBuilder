@@ -7,7 +7,50 @@
                 @click="emits('close')"></q-btn>
 
             </div>
-            <q-list>
+            
+            <q-btn-dropdown dense>
+
+            </q-btn-dropdown>
+
+        
+
+        </div>
+       
+    </div>
+
+</template>
+
+
+<script setup lang="ts">
+import ResourceEditor from '../../ResourceEditors/ResourceEditor.vue';
+import { NodeViewModel } from '../../../ViewModels/NodeViewModel';
+import { ref } from 'vue';
+
+
+
+const props = defineProps({
+    contextid:{
+        type: Number,
+        required:true
+    },
+    viewModel:{
+        type: NodeViewModel,
+        required:false
+    }
+})
+const editNode = ref(false)
+const selectedNode = ref()
+const emits = defineEmits(['close'])
+
+
+function edit(node){
+    selectedNode.value = node
+    editNode.value = true
+}
+
+
+/*
+<q-list>
                 <q-item dense
                 v-for="node in viewModel?.getAll()?.value" :key="node"
                 >
@@ -41,11 +84,7 @@
 
                 </q-item>
             </q-list>
-
-        
-
-        </div>
-        <div  class="right">
+ <div  class="right">
             <ResourceEditor v-if="editNode"
                 :contextid="props.contextid"
                 :view-model="props.viewModel"
@@ -53,37 +92,7 @@
                 
             </ResourceEditor>
         </div>
-    </div>
-
-</template>
-
-
-<script setup lang="ts">
-import ResourceEditor from '../../ResourceEditors/ResourceEditor.vue';
-import { NodeViewModel } from '../../../ViewModels/NodeViewModel';
-import { ref } from 'vue';
-
-
-
-const props = defineProps({
-    contextid:{
-        type: Number,
-        required:true
-    },
-    viewModel:{
-        type: NodeViewModel,
-        required:false
-    }
-})
-const editNode = ref(false)
-const selectedNode = ref()
-const emits = defineEmits(['close'])
-
-
-function edit(node){
-    selectedNode.value = node
-    editNode.value = true
-}
+            */
 </script>
 
 
@@ -113,3 +122,5 @@ function edit(node){
 
 
 </style>
+
+
