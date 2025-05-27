@@ -79,6 +79,7 @@ export class CodeEditorService {
           noSemanticValidation: true,
           noSyntaxValidation: true
         });
+        monaco.languages
         const model = monaco.editor.createModel(value, 'css');
         const editor = monaco.editor.create(host.value, {
             theme: 'vs-dark'

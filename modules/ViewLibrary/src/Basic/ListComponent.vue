@@ -1,5 +1,10 @@
 <template>
-    <q-list :tag="view.properties?.ordered == true ? 'ol': 'ul' " dense  :style="viewElement.ResolverObjectProperty(view.style)" ref="viewRef" v-bind="view?.htmlattributes">
+    <q-list 
+    dense  
+    :class="view?.class"
+    :style="viewElement.ResolverObjectProperty(view.style)" 
+    ref="viewRef" 
+    v-bind="view?.htmlattributes">
         <ListItemComponent
         v-for="child in children" :key="child.id"
         :viewId="child.id"

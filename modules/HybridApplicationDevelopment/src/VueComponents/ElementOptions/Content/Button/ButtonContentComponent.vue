@@ -1,8 +1,8 @@
 <template>
     <div>
         <q-input dense 
-     
-   
+        class="editor-input"
+        :input-style="{color: 'white!important'}"
         :model-value="currentElement?.content" 
         @update:model-value="(val) => $emit('updateElement', [{key: 'content', value: val}])">
             <template v-slot:before>

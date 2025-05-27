@@ -18,10 +18,11 @@
             </q-btn>
             <q-btn class="close-btn" dense unelevated size="10px" icon="close" @click="emits('close')"></q-btn>
         </div>
-     
-        <q-expansion-item label="Basic">
+        <q-input dense v-model="tagFilterString" v-on:update:model-value="(v) => handleFilterChanged()">
+        </q-input>
+        <q-expansion-item label="Basic" dense v-model="BasicExpand">
             <div class="palette-grid">
-                <q-card v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Basic') && v?.isDisabled != true)" :key="view.name" clickable class="component-card" 
+                <q-card v-for="(view, index) in filter('viewdefinition:Basic')" :key="view.name" clickable class="component-card" 
                     @mousedown="(e) => startElementTransition(e, view.type , )"
                     >
                     <div  class="component-card-image" >
@@ -48,9 +49,9 @@
                 </q-card>
             </div>
         </q-expansion-item>
-        <q-expansion-item label="Structure">
+        <q-expansion-item label="Structure" dense v-model="StructureExpand">
             <div class="palette-grid">
-                <q-card v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Structure'))" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <q-card v-for="(view, index) in filter('viewdefinition:Structure')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
                             <q-img v-if="view?.icon != undefined"
@@ -78,9 +79,9 @@
                 
             </div>
         </q-expansion-item>
-        <q-expansion-item label="Navigation">
+        <q-expansion-item label="Navigation" dense v-model="NavigationExpand">
             <div class="palette-grid">
-                <q-card v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Navigation'))" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <q-card v-for="(view, index) in filter('viewdefinition:Navigation')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image">
                       <div>
                         <q-img v-if="view?.icon != undefined"
@@ -104,9 +105,9 @@
                 </q-card>
             </div>
         </q-expansion-item>
-        <q-expansion-item label="Typography">
+        <q-expansion-item label="Typography" dense v-model="TypographyExpand">
             <div class="palette-grid">
-                <q-card v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Typography') && v?.isDisabled != true)" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <q-card v-for="(view, index) in filter('viewdefinition:Typography')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
                             <q-img v-if="view?.icon != undefined"
@@ -130,9 +131,9 @@
                 </q-card>
             </div>
         </q-expansion-item>
-        <q-expansion-item label="Layout">
+        <q-expansion-item label="Layout" dense v-model="LayoutExpand">
             <div class="palette-grid">
-                <q-card v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Layout'))" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <q-card v-for="(view, index) in filter('viewdefinition:Layout')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image">
                        <div>
                         <q-img v-if="view?.icon != undefined"
@@ -156,9 +157,9 @@
                 </q-card>
             </div>
         </q-expansion-item>
-        <q-expansion-item label="Media">
+        <q-expansion-item label="Media" dense v-model="MediaExpand">
             <div class="palette-grid">
-                <q-card v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Media'))" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <q-card v-for="(view, index) in filter('viewdefinition:Media')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                        <div>
                         <q-img v-if="view?.icon != undefined"
@@ -182,9 +183,9 @@
                 </q-card>
             </div>
         </q-expansion-item>
-        <q-expansion-item label="Forms">
+        <q-expansion-item label="Forms" dense v-model="FormsExpand">
             <div class="palette-grid">
-                <q-card v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Form'))" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <q-card v-for="(view, index) in filter('viewdefinition:Form')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
                             <q-img v-if="view?.icon != undefined"
@@ -208,9 +209,9 @@
                 </q-card>
             </div>
         </q-expansion-item>
-        <q-expansion-item label="Data">
+        <q-expansion-item label="Data" dense v-model="DataExpand">
             <div class="palette-grid">
-                <q-card v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Data'))" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <q-card v-for="(view, index) in filter('viewdefinition:Data')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
                             
@@ -235,26 +236,10 @@
                 </q-card>
             </div>
         </q-expansion-item>
-        <q-expansion-item label="Editor">
+        
+        <q-expansion-item label="Advanced" dense v-model="AdvancedExpand">
             <q-list>
-                <q-item v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Editor'))" :key="view.name" clickable>
-                    <q-item-section @mousedown="(e) => startElementTransition(e, view.type)">
-                        <q-item-label>{{ view.name }}</q-item-label>
-                    </q-item-section>
-                      
-                    <q-icon name="info" @mousemove="() => showInfo['editor'][index] = true" >
-                        <q-tooltip 
-                        :style="{zIndex: 99999}"
-                        :model-value="showInfo['editor'][index]">
-                            {{ GetInfo(view.type) }}
-                        </q-tooltip>
-                    </q-icon>
-                </q-item>
-            </q-list>
-        </q-expansion-item>
-        <q-expansion-item label="Advanced">
-            <q-list>
-                <q-item v-for="(view, index) in views.filter(v => v.type.startsWith('viewdefinition:Advanced'))" :key="view.name" clickable>
+                <q-item v-for="(view, index) in filter('viewdefinition:Advanced')" :key="view.name" clickable>
                     <q-item-section @mousedown="(e) => startElementTransition(e, view.type)">
                         <q-item-label>{{ view.name }}</q-item-label>
                         
@@ -270,7 +255,7 @@
                 </q-item>
             </q-list>
         </q-expansion-item>
-        <q-expansion-item label="Your templates">
+        <q-expansion-item label="Your templates" dense v-model="YourTemplatesExpand">
             <q-list>
                 <q-item v-for="view in avaibleTemplates" :key="view.name" clickable>
                     <q-item-section @mousedown="(e) => startElementTransition(e, view.type)">
@@ -283,15 +268,29 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive } from 'vue';
+import { computed, reactive, ref } from 'vue';
 import { BORepository, BaseServiceProvider, TabService, useWebNodeTemplateStore } from 'alphautils';
 import { GetImageURL } from '../utils/composables/GetImageURL';
-import { IViewConfiguration, IDataAdapter } from 'alphautils';
+import { IViewConfiguration } from 'alphautils';
 import { ViewDefinition } from '../utils/Models/ViewDefinition';
+
+const tagFilterString = ref()
 const store = useWebNodeTemplateStore()
 const views = computed(() => {
     return store.avaiblenodetemplates.filter(v => v.name != undefined) as Array<IViewConfiguration>
 })
+const BasicExpand = ref(false)
+const StructureExpand = ref(false)
+const NavigationExpand = ref(false)
+const TypographyExpand  = ref(false)
+const LayoutExpand  = ref(false)
+const MediaExpand  = ref(false)
+const FormsExpand  = ref(false)
+const DataExpand  = ref(false)
+const AdvancedExpand  = ref(false)
+const YourTemplatesExpand  = ref(false)
+
+
 const showInfo = reactive({
     advanced: [],
     structure: [],
@@ -314,7 +313,37 @@ const avaibleTemplates = computed(() => {
     return boRepository.Get("UIViewTemplate", undefined, 0)
 })
 
-
+function handleFilterChanged(){
+    if(tagFilterString.value == ''){
+        BasicExpand.value = false
+        StructureExpand.value = false
+        NavigationExpand.value = false
+        TypographyExpand.value = false
+        LayoutExpand.value = false
+        MediaExpand.value = false
+        FormsExpand.value = false
+        DataExpand.value = false
+        AdvancedExpand.value = false
+        YourTemplatesExpand.value = false
+    }else {
+        BasicExpand.value = true
+        StructureExpand.value = true
+        NavigationExpand.value = true
+        TypographyExpand.value = true
+        LayoutExpand.value = true
+        MediaExpand.value = true
+        FormsExpand.value = true
+        DataExpand.value = true
+        AdvancedExpand.value = true
+        YourTemplatesExpand.value = true
+    }
+}
+function filter(type: string){
+    if(tagFilterString.value != ''){
+        return views.value.filter(v => v.type.startsWith(type) && v?.isDisabled != true && v.type.includes(tagFilterString.value)) 
+    }
+    return views.value.filter(v => v.type.startsWith(type) && v?.isDisabled != true)
+}
 function GetInfo(type: string){
     return ViewDefinition.GetInfoOrUndefined(type)
 }

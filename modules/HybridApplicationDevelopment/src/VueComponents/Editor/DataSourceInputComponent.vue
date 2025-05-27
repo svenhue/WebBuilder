@@ -1,6 +1,10 @@
 <template>
     <div>
-        <q-input dense :modelValue="modelValueX" @update:modelValue="(v) => updateElement(v)" >
+        <q-input 
+        
+        dense 
+        :modelValue="modelValueX" 
+        @update:modelValue="(v) => updateElement(v)" >
            
             <template v-slot:before>
                 <div class="editor-input-label"> Data source </div>

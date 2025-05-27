@@ -3,12 +3,23 @@
         <q-input  
         ref="textRef" 
         dense 
+        label-color="white"
+        :input-style="{color: 'white!important'}"
+        class="t-input-editor-input"
         :model-value="value"
         @update:model-value="(val) => UpdateValue(val)"
         >
             <template v-slot:before>
                 <div class="editor-input-label"> {{ label }} </div>
-                <q-select v-if="mode != 'onlyExpression'" dense :options="options" :model-value="selectModel" @update:model-value="updateExpression">
+                <q-select 
+                :style="{width: '150px', color: 'white'}"
+                :popup-content-style="{backgroundColor: '#57595d'}"
+                v-if="mode != 'onlyExpression'" 
+                dense 
+
+                :options="options" 
+                :model-value="selectModel" 
+                @update:model-value="updateExpression">
 
                 </q-select>
             </template>
@@ -131,3 +142,27 @@ function UpdateValue(code: string) {
     emits('updateValue', code)
 }
 </script>
+
+<style lang="scss" scoped>
+.editor-input-label{
+    color: white;
+}
+
+.editor-input{
+    color:white;
+}
+
+.t-input-editor-input{
+    color: white;
+    background-color: theme('colors.darkgrey');
+
+    .t-input-editor-select{
+        color: white;
+        background-color: theme('colors.darkgrey');
+    }
+}
+.t-input-editor-select{
+    color: white;
+    background-color: theme('colors.darkgrey');
+}
+</style>

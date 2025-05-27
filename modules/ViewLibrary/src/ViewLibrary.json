@@ -248,7 +248,7 @@
       "tag": "component:ListItemComponent",
       "type": "viewdefinition:Basic:ListItemComponent",
       "style":{
-        "height": "50px"
+  
       },
       "htmlattributes": {
         "label": "List Item"

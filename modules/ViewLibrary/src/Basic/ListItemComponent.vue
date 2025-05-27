@@ -1,6 +1,12 @@
 <template>
-    <q-item tag="li" :class="view?.class"  dense v-bind="view.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)" :clickable="view.properties?.clickable">
-        
+    <q-item 
+  
+    :class="view?.class"  
+    dense 
+    v-bind="view.htmlattributes" 
+    ref="viewRef" 
+    :style="viewElement.ResolverObjectProperty(view.style)" 
+    :clickable="view.properties?.clickable">
             <q-item-section textnode>
                 {{ view?.content?.label }}
             </q-item-section>
