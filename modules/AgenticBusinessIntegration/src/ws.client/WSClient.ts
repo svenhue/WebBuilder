@@ -6,6 +6,7 @@ export class WSClient{
     
 
     constructor(serverUrl: string){
+        return;
         this.socket = io(serverUrl, {
             transports: ['websocket']
         })

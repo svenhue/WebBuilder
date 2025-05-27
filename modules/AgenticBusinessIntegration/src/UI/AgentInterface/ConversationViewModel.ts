@@ -41,7 +41,7 @@ export class ConversationViewModel extends WSClient{
             entries: []
 
         });
-        this.init(config)
+        //this.init(config)
       
     }
     private async init(config: IConversationConfiguration){
