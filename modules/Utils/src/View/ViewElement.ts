@@ -108,7 +108,6 @@ export class ViewElement extends BaseView implements IViewElement, IEventHandler
         if(this.actionFactory == undefined){
             this.actionFactory = this.GetService<UIActionFactory>('UIActionFactory');
         }
-        console.log("actionconfig", config)
         return this.actionFactory.create(config);
     }
 

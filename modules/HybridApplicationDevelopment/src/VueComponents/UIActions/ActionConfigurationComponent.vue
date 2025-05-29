@@ -1,7 +1,6 @@
 <template>
   <div class="action-configuration-component" v-if="currentElement.value != undefined">
     <div>
-        
         <q-btn
         dense
         icon="add"
@@ -114,3 +113,9 @@ defineExpose({
 
 
 </script>
+
+<style scoped lang="scss">
+.action-configuration-component{
+  background-color: theme('colors.brightgrey');
+}
+</style>

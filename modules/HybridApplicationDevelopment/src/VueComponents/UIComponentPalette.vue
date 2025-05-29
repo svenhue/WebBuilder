@@ -274,7 +274,7 @@ import { GetImageURL } from '../utils/composables/GetImageURL';
 import { IViewConfiguration } from 'alphautils';
 import { ViewDefinition } from '../utils/Models/ViewDefinition';
 
-const tagFilterString = ref()
+const tagFilterString = ref('')
 const store = useWebNodeTemplateStore()
 const views = computed(() => {
     return store.avaiblenodetemplates.filter(v => v.name != undefined) as Array<IViewConfiguration>
@@ -340,7 +340,7 @@ function handleFilterChanged(){
 }
 function filter(type: string){
     if(tagFilterString.value != ''){
-        return views.value.filter(v => v.type.startsWith(type) && v?.isDisabled != true && v.type.includes(tagFilterString.value)) 
+        return views.value.filter(v => v.type.startsWith(type) && v?.isDisabled != true && v.type?.toLowerCase()?.includes(tagFilterString.value?.toLowerCase())) 
     }
     return views.value.filter(v => v.type.startsWith(type) && v?.isDisabled != true)
 }

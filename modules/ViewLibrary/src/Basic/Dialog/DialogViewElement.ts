@@ -4,7 +4,7 @@ import { IViewConfiguration } from "alphautils";
 //todo make this view editable in the editor - better ux
 export class DialogViewElement extends ViewElement{
 
-    private dataAdapter: IDataAdapter | undefined
+    public dataAdapter: IDataAdapter | undefined
     private actionFactory: UIActionFactory
 
     constructor(config: IViewConfiguration/* todo custom config */){
@@ -40,7 +40,7 @@ export class DialogViewElement extends ViewElement{
         if(this.dataAdapter == undefined){
             throw new Error("The dataAdapter service is not registered");
         }
-        //todo dataadapter
+
         const config = this.GetConfiguration();
         
         const oldValue = config.modelValue;
@@ -50,7 +50,7 @@ export class DialogViewElement extends ViewElement{
         }else{
             newValue = false;
         }
-        const newValues = new SimpleNameValueCollection([{key: "modelValue", value: newValue}])
+        const newValues = new SimpleNameValueCollection([{key: "properties.isActive", value: newValue}])
         this.dataAdapter.UpdatePartial(config.id, newValues, config.contextid, "ViewConfiguration")
     }
 }

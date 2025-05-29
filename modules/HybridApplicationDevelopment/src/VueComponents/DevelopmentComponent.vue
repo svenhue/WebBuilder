@@ -205,10 +205,10 @@ function tryFocus(e, fixed = false){
 }
 const buttonStyle = computed(() => {
     if(optionsBar.value == true){
-        return {borderRadius: '15px',   border: '1px solid #1E1E2F', position:'absolute', zIndex:1001, top:'50px', right:'352px', width:'40px',  height:'40px'}
+        return {borderRadius: '15px',   border: '1px solid #1E1E2F', position:'absolute', zIndex:9999999, top:'50px', right:'352px', width:'40px',  height:'40px'}
     }
     else{
-        return {borderRadius: '15px', border: '1px solid #1E1E2F', position:'absolute', top:'50px', right:'3px', width:'40px', height:'40px', zIndex:1001}
+        return {borderRadius: '15px', border: '1px solid #1E1E2F', position:'absolute', top:'50px', right:'3px', width:'40px', height:'40px', zIndex:9999999}
     }
 })
 defineExpose({

@@ -50,7 +50,21 @@
   
   
 }
+.alpha-select{
+  color: white;
+  background-color: theme('colors.darkgrey');
+  border-radius: 5px; 
+  padding-left: 5px;
+  .q-field__native { 
+    color: white; 
+    
+   }
+}
 
+.alpha-dropdown-content{
+  background-color: theme('colors.brightgrey');
+  color: white;
+}
 .focussed-element > .q-btn__content *{
   outline-color: blue;
   outline-style: groove;

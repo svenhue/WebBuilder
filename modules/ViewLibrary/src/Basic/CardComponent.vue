@@ -1,13 +1,13 @@
 <template>
-    <q-card v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
-        <q-card v-for="child in children" :key="child.id">
-        
-        <BaseViewTreeRenderer
+    <q-card 
+    v-bind="view?.htmlattributes" 
+    ref="viewRef" 
+    :style="viewElement.ResolverObjectProperty(view.style)">
+        <BaseViewTreeRenderer v-for="child in children" :key="child.id"
         
         :view="child"
         :contextid="contextid">
-        </BaseViewTreeRenderer>
-        </q-card>   
+        </BaseViewTreeRenderer> 
     </q-card>
 
 </template>

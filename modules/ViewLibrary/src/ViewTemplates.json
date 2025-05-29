@@ -18,6 +18,38 @@
                 }
             ]
           },
+          {
+            "name" : "Card",
+            "tag" : "component:CardComponent",
+            "type" : "viewtemplate:Basic:CardComponent",
+            "style":{
+                "width": "230px",
+                "height": "300px"
+            },
+            "children":[
+                {
+                    "type": "viewdefinition:Typography:HeadingComponent",
+                    "content": {
+                        "text": "Our Changing Planet"
+                    },
+                    "properties": {
+                        "headingTag": "h6"
+                    },
+                    "style":{
+                        "width": "100%"
+                    }
+                },
+                {
+                    "type": "viewdefinition:Typography:ParagraphComponent",
+                    "content": {
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.     " 
+                    },
+                    "style":{
+                        "width": "100%"
+                    }
+                }
+            ]
+          },
         {
             "type": "viewtemplate:Basic:ListComponent",
             "children":[
@@ -108,18 +140,38 @@
             
             "type": "viewtemplate:Navigation:NavBarComponent",
             "publicidentifier" : "Navbar_1",
+            "style": {
+                "display": "flex",
+                "justify-content": "space-between",
+                "align-items": "center"
+            },
             "children":[
-                
+                {
+                    "tag": "component:ImageComponent",
+                    "type": "viewdefinition:Media:ImageComponent",
+                    "position": 0,
+                    "content": {
+                        "alt": "Your Company Logo"
+                    },
+                    "style": {
+                        "width": "50px",
+                        "height": "20px"
+                    },
+                    "properties": {
+                       "src": "no image selected"
+                    }
+                },
                 {
                     "tag": "tag:div",
                     "name": "Container",
-                    "position": 2,
+                    "position": 1,
                     "children":[
                         {
                             "position": 1,
                             "type": "viewdefinition:Basic:ButtonComponent",
                             "tag": "component:ButtonComponent",
                             "name": "Button",
+                            "content": "Home",
                             "icon":"Button.svg",
                             "templateIdentifier": "Button_2"
                         },
@@ -128,6 +180,7 @@
                             "type": "viewdefinition:Basic:ButtonComponent",
                             "tag": "component:ButtonComponent",
                             "name": "Button",
+                            "content": "Feature",
                             "icon":"Button.svg",
                             "templateIdentifier": "Button_3"
                         },
@@ -138,158 +191,89 @@
                         }
                     ]
                 },
-               
-                {
-                    "type": "viewdefinition:Layout:DrawerComponent",
-                    "name": "Drawer",
-                    "tag": "component:DrawerComponent",
+               {
+                    "type": "viewdefinition:Basic:ButtonComponent",
                     "position": 3,
-                    "templateIdentifier": "NavabrTemplate:DrawerComponent_01",
-                    "specifications":{
-                        "noOverrideStyle": true
-                    },
-                    "children":[
-                        {
-                            "tag": "component:ListComponent",
-                            "type": "viewdefinition:Basic:ListComponent",
-                            "style":{
-                              "height": "100px",
-                              "min-height": "30px"
-                            },
-                            "content":{
-                              "label": "Menu"
-                            },
-                            "children":[
-                                {
-                                    "position": 0,
-                                    "name": "Menu Item",
-                                    "tag": "component:ListItemComponent",
-                                    "type": "viewdefinition:Basic:ListItemComponent",
-                                    "content":{
-                                        "label": "Menu Item"
-                                    }
-                                },
-                                {
-                                    "position": 1,
-                                    "name": "Menu Item",
-                                    "tag": "component:ListItemComponent",
-                                    "type": "viewdefinition:Basic:ListItemComponent",
-                                    "content":{
-                                        "label": "Menu Item"
-                                    }
-                                },
-                                {
-                                    "position": 2,
-                                    "name": "Menu Item",
-                                    "icon": "MenuItem.svg",
-                                    "tag": "component:ListItemComponent",
-                                    "type": "viewdefinition:Basic:ListItemComponent",
-                                    "content":{
-                                        "label": "Menu Item"
-                                    }
-                                },
-                                {
-                                    "position": 3,
-                                    "name": "Menu Item",
-                                    "icon": "MenuItem.svg",
-                                    "tag": "component:ListItemComponent",
-                                    "type": "viewdefinition:Basic:ListItemComponent",
-                                    "content":{
-                                        "label": "Submenu"
-                                    },
-                                    "properties":{
-                                        "clickable":true,
-                                        "sideIcon":"keyboard_arrow_right"
-                                    },
-                                    "children":[
-                                        {
-                                            "name": "Submenu",
-                                            "tag": "component:DropdownMenuComponent",
-                                            "type": "viewdefinition:Navigartion:DropdownMenuComponent",
-                                            "content":{
-                                                "label": "Submenu"
-                                            },
-                                            "properties":{
-                                                "anchor": "top right",
-                                                "self": "top left"
-                                            },
-                                            "children":[
-                                                {
-                                                    "position": 0,
-                                                    "name": "Submenu Item",
-                                                    "tag": "component:ListItemComponent",
-                                                    "type": "viewdefinition:Basic:ListItemComponent",
-                                                    "content":{
-                                                        "label": "Submenu Item"
-                                                    }
-                                                },
-                                                {
-                                                    "position": 1,
-                                                    "name": "Submenu Item",
-                                                    "tag": "component:ListItemComponent",
-                                                    "type": "viewdefinition:Basic:ListItemComponent",
-                                                    "content":{
-                                                        "label": "Submenu Item"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
+                    "name": "Button",
+                            "icon":"Button.svg",
+                    "tag": "component:ButtonComponent",
+                    "content": "Get Started",
+                    "style": {
+                        "backgroundColor": "black",
+                        "color": "white"
+                    }
+               }
+               
+               
+                 
+                
             ]
         },
         {
             "type": "viewtemplate:Layout:FooterComponent",
             "children":[
                 {
-                    "type": "viewdefinition:Structure:SectionComponent",
+                    "type": "viewdefinition:Structure:ContainerComponent",
+                    "tag": "component:ContainerComponent",
                     "style": {
                         "display": "flex",  
-                        "height": "250px",
-                        "margin": "20px"
+                        "height": "250px"
                     },
-                    "children":[
+                    "children": [
                         {
                             "type": "viewdefinition:Structure:ContainerComponent",
+                            "tag": "component:ContainerComponent",
                             "style": {
                                 "width": "200px"
                             },
-                            "children":[{
-                                "type": "viewdefinition:Typography:HeadingComponent",
-                                "content":{
-                                    "text": "Your Company Name"
+                            "children": [
+                                {
+                                    "type": "viewdefinition:Media:ImageComponent",
+                                    "tag": "component:ImageComponent"
                                 }
-                            }]
+                            ]
                         },
                         {
                             "type": "viewdefinition:Structure:ContainerComponent",
+                            "tag": "component:ContainerComponent",
                             "style": {
+                                "display": "flex",
+                                "flex-direction": "column",
                                 "width": "200px"
                             },
-                            "children":[{
-                                "type": "viewdefinition:Typography:HeadingComponent",
-                                "content":{
-                                    "text": "Your Company Name"
+                            "children": [
+                                {
+                                    "type": "viewdefinition:Typegraphy:HeadingComponent",
+                                    "tag": "component:HeadingComponent",
+                                    "content": {
+                                        "text": "Company"
+                                    }
+                                },
+                                {
+                                    "type": "viewdefinition:Navigation:LinkComponent",
+                                    "tag": "component:LinkComponent",
+                                    "content": {
+                                        "text": "About Us"
+                                    }
+                                },
+                                {
+                                    "type": "viewdefinition:Navigation:LinkComponent",
+                                    "tag": "component:LinkComponent",
+                                    "content": {
+                                        "text": "Pricing"
+                                    }
+                                },
+                                {
+                                    "type": "viewdefinition:Navigation:LinkComponent",
+                                    "tag": "component:LinkComponent",
+                                    "content": {
+                                        "text": "Docs"
+                                    }
                                 }
-                            }]
-                        },
-                        {
-                            "type": "viewdefinition:Structure:ContainerComponent",
-                            "style": {
-                                "width": "200px"
-                            },
-                            "children":[{
-                                "type": "viewdefinition:Typography:HeadingComponent",
-                                "content":{
-                                    "text": "Your Company Name"
-                                }
-                            }]
+                            ]
                         }
                     ]
+                    
                 }
             ]
         },
@@ -351,7 +335,7 @@
                 "flat": true
             },
             "content":{
-                "label": "Menu"
+                "label": "Resources"
             },
             
             "children":[

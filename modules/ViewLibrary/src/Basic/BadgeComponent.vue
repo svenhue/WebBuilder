@@ -3,7 +3,7 @@
     :style="viewElement.ResolverObjectProperty(view.style)"
     ref="viewRef"
     v-bind="view?.htmlattributes"
-    :label="view.content?.label  ?? 'batch label'">
+    :label="view.content?.label">
 
     </q-badge>
 </template>

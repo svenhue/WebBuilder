@@ -1,11 +1,16 @@
 <template>
     <q-input
     dense
+    class="alpha-input-color"
     @update:model-value="(val) => $emit('updateColor', val)"
     :model-value="color"
+    label-color="white"
+    :input-style="{ color: 'white' }"
     >
         <template v-slot:before>
+            <div :style="{color: 'white', fontSize: '14px'}">
             {{  label  }}
+            </div>
         </template>
         <template v-slot:after>
             <q-btn-dropdown  auto-close dense>
@@ -67,7 +72,14 @@ function updateColor(val){
 
 <style lang="scss" scoped>
 
-.dropdown-list{
-    background-color: theme('colors.brightgrey');
+.alpha-input-color{
+    border-radius: 10px;
+
+
+
 }
+    .dropdown-list{
+        background-color: theme('colors.brightgrey');
+        color: white;
+    }
 </style>
