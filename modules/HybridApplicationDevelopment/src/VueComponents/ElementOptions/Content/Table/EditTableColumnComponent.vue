@@ -9,15 +9,21 @@
                 </q-card-section>
                 <q-card-section>
                     <q-form  @submit="onSubmit">
-                    <q-input v-model="column.name" label="Name" required dense></q-input>
-                    <q-input v-model="column.label" label="Label" required dense></q-input>
-                    <q-input v-model="column.field" label="Field" required dense></q-input>
-                    <q-input v-model="column.position" label="Position" required dense></q-input>
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.name" label="Name" required dense></q-input>
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.label" label="Label" required dense></q-input>
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.field" label="Field" required dense></q-input>
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.position" label="Position" required dense></q-input>
                     <q-checkbox v-model="column.required" label="Required" type="checkbox" dense></q-checkbox>
                     <q-select :multiple="false" :optinos="alignOptions" v-model="column.align" label="Align" dense></q-select>
                     <q-checkbox v-model="column.sortable" label="Sortable" type="checkbox" dense></q-checkbox>
-                    <q-input v-model="column.style" label="Style" dense></q-input>
-                    <q-input v-model="column.classes" label="Classes" dense></q-input>
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.style" label="Style" dense></q-input>
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.classes" label="Classes" dense></q-input>
                     <q-separator></q-separator>
                     <q-btn label="Save" type="submit" color="primary"></q-btn>
                     </q-form>

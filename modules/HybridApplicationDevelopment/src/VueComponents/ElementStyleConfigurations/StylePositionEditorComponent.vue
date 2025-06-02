@@ -6,7 +6,8 @@
             <div>
                 Position
             </div>
-            <q-select dense
+            <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense
                  :popup-content-style="{
                         backgroundColor: '#57595d'
                     }"
@@ -19,7 +20,8 @@
             </q-select>
         </div>
         <div v-show="styles.position == 'relative' || styles.position == 'absolute'">
-            <q-select
+            <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'"
                  :popup-content-style="{
                         backgroundColor: '#57595d'
                     }"
@@ -44,7 +46,8 @@
                     @update:model-value="(v) => emits('updateElement', [{key:'style.left', value: v+ styles.leftUnit}])"
                      hide-bottom-space  dense class="spec-input">
                         <template v-slot:append>
-                            <q-select dense 
+                            <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                  :popup-content-style="{
                         backgroundColor: '#57595d'
                     }"
@@ -69,7 +72,8 @@
                     @update:model-value="(v) => emits('updateElement', [{key:'style.right', value: v + styles.rightUnit}])"
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
-                            <q-select dense 
+                            <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                  :popup-content-style="{
                         backgroundColor: '#57595d'
                     }"
@@ -98,11 +102,12 @@
 
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
-                            <q-select dense 
+                            <q-select class="alpha-select sp"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                  :popup-content-style="{
                         backgroundColor: '#57595d'
                     }"
-                            class="sp"
+                          
                             @update:model-value="(v) => emits('updateElement', [{key:'style.top', value:styles.top + v }])"
 
                                 v-model="styles.topUnit"
@@ -125,7 +130,8 @@
                     color="fontwhite"
                      hide-bottom-space  dense class="spec-input">
                      <template v-slot:append>
-                            <q-select dense
+                            <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense
                                  :popup-content-style="{
                         backgroundColor: '#57595d'
                     }" 

@@ -14,7 +14,8 @@
      
             <q-item dense v-for="option in options" :key="option.value" >
                 <q-item-section>
-                    <q-input dense :model-value="option.value" @update:model-value="(val) => saveUpdate(val, option)" @mouseout="updateOptions()" >
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense :model-value="option.value" @update:model-value="(val) => saveUpdate(val, option)" @mouseout="updateOptions()" >
                     </q-input>
                 </q-item-section>
                 <q-item-section side>

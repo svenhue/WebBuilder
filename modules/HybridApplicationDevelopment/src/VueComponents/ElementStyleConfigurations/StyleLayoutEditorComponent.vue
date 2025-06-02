@@ -262,7 +262,8 @@
                                 Columns
                             </template>
                             <template v-slot:append>
-                                <q-select dense 
+                                <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                 @update:model-value="(v) =>  {emits('updateElement', [{key: 'style.columnGap', value: styles.columnGap +v }]), styles.columnGapUnit = v}"
                                 v-model="styles.rowGapUnit"
                                 :options="styleManager.sizeUnits">
@@ -279,7 +280,8 @@
                                 Rows
                             </template>
                             <template v-slot:append>
-                                <q-select dense 
+                                <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                 @update:model-value="(v) =>  {emits('updateElement', [{key: 'style.rowGap', value: styles.rowGap + v }]), styles.rowGapUnit = v}"
 
                                 v-model="styles.rowGapUnit"

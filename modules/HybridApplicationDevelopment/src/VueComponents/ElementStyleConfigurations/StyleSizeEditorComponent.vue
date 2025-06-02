@@ -11,11 +11,14 @@
                 </td>
                 <td>
                     <q-input 
+                    
+                    class="alpha-input-base"
+                    :input-class="'alpha-input'"
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.width"
                     type="text"
                     @update:model-value="(v) => UpdateStyle('style.width', v)"
-                    hide-bottom-space  dense class="spec-input">
+                    hide-bottom-space  dense>
                     </q-input>
                 </td>
                 <td>
@@ -28,7 +31,10 @@
                     v-model="styles.height"
                     color="fontwhite"
                     @update:model-value="(v) => UpdateStyle('style.height', v)"
-                     hide-bottom-space  dense class="spec-input">
+                     hide-bottom-space  dense 
+                      class="alpha-input-base"
+                    :input-class="'alpha-input'"
+                    >
                     </q-input>
 
                 </td>
@@ -44,7 +50,8 @@
                     v-model="styles.minWidth"
                     color="fontwhite"
                     @update:model-value="(v) => UpdateStyle('style.minWidth', v)"
-                     hide-bottom-space  dense class="spec-input">
+                     hide-bottom-space  dense  class="alpha-input-base"
+                    :input-class="'alpha-input'">
 
                     </q-input>
                 </td>
@@ -58,7 +65,8 @@
                     v-model="styles.minHeight"
                     @update:model-value="(v) => UpdateStyle('style.minHeight', v )"
                     color="fontwhite"
-                     hide-bottom-space  dense class="spec-input">
+                     hide-bottom-space  dense  class="alpha-input-base"
+                    :input-class="'alpha-input'">
 
                     </q-input>
 
@@ -75,7 +83,8 @@
                     v-model="styles.maxWidth"
                     color="fontwhite"
                     @update:model-value="(v) => UpdateStyle('style.maxWidth', v)"
-                     hide-bottom-space  dense class="spec-input">
+                     hide-bottom-space  dense  class="alpha-input-base"
+                    :input-class="'alpha-input'">
  
                     </q-input>
                 </td>
@@ -91,7 +100,8 @@
                     v-model="styles.maxHeight"
                     color="fontwhite"
 
-                     hide-bottom-space  dense class="spec-input">
+                     hide-bottom-space  dense  class="alpha-input-base"
+                    :input-class="'alpha-input'">
                     </q-input>
 
                 </td>
@@ -135,12 +145,12 @@
                 </td>
 
                 <td colspan="3">
-                    <q-select 
+                    <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" 
                     :popup-content-style="{
                         backgroundColor: '#57595d'
                     }"
-                    popup-content-class="fit-dropdown"
-                    class="fit-dropdown"
+           
                     dense @update:model-value="(valuee) => emits('updateElement', [{key: 'style.objectFit', value: valuee}])" 
                     v-model="styles.objectFit" :options="styleManager.objectFits">
 
@@ -249,9 +259,9 @@ function UpdateStyle(key: string, value: string){
 <style scoped lang="scss">
  .sdec{
      background-color: theme('colors.brightgrey');
-     .spec-input{
+     input{
         width: 90px;
-        background-color: theme('colors.darkgrey');
+       
      }
      .sp{
          width: min-content;
@@ -260,5 +270,5 @@ function UpdateStyle(key: string, value: string){
  }
  .fit-dropdown{
         background-color: theme('colors.darkgrey');
-     }
+    }
 </style>

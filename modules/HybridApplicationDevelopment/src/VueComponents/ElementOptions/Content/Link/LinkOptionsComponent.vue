@@ -1,13 +1,15 @@
 <template>
     <div>
-        <q-input dense 
+        <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense 
         :model-value="currentElement?.content?.text" 
         @update:model-value="(val) => $emit('updateElement', [{key: 'content.text', value: val}])">
             <template v-slot:before>
                 <div class="editor-input-label">Text </div>
             </template>
         </q-input>
-        <q-input dense
+        <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense
         :model-value="currentElement?.content?.url"
         @update:model-value="(val) => $emit('updateElement', [{key: 'content.url', value: val}])">
             <template v-slot:before>

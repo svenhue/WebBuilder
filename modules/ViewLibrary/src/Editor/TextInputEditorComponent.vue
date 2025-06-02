@@ -12,8 +12,10 @@
             <template v-slot:before>
                 <div class="editor-input-label"> {{ label }} </div>
                 <q-select 
+                class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'"
                 :style="{width: '150px', color: 'white'}"
-                :popup-content-style="{backgroundColor: '#57595d'}"
+                
                 v-if="mode != 'onlyExpression'" 
                 dense 
 

@@ -20,7 +20,8 @@
         <q-list dense >
             <q-item dense
             v-for="field in childrenFields" :key="field">
-                <q-input dense 
+                <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense 
                 disable
                 :model-value="field?.content.label" 
                 @update:model-value="(val) => updateFieldProp(field, 'label',val)">

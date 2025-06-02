@@ -10,20 +10,21 @@
                 All
             </div>
             <q-input
-                                dense
-                                bottom-slots
-                                @update:model-value="(v) => updateBorderRadius('borderRadius', v + styles.borderRadiusAllUnit)"
-                                v-model="styles.borderRadiusAll">
-                                    <template v-slot:append>
-                                        <q-select dense 
-                                        :popup-content-style="{
-                                            backgroundColor: '#57595d'
-                                        }"
-                                            v-model="styles.borderRadiusAllUnit"
-                                            :options="styleManager.sizeUnits">
-                                            </q-select>
-                                    </template>
-                                </q-input>
+                dense
+                bottom-slots
+                @update:model-value="(v) => updateBorderRadius('borderRadius', v + styles.borderRadiusAllUnit)"
+                v-model="styles.borderRadiusAll">
+                    <template v-slot:append>
+                        <q-select class="alpha-select"
+:popup-content-class="'alpha-dropdown-content'" dense 
+                        :popup-content-style="{
+                            backgroundColor: '#57595d'
+                        }"
+                            v-model="styles.borderRadiusAllUnit"
+                            :options="styleManager.sizeUnits">
+                            </q-select>
+                    </template>
+                </q-input>
         </div>
         <div v-show="allCorners == false">
             <table>
@@ -37,7 +38,8 @@
                                 @update:model-value="(v) => updateBorderRadius('borderTopLeftRadius', v + styles.borderRadiusTopLeftUnit)"
                                 v-model="styles.borderRadiusTopLeft">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                         :popup-content-style="{
                                             backgroundColor: '#57595d'
                                         }"
@@ -55,7 +57,8 @@
                                 @update:model-value="(v) => updateBorderRadius('borderRadius', v + styles.borderRadiusTopRight)"
                                 v-model="styles.borderRadiusTopRight">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                         :popup-content-style="{
                                             backgroundColor: '#57595d'
                                         }"
@@ -75,7 +78,8 @@
                                 @update:model-value="(v) => updateBorderRadius('borderRadius', v + styles.borderRadiusBottomLeftUnit)"
                                 v-model="styles.borderRadiusBottomLeft">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                         :popup-content-style="{
                                             backgroundColor: '#57595d'
                                         }"
@@ -94,7 +98,8 @@
                                 @update:model-value="(v) => updateBorderRadius('borderRadius', v + styles.borderRadiusBottomRight)"
                                 v-model="styles.borderRadiusBottomRight">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                         :popup-content-style="{
                                             backgroundColor: '#57595d'
                                         }"
@@ -135,7 +140,8 @@
                         <div>
                             Style
                         </div>
-                        <q-select dense
+                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense
                         :popup-content-style="{
                                             backgroundColor: '#57595d'
                                         }"
@@ -156,7 +162,8 @@
                                 @update:model-value="(v) => updateSpecificBorder('Width', v + currentBorderWidthUnit)"
                                 v-model="currentBorderWidth">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                         :popup-content-style="{
                                             backgroundColor: '#57595d'
                                         }"

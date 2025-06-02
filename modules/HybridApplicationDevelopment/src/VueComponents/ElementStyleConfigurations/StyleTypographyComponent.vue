@@ -9,14 +9,15 @@
                 </div>
                 </td>
                 <td colspan="4">
-                    <q-select dense
+                    <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense
                          :popup-content-style="{
                         backgroundColor: '#57595d'
                     }"
                     autocomplete="true"
                     use-input
                     new-value-mode="add"
-                    class="stc-input"
+              
                     :style="{width: '208px'}"
                     :options="styleManager.fonts"
                     v-model="styles.font"
@@ -59,7 +60,8 @@
                     @update:model-value="(v) => emits('updateElement', [{key: 'style.fontSize', value: v + styles.fontSizeUnit}])"
                     >
                     <template v-slot:append>
-                                <q-select 
+                                <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" 
                                      :popup-content-style="{
                                     backgroundColor: '#57595d'
                                 }"
@@ -86,7 +88,8 @@
                     @update:model-value="(v) => emits('updateElement', [{key: 'style.lineHeight', value: v + styles.lineHeightUnit}])"
                     >
                     <template v-slot:append>
-                                <q-select dense 
+                                <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                 :popup-content-style="{
                                     backgroundColor: '#57595d'
                                 }"

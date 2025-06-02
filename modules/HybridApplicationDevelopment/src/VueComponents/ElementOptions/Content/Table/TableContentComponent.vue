@@ -13,7 +13,8 @@
         ref="columnsEditor">
         </TableColumnsComponent>
         <q-separator></q-separator>
-        <q-input :type="'number'" dense v-model="rowsPerPageOptinos"  @update:model-value="() => {
+        <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" :type="'number'" dense v-model="rowsPerPageOptinos"  @update:model-value="() => {
             emits('updateElement', [{
               key: 'properties.isactive',
               value: false

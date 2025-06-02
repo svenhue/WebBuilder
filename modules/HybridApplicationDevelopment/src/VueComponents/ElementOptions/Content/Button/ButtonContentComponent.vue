@@ -1,7 +1,8 @@
 <template>
     <div>
-        <q-input dense 
-        class="editor-input"
+        <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense 
+        
         :input-style="{color: 'white!important'}"
         :model-value="currentElement?.content" 
         @update:model-value="(val) => $emit('updateElement', [{key: 'content', value: val}])">

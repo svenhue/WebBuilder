@@ -8,7 +8,8 @@
         </div>
         <q-list>
             <q-item dense v-for="child in children" :key="child.id">
-                <q-item-section><q-input dense @update:model-value="(val) => viewModel.PartialUpdateView(child.id, {keyValuePairs:[{key: 'properties.label', value: val}]})" :model-value="child.properties?.label" > </q-input> </q-item-section>
+                <q-item-section><q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense @update:model-value="(val) => viewModel.PartialUpdateView(child.id, {keyValuePairs:[{key: 'properties.label', value: val}]})" :model-value="child.properties?.label" > </q-input> </q-item-section>
                 <q-item-section side>
                     <q-icon name="close" @click="viewModel.DeleteElement(child.id)"></q-icon>
                 </q-item-section>
