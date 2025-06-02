@@ -1,123 +1,100 @@
 <template>
     <div class="sbec">
-        <div :style="{display:'inline-flex'}">
-            <div class="small-block-header">
-                Radius
+        <div :style="{border: '1px solid black', borderRadius: '10px', padding: '10px', margin: '10px'}">
+            <div :style="{display:'inline-flex'}">
+                <div class="small-block-header">
+                    Radius
+                </div>
             </div>
-        </div>
-        <div :style="{display:'inline-flex', alignItems: 'center'}">
-            <div class="small-block-header">
-                All
+            <br/>
+            <div :style="{display:'inline-flex', alignItems: 'center'}">
+          
+                <q-input
+                    dense
+                    :style="{width: '130px'}"
+                    class="alpha-input"
+                    @update:model-value="(v) => updateBorderRadius('borderRadius', v)"
+                    v-model="styles.borderRadiusAll">
+                        <template v-slot:before>
+                            <div class="alpha-input-label-before" :style="{width: '83px'}">
+                            All
+                            </div>
+                        </template>
+                    </q-input>
             </div>
-            <q-input
-                dense
-                bottom-slots
-                @update:model-value="(v) => updateBorderRadius('borderRadius', v + styles.borderRadiusAllUnit)"
-                v-model="styles.borderRadiusAll">
-                    <template v-slot:append>
-                        <q-select class="alpha-select"
-:popup-content-class="'alpha-dropdown-content'" dense 
-                        :popup-content-style="{
-                            backgroundColor: '#57595d'
-                        }"
-                            v-model="styles.borderRadiusAllUnit"
-                            :options="styleManager.sizeUnits">
-                            </q-select>
-                    </template>
-                </q-input>
-        </div>
-        <div v-show="allCorners == false">
-            <table>
-                <tbody>
-                <tr>
-                    <td>
-                        <q-input
-                        label="Top Left"
-                                dense
-                                bottom-slots
-                                @update:model-value="(v) => updateBorderRadius('borderTopLeftRadius', v + styles.borderRadiusTopLeftUnit)"
-                                v-model="styles.borderRadiusTopLeft">
-                                    <template v-slot:append>
-                                        <q-select class="alpha-select"
-                :popup-content-class="'alpha-dropdown-content'" dense 
-                                        :popup-content-style="{
-                                            backgroundColor: '#57595d'
-                                        }"
-                                            v-model="styles.borderRadiusTopLeftUnit"
-                                            :options="styleManager.sizeUnits">
-                                            </q-select>
+            <div v-show="allCorners == false">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <q-input
+                            class="alpha-input"
+                                    dense
+                                
+                                    @update:model-value="(v) => updateBorderRadius('borderTopLeftRadius', v)"
+                                    v-model="styles.borderRadiusTopLeft">
+                                    <template v-slot:before>
+                                        <div class="alpha-input-label-before" :style="{width: '80px'}">
+                                        Top Left
+                                        </div>
                                     </template>
-                                </q-input>
-                    </td>
-                    <td>
-                        <q-input
-                        label="Top Right"
-                                dense
-                                bottom-slots
-                                @update:model-value="(v) => updateBorderRadius('borderRadius', v + styles.borderRadiusTopRight)"
-                                v-model="styles.borderRadiusTopRight">
-                                    <template v-slot:append>
-                                        <q-select class="alpha-select"
-                :popup-content-class="'alpha-dropdown-content'" dense 
-                                        :popup-content-style="{
-                                            backgroundColor: '#57595d'
-                                        }"
-                                            v-model="styles.borderRadiusTopRightUnit"
-                                            :options="styleManager.sizeUnits">
-                                            </q-select>
-                                    </template>
-                                </q-input>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <q-input
-                        label="Bottom Left"
-                                dense
-                                bottom-slots
-                                @update:model-value="(v) => updateBorderRadius('borderRadius', v + styles.borderRadiusBottomLeftUnit)"
-                                v-model="styles.borderRadiusBottomLeft">
-                                    <template v-slot:append>
-                                        <q-select class="alpha-select"
-                :popup-content-class="'alpha-dropdown-content'" dense 
-                                        :popup-content-style="{
-                                            backgroundColor: '#57595d'
-                                        }"
-                                            v-model="styles.borderRadiusBottomLeftUnit"
-                                            :options="styleManager.sizeUnits">
-                                            </q-select>
-                                    </template>
-                                </q-input>
-                    </td>
-                    <td>
-                        <q-input
+                                    </q-input>
+                        </td>
+                        <td>
+                            <q-input
+                             class="alpha-input"
+                                    dense
+                                  
+                                    @update:model-value="(v) => updateBorderRadius('borderRadius', v)"
+                                    v-model="styles.borderRadiusTopRight">
+                                <template v-slot:before>
+                                    <div class="alpha-input-label-before" :style="{width: '80px'}">
+                                    Top Right
+                                    </div>
+                                </template>
+                            </q-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <q-input
+                            dense
+                            class="alpha-input"
+                                    @update:model-value="(v) => updateBorderRadius('borderRadius', v)"
+                                    v-model="styles.borderRadiusBottomLeft">
+                            <template v-slot:before>
+                                <div class="alpha-input-label-before" :style="{width: '80px'}">
+                                Bottom Left
+                                </div>
+                            </template>
+                            </q-input>
+                        </td>
+                        <td>
+                            <q-input
+                            class="alpha-input"
+                            dense
                         
-                        label="Bottom Right"
-                                dense
-                                bottom-slots
-                                @update:model-value="(v) => updateBorderRadius('borderRadius', v + styles.borderRadiusBottomRight)"
-                                v-model="styles.borderRadiusBottomRight">
-                                    <template v-slot:append>
-                                        <q-select class="alpha-select"
-                :popup-content-class="'alpha-dropdown-content'" dense 
-                                        :popup-content-style="{
-                                            backgroundColor: '#57595d'
-                                        }"
-                                            v-model="styles.borderRadiusBottomRightUnit"
-                                            :options="styleManager.sizeUnits">
-                                            </q-select>
-                                    </template>
-                                </q-input>
-                    </td>
-                </tr>
-            </tbody>
-            </table>
-            <div>
+                            @update:model-value="(v) => updateBorderRadius('borderRadius', v)"
+                            v-model="styles.borderRadiusBottomRight">
+                            
+                            <template v-slot:before>
+                                <div class="alpha-input-label-before" :style="{width: '80px'}">
+                                Bottom Right
+                                </div>
+                            </template>
+                            </q-input>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+            </div>
+            <div :style="{border: '1px solid black', borderRadius: '10px', margin: '10px'}">
                 <div class="small-block-header">
                     Borders
                 </div>
-                <div :style="{display:'inline-flex'}">
-                <div :style="{width: '90px', height: '90px', position: 'relative'}">
+                <div :style="{paddingLeft: '15px',paddingTop: '15px', display:'inline-flex'}">
+                <div :style="{width: '50px',  height: '90px', position: 'relative'}">
                     <q-icon @click="focusBorder('All')"  :class="currentEditingBorder == 'All' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_outer" size="25px" :style="{position:'absolute', left:'32.5px', top:'32.5px'}" />
                     <q-icon @click="focusBorder('Left')" :class="currentEditingBorder == 'Left' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_left" size="25px" :style="{position:'absolute', left:'0px', top:'32.5px'}" />
                     <q-icon @click="focusBorder('Right')" :class="currentEditingBorder == 'Right' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_right" size="25px" :style="{position:'absolute', left:'63px', top:'32.5px'}"/>
@@ -125,78 +102,73 @@
                     <q-icon @click="focusBorder('Bottom')" :class="currentEditingBorder == 'Bottom' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_bottom" size="25px" :style="{position:'absolute', left:'32.5px', bottom:'0px'}"/>
                 </div>
                 <div :style="{marginLeft: '60px'}">
-                    <div :style="{display:'inline-flex', alignItems:'center'}">
-                        <div>
+                        
+                    <q-input dense
+                    class="alpha-input"
+                    :style="{width: '150px'}"
+                    @update:model-value="(v: string) => updateBorder(v)"
+                    v-model="styles.border"
+                    >
+                    <template v-slot:before>
+                            <div class="alpha-input-label-before" >
                             Border
-                        </div>
-                        <q-input dense
-                        :style="{width: '120px'}"
-                        @update:model-value="(v: string) => updateBorder(v)"
-                        v-model="styles.border"
-                        >
-                        </q-input>
-                    </div>
-                    <div :style="{display:'inline-flex', alignItems:'center'}">
-                        <div>
+                            </div>
+                    </template>
+                    </q-input>          
+                    <div :style="{display: 'inline-flex', alignItems: 'center'}">
+                        <div :style="{paddingRight: '13px'}">
                             Style
                         </div>
                         <q-select class="alpha-select"
-                :popup-content-class="'alpha-dropdown-content'" dense
+                        :popup-content-class="'alpha-dropdown-content'" dense
                         :popup-content-style="{
-                                            backgroundColor: '#57595d'
-                                        }"
-                        :style="{width: '120px'}"
+                            backgroundColor: '#57595d'
+                        }"
+                        :style="{width: '106px'}"
                         @update:model-value="(v) => updateSpecificBorder('Style', v)"
                         :options="styleManager.borderStyles"
                         v-model="currentBorderStyle"
                         >
                         </q-select>
                     </div>
-                    <div :style="{display:'inline-flex', alignItems:'center'}">
-                        <div>
-                            Width
-                        </div>
                     <q-input
-                        :style="{width: '115px'}"
-                                dense
-                                @update:model-value="(v) => updateSpecificBorder('Width', v + currentBorderWidthUnit)"
-                                v-model="currentBorderWidth">
-                                    <template v-slot:append>
-                                        <q-select class="alpha-select"
-                :popup-content-class="'alpha-dropdown-content'" dense 
-                                        :popup-content-style="{
-                                            backgroundColor: '#57595d'
-                                        }"
-                                            v-model="currentBorderWidthUnit"
-                                            :options="styleManager.sizeUnits">
-                                            </q-select>
-                                    </template>
-                                </q-input>
+                    class="alpha-input"
+                    :style="{width: '150px'}"
+                    dense
+                    @update:model-value="(v) => updateSpecificBorder('Width', v)"
+                    v-model="currentBorderWidth">
+                    <template v-slot:before>
+                        <div class="alpha-input-label-before" :style="{paddingRight: '5px'}">
+                        Width
+                        </div>
+                    </template>
+                    </q-input>             
+                         
+                    <q-input
+                    class="alpha-input"
+                    dense
+                    @update:model-value="(v) => updateSpecificBorder('Color', v)"
+                    v-model="currentBorderColor"
+                    :style="{width: '150px'}"
+                    >
+                        <template v-slot:before>
+                            <div class="alpha-input-label-before" :style="{paddingRight: '6px'}">
+                            Color
                             </div>
-
-                            <div :style="{display:'inline-flex', alignItems:'center'}">
-                                <div>
-                                Color
-                                </div>
-                                <q-input
-                                filled dense
-                                @update:model-value="(v) => updateSpecificBorder('Color', v)"
-                                v-model="currentBorderColor"
-                                :style="{width: '115px'}"
-                            >
-                                <template v-slot:append>
-                                <q-icon name="colorize" class="cursor-pointer">
-                                    <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                                    <q-color v-model="currentBorderColor" @update:model-value="(v) => updateSpecificBorder('Color', v)"></q-color>
-                                    </q-popup-proxy>
-                                </q-icon>
-                                </template>
-                            </q-input>
-                            </div>
+                        </template>
+                        <template v-slot:append>
+                            <q-icon  name="colorize" class="cursor-pointer">
+                                <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                <q-color :style="{backgroundColor: 'red'}" v-model="currentBorderColor" @update:model-value="(v) => updateSpecificBorder('Color', v)"></q-color>
+                                </q-popup-proxy>
+                            </q-icon>
+                        </template>
+                    </q-input>
+                    </div>
+                
                 </div>
             </div>
-            </div>
-        </div>
+    
     </div>
 </template>
 
@@ -218,41 +190,34 @@ const currentEditingBorder = ref('')
 const currentBorderStyle = ref('')
 const currentBorderWidth = ref('')
 const currentBorderColor = ref('')
-const currentBorderWidthUnit = ref('px')
-
 
 
 const styles = reactive({
     borderRadiusAll: '',
-    borderRadiusAllUnit: 'px',
+
     borderRadiusTopLeft: '',
-    borderRadiusTopLeftUnit: 'px',
+
     borderRadiusTopRight: '',
-    borderRadiusTopRightUnit: 'px',
+
     borderRadiusBottomLeft: '',
-    borderRadiusBottomLeftUnit: 'px',
+
     borderRadiusBottomRight: '',
-    borderRadiusBottomRightUnit: 'px',
+
 
     borderLeft: '',
-    borderLeftUnit: 'px',
+
     borderRight: '',
-    borderRightUnit: 'px',
+
     borderTop: '',
-    borderTopUnit: 'px',
+
     borderBottom: '',
-    borderBottomUnit: 'px',
+
     borderStyleAll: '',
     borderStyleLeft: '',
     borderStyleRight: '',
     borderStyleTop: '',
     borderStyleBottom: '',
     borderWidthAll: '',
-    borderWidthAllUnit: 'px',
-    borderWidthLeftUnit: 'px',
-    borderWidthRightUnit: 'px',
-    borderWidthTopUnit: 'px',
-    borderWidthBottomUnit: 'px',
     borderWidthLeft: '',
     borderWidthRight: '',
     borderWidthTop: '',
@@ -279,31 +244,27 @@ function focusBorder(value: string){
             currentBorderStyle.value = styles.borderStyleAll
             currentBorderWidth.value = styles.borderWidthAll
             currentBorderColor.value = styles.borderColorAll
-            currentBorderWidthUnit.value = styles.borderWidthAllUnit
+       
             break;
         case 'Left':
             currentBorderStyle.value = styles.borderStyleLeft
             currentBorderWidth.value = styles.borderWidthLeft
             currentBorderColor.value = styles.borderColorLeft
-            currentBorderWidthUnit.value = styles.borderWidthLeftUnit
             break;
         case 'Right':
             currentBorderStyle.value = styles.borderStyleRight
             currentBorderWidth.value = styles.borderWidthRight
             currentBorderColor.value = styles.borderColorRight
-            currentBorderWidthUnit.value = styles.borderWidthRightUnit
             break;
         case 'Top':
             currentBorderStyle.value = styles.borderStyleTop
             currentBorderWidth.value = styles.borderWidthTop
             currentBorderColor.value = styles.borderColorTop
-            currentBorderWidthUnit.value = styles.borderWidthTopUnit
             break;
         case 'Bottom':
             currentBorderStyle.value = styles.borderStyleBottom
             currentBorderWidth.value = styles.borderWidthBottom
             currentBorderColor.value = styles.borderColorBottom
-            currentBorderWidthUnit.value = styles.borderWidthBottomUnit
             break;
     }
 }
@@ -315,25 +276,20 @@ function updateBorder(value: string){
 
 function updateBorderRadius(key: string, value: string){
     if(key.includes('borderTopLeftRadius')){
-        styles.borderRadiusTopLeft = value.match(/\d+/)[0]
-        styles.borderRadiusTopLeftUnit = value.replace(/\d+/,'')
-        emits('updateElement', [{key:'style.borderTopLeftRadius',value: styles.borderRadiusTopLeft + styles.borderRadiusTopLeftUnit}])
+        styles.borderRadiusTopLeft = value
+        emits('updateElement', [{key:'style.borderTopLeftRadius',value: styles.borderRadiusTopLeft}])
     }else if(key.includes('borderTopRightRadius')){
-        styles.borderRadiusTopRight = value.match(/\d+/)[0]
-        styles.borderRadiusTopRightUnit = value.replace(/\d+/,'')
-        emits('updateElement', [{key:'style.borderTopRightRadius',value: styles.borderRadiusTopRight + styles.borderRadiusTopRightUnit}])
+        styles.borderRadiusTopRight = value
+        emits('updateElement', [{key:'style.borderTopRightRadius',value: styles.borderRadiusTopRight}])
     }else if(key.includes('borderBottomLeftRadius')){
-        styles.borderRadiusBottomLeft = value.match(/\d+/)[0]
-        styles.borderRadiusBottomLeftUnit = value.replace(/\d+/,'')
-        emits('updateElement', [{key: 'style.borderBottomLeftRadius',value: styles.borderRadiusBottomLeft + styles.borderRadiusBottomLeftUnit}])
+        styles.borderRadiusBottomLeft = value
+        emits('updateElement', [{key: 'style.borderBottomLeftRadius',value: styles.borderRadiusBottomLeft}])
     }else if(key.includes('borderBottomRightRadius')){
-        styles.borderRadiusBottomRight = value.match(/\d+/)[0]
-        styles.borderRadiusBottomRightUnit = value.replace(/\d+/,'')
-        emits('updateElement', [{key: 'style.borderBottomRightRadius', value: styles.borderRadiusBottomRight + styles.borderRadiusBottomRightUnit}])
+        styles.borderRadiusBottomRight = value
+        emits('updateElement', [{key: 'style.borderBottomRightRadius', value: styles.borderRadiusBottomRight}])
     }else if(key.includes('borderRadius')){
-        styles.borderRadiusAll = value.match(/\d+/)[0]
-        styles.borderRadiusAllUnit = value.replace(/\d+/,'')
-        emits('updateElement', [{key:'style.borderRadius', value:styles.borderRadiusAll + styles.borderRadiusAllUnit}])
+        styles.borderRadiusAll = value
+        emits('updateElement', [{key:'style.borderRadius', value:styles.borderRadiusAll}])
     }
 }
 function updateSpecificBorder(key: string, value: string){
@@ -409,24 +365,20 @@ function updateSpecificBorder(key: string, value: string){
             emits('updateElement', [{key:'style.borderBottomStyle', value: styles.borderStyleBottom}])
             break;
         case 'borderLeftWidth':
-            styles.borderWidthLeft = value.match(/\d+/)[0]
-            styles.borderWidthLeftUnit = value.replace(/\d+/,'')
-            emits('updateElement', [{key:'style.borderLeftWidth', value:styles.borderWidthLeft + styles.borderWidthLeftUnit}])
+            styles.borderWidthLeft = value
+            emits('updateElement', [{key:'style.borderLeftWidth', value:styles.borderWidthLeft}])
             break;
         case 'borderRightWidth':
-            styles.borderWidthRight = value.match(/\d+/)[0]
-            styles.borderWidthRightUnit = value.replace(/\d+/,'')
-            emits('updateElement', [{key: 'style.borderRightWidth',value: styles.borderWidthRight + styles.borderWidthRightUnit}])
+            styles.borderWidthRight = value
+            emits('updateElement', [{key: 'style.borderRightWidth',value: styles.borderWidthRight}])
             break;
         case 'borderTopWidth':
-            styles.borderWidthTop = value.match(/\d+/)[0]
-            styles.borderWidthTopUnit = value.replace(/\d+/,'')
-            emits('updateElement', [{key: 'style.borderTopWidth',value: styles.borderWidthTop + styles.borderWidthTopUnit}])
+            styles.borderWidthTop = value
+            emits('updateElement', [{key: 'style.borderTopWidth',value: styles.borderWidthTop }])
             break;
         case 'borderBottomWidth':
-            styles.borderWidthBottom = value.match(/\d+/)[0]
-            styles.borderWidthBottomUnit = value.replace(/\d+/,'')
-            emits('updateElement', [{key:'style.borderBottomWidth',value: styles.borderWidthBottom + styles.borderWidthBottomUnit}])
+            styles.borderWidthBottom = value
+            emits('updateElement', [{key:'style.borderBottomWidth',value: styles.borderWidthBottom }])
             break;
         case 'borderLeftColor':
             styles.borderColorLeft = value
@@ -453,9 +405,8 @@ function updateSpecificBorder(key: string, value: string){
             emits('updateElement', [{key:'style.borderStyle', value:styles.borderStyleAll}])
             break;
         case 'borderWidth':
-            styles.borderWidthAll = value.match(/\d+/)[0]
-            styles.borderWidthAllUnit = value.replace(/\d+/,'')
-            emits('updateElement', [{key:'style.borderWidth',value: styles.borderWidthAll + styles.borderWidthAllUnit}])
+            styles.borderWidthAll = value
+            emits('updateElement', [{key:'style.borderWidth',value: styles.borderWidthAll}])
             break;
         
     }
@@ -468,40 +419,26 @@ function setStylesFromElement(view: ViewElement){
     }
     view?.style?.border ? styles.border = view.style.border : styles.border = ''
 
-    view.style?.borderRadius ? styles.borderRadiusAll = view.style.borderRadius.match(/\d+/)[0] : styles.borderRadiusAll = ''
-    view.style?.borderRadius ? styles.borderRadiusAllUnit = view.style.borderRadius.match(/[a-zA-Z]+/)[0] : styles.borderRadiusAllUnit = 'px'
-    view.style?.borderRadius ? styles.borderRadiusTopLeft = view.style.borderTopLeftRadius.match(/\d+/)[0] : styles.borderRadiusTopLeft = ''
-    view.style?.borderRadius ? styles.borderRadiusTopLeftUnit = view.style.borderTopLeftRadius.match(/[a-zA-Z]+/)[0] : styles.borderRadiusTopLeftUnit = 'px'
-    view.style?.borderRadius ? styles.borderRadiusTopRight = view.style.borderTopRightRadius.match(/\d+/)[0] : styles.borderRadiusTopRight = ''
-    view.style?.borderRadius ? styles.borderRadiusTopRightUnit = view.style.borderTopRightRadius.match(/[a-zA-Z]+/)[0] : styles.borderRadiusTopRightUnit = 'px'
-    view.style?.borderRadius ? styles.borderRadiusBottomLeft = view.style.borderBottomLeftRadius.match(/\d+/)[0] : styles.borderRadiusBottomLeft = ''
-    view.style?.borderRadius ? styles.borderRadiusBottomLeftUnit = view.style.borderBottomLeftRadius.match(/[a-zA-Z]+/)[0] : styles.borderRadiusBottomLeftUnit = 'px'
-    view.style?.borderRadius ? styles.borderRadiusBottomRight = view.style.borderBottomRightRadius.match(/\d+/)[0] : styles.borderRadiusBottomRight = ''
-    view.style?.borderRadius ? styles.borderRadiusBottomRightUnit = view.style.borderBottomRightRadius.match(/[a-zA-Z]+/)[0] : styles.borderRadiusBottomRightUnit = 'px'
+    view.style?.borderRadius ? styles.borderRadiusAll = view.style.borderRadius : styles.borderRadiusAll = ''
+    view.style?.borderRadius ? styles.borderRadiusTopLeft = view.style.borderTopLeftRadius : styles.borderRadiusTopLeft = ''
+    view.style?.borderRadius ? styles.borderRadiusTopRight = view.style.borderTopRightRadius : styles.borderRadiusTopRight = ''
+    view.style?.borderRadius ? styles.borderRadiusBottomLeft = view.style.borderBottomLeftRadius : styles.borderRadiusBottomLeft = ''
+    view.style?.borderRadius ? styles.borderRadiusBottomRight = view.style.borderBottomRightRadius : styles.borderRadiusBottomRight = ''
 
-    view.style?.borderLeft ? styles.borderLeft = view.style.borderLeft.match(/\d+/)[0] : styles.borderLeft = ''
-    view.style?.borderLeft ? styles.borderLeftUnit = view.style.borderLeft.match(/[a-zA-Z]+/)[0] : styles.borderLeftUnit = 'px'
-    view.style?.borderRight ? styles.borderRight = view.style.borderRight.match(/\d+/)[0] : styles.borderRight = ''
-    view.style?.borderRight ? styles.borderRightUnit = view.style.borderRight.match(/[a-zA-Z]+/)[0] : styles.borderRightUnit = 'px'
-    view.style?.borderTop ? styles.borderTop = view.style.borderTop.match(/\d+/)[0] : styles.borderTop = ''
-    view.style?.borderTop ? styles.borderTopUnit = view.style.borderTop.match(/[a-zA-Z]+/)[0] : styles.borderTopUnit = 'px'
-    view.style?.borderBottom ? styles.borderBottom = view.style.borderBottom.match(/\d+/)[0] : styles.borderBottom = ''
-    view.style?.borderBottom ? styles.borderBottomUnit = view.style.borderBottom.match(/[a-zA-Z]+/)[0] : styles.borderBottomUnit = 'px'
+    view.style?.borderLeft ? styles.borderLeft = view.style.borderLeft : styles.borderLeft = ''
+    view.style?.borderRight ? styles.borderRight = view.style.borderRight : styles.borderRight = ''
+    view.style?.borderTop ? styles.borderTop = view.style.borderTop : styles.borderTop = ''
+    view.style?.borderBottom ? styles.borderBottom = view.style.borderBottom : styles.borderBottom = ''
     view.style?.borderStyle ? styles.borderStyleAll = view.style.borderStyle : styles.borderStyleAll = ''
     view.style?.borderLeftStyle ? styles.borderStyleLeft = view.style.borderLeftStyle : styles.borderStyleLeft = ''
     view.style?.borderRightStyle ? styles.borderStyleRight = view.style.borderRightStyle : styles.borderStyleRight = ''
     view.style?.borderTopStyle ? styles.borderStyleTop = view.style.borderTopStyle : styles.borderStyleTop = ''
     view.style?.borderBottomStyle ? styles.borderStyleBottom = view.style.borderBottomStyle : styles.borderStyleBottom = ''
-    view.style?.borderWidth ? styles.borderWidthAll = view.style.borderWidth.match(/\d+/)[0] : styles.borderWidthAll = ''
-    view.style?.borderWidth ? styles.borderWidthAllUnit = view.style.borderWidth.match(/[a-zA-Z]+/)[0] : styles.borderWidthAllUnit = 'px'
-    view.style?.borderLeftWidth ? styles.borderWidthLeft = view.style.borderLeftWidth.match(/\d+/)[0] : styles.borderWidthLeft = ''
-    view.style?.borderLeftWidth ? styles.borderWidthLeftUnit = view.style.borderLeftWidth.match(/[a-zA-Z]+/)[0] : styles.borderWidthLeftUnit = 'px'
-    view.style?.borderRightWidth ? styles.borderWidthRight = view.style.borderRightWidth.match(/\d+/)[0] : styles.borderWidthRight = ''
-    view.style?.borderRightWidth ? styles.borderWidthRightUnit = view.style.borderRightWidth.match(/[a-zA-Z]+/)[0] : styles.borderWidthRightUnit = 'px'
-    view.style?.borderTopWidth ? styles.borderWidthTop = view.style.borderTopWidth.match(/\d+/)[0] : styles.borderWidthTop = ''
-    view.style?.borderTopWidth ? styles.borderWidthTopUnit = view.style.borderTopWidth.match(/[a-zA-Z]+/)[0] : styles.borderWidthTopUnit = 'px'
-    view.style?.borderBottomWidth ? styles.borderWidthBottom = view.style.borderBottomWidth.match(/\d+/)[0] : styles.borderWidthBottom = ''
-    view.style?.borderBottomWidth ? styles.borderWidthBottomUnit = view.style.borderBottomWidth.match(/[a-zA-Z]+/)[0] : styles.borderWidthBottomUnit = 'px'
+    view.style?.borderWidth ? styles.borderWidthAll = view.style.borderWidth : styles.borderWidthAll = ''
+    view.style?.borderLeftWidth ? styles.borderWidthLeft = view.style.borderLeftWidth : styles.borderWidthLeft = ''
+    view.style?.borderRightWidth ? styles.borderWidthRight = view.style.borderRightWidth : styles.borderWidthRight = ''
+    view.style?.borderTopWidth ? styles.borderWidthTop = view.style.borderTopWidth : styles.borderWidthTop = ''
+    view.style?.borderBottomWidth ? styles.borderWidthBottom = view.style.borderBottomWidth : styles.borderWidthBottom = ''
     view.style?.borderColor ? styles.borderColorAll = view.style.borderColor : styles.borderColorAll = ''
     view.style?.borderLeftColor ? styles.borderColorLeft = view.style.borderLeftColor : styles.borderColorLeft = ''
     view.style?.borderRightColor ? styles.borderColorRight = view.style.borderRightColor : styles.borderColorRight = ''
@@ -516,6 +453,6 @@ function setStylesFromElement(view: ViewElement){
 
 .sbec{
     background-color: theme('colors.brightgrey');
-    overflow:hidden;
+    position: relative;
 }
 </style>
