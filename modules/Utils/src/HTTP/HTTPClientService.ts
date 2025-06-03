@@ -26,6 +26,9 @@ export class HTTPClientService implements IHTTPClientService{
     }
     private GetOrCreateClient(request: IRequestConfig): AxiosWrapper
     {
+        if(request?.isolated){
+            return this.createClient(request)
+        }
         let client = this.clients.find((client) => {
             return request.url.includes(client.config.url);
         })

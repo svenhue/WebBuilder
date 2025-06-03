@@ -6,4 +6,5 @@ export interface IRequestConfig{
     headers?: object;
     networkname?: string;
     data?: object;
+    isolated?: boolean
 }

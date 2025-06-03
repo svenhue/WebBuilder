@@ -4,17 +4,22 @@ export interface ITool {
     execEnvironment: string; // client or server
     name:string
     description: string
-    input_schema: {
-      type: 'object' // "object" "string"
-      properties: {
-        location: {
-          type: string,
-          description: string
+    actions: Array<
+      {
+        name: string
+        inputSchema: {
+          type: 'object' // "object" "string"
+          properties: {
+            location: {
+              type: string,
+              description: string
+            }
+          },
+          required: string[] // ["location"] required information for tool use
         }
-      },
-      required: string[] // ["location"] required information for tool use
-    }
-    execute: (...args: any[]) => Promise<any>;
+      }
+    >
+    execute: (...args: any[]) => Promise<any>
 }
 
 

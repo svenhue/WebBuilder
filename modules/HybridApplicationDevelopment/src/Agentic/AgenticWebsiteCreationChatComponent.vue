@@ -1,34 +1,40 @@
 <template>
+    <div :style="{height: '100%'}">
     <div class="root-agentic-creation-chat">
-        <div class="chat">
-            <AgenticChatIntegrationComponent
-            :config="{
-                    serverUrl: 'ws://localhost:3001/websiteCreation',
-                    initMessageName: 'init',
-                    tryInterruptMessageName: 'tryinterrupt',
-                    answerMessageName: 'answer',
-                    getConversationDataName: 'initAssistant',
-                    optionalHandleLLMAnswerCallback: handleLLMAnswer,
-                    clientSideTools: [
-                      new OpenEditorAndConfigureAppConfiguration()
-                    ]
-                }"
-            >
+        
+          <div class="chat">
+              <AgenticChatIntegrationComponent
+              ref="chatComponent"
+              :config="{
+                      serverUrl: 'ws://localhost:3001/websiteCreation',
+                      initMessageName: 'init',
+                      tryInterruptMessageName: 'tryinterrupt',
+                      answerMessageName: 'answer',
+                      getConversationDataName: 'initAssistant',
+                      optionalHandleLLMAnswerCallback: handleLLMAnswer,
+                      clientSideTools: [
+                        new OpenEditorAndConfigureAppConfiguration()
+                      ]
+                  }"
+              >
 
-            </AgenticChatIntegrationComponent>
-        </div>
-        <div class="requirements-editor">
-            <JsonEditorVue
-            :style="{
-                width: '100%',
-                height: '100%'
-            }"
-            :main-menu-bar="false"
-            :status-bar="false"
-            v-model="requirements"
-            v-bind="{/* local props & attrs */}"
-            />
-        </div>
+              </AgenticChatIntegrationComponent>
+          </div>
+          <div class="requirements-editor">
+              <JsonEditorVue
+              :style="{
+                  width: '100%',
+                  height: '100%'
+              }"
+              :main-menu-bar="false"
+              :status-bar="false"
+              v-model="requirements"
+              v-bind="{/* local props & attrs */}"
+              />
+          </div>
+          <q-btn @click="createConfigAndRouteToEditor"  :style="{position: 'absolute', width: '180px', height: '50px', bottom: '140px', left: 'calc(50% - 60px)'}" label="Create Website"> </q-btn>
+      </div>
+        
     </div>
 </template>
 
@@ -39,8 +45,22 @@ import { WebsiteCreationRequirementsObject } from './WebsiteCreationStrategy';
 import JsonEditorVue from 'json-editor-vue'
 import { ILLMAnswer } from 'agenticBusinessIntegration/src/UI/AgentInterface/types';
 import { OpenEditorAndConfigureAppConfiguration } from './Tools/OpenEditorAndConfigureAppConfiguration';
+import { ref, onMounted} from 'vue'
+import { ConversationViewModel } from 'agenticBusinessIntegration';
+import { BaseServiceProvider, IHTTPClientService } from 'alphautils';
 
 const requirements = reactive<WebsiteCreationRequirementsObject>({})
+const chatComponent = ref(null);
+
+const httpService = BaseServiceProvider.Service<IHTTPClientService>("HTTPClientService")
+
+let viewModel: ConversationViewModel = undefined
+onMounted(() => {
+  if(!chatComponent.value.viewModel)
+    throw new Error("Cant find viewmodel")
+
+  viewModel = chatComponent.value.viewModel.viewModel
+})
 
 function handleLLMAnswer(answer: ILLMAnswer){
     if(answer['additionalJSON'] != undefined){
@@ -49,6 +69,18 @@ function handleLLMAnswer(answer: ILLMAnswer){
         const formattedRequirements = filterKnownProperties(r)
         Object.assign(requirements, formattedRequirements)
     }
+}
+
+async function createConfigAndRouteToEditor(){
+  const result = httpService.sendRequest({
+    url: "http://localhost:3001/ee/initAppConfigWithRequirements",
+    method: 'POST',
+    data: requirements,
+    isolated: true
+  }).then((r) => {
+    console.log(555, r)
+  })
+  console.log(123, result)
 }
 
 function filterKnownProperties(input: any): any {

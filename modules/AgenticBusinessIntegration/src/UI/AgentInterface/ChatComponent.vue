@@ -38,7 +38,15 @@ const props = defineProps({
         }
     }
 });
+
+
+
 const viewModel = new ConversationViewModel(props.config);
+
+defineExpose({
+    viewModel
+})
+
 const el = ref(null)
 const md = new MarkdownIt();
 

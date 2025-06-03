@@ -5,7 +5,7 @@ import { ref, Ref } from 'vue';
 import { ILLMAnswer } from './types'
 import { ITool } from "../../Tools/ITool";
 import { ClientSideToolRegistry } from '../../Tools/client/ClientSideToolRegistry'
-import { IClientSideActionSuggestion } from '../../Tools/client/IClientSideActionSuggestion'
+import { type IClientSideActionSuggestion } from '../../Tools/client/ClientSideToolSuggestion'
 
 export interface IConversationConfiguration{
     serverUrl: string
@@ -70,6 +70,9 @@ export class ConversationViewModel extends WSClient{
 
         await this.tryInterruptAssistant(message);
         
+    }
+    public getAllMessages(){
+        return this.history.value.entries
     }
 
     private async tryInterruptAssistant(message: string){

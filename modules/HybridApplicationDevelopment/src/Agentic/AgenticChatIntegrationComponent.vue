@@ -2,6 +2,7 @@
     <div class="agentic-chat-container">
    
             <ChatComponent
+            ref="chatComponent"
                 :config="props.config"
             >
             </ChatComponent>
@@ -12,11 +13,16 @@
 
 import { ChatComponent } from 'agenticBusinessIntegration';
 import { IConversationConfiguration } from 'agenticBusinessIntegration/src/UI/AgentInterface/ConversationViewModel';
-
+import { useTemplateRef } from 'vue'
 const props = defineProps({
     config: Object as () => IConversationConfiguration
 })
 
+const chatComponent = useTemplateRef("chatComponent")
+
+defineExpose({
+    viewModel: chatComponent
+})
 // Get the runtime view model
 </script>
 <style scoped>

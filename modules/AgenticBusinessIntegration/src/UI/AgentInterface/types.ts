@@ -1,4 +1,4 @@
-import { IClientSideActionSuggestion } from '../../Tools/client/IClientSideActionSuggestion'
+import { type IClientSideActionSuggestion } from '../../Tools/client/ClientSideToolSuggestion'
 
 export interface ILLMAnswer{
     [name: string] : Object

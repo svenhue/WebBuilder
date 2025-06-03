@@ -6,6 +6,8 @@ import { type IFrontLineAgent } from "./src/Agents/IFrontLineAgent";
 import { BaseAgent } from "./src/Agents/BaseAgent";
 import ChatComponent from "./src/UI/AgentInterface/ChatComponent.vue";
 import { type ITool } from "./src/Tools/ITool";
+import { type IClientSideActionSuggestion } from './src/Tools/client/ClientSideToolSuggestion'
+import { ConversationViewModel } from "./src/UI/AgentInterface/ConversationViewModel";
 
 export {
     IAgent,
@@ -15,5 +17,7 @@ export {
     IFrontLineAgent,
     ChatComponent,
     BaseAgent,
-    ITool
+    ITool,
+    IClientSideActionSuggestion,
+    ConversationViewModel
 }

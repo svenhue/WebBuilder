@@ -10,3 +10,4 @@ export interface IClientSideActionSuggestion{
     needsUserConfirmation?: boolean
     action: IClientSideAction
 }
+

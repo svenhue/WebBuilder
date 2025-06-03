@@ -59,7 +59,7 @@ export class AxiosWrapper{
         const config = this.createAxiosConfig(options);
         let url;
 
-        if(options.isCompleteUrl){
+        if(options.isCompleteUrl || options?.isolated){
             url = options.url;
         }else{
             url = this.config.url + options.url;
