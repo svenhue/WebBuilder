@@ -21,11 +21,7 @@ export class PositioningMarker {
 
         const markElement = this.createMarkElement(relativeMarkingPosition, element);
 
-        if(relativeMarkingPosition == this.relativeMarkings.left || relativeMarkingPosition == this.relativeMarkings.top){
-            element.before(markElement);
-        }else{
-            element.after(markElement);
-        }
+        document.body.appendChild(markElement)
     }
 
     public removeMarks(){
@@ -45,23 +41,23 @@ export class PositioningMarker {
         markElement.style.backgroundColor = 'red';
         markElement.id = 'positioningMarker';
         
-        const x = 90;
-        const y = 112;
+        const x = 5;
+        const y = 5;
         switch(position){
             case this.relativeMarkings.left:
                 markElement.style.marginLeft = '-5px'
                 markElement.style.width = '5px';
                 markElement.style.height = targetBox.height + 'px';
                 markElement.style.left = targetBox.left - x + 'px';
-                markElement.style.top = targetBox.top - y + 'px';
+                markElement.style.top = targetBox.top + 'px';
                 break;
             case this.relativeMarkings.right:
                 markElement.style.marginRight = '-5px'
                 markElement.style.height =targetBox.height + 'px';
                 markElement.style.width = '5px'
 
-                markElement.style.left = targetBox.right - x + 'px';
-                markElement.style.top = targetBox.top - y + 'px';
+                markElement.style.left = targetBox.right + x + 'px';
+                markElement.style.top = targetBox.top + 'px';
             
                 break;
             case this.relativeMarkings.top:
@@ -70,8 +66,8 @@ export class PositioningMarker {
                 markElement.style.width = targetBox.width + 'px';
                 markElement.style.height = '5px'
 
-                markElement.style.top = targetBox.top - y + 'px';
-                markElement.style.left = targetBox.left - x+ 'px';
+                markElement.style.top = targetBox.top + y + 'px';
+                markElement.style.left = targetBox.left + 'px';
                 break;
             case this.relativeMarkings.bottom:
                 markElement.style.marginBottom = '-5px'
@@ -79,7 +75,7 @@ export class PositioningMarker {
                 markElement.style.height = '5px'
 
                 markElement.style.top = targetBox.bottom - y + 'px';
-                markElement.style.left = targetBox.left - x + 'px';
+                markElement.style.left = targetBox.left + 'px';
                 break;
         }
 

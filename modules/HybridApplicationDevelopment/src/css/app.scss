@@ -9,6 +9,13 @@
 
    
 }
+.editor-input{
+  color:white;
+  
+}
+.quasar-input-ext{
+  color: white;
+}
 .app-header{
   background-color: theme('colors.primary');
 }
@@ -44,7 +51,37 @@
   
   
 }
+.alpha-input-base{
+  color:white;
+}
+.alpha-input{
+  color:white;
+  border-radius: 5px; 
 
+  .alpha-input-label-before{
+    font-size: 13px;
+    color:white;
+  }
+  input{
+    border-radius: 5px; 
+    background-color: theme('colors.darkgrey');
+  }
+}
+.alpha-select{
+  color: white;
+  background-color: theme('colors.darkgrey');
+  border-radius: 5px; 
+  padding-left: 5px;
+
+  .q-field__native { 
+    color: white; 
+   }
+}
+
+.alpha-dropdown-content{
+  background-color: theme('colors.darkgrey');
+  color: white;
+}
 .focussed-element > .q-btn__content *{
   outline-color: blue;
   outline-style: groove;

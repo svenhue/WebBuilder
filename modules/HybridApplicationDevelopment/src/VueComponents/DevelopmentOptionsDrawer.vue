@@ -1,26 +1,26 @@
 <template>
-  <q-splitter
+  <div
+  class="development-options-drawer"
     :style="{
       width: '100%',
       border: '1px solid black',
-      height: '100%'
+      height: '100%',
+      color: 'white!important'
     }"
-    v-model="splitterModel"
-    horizontal
   >
-    <template v-slot:before>
+    <div>
       <q-tabs v-model="tab" class="text-teal">
-        <q-tab name="edit" icon="brush"></q-tab>
-        <q-tab name="settings" icon="settings"></q-tab>
-        <q-tab name="actions" icon="bolt"></q-tab>
+        <q-tab name="edit" icon="brush" class="tab-class"></q-tab>
+        <q-tab name="settings" icon="settings" class="tab-class"></q-tab>
+        <q-tab name="actions" icon="bolt" class="tab-class"></q-tab>
       </q-tabs>
-      <div>
-        Edit the {{  currentElement?.value?.publicidentifier }} element
+      <div :style="{padding: '10px'}"  v-if="currentElement?.value != undefined">
+        Id: {{  currentElement?.value?.publicidentifier }} 
       </div>
-    </template>
+    </div>
 
-    <template v-slot:after>
-      <q-tab-panels v-model="tab">
+    <div>
+      <q-tab-panels v-model="tab" class="tab-panels">
         <q-tab-panel name="edit">
           <ElementStyleConfigurationComponent
           @updateelement="(values) => emits('updateelement', values)"
@@ -47,8 +47,8 @@
           > </ActionConfigurationComponent>
         </q-tab-panel>
       </q-tab-panels>
-    </template>
-  </q-splitter>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -95,3 +95,18 @@ onMounted(() => {
 })
 
 </script>
+
+<style lang="scss">
+.development-options-drawer{
+  background-color: theme('colors.primary-dark');
+
+  .tab-class{
+    color: theme('colors.primary');
+  }
+  .tab-panels{
+    background-color: theme('colors.primary-dark');
+
+  }
+}
+
+</style>

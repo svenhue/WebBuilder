@@ -1,6 +1,9 @@
 <template>
     <div>
-        <q-input dense 
+        <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense 
+        
+        :input-style="{color: 'white!important'}"
         :model-value="currentElement?.content" 
         @update:model-value="(val) => $emit('updateElement', [{key: 'content', value: val}])">
             <template v-slot:before>

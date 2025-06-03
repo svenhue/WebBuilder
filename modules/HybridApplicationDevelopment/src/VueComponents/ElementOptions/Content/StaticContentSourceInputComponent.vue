@@ -1,5 +1,6 @@
 <template>
-    <q-input
+    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'"
     dense
     filled
     :model-value="url"

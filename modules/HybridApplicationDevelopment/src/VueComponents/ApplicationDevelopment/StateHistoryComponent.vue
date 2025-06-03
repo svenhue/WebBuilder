@@ -55,7 +55,7 @@
 
 <script setup lang="ts">
 import { BaseServiceProvider, BORepository } from 'alphautils';
-import { IHistoryEntry, IHistoryEntrys, IHistoryStack } from 'alphautils/src/Data/StateManagement/StateHistory/IHistoryStack';
+import { IHistoryEntrys, IHistoryStack } from 'alphautils/src/Data/StateManagement/StateHistory/IHistoryStack';
 import { computed, ComputedRef, Ref, watch } from 'vue';
 
 
@@ -65,6 +65,8 @@ const props = defineProps({
         required: true
     }
 })
+
+const emits = defineEmits(['close'])
 
 const changeDescription = (item: IHistoryEntrys) => {
     if(item?.entrys == undefined){

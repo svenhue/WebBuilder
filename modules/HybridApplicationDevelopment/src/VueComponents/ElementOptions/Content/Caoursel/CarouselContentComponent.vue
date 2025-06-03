@@ -28,7 +28,8 @@
         @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.arrows', value: values}])}"
     >
     </q-checkbox>
-    <q-input dense :model-value="currentElement.content?.prevIcon ?? ''" 
+    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense :model-value="currentElement.content?.prevIcon ?? ''" 
     @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.prevIcon', value: values}])}">
         <template v-slot:before >
             <div class="editor-input-label">
@@ -36,7 +37,8 @@
         </div>
         </template>
     </q-input>
-    <q-input dense :model-value="currentElement.content?.nextIcon ?? ''" 
+    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense :model-value="currentElement.content?.nextIcon ?? ''" 
     @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.nextIcon', value: values}])}">
         <template v-slot:before >
             <div class="editor-input-label">

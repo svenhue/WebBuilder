@@ -1,5 +1,5 @@
 <template>
-    <q-card>
+    <q-card class="edit-event-handler">
         <q-card-section>
             Edit Event Handler
             <q-btn dense icon="cancel" @click="$emit('close')" :style="{
@@ -14,6 +14,8 @@
         <q-card-section>
             Event
             <q-select
+            class="alpha-select"
+            popup-content-class="alpha-dropdown-content"
             :options="Object.values(UIEventTypes)"
             
             @update:model-value="(value) => { eventCopy.type = value, $emit('updateEvent',eventCopy)} "
@@ -24,6 +26,8 @@
                 </template>
             </q-select>
             <q-select
+            class="alpha-select"
+            popup-content-class="alpha-dropdown-content"
             dense
             :model-value="eventCopy?.identifier"
                 :options="eventCopy.type == UIEventTypes['domEvent'] ? Object.values(UIEvents) : GetCustomComponentEvents(element.publicidentifier)"
@@ -155,3 +159,10 @@ function DeleteAction(action: IUIAction){
     emits('updateEvent', eventCopy.value)
 }
 </script>
+
+<style lang="scss" scoped>
+.edit-event-handler {
+    background-color: theme('colors.brightgrey');
+}
+
+</style>

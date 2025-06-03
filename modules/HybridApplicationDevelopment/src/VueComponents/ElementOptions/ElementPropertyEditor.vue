@@ -7,7 +7,9 @@
                     <q-item-label>{{propertyName}}</q-item-label>
                 </q-item-section>
                 <q-item-section>
-                    <q-input @update:model-value="(value) => emits('updateElement', 
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" @update:model-value="(value) => emits('updateElement', 
                     [
                         {
                             key: 'properties' + propertyName,

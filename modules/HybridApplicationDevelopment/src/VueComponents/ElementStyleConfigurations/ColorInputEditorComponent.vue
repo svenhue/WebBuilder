@@ -1,22 +1,32 @@
 <template>
     <q-input
     dense
+    class="alpha-input-color"
     @update:model-value="(val) => $emit('updateColor', val)"
     :model-value="color"
+    label-color="white"
+    :input-style="{ color: 'white' }"
     >
         <template v-slot:before>
+            <div :style="{color: 'white', fontSize: '14px'}">
             {{  label  }}
+            </div>
         </template>
         <template v-slot:after>
-            <q-btn-dropdown auto-close>
-            <q-list dense>
-                <q-item dense clickable @click="updateColor(color.key)" v-for="color in avaibleColors" :key="color.label">
-                    <q-item-section>
-                            {{ color.label }}
-                    </q-item-section>
-                </q-item>
-            </q-list>
-        </q-btn-dropdown>
+            <q-btn-dropdown  auto-close dense>
+                <q-list dense class="dropdown-list">
+                    <q-item dense clickable @click="updateColor(color.key)" v-for="color in avaibleColors" :key="color.label">
+                        <div 
+                        :style="{backgroundColor: color.value, marginTop: '8px', marginRight: '5px', width: '10px', height: '10px'}">
+                      
+                        </div>
+                        <q-item-section>
+                                {{ color.label }}
+                        </q-item-section>
+                        
+                    </q-item>
+                </q-list>
+            </q-btn-dropdown>
         </template>
 
     </q-input>
@@ -59,3 +69,17 @@ function updateColor(val){
     emits('updateColor', `{{ colors.${val} }}` )
 }
 </script>
+
+<style lang="scss" scoped>
+
+.alpha-input-color{
+    border-radius: 10px;
+
+
+
+}
+    .dropdown-list{
+        background-color: theme('colors.brightgrey');
+        color: white;
+    }
+</style>

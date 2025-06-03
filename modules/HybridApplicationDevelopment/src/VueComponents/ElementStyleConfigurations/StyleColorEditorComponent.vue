@@ -1,6 +1,6 @@
 <template>
 
-    <div class="YYYY">
+    <div  class="YYYY">
         <ColorInputEditorComponent
         :contextid="props.contextid"
         @update-color="(val) => updateElement(val, 'style.backgroundColor')"

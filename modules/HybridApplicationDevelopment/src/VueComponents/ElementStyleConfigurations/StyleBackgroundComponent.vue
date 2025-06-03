@@ -96,7 +96,8 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -112,7 +113,8 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -142,7 +144,8 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -158,7 +161,8 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -177,7 +181,8 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>
@@ -193,7 +198,8 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select dense 
+                                        <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
                                             </q-select>

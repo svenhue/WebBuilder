@@ -1,5 +1,5 @@
 <template>
-    <div v-if="viewCopy?.id != undefined">
+    <div v-if="viewCopy?.id != undefined" class="element-options" :style="{color: 'white!important'}">
         <div>
             <q-expansion-item dense label="Content" v-if="optionsComponent != undefined">
                 <component :is="optionsComponent" @updateElement="(values) => emits('updateElement', values)" :currentElement="viewCopy"></component>
@@ -24,6 +24,7 @@
                 " :id="'jsoneditor_1'">
                 
                     <TextInputEditorComponent
+                    :style="{color: 'white'}"
                     :contextid="viewCopy?.contextid"
                     :requestingComponent="view.value"
                     :mode="'onlyExpression'"
@@ -70,7 +71,6 @@ import HeaderComponentContent from './Content/Layout/HeaderComponentContent.vue'
 import TextInputEditorComponent from 'alphaviewlibrary/src/Editor/TextInputEditorComponent.vue';
 import ButtonAppearenceComponent from './Content/Button/ButtonAppearenceComponent.vue';
 import LinkOptionsComponent from './Content/Link/LinkOptionsComponent.vue';
-import AvatarComponent from 'alphaviewlibrary/src/Basic/AvatarComponent.vue';
 import AvatarContentComponent from './Content/Avatar/AvatarContentComponent.vue';
 import DialogBehaviorComponent from './Content/Dialog/DialogBehaviorComponent.vue';
 import BadgeContentComponent from './Content/Badge/BadgeContentComponent.vue';
@@ -263,9 +263,13 @@ function UpdateShowIf(val){
 }
 </script>
 
-<style>
+<style lang="scss">
 
+.element-options{
+    background-color: theme('colors.primary-dark');
+}
 .editor-input-label{
     font-size: medium;
+    color:white;
 }
 </style>

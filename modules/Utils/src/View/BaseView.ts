@@ -31,4 +31,5 @@ export class BaseView extends BaseServiceProvider
     return this.templateRef;
   }
 
+
 }

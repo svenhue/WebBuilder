@@ -8,13 +8,15 @@
             
             <q-card-section>
             
-            <q-input dense :model-value="rule.name" @update:model-value="(val) => $emit('updateElement', {key: 'name', value: val})">
+            <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense :model-value="rule.name" @update:model-value="(val) => $emit('updateElement', {key: 'name', value: val})">
                 <template v-slot:before>
                     <div class="editor-input-label" > Name</div>
                 </template>
             </q-input>
 
-            <q-input dense :model-value="rule.errorMessage"  @update:model-value="(val) => $emit('updateElement', {key: 'errorMessage', value: val})">
+            <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense :model-value="rule.errorMessage"  @update:model-value="(val) => $emit('updateElement', {key: 'errorMessage', value: val})">
                 <template v-slot:before>
                     <div class="editor-input-label" > Error Message</div>
                 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div :style="style" class="editor-background-facade">    
+    <div :style="style" id="editor-background-facade" class="editor-background-facade">    
             <slot></slot>
     </div>
 </template>
@@ -60,7 +60,7 @@ onMounted(() => {
 .editor-background-facade{
     overflow:scroll;
     overflow-block: scroll;
-    background-color: theme('colors.brightgrey');
+    background-color: 'white';
     min-width: 200px;
     position: inherit;
                     left: 50%;

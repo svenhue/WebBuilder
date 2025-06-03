@@ -1,7 +1,6 @@
 <template>
 
-    <Teleport v-if="ready == true" to="#dev-toolbar" class="dev-toolbar">
-
+    <div v-if="ready == true" to="#dev-toolbar" class="dev-toolbar">
         <div :style="{display: 'flex', alignItems: 'center'}">
                 <div>
                     <q-btn dense icon="undo" @click="() => viewModel.repository.Undo(viewModel.model.contextid)" :disable="history.undoStack.value?.values.length > 0 ? false : true">
@@ -26,14 +25,14 @@
                     <q-select dense 
                     :options="['design', 'edit']" 
                     :model-value="store.devSettings?.editorMode" 
-                    :style="{width: '70px', backgroundColor: 'white', margin: '4px', borderRadius: '4px'}" 
+                    :style="{width: '80px', backgroundColor: 'white', margin: '4px', borderRadius: '4px'}" 
                     @update:model-value="(val) => viewModel.settingsService.ChangeEditorMode(val, viewModel)">
                     </q-select>
                     <DeploymentComponent :view-model="viewModel">
 
                     </DeploymentComponent>
                 </div>
-    </Teleport>
+            </div>
 </template>
 
 <script setup lang="ts">

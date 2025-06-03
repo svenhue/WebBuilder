@@ -6,7 +6,7 @@ import { CodeCompletionProvider } from "./CodeCompletionProvider";
 import { IViewConfiguration } from "alphautils";
 
 
-if(typeof window !== 'undefined') {
+
   let monaco: any = null;
   
     import('monaco-editor').then((m) => {
@@ -58,7 +58,7 @@ self.MonacoEnvironment = {
   }
 }
 
-}
+
 
 @injectable()
 export class CodeEditorService {
@@ -79,6 +79,7 @@ export class CodeEditorService {
           noSemanticValidation: true,
           noSyntaxValidation: true
         });
+        monaco.languages
         const model = monaco.editor.createModel(value, 'css');
         const editor = monaco.editor.create(host.value, {
             theme: 'vs-dark'

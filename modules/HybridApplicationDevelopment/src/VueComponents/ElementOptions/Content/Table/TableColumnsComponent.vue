@@ -20,7 +20,8 @@
             
             <q-item v-show="showNewItem" dense>
                 <q-item-section>
-                    <q-input dense 
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense 
                     v-model="newColumnModel.field" 
                     @focusout="() => { UpdateColumns(), showNewItem = false}" 
                     @update:model-value="(v) => {newColumnModel.name = v, newColumnModel.label = v, newColumnModel.align = 'left'}">
@@ -34,10 +35,12 @@
             </q-item>
             <q-item dense v-for='column in columnsModel' :key='column'>
              
-                        <q-input dense v-model="column.field" @update:model-value="UpdateColumns">
+                        <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense v-model="column.field" @update:model-value="UpdateColumns">
                         </q-input>
           
-                    <q-input dense v-model="column.position" @update:model-value="UpdateColumns" :style="{
+                    <q-input class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense v-model="column.position" @update:model-value="UpdateColumns" :style="{
                         width: '25px'
                     }">
                     </q-input>

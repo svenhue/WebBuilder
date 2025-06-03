@@ -1,6 +1,6 @@
 <template>
     <q-dialog
-    :model-value="view?.modelValue ?? true"
+    :model-value="view?.properties?.isActive"
     dense
     :class="view?.class"
     :label="view?.content?.label ?? 'Button'"
@@ -39,14 +39,14 @@ const viewRef = ref<InstanceType<typeof QBtn>>(null);
 const {view, children } = useViewConfiguration(props.contextid, props.viewId) as MaybeRefOrGetter<[ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]>
     
     
-const viewelement = new DialogViewElement(view);
+const viewElement = new DialogViewElement(view);
 
 onMounted(() => {
-    viewelement.bind(props.contextid, viewRef);
+    viewElement.bind(props.contextid, viewRef);
 })
 
 onBeforeUnmount(() => {
-    viewelement.unbind()
+    viewElement.unbind()
 })
 
 </script>

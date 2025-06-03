@@ -11,18 +11,14 @@
                 </td>
                 <td>
                     <q-input 
+                    
+                    class="alpha-input-base"
+                    :input-class="'alpha-input'"
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.width"
-                    @update:model-value="(v) => UpdateStyle('style.width', (v + styles.widthUnit))"
-                     hide-bottom-space  dense class="spec-input">
-                        <template v-slot:append>
-                            <q-select dense 
-                            v-on:update:model-value="(v) => UpdateStyle('style.width', (styles.width + v))"
-                                v-model="styles.widthUnit"
-                                :options="styleManager.sizeUnits">
-                            </q-select>
-                        </template>
-
+                    type="text"
+                    @update:model-value="(v) => UpdateStyle('style.width', v)"
+                    hide-bottom-space  dense>
                     </q-input>
                 </td>
                 <td>
@@ -34,18 +30,11 @@
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.height"
                     color="fontwhite"
-                    @update:model-value="(v) => UpdateStyle('style.height', (v + styles.heightUnit))"
-
-                     hide-bottom-space  dense class="spec-input">
-                     <template v-slot:append>
-                            <q-select dense 
-                            @update:model-value="(v) => UpdateStyle('style.height', (styles.height + v))"
-
-                                v-model="styles.heightUnit"
-                                :options="styleManager.sizeUnits">
-                                </q-select>
-                        </template>
-
+                    @update:model-value="(v) => UpdateStyle('style.height', v)"
+                     hide-bottom-space  dense 
+                      class="alpha-input-base"
+                    :input-class="'alpha-input'"
+                    >
                     </q-input>
 
                 </td>
@@ -60,16 +49,9 @@
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.minWidth"
                     color="fontwhite"
-                    @update:model-value="(v) => UpdateStyle('style.minWidth', (v + styles.minWidthUnit))"
-                     hide-bottom-space  dense class="spec-input">
-                     <template v-slot:append>
-                            <q-select dense 
-                            class="sp"
-                            @update:model-value="(v) => UpdateStyle('style.minWidth', (styles.minWidth + v))"
-                                v-model="styles.minWidthUnit"
-                                :options="styleManager.sizeUnits">
-                                </q-select>
-                        </template>
+                    @update:model-value="(v) => UpdateStyle('style.minWidth', v)"
+                     hide-bottom-space  dense  class="alpha-input-base"
+                    :input-class="'alpha-input'">
 
                     </q-input>
                 </td>
@@ -81,16 +63,10 @@
                     <q-input 
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.minHeight"
-                    @update:model-value="(v) => UpdateStyle('style.minHeight', (v + styles.minHeightUnit))"
+                    @update:model-value="(v) => UpdateStyle('style.minHeight', v )"
                     color="fontwhite"
-                     hide-bottom-space  dense class="spec-input">
-                     <template v-slot:append>
-                            <q-select dense 
-                            @update:model-value="(v) => UpdateStyle('style.minHeight', ( styles.minHeight + v))"
-                                v-model="styles.minHeightUnit"
-                                :options="styleManager.sizeUnits">
-                                </q-select>
-                        </template>
+                     hide-bottom-space  dense  class="alpha-input-base"
+                    :input-class="'alpha-input'">
 
                     </q-input>
 
@@ -106,17 +82,10 @@
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.maxWidth"
                     color="fontwhite"
-                    @update:model-value="(v) => UpdateStyle('style.maxWidth', (v + styles.maxWidthUnit))"
-                     hide-bottom-space  dense class="spec-input">
-                     <template v-slot:append>
-                            <q-select dense 
-                            @update:model-value="(v) => UpdateStyle('style.maxWidth', (v + styles.maxWidth))"
-
-                                v-model="styles.maxWidthUnit"
-                                :options="styleManager.sizeUnits">
-                                </q-select>
-                        </template>
-
+                    @update:model-value="(v) => UpdateStyle('style.maxWidth', v)"
+                     hide-bottom-space  dense  class="alpha-input-base"
+                    :input-class="'alpha-input'">
+ 
                     </q-input>
                 </td>
 
@@ -126,20 +95,13 @@
 
                 <td>
                     <q-input 
-                    @update:model-value="(v) => UpdateStyle('style.maxHeight', (v + styles.maxHeightUnit))"
+                    @update:model-value="(v) => UpdateStyle('style.maxHeight', v)"
                     :style="{left: '', top: '40px'}"
                     v-model="styles.maxHeight"
                     color="fontwhite"
 
-                     hide-bottom-space  dense class="spec-input">
-                     <template v-slot:append>
-                            <q-select dense 
-                            @update:model-value="(v) => UpdateStyle('style.maxHeight', (styles.maxHeight + v))"
-                                v-model="styles.maxWidthUnit"
-                                :options="styleManager.sizeUnits">
-                                </q-select>
-                        </template>
-
+                     hide-bottom-space  dense  class="alpha-input-base"
+                    :input-class="'alpha-input'">
                     </q-input>
 
                 </td>
@@ -183,7 +145,13 @@
                 </td>
 
                 <td colspan="3">
-                    <q-select dense @update:model-value="(valuee) => emits('updateElement', [{key: 'style.objectFit', value: valuee}])" 
+                    <q-select class="alpha-select"
+                :popup-content-class="'alpha-dropdown-content'" 
+                    :popup-content-style="{
+                        backgroundColor: '#57595d'
+                    }"
+           
+                    dense @update:model-value="(valuee) => emits('updateElement', [{key: 'style.objectFit', value: valuee}])" 
                     v-model="styles.objectFit" :options="styleManager.objectFits">
 
                     </q-select>
@@ -197,7 +165,7 @@
 <script setup lang="ts">
 import { reactive, ref, inject } from 'vue';
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';
-import { ViewConfiguration } from 'alphautils';
+import { IViewConfiguration, ViewConfiguration } from 'alphautils';
 
 
 const props = defineProps({
@@ -221,34 +189,22 @@ const styles = reactive({
     minHeight: '',
     maxWidth: '',
     maxHeight: '',
-    widthUnit: '-',
-    heightUnit: '-',
-    minWidthUnit: '-',
-    minHeightUnit: '-',
-    maxWidthUnit: '-',
-    maxHeightUnit: '-',
     objectFit: '',
     overflow: ''
 })
 
-function setStylesFromElement(view: ViewConfiguration){
+function setStylesFromElement(view: IViewConfiguration){
 
     if(view == undefined){
         return;
     }
     
-    styles.width = view?.style?.width?.match(/\d+/) != undefined ? view?.style?.width?.match(/\d+/)[0] : ''
-    styles.height = view?.style?.height?.match(/\d+/) != undefined? view?.style?.height?.match(/\d+/)[0] : ''
-    styles.minWidth = view?.style?.minWidth?.match(/\d+/) != undefined ? view?.style?.minWidth?.match(/\d+/)[0] : ''
-    styles.minHeight = view?.style?.minHeight?.match(/\d+/) != undefined? view?.style?.minHeight?.match(/\d+/)[0] : ''
-    styles.maxWidth = view?.style?.maxWidth?.match(/\d+/)  != undefined? view?.style?.maxWidth?.match(/\d+/)[0] : ''
-    styles.maxHeight = view?.style?.maxHeight?.match(/\d+/) != undefined? view?.style?.maxHeight?.match(/\d+/)[0] : ''
-    styles.widthUnit = view?.style?.width != undefined? view?.style?.width?.replace(/[0-9]/g, "") : ''  
-    styles.heightUnit = view?.style?.height  != undefined ? view?.style?.height?.replace(/[0-9]/g, "") : ''
-    styles.minWidthUnit = view?.style?.minWidth != undefined? view?.style?.minWidth?.replace(/[0-9]/g, "") : ''
-    styles.minHeightUnit = view?.style?.minHeight != undefined? view?.style?.minHeight?.replace(/[0-9]/g, "") : ''
-    styles.maxWidthUnit = view?.style?.maxWidth != undefined? view?.style?.maxWidth?.replace(/[0-9]/g, "") : ''
-    styles.maxHeightUnit = view?.style?.maxHeight != undefined? view?.style?.maxHeight?.replace(/[0-9]/g, "") : ''
+    styles.width = view?.style?.width != undefined ? view?.style?.width : ''
+    styles.height = view?.style?.height != undefined? view?.style?.height : ''
+    styles.minWidth = view?.style?.minWidth != undefined ? view?.style?.minWidth : ''
+    styles.minHeight = view?.style?.minHeight != undefined? view?.style?.minHeight : ''
+    styles.maxWidth = view?.style?.maxWidth != undefined? view?.style?.maxWidth : ''
+    styles.maxHeight = view?.style?.maxHeight != undefined? view?.style?.maxHeight : ''
     styles.objectFit = view?.style?.objectFit != undefined? view?.style?.objectFit : ''
     styles.overflow = view?.style?.overflow != undefined? view?.style?.overflow : ''
 }
@@ -303,12 +259,16 @@ function UpdateStyle(key: string, value: string){
 <style scoped lang="scss">
  .sdec{
      background-color: theme('colors.brightgrey');
-     .spec-input{
+     input{
         width: 90px;
-        background-color: theme('colors.darkgrey');
+       
      }
      .sp{
          width: min-content;
      }
+     
  }
+ .fit-dropdown{
+        background-color: theme('colors.darkgrey');
+    }
 </style>

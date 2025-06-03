@@ -1,11 +1,16 @@
 <template>
-    <q-header  v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
+    <header  
+    class="alpha-header"
+    v-bind="view?.htmlattributes" 
+    ref="viewRef" 
+    :class="view?.class"
+    :style="viewElement.ResolverObjectProperty(view.style)">
         <BaseViewTreeRenderer
         v-for="child in children" :key="child"
         :view="child"
         :contextid="contextid">
         </BaseViewTreeRenderer>
-    </q-header>
+    </header>
 </template>
 
 <script setup lang="ts">

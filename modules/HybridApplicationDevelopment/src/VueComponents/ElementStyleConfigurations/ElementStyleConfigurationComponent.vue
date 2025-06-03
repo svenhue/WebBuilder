@@ -3,6 +3,7 @@
         <q-list dense>
             <q-expansion-item
             dense
+            :expand-icon-class="'expand-icon-class'"
             label="Colors">
                 <StyleColorEditorComponent
                 :contextid="contextid"
@@ -146,7 +147,7 @@ defineExpose({
 <style scoped lang="scss">
  .escc{
      color: theme('colors.fontwhite');
-     background-color: theme('colors.darkgrey');
+     background-color: theme('colors.primary-dark');
      width:100%;
      padding-left: 10px;
  }

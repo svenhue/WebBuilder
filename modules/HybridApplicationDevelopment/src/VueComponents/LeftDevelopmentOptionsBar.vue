@@ -22,19 +22,6 @@
             </q-btn>
         </q-item>
         <q-separator color="black" ></q-separator>
-        <q-item dense class="ldob-content-btn">
-            <q-btn dense unelevated icon="web_asset" @click="(e) => update(e, 'assets')">
-
-            </q-btn>
-        </q-item>
-        <q-separator color="black"></q-separator>
-        
-        <q-item dense class="ldob-content-btn">
-            <q-btn dense unelevated icon="data_array" @click="(e) => update(e, 'variables')">
-
-            </q-btn>
-        </q-item>
-        <q-separator color="black"></q-separator>
         
         <q-item dense class="ldob-content-btn">
             <q-btn dense unelevated icon="code" @click="(e) => update(e, 'code')">
@@ -172,7 +159,7 @@ defineExpose({
     height: 100%;
     color: theme('colors.fontwhite');
     border-right: 1px solid #e0e0e0;
-    background-color: theme('colors.primary');
+    background-color: theme('colors.primary-dark');
     z-index: 999;
 
     .ldob-content-btn{

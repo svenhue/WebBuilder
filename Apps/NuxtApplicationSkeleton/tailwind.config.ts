@@ -16,9 +16,11 @@ export default {
   theme: {
       extend: {
       colors: {
-        'primary': 'blue',
-        'primary-dark': '#1E1E2F',
+        'primary': '#4C9AFF',
+        'primary-dark': '#1F2223',
         'primary-white': '#ffffff',
+        'akzent': '#0a1082',
+
         'purple': '#7e5bef',
         'pink': '#ff49db',
         'orange': '#ff7849',
@@ -30,7 +32,7 @@ export default {
 
         'fontwhite': '#ffffff',
         'darkgrey': '#57595d',
-        'brightgrey': '#9a9b9e',
+        'brightgrey': '#34373B',
 
 
         'dark': '#1d1d1d',

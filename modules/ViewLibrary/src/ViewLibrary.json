@@ -93,6 +93,7 @@
     },
     {
       "name": "Page Header",
+      "icon": "Header.png",
       "tag": "component:HeaderComponent",
       "type": "viewdefinition:Layout:HeaderComponent",
       "style": {
@@ -231,7 +232,7 @@
     },
     {
       "name": "List",
-      "icon": "List.svg",
+      "icon": "List.png",
       "tag": "component:ListComponent",
       "type": "viewdefinition:Basic:ListComponent",
 
@@ -244,13 +245,13 @@
     },
     {
       "name": "List Item",
-      "icon":"LtItisem.svg",
+      "icon":"ListItem.png",
       "tag": "component:ListItemComponent",
       "type": "viewdefinition:Basic:ListItemComponent",
       "style":{
-        "height": "50px"
+  
       },
-      "htmlattributes": {
+      "content": {
         "label": "List Item"
       },
       "specifications": {
@@ -259,10 +260,14 @@
     },
     {
       "name": "Expansion Item",
+      "icon": "ExpansionItem.png",
       "tag": "component:ExpansionItemComponent",
       "type": "viewdefinition:Basic:ExpansionItemComponent",
       "content": {
         "label": "Expansion Item"
+      },
+      "style":{
+        "width": "120px"
       }
     },
     {
@@ -270,9 +275,10 @@
       "icon": "Image.svg",
       "tag": "component:ImageComponent",
       "type": "viewdefinition:Media:ImageComponent",
-      "htmlattributes": {
-        "label": "Image"
+      "content": {
+        "alt": "Your Company Logo"
       },
+      
       "specifications": {
         "data-atomic": true
       }
@@ -311,22 +317,23 @@
     },
     {
       "name": "Container",
-      "icon": "Container.svg",
+      "icon": "Container.png",
       "tag": "component:ContainerComponent",
       "type": "viewdefinition:Structure:ContainerComponent",
-      "htmlattributes": {
-        
-      },
       "style": {
         "height": "250px",
         "width": "250px"
-
       }
     },
     {
       "name": "TabbedContainer",
+      "icon": "TabbedContainer.png",
       "tag": "component:TabbedContainerComponent",
       "type": "viewdefinition:Structure:TabbedContainerComponent",
+      "style": {
+        "width": "100%",
+        "height": "250px"
+      },
       "children": [
         {
           "name": "First Tab",
@@ -385,7 +392,7 @@
 
     {
       "name": "Section",
-      "icon": "Section.svg",
+      "icon": "Section.png",
       "tag": "component:SectionComponent",
       "type": "viewdefinition:Structure:SectionComponent",
       "htmlattributes": {
@@ -437,8 +444,9 @@
       "style":{
         "width": "min-content",
         "height": "min-content",
-        "margin-Top": "0px",
-        "margin-Bottom": "0px"
+        "paddingTop": "0px",
+        "marginTop": "0px",
+        "marginBottom": "0px"
       },
       "properties": {
         "headingTag": "h1"
@@ -452,8 +460,8 @@
       "icon": "TextLink.svg",
       "tag": "component:TextLinkComponent",
       "type": "viewdefinition:Typography:TextLinkComponent",
-      "htmlattributes": {
-        "label": "Heading"
+      "content": {
+        "text": "Your Link"
       },
       "properties":{
         "hasInternalTarget": true
@@ -464,6 +472,7 @@
     },
     {
       "name" : "Avatar",
+      "icon": "avatar.png",
       "tag" : "component:AvatarComponent",
       "type" : "viewdefinition:Basic:AvatarComponent",
       "style": {
@@ -494,43 +503,50 @@
     },
     {
       "name" : "Link",
+      "icon": "Link.png",
       "tag" : "component:LinkComponent",
       "type" : "viewdefinition:Navigation:LinkComponent",
       "content":{
         "url": "https://google.com",
-        "text": "Your text"
+        "text": "Your Link"
       }
     },
     {
       "name" : "Dialog",
-      "tag" : "component:DialogComponent",
-      "type" : "viewdefinition:Basic:DialogComponent",
-      "properties":{
-        "persistent": false,
-        "noescdismiss": false,
-        "nobackdropdismiss": true,
-        "noroutedismiss": true,
-        "autoclose": true,
-        "norefocus": true,
-        "nofocus": true,
-        "fullwidth": true,
-        "fulheight": true,
-        "maximized": false
-      }
+       "isDisabled": true,
+        "tag" : "component:DialogComponent",
+        "type" : "viewdefinition:Basic:DialogComponent",
+        "properties":{
+          "persistent": false,
+          "noescdismiss": false,
+          "nobackdropdismiss": true,
+          "noroutedismiss": true,
+          "autoclose": true,
+          "norefocus": true,
+          "nofocus": true,
+          "fullwidth": true,
+          "fulheight": true,
+          "maximized": false
+        }
     },
     {
       "name" : "Card",
+      "icon": "Card.png",
       "tag" : "component:CardComponent",
-      "type" : "viewdefinition:Basic:CardComponent",
-      "style":{
-        "height": "150px",
-        "width": "120px"
-      }
+      "type" : "viewdefinition:Basic:CardComponent"
     },
     {
       "name" : "Badge",
+      "icon": "Badge.png",
       "tag" : "component:BadgeComponent",
-      "type" : "viewdefinition:Basic:BadgeComponent"
+      "type" : "viewdefinition:Basic:BadgeComponent",
+      "content": {
+        "label": "Badge"
+      },
+      "style": {
+        "backgroundColor": "white",
+        "color": "black"
+      }
     },
     {
       "name": "Paragraph",
@@ -562,7 +578,7 @@
     
     {
       "name": "Button",
-      "icon": "Button.svg",
+      "icon": "Button.png",
       "tag": "component:ButtonComponent",
       "type": "viewdefinition:Basic:ButtonComponent",
       "content":"Button",
@@ -572,6 +588,7 @@
     },
     {
       "name": "Div Block",
+      "isDisabled": true,
       "icon": "DivBlock.svg",
       "tag": "component:DivBlockComponent",
       "type": "viewdefinition:Basic:DivBlockComponent",
@@ -584,6 +601,7 @@
     },
     {
       "name": "Navigation Bar",
+      "icon": "Navigation.png",
       "tag": "component:NavBarComponent",
       "type": "viewdefinition:Navigation:NavBarComponent",
       "style":{
@@ -599,6 +617,7 @@
     },
     {
       "name": "Dropdown Menu",
+      "icon": "DropdownMenu.png",
       "tag": "component:DropdownMenuComponent",
       "type": "viewdefinition:Navigation:DropdownMenuComponent",
       "style":{

@@ -1,6 +1,9 @@
 <template>
-    <q-img v-bind="view.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)" :src="view.properties.src" >
-
+    <q-img 
+    :alt="view?.content?.alt"
+    v-bind="view.htmlattributes" 
+    :style="viewElement.ResolverObjectProperty(view.style)" 
+    :src="view?.properties?.src" >
     </q-img>
 </template>
 
@@ -22,12 +25,11 @@ const props = defineProps({
         required: true,
     }
 })
-
 const viewRef = ref<InstanceType<typeof HTMLDivElement>>(null);
 
 const { view } = useViewConfiguration(props.contextid, props.viewId);
 
-    const viewElement = new ImageView(view);
+const viewElement = new ImageView(view);
 
 onMounted(() => {
     viewElement.bind(props.contextid, viewRef);

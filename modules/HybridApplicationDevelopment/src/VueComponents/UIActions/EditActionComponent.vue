@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="edit-action-component">
       <q-item dense>
         <q-item-section>
           {{ actionCopy.identifier }}
@@ -14,6 +14,8 @@
   <div class="create-action-component" v-if="showEdit">
     
             <q-select
+            class="alpha-select"
+            popup-content-class="alpha-dropdown-content"
             dense
             :options="GetSupportedActionTypes()"
             :model-value="actionCopy.type"
@@ -27,6 +29,8 @@
         <q-separator></q-separator>
         <div v-if="actionCopy?.type == UIActionTypes['Control component']">
             <q-select 
+            class="alpha-select"
+            popup-content-class="alpha-dropdown-content"
             :model-value="actionCopy.targetElement"
             @update:model-value="(value) => {actionCopy.targetElement = value.value}"
             :options="GetComponents()?.map(v => {return {label: v.name, value: v.publicidentifier}})"
@@ -36,6 +40,8 @@
                 </template>
             </q-select>
             <q-select 
+            class="alpha-select"
+            popup-content-class="alpha-dropdown-content"
             :model-value="actionCopy.methodName"
             @update:model-value="(value) => {actionCopy.methodName = value.value}"
             :options="GetComponentMethods()"
@@ -47,6 +53,8 @@
         </div>
         <div v-else-if="actionCopy?.type == UIActionTypes['Trigger Event']">
             <q-select 
+            class="alpha-select"
+            popup-content-class="alpha-dropdown-content"
             :model-value="actionCopy.targetElement"
             @update:model-value="(value) => {actionCopy.targetElement = value.value}"
             :options="GetComponents()?.map(v => {return {label: v.name, value: v.publicidentifier}})"
@@ -57,6 +65,8 @@
             </q-select>
 
             <q-select 
+            class="alpha-select"
+            popup-content-class="alpha-dropdown-content"
             :model-value="actionCopy.event"
             @update:model-value="(value) => {actionCopy.customEvent = value}"
             :options="GetCustomComponentEvents(actionCopy.targetElement)"
@@ -69,6 +79,8 @@
         </div>
         <div v-else-if="actionCopy.type == UIActionTypes['Call service']">
             <q-select
+            class="alpha-select"
+            popup-content-class="alpha-dropdown-content"
             dense
             :model-value="actionCopy.config?.service"
             :options="GetAvaibleServices()"
@@ -164,3 +176,10 @@ function updateAndClose(){
     showEdit.value = false
 }
 </script>
+
+<style lang="scss" scoped>
+
+.edit-action-component{
+    background-color: theme('colors.brightgrey');
+}
+</style>

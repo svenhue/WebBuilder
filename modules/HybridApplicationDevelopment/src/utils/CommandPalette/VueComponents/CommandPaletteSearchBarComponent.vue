@@ -6,6 +6,7 @@
     v-model="viewModel.modelValue.value"
     :id="132"
     filled
+    disable
     
     bg-color="white"
     outlined
