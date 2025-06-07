@@ -9,6 +9,38 @@
 
    
 }
+.alpha-left-drawer-options-tab-content{
+  min-width: 300px;
+}
+
+.alpha-options-content{
+    background-color: theme('colors.darkgrey')!important;
+    
+}
+
+.alpha-splitter-tabs{
+  background-color: theme('colors.brightgrey');
+  color:white;
+
+  .q-splitter__separator{
+    
+  }
+
+  .q-splitter__before{
+    min-width: 100px;
+    width: min-content!important;
+    align-items: start;
+  }
+  .q-splitter__after{
+    background-color: theme('colors.brightgrey')!important;
+    color:white;
+
+      .q-tab-panels {
+        background-color: theme('colors.brightgrey')!important;
+        color:white;
+      }
+  }
+}
 .editor-input{
   color:white;
   
@@ -55,8 +87,9 @@
   color:white;
 }
 .alpha-input{
-  color:white;
+  color:white!important;
   border-radius: 5px; 
+  
 
   .alpha-input-label-before{
     font-size: 13px;
@@ -64,7 +97,10 @@
   }
   input{
     border-radius: 5px; 
-    background-color: theme('colors.darkgrey');
+    background-color: theme('colors.darkgrey')!important;
+    color:white;
+    
+
   }
 }
 .alpha-select{

@@ -1,22 +1,14 @@
 <template>
-    <div>
-       <q-tabs
+    <div class="alpha-options-content" :style="{width: '450px', padding: '10px'}">
+        <q-expansion-item
             dense
-            v-model="tab"
-            vertical
-            class="text-teal"
-            >
-                <q-tab name="color" dense  label="Color"></q-tab>
-                <q-tab name="typography" dense  label="Typography"></q-tab>
-        </q-tabs>
-      
-            <q-tab-panels dense v-model="tab" swipeable vertical animated>
-                <q-tab-panel dense name="color">
+            :expand-icon-class="'expand-icon-class'"
+            label="Colors">
                    <div class="caption_3"> Brand </div>
                    <q-list dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Brand'))" :key="color.key">
                             <q-item-section>
-                                <q-input dense disable :model-value="color.key">
+                                <q-input dense disable :model-value="color.key" class="alpha-input">
 
                                 </q-input>
                             </q-item-section>
@@ -31,7 +23,7 @@
                    <q-list dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Status'))" :key="color.key">
                             <q-item-section>
-                                <q-input disable dense :model-value="color.key">
+                                <q-input disable dense :model-value="color.key" class="alpha-input">
 
                                 </q-input>
                             </q-item-section>
@@ -47,7 +39,7 @@
                    <q-list dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Text'))" :key="color.key">
                             <q-item-section>
-                                <q-input disable dense :model-value="color.key">
+                                <q-input disable dense :model-value="color.key" class="alpha-input">
 
                                 </q-input>
                             </q-item-section>
@@ -57,8 +49,13 @@
                             </q-item-section>
                         </q-item>
                    </q-list>
-                </q-tab-panel>
-            </q-tab-panels> 
+        </q-expansion-item>
+        <q-expansion-item
+            dense
+            :expand-icon-class="'expand-icon-class'"
+            label="Typography">
+        
+        </q-expansion-item>
         </div>
 </template>
 

@@ -28,6 +28,13 @@
 
             </q-btn>
         </q-item>
+
+        <q-item dense class="ldob-content-btn">
+            <q-btn dense unelevated icon="style" @click="(e) => update(e, 'style')">
+
+            </q-btn>
+        </q-item>
+
         <q-item dense class="ldob-content-btn">
             <q-btn dense unelevated icon="account_tree" @click="(e) => update(e, 'workflows')">
 
@@ -73,6 +80,11 @@
             v-show="tab == 'pages'">
 
             </ApplicationPagesComponent>
+            <ApplicationStyleComponent
+            :contextid="contextid"
+            @close="tab = ''"
+            v-show="tab == 'style'">
+            </ApplicationStyleComponent>
             <ApplicationCodeComponent
             :viewModel="viewModel._codeViewModel"
             @close="tab = ''"
@@ -113,7 +125,7 @@ import StateHistoryComponent from './ApplicationDevelopment/StateHistoryComponen
 import ApplicationCodeComponent from './ApplicationDevelopment/Code/ApplicationCodeComponent.vue';
 import { RunTimeVueApplicationViewModel } from '../ViewModels/RuntimeVueApplicationViewModel';
 import AgenticChatIntegrationComponent from '../Agentic/AgenticChatIntegrationComponent.vue';
-
+import ApplicationStyleComponent from './ApplicationDevelopment/ApplicationStyleComponent.vue';
 
 defineProps({
     contextid: {

@@ -1,8 +1,8 @@
 <template>
     
-    <q-input dense :model-value="color" @update:model-value="(val) => $emit('updateColor', val)">
+    <q-input dense :model-value="color" @update:model-value="(val) => $emit('updateColor', val)" class="alpha-color-picker alpha-input">
         <template v-slot:before>
-            <div class="editor-input-label">
+            <div class="editor-input-label" :style="{color: 'white!important'}">
                 {{ label }}
             </div>
         </template>
@@ -45,3 +45,10 @@ defineProps({
 defineEmits(['updateColor'])
 
 </script>
+
+<style lang="scss">
+
+.alpha-color-picker{
+    color:white;
+}
+</style>
