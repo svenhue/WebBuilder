@@ -6,7 +6,7 @@ import { ComputedRef, Ref, computed, ref } from 'vue';
 @injectable()
 export class TabService{
     
-    public tabs: Ref<Array<{name: string, title: string, path: string}>>
+    public tabs: Ref<Array<{name: string, title: string, path?: string}>>
     private navigationHandler: (tab: object) => void;
     private activeTab: Ref<{name: string, title: string}>
     constructor(){
@@ -23,11 +23,11 @@ export class TabService{
         this.OpenTab(tab);
     }
 
-    public AddTab(newTab: {name: string, title: string, path: string}){
+    public AddTab(newTab: {name: string, title: string, path?: string}){
         this.tabs.value.push(newTab);
     }
 
-    public OpenTab(tab: object){
+    public OpenTab(tab:  {name: string, title: string, path?: string}){
         console.log("Opening tab", tab)
         if(this.navigationHandler == undefined){
             throw new Error("Navigation handler not set")

@@ -37,6 +37,7 @@ export class Screen{
        
         if(typeof screenWidth == 'string'){
             if(screenWidth.includes('"')){
+                
                 screenWidth = screenWidth.replaceAll('"', '')    
             }
         }

@@ -12,41 +12,36 @@ export class UsersService {
   ) {}
 
   async findByEmail(email: string): Promise<UserDocument | null> {
-    const tenantId = this.tenancyService.getTenantId();
-    return this.userModel.findOne({ email, tenantId }).exec();
+    return this.userModel.findOne({ email }).exec();
   }
 
   async findById(id: string): Promise<UserDocument | null> {
-    const tenantId = this.tenancyService.getTenantId();
-    return this.userModel.findOne({ _id: id, tenantId }).exec();
+
+    return this.userModel.findOne({ _id: id }).exec();
   }
 
   async create(userData: Partial<User>): Promise<UserDocument> {
-    const tenantId = this.tenancyService.getTenantId();
     const user = new this.userModel({
-      ...userData,
-      tenantId,
+      ...userData
     });
     return user.save();
   }
 
   async findAll(): Promise<UserDocument[]> {
-    const tenantId = this.tenancyService.getTenantId();
-    return this.userModel.find({ tenantId }).exec();
+    return this.userModel.find({  }).exec();
   }
 
   async update(id: string, updateData: Partial<User>): Promise<UserDocument | null> {
-    const tenantId = this.tenancyService.getTenantId();
+
     return this.userModel.findOneAndUpdate(
-      { _id: id, tenantId },
+      { _id: id },
       updateData,
       { new: true }
     ).exec();
   }
 
   async delete(id: string): Promise<boolean> {
-    const tenantId = this.tenancyService.getTenantId();
-    const result = await this.userModel.deleteOne({ _id: id, tenantId }).exec();
+    const result = await this.userModel.deleteOne({ _id: id }).exec();
     return result.deletedCount > 0;
   }
 }

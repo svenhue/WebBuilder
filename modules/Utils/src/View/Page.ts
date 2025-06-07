@@ -11,9 +11,9 @@ export class Page{
     public config: Ref<IPageConfiguration>;
     private templateRef: Ref<HTMLElement>;
     private router: Router
-    private resolver: object
+    private resolver:{resolveComponent: (view: IViewConfiguration) => any};
 
-    constructor(config: IPageConfiguration, templateRef: Ref<HTMLElement>, router: Router, resolver: object){
+    constructor(config: IPageConfiguration, templateRef: Ref<HTMLElement>, router: Router, resolver: any){
         this.config = ref(config);
         this.router = router;
         this.templateRef = templateRef;

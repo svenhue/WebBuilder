@@ -1,7 +1,7 @@
 import { IValidationRule } from './IValidationRule.js';
 import { ValueResolver } from '../../../CodeExecution/ValueResolver.js';
 import { IExecutionContextProvider } from '../../../CodeExecution/IExecutionContextProvider.js';
-import { IValueValidationViewConfiguration } from 'src/View/ViewExtensions/ValueValidationViewConfiguration.js';
+import { IValueValidationViewConfiguration } from '../../ViewExtensions/ValueValidationViewConfiguration.js';
 
 export function validateRules
     (

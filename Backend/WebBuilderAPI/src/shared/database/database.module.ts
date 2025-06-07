@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [MongooseModule.forFeature([])],
+  imports: [MongooseModule.forRoot('mongodb://localhost:27017/WebBuilder')],
   exports: [MongooseModule],
 })
 export class DatabaseModule {}

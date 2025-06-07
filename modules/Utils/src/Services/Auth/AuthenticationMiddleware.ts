@@ -1,5 +1,5 @@
-import { BaseServiceProvider } from "../Provider/BaseServiceProvider"
-import { AuthenticationService } from "./AuthenticationService"
+import { BaseServiceProvider } from "../Provider/BaseServiceProvider.js"
+import { AuthenticationService } from "./AuthenticationService.js"
 
 export function AuthenticationMiddleware(to, from) {
 

@@ -15,7 +15,7 @@ export function CodeExecutor(
 
     for(const match of r){
         const x = ExpressionExecutor(contextProvider, contextid, match[1], requestingComponent);
-        result = result.replace(match[0], x.value);
+        result = result.replace(match[0], x.value.toString());
     }
 
     console.log(result)

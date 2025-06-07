@@ -15,7 +15,6 @@ export class HTTPClientService implements IHTTPClientService{
     clients: Array<AxiosWrapper>;
 
     constructor(
-       
     ){
         this.clients = Array<AxiosWrapper>();
 

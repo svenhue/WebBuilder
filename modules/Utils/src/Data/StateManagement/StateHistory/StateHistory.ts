@@ -37,7 +37,8 @@ export class StateHistory implements IStateHistory{
             isCommited: false,
             guid: uuidv4(),
                 entrys: [ { 
-                        id: value.id ?? id,                     
+                        //@ts-expect-error
+                        id: value?.id ?? id,                     
                         stateChangeType: GetStateChangeType(stateChangeType),
                         oldValue: oldValue,
                         boName: boName,
@@ -67,6 +68,7 @@ export class StateHistory implements IStateHistory{
             guid: uuidv4(),
             reverseGuid: entry.guid,
             entrys: [{
+                    //@ts-expect-error
                     id: value.id,
                     stateChangeType: stateChangeType,
                     oldValue: oldValue,
@@ -115,12 +117,14 @@ export class StateHistory implements IStateHistory{
                     }
                     break;
                 case StateChangeTypes.delete:
+                    //@ts-expect-error
                     result = commandSet.delete(entry.value.id, false);
                     if(!result[0]){
                         //todo handlerror
                     }
                     break;
                 case StateChangeTypes.update:
+                    //@ts-expect-error
                     result = commandSet.update(entry.value.id, entry.oldValue, entry.value, false);
                     if(!result[0]){
                         //todo handlerror
@@ -164,6 +168,7 @@ export class StateHistory implements IStateHistory{
                     }
                     break;
                 case StateChangeTypes.delete:
+                    //@ts-expect-error
                     result = commandSet.delete(entry.value.id, false);
                     if(!result[0]){
                         //todo handlerror
@@ -174,6 +179,7 @@ export class StateHistory implements IStateHistory{
                         //we dont need to update an already deleted element
                         break;
                     }
+                    //@ts-expect-error
                     result = commandSet.update(entry.value.id, entry.oldValue, entry.value, false);
                     if(!result[0]){
                         //todo handlerror
@@ -235,6 +241,7 @@ export class StateHistory implements IStateHistory{
                     }
                     break;
                 case StateChangeTypes.update:
+                    //@ts-expect-error
                     result = commandSet.update(entry.value.id, entry.value, entry.oldValue, false);
                     if(!result[0]){
                         //todo handlerror

@@ -1,4 +1,4 @@
-import { RestrictedServiceProvider } from "src/Services/Provider/RestrictedServiceProvider";
+import { RestrictedServiceProvider } from "../../../Services/Provider/RestrictedServiceProvider";
 import { UIAction } from "../../UIAction";
 import { ICallServiceActionConfig } from "./ICallServiceActionConfig";
 import { inject, injectable } from "inversify";
@@ -9,7 +9,7 @@ export class CallServiceAction extends UIAction<ICallServiceActionConfig>{
     private serviceProvider: RestrictedServiceProvider;
     constructor(
         @inject("RestrictedServiceProvider")serviceProvider: RestrictedServiceProvider){
-        super({});
+        super();
         this.serviceProvider = serviceProvider;
     }
 

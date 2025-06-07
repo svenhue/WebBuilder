@@ -17,6 +17,9 @@ export class UtilityModule implements IApplicationModule{
     InitializeServices(): void {
         
     }
+    register(): void {
+        
+    }
 
 
 }

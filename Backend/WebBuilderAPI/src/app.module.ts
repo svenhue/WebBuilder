@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { CacheModule } from '@nestjs/cache-manager';
 
@@ -13,8 +12,6 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { PermissionsModule } from './modules/permissions/permissions.module';
 import { ApplicationsModule } from './modules/applications/applications.module';
-import { PagesModule } from './modules/pages/pages.module';
-import { ViewsModule } from './modules/views/views.module';
 import { GitlabModule } from './modules/gitlab/gitlab.module';
 
 @Module({
@@ -25,15 +22,6 @@ import { GitlabModule } from './modules/gitlab/gitlab.module';
       envFilePath: '.env',
     }),
 
-    // Database
-    MongooseModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URI'),
-        dbName: configService.get<string>('DATABASE_NAME'),
-      }),
-      inject: [ConfigService],
-    }),
 
     // Rate limiting
     ThrottlerModule.forRootAsync({
@@ -62,8 +50,6 @@ import { GitlabModule } from './modules/gitlab/gitlab.module';
     UsersModule,
     PermissionsModule,
     ApplicationsModule,
-    PagesModule,
-    ViewsModule,
     GitlabModule,
   ],
   controllers: [],

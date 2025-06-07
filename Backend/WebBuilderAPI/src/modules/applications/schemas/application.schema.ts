@@ -1,42 +1,27 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-
+import { IPageConfiguration } from 'webbuilderalphautils';
 export type ApplicationDocument = Application & Document;
 
 @Schema({ timestamps: true })
 export class Application {
-  @ApiProperty({ description: 'Application ID', example: 1 })
-  @Prop({ required: true })
-  id: number;
 
   @ApiProperty({ description: 'Application name', example: 'My WebBuilder App' })
-  @Prop({ required: true })
+  @Prop({ required: false })
   name: string;
-
-  @ApiProperty({ description: 'Root component configuration', required: false })
-  @Prop({ type: Object })
-  rootComponent?: Record<string, any>;
-
-  @ApiProperty({ description: 'Application mode', example: 'development' })
-  @Prop()
-  mode?: string;
 
   @ApiProperty({ description: 'Application modules', type: [Object] })
   @Prop({ type: [Object], default: [] })
   modules?: Record<string, any>[];
 
-  @ApiProperty({ description: 'Is production environment', example: false })
-  @Prop({ required: true, default: false })
-  isProduction: boolean;
-
   @ApiProperty({ description: 'Deployment mode', example: 'spa' })
-  @Prop({ required: true })
+  @Prop({ required: false })
   deploymentMode: string;
 
   @ApiProperty({ description: 'Page configurations', type: [Object] })
   @Prop({ type: [Object], default: [] })
-  pages?: Record<string, any>[];
+  pages?: Array<IPageConfiguration>;
 
   @ApiProperty({ description: 'Application stylesheets configuration' })
   @Prop({ type: Object })
@@ -44,7 +29,7 @@ export class Application {
 
   @ApiProperty({ description: 'Global application variables' })
   @Prop({ type: Object, default: {} })
-  globalVariables?: Record<string, any>;
+  globalVariables?: string;
 
   @ApiProperty({ description: 'Network configurations', type: [Object] })
   @Prop({ type: [Object], default: [] })
@@ -55,36 +40,21 @@ export class Application {
   authentication?: Record<string, any>;
 
   @ApiProperty({ description: 'Internationalization configuration' })
-  @Prop({ type: Object, required: true })
-  internationalization: Record<string, any>;
-
-  @ApiProperty({ description: 'Server-side rendering enabled', example: false })
-  @Prop({ required: true, default: false })
-  ssr: boolean;
+  @Prop({ type: Object, required: false })
+  internationalization?: Record<string, any>;
 
   @ApiProperty({ description: 'Application queries/tasks', type: [Object] })
   @Prop({ type: [Object], default: [] })
   querys?: Record<string, any>[];
 
   @ApiProperty({ description: 'Application version', example: '1.0.0' })
-  @Prop({ required: true })
+  @Prop({ required: false })
   version: string;
 
-  @ApiProperty({ description: 'Version control provider', example: 'git' })
-  @Prop({ required: true })
-  versionControlProvider: string;
-
-  @ApiProperty({ description: 'Version control token' })
-  @Prop({ required: true })
-  versionControlToken: string;
-
-  @ApiProperty({ description: 'Repository URL', example: 'https://github.com/user/repo.git' })
-  @Prop({ required: true })
-  repositoryUrl: string;
 
   @ApiProperty({ description: 'Tenant ID for multi-tenancy' })
-  @Prop({ required: true })
-  tenantId: string;
+  @Prop({ required: false })
+  tenantId?: string;
 
   @ApiProperty({ description: 'Application description' })
   @Prop()
@@ -110,7 +80,7 @@ export class Application {
 export const ApplicationSchema = SchemaFactory.createForClass(Application);
 
 // Create indexes for tenant isolation and performance
-ApplicationSchema.index({ tenantId: 1, id: 1 }, { unique: true });
+ApplicationSchema.index({ tenantId: 1, id: 1 }, { unique: false });
 ApplicationSchema.index({ tenantId: 1, name: 1 });
 ApplicationSchema.index({ tenantId: 1, status: 1 });
 ApplicationSchema.index({ tenantId: 1, createdBy: 1 });

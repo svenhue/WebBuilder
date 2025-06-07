@@ -31,6 +31,7 @@ import { CallServiceAction } from '../../ClientActions/Actions/CallService/CallS
 import { GlobalDataSynchronizer } from '../../Data/DataAdapters/GlobalDataSynchronizer.js';
 import { RestrictedServiceProvider } from '../../Services/Provider/RestrictedServiceProvider.js';
 import { IHTTPClientService } from '../../HTTP/IHTTPClientService.js';
+import { IAuthenticationConfiguration } from '../Authentication/IAuthenticationConfiguration.js';
 
 export class DefaultApplicationServiceCollection implements IStartup{
 
@@ -45,7 +46,7 @@ export class DefaultApplicationServiceCollection implements IStartup{
         let authConfig = config?.networkConfigs?.find(x => x.authentication != undefined)?.authentication;
         
         if(authConfig == undefined){
-            authConfig = {}
+            authConfig = {} as IAuthenticationConfiguration
         }
         
        container.bind<ITransactionService>("TransactionService")
@@ -83,7 +84,7 @@ export class DefaultApplicationServiceCollection implements IStartup{
 
                 container.bind<GlobalStateProvider>("GlobalStateProvider").to(GlobalStateProvider).inSingletonScope();
                 container.bind<UIActionFactory>("UIActionFactory").to(UIActionFactory).inSingletonScope();
-
+               //@ts-expect-error
                 container.bind<IHTTPClientService>("HTTPClientService").to(HTTPClientService).inSingletonScope();
 
                 container.bind<SendRequestAction>('SendRequestAction').to(SendRequestAction).inSingletonScope(),

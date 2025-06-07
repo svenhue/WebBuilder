@@ -15,40 +15,30 @@ export class User {
   password: string;
 
   @ApiProperty({ description: 'User first name', example: 'John' })
-  @Prop({ required: true })
+  @Prop({ required: false })
   firstName: string;
 
   @ApiProperty({ description: 'User last name', example: 'Doe' })
-  @Prop({ required: true })
+  @Prop({ required: false })
   lastName: string;
 
-  @ApiProperty({ description: 'User role', example: 'user' })
-  @Prop({ required: true, default: 'user' })
-  role: string;
 
   @ApiProperty({ description: 'User tenant ID', example: 'tenant1' })
-  @Prop({ required: true })
+  @Prop({ required: false })
   tenantId: string;
 
   @ApiProperty({ description: 'Whether user is active', example: true })
-  @Prop({ default: true })
+  @Prop({ default: false })
   isActive: boolean;
 
   @ApiProperty({ description: 'Whether user email is verified', example: false })
   @Prop({ default: false })
   isEmailVerified: boolean;
 
-  @ApiProperty({ description: 'User avatar URL', example: 'https://example.com/avatar.jpg' })
-  @Prop()
-  avatar?: string;
-
   @ApiProperty({ description: 'User phone number', example: '+1234567890' })
   @Prop()
   phoneNumber?: string;
 
-  @ApiProperty({ description: 'User preferences as JSON', example: '{"theme": "dark"}' })
-  @Prop({ type: Object, default: {} })
-  preferences: Record<string, any>;
 
   @ApiProperty({ description: 'Last login timestamp' })
   @Prop()

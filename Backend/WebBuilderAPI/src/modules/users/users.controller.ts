@@ -1,13 +1,16 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, Catch } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiProperty, ApiBody } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { User } from './schemas/user.schema';
+import { RegisterService } from './account.service';
+import { RegisterUserDto } from './dto/RegisterUserDto';
+import { Public } from '../auth/decorators/auth.decorators';
 
 @ApiTags('Users')
 @ApiBearerAuth()
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService, private readonly registerService: RegisterService) {}
 
   @Get()
   @ApiOperation({ summary: 'Get all users' })
@@ -22,6 +25,18 @@ export class UsersController {
   @ApiResponse({ status: 404, description: 'User not found' })
   async findOne(@Param('id') id: string) {
     return this.usersService.findById(id);
+  }
+  @Post()
+  @Public()
+  async register(@Body() registerDto:RegisterUserDto) {
+    return await this.registerService.Register(registerDto.email, registerDto.password);
+  }
+
+  @Post("delete-account")
+  @ApiOperation({ summary: 'Delete user account' })
+  @ApiResponse({ status: 200, description: 'User account deleted successfully' })
+  async deleteAccount(@Body() registerDto:RegisterUserDto) {
+    return await this.registerService.DeleteAccount(registerDto.email, registerDto.password);
   }
 
   @Put(':id')

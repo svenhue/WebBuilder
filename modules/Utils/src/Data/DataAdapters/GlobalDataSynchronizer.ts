@@ -4,6 +4,7 @@ import { StateChangeTypes } from "../Repositorys/StateChangeTypes";
 import { GlobalDataSynchronizeOptions } from "./GlobalDataSynchronizeOptions";
 import { IRequestConfig } from "../../HTTP/IRequestConfig";
 import { APITypes } from "./APITypes";
+import { Method } from "axios";
 
 
 @injectable()
@@ -42,7 +43,7 @@ export class GlobalDataSynchronizer{
         //todo use object builder from iboinstance (remnove prop BoName, id int)
         //todo use object builder for viewconfig
     }
-    private CreateRestMethod(changeType: StateChangeTypes): string{
+    private CreateRestMethod(changeType: StateChangeTypes): Method{
         switch(changeType){
             case StateChangeTypes.create:
                 return "POST"

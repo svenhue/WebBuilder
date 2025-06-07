@@ -1,13 +1,15 @@
-import { IBOInstance } from "src/Data/IBOInstance";
-import { StateChangeTypes } from "src/Data/Repositorys/StateChangeTypes";
+import { IBOInstance } from "../../IBOInstance";
+import { StateChangeTypes } from "../..//Repositorys/StateChangeTypes";
+import { SimpleNameValueCollection } from "../../SimpleNameValueCollection";
 
 
 interface IHistoryEntry{
     id?: number;
-    value: IBOInstance;
-    oldValue?: IBOInstance;
+    value: IBOInstance | SimpleNameValueCollection;
+    oldValue?: IBOInstance | SimpleNameValueCollection;
     timestamp?: number;
     commandName?: string
+    boName?: string;
     stateChangeType: StateChangeTypes
 }
 

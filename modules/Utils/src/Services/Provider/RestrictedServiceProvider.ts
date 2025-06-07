@@ -1,7 +1,6 @@
 import { inject, injectable } from "inversify";
-import { BaseServiceProvider } from "./BaseServiceProvider";
-import { NavigationService } from "../Navigation/NavigationService";
-import { AuthenticationService } from "../Auth/AuthenticationService";
+import { NavigationService } from "../Navigation/NavigationService.js";
+import { AuthenticationService } from "../Auth/AuthenticationService.js";
 
 @injectable()
 export class RestrictedServiceProvider{

@@ -4,7 +4,7 @@ import { PublishScopes } from "./PublishScopes.js";
 import { GlobalDataSynchronizeOptions } from "./GlobalDataSynchronizeOptions.js";
 
 export class DataAdapterOptions{
-    apiDefinition: GlobalDataSynchronizeOptions
+    apiDefinition?: GlobalDataSynchronizeOptions
     subscribe?:{
         scope: SubscriptionScopes
     }

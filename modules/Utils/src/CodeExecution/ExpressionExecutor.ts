@@ -24,7 +24,7 @@ export function ExpressionExecutor(contextProvider: IExecutionContextProvider, c
         }
     });
 
-    function executeNestedExpressions(expression: string, components, variables, colors, component, app){
+    function executeNestedExpressions(expression: string, components, variables?, colors?, component?, app?){
         const variablePattern = /(?<=variables\.)[\w-]+(?=(\.|$|\s))/g;
         const componentPattern = /(?<=components\.)[\w-]+(?=(\.|$|\s))/g;
         const colorPattern = /(?<=colors\.)[\w-]+(?=(\.|$|\s))/g;

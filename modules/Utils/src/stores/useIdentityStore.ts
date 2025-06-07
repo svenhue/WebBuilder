@@ -1,11 +1,11 @@
 
 import { defineStore } from 'pinia';
-import { type IUserIdentity } from '../Services/Identity/IUserIdentity';
+import { type IUserIdentity } from '../Services/Identity/IUserIdentity.js';
 import { reactive, ref } from 'vue';
 
 export const useIdentityStore = defineStore('identity', () => {
 
-    const identity = ref<IUserIdentity>({})
+    const identity = ref<IUserIdentity>({}as IUserIdentity)
     const isAuthenticatedBool = ref(false)
 
     function isAuthenticated(){

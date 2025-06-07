@@ -6,10 +6,10 @@ import { IUIAction } from './IUIAction.js';
 export class UIAction<TConfig> implements IUIAction {
   config: TConfig;
 
-  constructor(config: TConfig) {
+  constructor(config?: TConfig) {
     this.config = config;
   }
-  execute() {
+  execute(input: any) {
     return;
   }
 }
