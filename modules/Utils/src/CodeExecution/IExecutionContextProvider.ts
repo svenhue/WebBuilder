@@ -1,5 +1,5 @@
-import { VueApplication } from "../Application/VueApplication"
-import { IViewConfiguration } from "../View/IViewConfiguration"
+import { VueApplication } from "../Application/VueApplication.js"
+import { IViewConfiguration } from "../View/IViewConfiguration.js"
 
 //todo move this interface to to view library
 export interface IExecutionContextProvider {

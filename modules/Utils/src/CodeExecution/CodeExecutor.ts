@@ -1,5 +1,5 @@
-import { ExpressionExecutor } from "./ExpressionExecutor";
-import { IExecutionContextProvider } from "./IExecutionContextProvider"
+import { ExpressionExecutor } from "./ExpressionExecutor.js";
+import { IExecutionContextProvider } from "./IExecutionContextProvider.js"
 
 export function CodeExecutor(
     contextProvider: IExecutionContextProvider, 

@@ -1,4 +1,4 @@
-//@ts-ignore
+
 import { injectable } from "inversify";
 import { Platform } from "quasar";
 import { Ref, ref } from "vue";

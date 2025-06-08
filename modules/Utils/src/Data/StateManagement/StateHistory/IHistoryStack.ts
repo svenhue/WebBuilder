@@ -1,6 +1,6 @@
-import { IBOInstance } from "../../IBOInstance";
-import { StateChangeTypes } from "../..//Repositorys/StateChangeTypes";
-import { SimpleNameValueCollection } from "../../SimpleNameValueCollection";
+import { IBOInstance } from "../../IBOInstance.js";
+import { StateChangeTypes } from "../..//Repositorys/StateChangeTypes.js";
+import { SimpleNameValueCollection } from "../../SimpleNameValueCollection.js";
 
 
 interface IHistoryEntry{

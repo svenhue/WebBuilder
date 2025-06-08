@@ -134,7 +134,7 @@ export class GitlabController {
     schema: {
       type: 'object',
       properties: {
-        file_path: { type: 'string', example: 'src/index.js' },
+        file_path: { type: 'string', example: 'src/index' },
         content: { type: 'string', example: 'console.log("Hello World");' },
         commit_message: { type: 'string', example: 'Add new file' },
         branch: { type: 'string', example: 'main' },

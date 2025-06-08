@@ -1,5 +1,5 @@
 import { injectable } from "inversify";
-import { IClientWorkflow } from "./IClientWorkflow";
+import { IClientWorkflow } from "./IClientWorkflow.js";
 
 @injectable()
 export class WorkflowEngine{

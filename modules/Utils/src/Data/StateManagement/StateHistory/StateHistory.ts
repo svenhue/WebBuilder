@@ -1,10 +1,10 @@
 import { isRef, ref, Ref, resolveDirective, toValue } from "vue";
-import { IStateHistory } from "./IStateHistory";
-import { IHistoryEntry, IHistoryEntrys, IHistoryStack } from "./IHistoryStack";
-import { IBOInstance } from "../../IBOInstance";
-import { StateChangeTypes } from "../../Repositorys/StateChangeTypes";
-import { IStateHistoryCommands } from "./IStateHistoryCommands";
-import { SimpleNameValueCollection } from "src/Data/SimpleNameValueCollection";
+import { IStateHistory } from "./IStateHistory.js";
+import { IHistoryEntry, IHistoryEntrys, IHistoryStack } from "./IHistoryStack.js";
+import { IBOInstance } from "../../IBOInstance.js";
+import { StateChangeTypes } from "../../Repositorys/StateChangeTypes.js";
+import { IStateHistoryCommands } from "./IStateHistoryCommands.js";
+import { SimpleNameValueCollection } from "../../SimpleNameValueCollection.js";
 import { v4 as uuidv4 } from 'uuid';
 export class StateHistory implements IStateHistory{
 
@@ -33,12 +33,12 @@ export class StateHistory implements IStateHistory{
     }
 
     public AddHistoryEntry(id: number, value: IBOInstance | SimpleNameValueCollection, oldValue: IBOInstance | SimpleNameValueCollection, stateChangeType: StateChangeTypes, commandName?: string, boName?: string){
+    
         const entry: IHistoryEntrys = {
             isCommited: false,
             guid: uuidv4(),
                 entrys: [ { 
-                        //@ts-expect-error
-                        id: value?.id ?? id,                     
+                        id: id,                     
                         stateChangeType: GetStateChangeType(stateChangeType),
                         oldValue: oldValue,
                         boName: boName,
@@ -68,8 +68,7 @@ export class StateHistory implements IStateHistory{
             guid: uuidv4(),
             reverseGuid: entry.guid,
             entrys: [{
-                    //@ts-expect-error
-                    id: value.id,
+                    id: id,
                     stateChangeType: stateChangeType,
                     oldValue: oldValue,
                     boName: boName,
@@ -107,7 +106,7 @@ export class StateHistory implements IStateHistory{
             const commandSet = this.GetCommandSet( entry.boName);
             let result;
             
-
+            let boInstance: IBOInstance = null
             switch(entry.stateChangeType){
 
                 case StateChangeTypes.create:
@@ -117,15 +116,15 @@ export class StateHistory implements IStateHistory{
                     }
                     break;
                 case StateChangeTypes.delete:
-                    //@ts-expect-error
-                    result = commandSet.delete(entry.value.id, false);
+                    boInstance = entry.value as IBOInstance;
+                    result = commandSet.delete(boInstance.id, false);
                     if(!result[0]){
                         //todo handlerror
                     }
                     break;
                 case StateChangeTypes.update:
-                    //@ts-expect-error
-                    result = commandSet.update(entry.value.id, entry.oldValue, entry.value, false);
+                    boInstance = entry.value as IBOInstance;
+                    result = commandSet.update(boInstance.id, entry.oldValue as IBOInstance, entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                         
@@ -159,8 +158,8 @@ export class StateHistory implements IStateHistory{
         for(const entry of this.GetEntrysByCreatedOrder(entrys.entrys)){
             const commandSet = this.GetCommandSet( entry.boName);
             let result;
+            let boInstance: IBOInstance = null
             switch(entry.stateChangeType){
-
                 case StateChangeTypes.create:
                     result = commandSet.create(entry.value, false);
                     if(!result[0]){
@@ -168,8 +167,8 @@ export class StateHistory implements IStateHistory{
                     }
                     break;
                 case StateChangeTypes.delete:
-                    //@ts-expect-error
-                    result = commandSet.delete(entry.value.id, false);
+                    boInstance = entry.value as IBOInstance;
+                    result = commandSet.delete(boInstance.id, false);
                     if(!result[0]){
                         //todo handlerror
                     }
@@ -179,8 +178,9 @@ export class StateHistory implements IStateHistory{
                         //we dont need to update an already deleted element
                         break;
                     }
-                    //@ts-expect-error
-                    result = commandSet.update(entry.value.id, entry.oldValue, entry.value, false);
+                    boInstance = entry.value as IBOInstance;
+                    let oldBoInstance = entry.oldValue as IBOInstance;
+                    result = commandSet.update(boInstance.id, oldBoInstance, entry.value, false);
                     if(!result[0]){
                         //todo handlerror
                         
@@ -224,6 +224,7 @@ export class StateHistory implements IStateHistory{
         for(const entry of this.GetEntrysByCreatedOrder(entrys.entrys)){
             const commandSet = this.GetCommandSet(entry.boName);
             let result;
+            let boInstance: IBOInstance = null
             switch(entry.stateChangeType){
                 
                 case StateChangeTypes.create:
@@ -234,15 +235,16 @@ export class StateHistory implements IStateHistory{
                     }
                     break;
                 case StateChangeTypes.delete:
-                    result = commandSet.delete(entry.value, false);
+                    boInstance = entry.value as IBOInstance;
+                    result = commandSet.delete(boInstance.id, false);
                     if(!result[0]){
                         //todo handlerror
                         return null;
                     }
                     break;
                 case StateChangeTypes.update:
-                    //@ts-expect-error
-                    result = commandSet.update(entry.value.id, entry.value, entry.oldValue, false);
+                    boInstance = entry.value as IBOInstance;
+                    result = commandSet.update(boInstance.id, boInstance, entry.oldValue, false);
                     if(!result[0]){
                         //todo handlerror
                         return null;

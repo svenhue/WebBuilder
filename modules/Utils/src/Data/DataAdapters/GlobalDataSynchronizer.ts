@@ -1,9 +1,9 @@
 import { inject, injectable } from "inversify";
-import { HTTPClientService } from "src/HTTP/HTTPClientService";
-import { StateChangeTypes } from "../Repositorys/StateChangeTypes";
-import { GlobalDataSynchronizeOptions } from "./GlobalDataSynchronizeOptions";
-import { IRequestConfig } from "../../HTTP/IRequestConfig";
-import { APITypes } from "./APITypes";
+import { HTTPClientService } from "../../HTTP/HTTPClientService.js";
+import { StateChangeTypes } from "../Repositorys/StateChangeTypes.js";
+import { GlobalDataSynchronizeOptions } from "./GlobalDataSynchronizeOptions.js";
+import { IRequestConfig } from "../../HTTP/IRequestConfig.js";
+import { APITypes } from "./APITypes.js";
 import { Method } from "axios";
 
 

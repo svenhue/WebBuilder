@@ -1,4 +1,4 @@
-import { TriggerEvents } from "./TriggerEvents";
+import { TriggerEvents } from "./TriggerEvents.js";
 
 export interface IWorkflowTrigger {
 

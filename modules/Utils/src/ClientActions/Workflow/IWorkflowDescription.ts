@@ -1,6 +1,6 @@
 
-import { IWorkflowTrigger } from "./Trigger/IWorkflowTrigger";
-import { WorkflowConfigTypes } from "./WorkflowConfigTypes";
+import { IWorkflowTrigger } from "./Trigger/IWorkflowTrigger.js";
+import { WorkflowConfigTypes } from "./WorkflowConfigTypes.js";
 
 
 export interface IWorkflowDescription {

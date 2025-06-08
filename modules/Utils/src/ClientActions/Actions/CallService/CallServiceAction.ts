@@ -1,6 +1,6 @@
-import { RestrictedServiceProvider } from "../../../Services/Provider/RestrictedServiceProvider";
-import { UIAction } from "../../UIAction";
-import { ICallServiceActionConfig } from "./ICallServiceActionConfig";
+import { RestrictedServiceProvider } from "../../../Services/Provider/RestrictedServiceProvider.js";
+import { UIAction } from "../../UIAction.js";
+import { ICallServiceActionConfig } from "./ICallServiceActionConfig.js";
 import { inject, injectable } from "inversify";
 
 @injectable()

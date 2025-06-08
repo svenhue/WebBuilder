@@ -1,5 +1,5 @@
 import { Ref } from "vue";
-import { IHistoryStack } from "./IHistoryStack";
+import { IHistoryStack } from "./IHistoryStack.js";
 
 export interface IStateHistory{
     history: Ref<IHistoryStack>;

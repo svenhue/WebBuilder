@@ -91,7 +91,7 @@ GET /gitlab/repositories/{id}/files?path=src&ref=main
 
 #### Get File Content
 ```http
-GET /gitlab/repositories/{id}/files/content?file_path=src/index.js&ref=main
+GET /gitlab/repositories/{id}/files/content?file_path=src/index&ref=main
 ```
 
 #### Create or Update File
@@ -100,7 +100,7 @@ POST /gitlab/repositories/{id}/files
 Content-Type: application/json
 
 {
-  "file_path": "src/index.js",
+  "file_path": "src/index",
   "content": "console.log('Hello World');",
   "commit_message": "Add new file",
   "branch": "main",
@@ -111,7 +111,7 @@ Content-Type: application/json
 
 #### Delete File
 ```http
-DELETE /gitlab/repositories/{id}/files?file_path=src/old-file.js&commit_message=Remove old file
+DELETE /gitlab/repositories/{id}/files?file_path=src/old-file&commit_message=Remove old file
 ```
 
 ### Pipeline Endpoints
@@ -316,10 +316,10 @@ All GitLab resources are isolated by tenant:
 ## CI/CD Templates
 
 The module includes pre-built CI/CD templates for:
-- Node.js applications
-- Vue.js projects
+- Node applications
+- Vue projects
 - React applications
-- Nuxt.js applications
+- Nuxt applications
 - Static websites
 
 Templates automatically configure:

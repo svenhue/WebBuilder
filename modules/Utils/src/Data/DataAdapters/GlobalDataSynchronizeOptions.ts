@@ -1,4 +1,4 @@
-import { APITypes } from "./APITypes"
+import { APITypes } from "./APITypes.js"
 
 export interface GlobalDataSynchronizeOptions {
     

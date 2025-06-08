@@ -1,5 +1,5 @@
-import { executeInput } from "./ClientWorkflow";
-import { IWorkflowDescription } from "./IWorkflowDescription";
+import { executeInput } from "./ClientWorkflow.js";
+import { IWorkflowDescription } from "./IWorkflowDescription.js";
 
 export interface IClientWorkflow{
     config: IWorkflowDescription;

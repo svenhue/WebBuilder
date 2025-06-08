@@ -1,4 +1,4 @@
-import { IStringLocale } from "./IStringLocale";
+import { IStringLocale } from "./IStringLocale.js";
 
 export interface IInternationalization {
     locales: Array<IStringLocale>
