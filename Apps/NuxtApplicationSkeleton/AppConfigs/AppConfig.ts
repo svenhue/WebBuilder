@@ -13,16 +13,12 @@ import { AuthenticationMechanism } from 'alphautils';
   networkConfigs = [
     {
       name: "WebCreatorBackend",
-      url: "https://localhost:44314/",
+      url: "http://localhost:3001/api",
       authentication:{
-        mechanism: AuthenticationMechanism.UserCredentials,
-        tokenEndpoint: "https://localhost:44369/connect/token/",
-        authEndpoint: "https://localhost:44369/connect/authorize",
-        client_id: "WebCreator_App",
-        client_secret: "",
-        grant_type: "password",
-        username: undefined,
-        password: undefined
+        mechanism: AuthenticationMechanism.JWT,
+        tokenEndpoint: "http://localhost:3001/api/auth/login",
+        username: "sven-huening@web.de",
+        password: "I.AM.aSt3ongPW"
 
       },
       headers: {

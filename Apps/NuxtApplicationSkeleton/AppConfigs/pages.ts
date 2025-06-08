@@ -117,7 +117,7 @@ export  const config = {
           isRoutable: true,
           requiresAuth:{
             auth: true,
-            redirect: '/auth/login'
+            redirect: '/login'
           },
           route:{
             path: '/createApp',

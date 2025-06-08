@@ -33,7 +33,7 @@ export class HTTPClientService implements IHTTPClientService{
         })
         if(client == undefined){
             let network = this.networks.find((network) => {
-                return request.url.includes(network.url);
+                return request.url?.includes(network?.url) || request?.networkname == network.name ;
             })
             const isAuthNetwork = this.networks.find((network) => {
                 return network.authentication != undefined && request.url == network.authentication.tokenEndpoint;
@@ -49,6 +49,9 @@ export class HTTPClientService implements IHTTPClientService{
                     headers: isAuthNetwork.headers
                 }
             }
+            if(request.url != undefined){
+                
+            }
             client = this.createClient(network);
             this.clients.push(client); 
         }
@@ -56,9 +59,13 @@ export class HTTPClientService implements IHTTPClientService{
     }
 
     public async sendRequest<T = {}>(request: IRequestConfig): AxiosResponse<T>{
+        console.log(123, request)
         const client = this.GetOrCreateClient(request);
         const result = await client.sendRequest(request) as Promise<AxiosResponse>;
 
+        if(this.AuthenticationFailed(result)){
+            this.authService.Authenticate(this.GetAuthConfig(request))
+        }
        
         return result;
     }

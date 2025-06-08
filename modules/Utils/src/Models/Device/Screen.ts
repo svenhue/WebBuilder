@@ -1,4 +1,4 @@
-
+//@ts-ignore
 import { injectable } from "inversify";
 import { Platform } from "quasar";
 import { Ref, ref } from "vue";
@@ -37,13 +37,14 @@ export class Screen{
        
         if(typeof screenWidth == 'string'){
             if(screenWidth.includes('"')){
-                
+                // @ts-expect-error
                 screenWidth = screenWidth.replaceAll('"', '')    
             }
         }
 
         if(typeof screenHeight == 'string'){
             if(screenHeight.includes('"')){
+                // @ts-expect-error
                 screenHeight = screenHeight.replaceAll('"', '')    
             }
         }

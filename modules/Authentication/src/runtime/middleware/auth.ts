@@ -4,8 +4,7 @@ import { useAuthState } from '../composables/useAuthState';
 
 
 export default defineNuxtRouteMiddleware((to, from) => {
-    
-  return 
+  return;
   const options = to.meta.auth as AuthMiddlewareRouteOptions
   
   if(!options || options?.requiresAuth === false){
@@ -15,7 +14,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   const { isAuthenticated } = useAuthState()
 
   if(!isAuthenticated.value){
-    return navigateTo(options.redirect || '/auth/login')
+    return navigateTo(options.redirect || '/login')
   }
 
   })

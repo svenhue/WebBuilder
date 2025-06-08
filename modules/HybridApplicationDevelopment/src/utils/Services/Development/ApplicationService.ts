@@ -11,6 +11,7 @@ import { DataContextManager } from 'alphautils';
 import { ContextLevel } from 'alphautils';
 import { AuthenticationMechanism } from 'alphautils';
 import { INode, TaskTypes } from 'alphanodes';
+import { APITypes } from 'alphautils';
 
 
 @injectable()
@@ -38,7 +39,13 @@ export class ApplicationService extends BaseServiceProvider{
                 name: 'Application',
                 propertys:[]
             }),
-            persistGlobalStorage: false,
+            apiDefinition: {
+                networkname: 'WebCreatorBackend',
+                type: APITypes.REST,
+                url: "/applications"
+
+            },
+            persistGlobalStorage: true,
             persistLocalStorage: true,
             contextId: 0 // the root context has always the id = 0
         })

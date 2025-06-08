@@ -20,7 +20,7 @@
             middleware:[
               "auth"
             ],
-            auth: { requiresAuth: true, redirect:"/auth/login"}
+            auth: { requiresAuth: true, redirect:"/login"}
           })
 
           const resolver = new ComponentResolver()

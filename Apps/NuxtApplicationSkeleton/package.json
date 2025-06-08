@@ -19,7 +19,6 @@
     "@quasar/extras": "^1.16.9",
     "@rollup/plugin-typescript": "^11.1.6",
     "agenticBusinessIntegration": "file:../../modules/AgenticBusinessIntegration",
-    "alphaauthmodule": "file:../../modules/Authentication",
     "alphanodes": "file:../../../modules/Nodes",
     "alphaviewlibrary": "file:../../modules/ViewLibrary",
     "axios": "^1.6.8",
@@ -41,6 +40,7 @@
   },
   "devDependencies": {
     "@nuxt/ui": "^3.1.1",
+    "alphaauthmodule": "file:../../modules/Authentication",
     "nuxt-quasar-ui": "^2.0.8",
     "tsx": "^4.11.0",
     "vite-plugin-node-polyfills": "^0.22.0",

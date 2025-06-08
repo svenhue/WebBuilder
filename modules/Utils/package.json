@@ -2,45 +2,15 @@
     "name": "webbuilderalphautils",
     "version": "1.0.7",
     "type": "module",
-    "main": "index.ts",
+    "main": "./dist/index.js",
     "types": "./index.d.ts",
-    "module": "index.ts",
+    "module": "./dist/index.js",
+  
     "scripts": {
         "build": "vite build",
         "lint": "eslint --ext .js,.ts,.vue ./",
         "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
         "test": "echo \"No test specified\" && exit 0"
-    },
-    "exports": {
-        ".": {
-            "types": "./index.d.ts",
-            "require": "./index.ts",
-            "import": "./index.ts"
-        },
-        "./view/*.ts": {
-            "types": "./src/View/*.ts",
-            "import": "./src/View/*.ts"
-        },
-        "./data/*.ts": {
-            "types": "./src/Data/*.ts",
-            "import": "./src/Data/*.ts"
-        },
-        "./app/*.ts": {
-            "types": "./src/Application/*.ts",
-            "import": "./src/Application/*.ts"
-        },
-        "./services/*.ts": {
-            "types": "./src/Services/*.ts",
-            "import": "./src/Services/*.ts"
-        },
-        "./stores/*.ts": {
-            "types": "./src/stores/*.ts",
-            "import": "./src/stores/*.ts"
-        },
-        "./src/*.ts": {
-            "types": "./src/*.ts",
-            "import": "./src/*.ts"
-        }
     },
     "devDependencies": {
         "@types/mocha": "latest",
