@@ -2,7 +2,7 @@
 import { App, createApp, defineComponent, inject } from 'vue';
 import { Router, createRouter, RouterOptions, RouteRecordRaw, createWebHistory } from 'vue-router';
 import { waitForElm } from '../composables/useWaitforElement.js';
-import { Quasar } from 'quasar';
+//import { Quasar } from 'quasar';removed this because not needed (nuxt quasar plugin) and problems with local quasar package
 import { Container} from 'inversify';
 import { BODeclarationContainer } from '../Container/BODeclarationContainer.js';
 import { BusinessObject } from '../Data/BusinessObject.js';
@@ -208,7 +208,7 @@ export class VueApplication implements IApplication{
         const newApp = createApp(ApplicationRootComponent)
         //Quasar.install(newApp, {})
         
-        Quasar.install(newApp, {})
+        //Quasar.install(newApp, {})
 
         
         newApp.use(this.vueRouter)

@@ -5,6 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { GlobalAPIInterceptor } from './interceptors/GlobalAPIInterceptor';
+import { HttpExceptionFilter } from './utils/HttpExceptionFilter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -20,7 +21,8 @@ async function bootstrap() {
     credentials: true,
   });
 
-    app.useGlobalInterceptors(new GlobalAPIInterceptor());
+  app.useGlobalInterceptors(new GlobalAPIInterceptor());
+  app.useGlobalFilters(new HttpExceptionFilter())
   // Global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({

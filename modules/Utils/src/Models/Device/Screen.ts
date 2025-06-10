@@ -1,13 +1,13 @@
 //@ts-ignore
 import { injectable } from "inversify";
-import { Platform } from "quasar";
+
 import { Ref, ref } from "vue";
 
 
 @injectable()
 export class Screen{
 
-    quasarPlatformDetect: Platform
+    quasarPlatformDetect: any
     
     screenWidth: Ref<number|string> = ref(0);
     screenHeight: Ref<number|string> = ref(0);

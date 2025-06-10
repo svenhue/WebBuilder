@@ -18,7 +18,7 @@ import { AuthenticationMechanism } from 'alphautils';
         mechanism: AuthenticationMechanism.JWT,
         tokenEndpoint: "http://localhost:3001/api/auth/login",
         username: "sven-huening@web.de",
-        password: "I.AM.aSt3ongPW"
+        password: "jikwqahfbb..IBZH(z98"
 
       },
       headers: {

@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException, BadRequestException } from '@nestjs/common';
+import { Injectable, UnauthorizedException, BadRequestException, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { UsersService } from '../users/users.service';
@@ -21,7 +21,9 @@ export class AuthService {
       throw new BadRequestException('Email and password are required');
     }
     const user = await this.usersService.findByEmail(email);
-    
+    if(user == null){
+      throw new NotFoundException("User does not exists")
+    }
     const passwordValid = await bcrypt.compare(pass, user.password);
     if (!passwordValid) {
       throw new UnauthorizedException();

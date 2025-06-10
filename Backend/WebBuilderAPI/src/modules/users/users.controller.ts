@@ -26,7 +26,7 @@ export class UsersController {
   async findOne(@Param('id') id: string) {
     return this.usersService.findById(id);
   }
-  @Post()
+  @Post('register')
   @Public()
   async register(@Body() registerDto:RegisterUserDto) {
     return await this.registerService.Register(registerDto.email, registerDto.password);

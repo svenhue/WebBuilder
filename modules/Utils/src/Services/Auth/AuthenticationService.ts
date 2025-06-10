@@ -75,7 +75,7 @@ abstract class AuthenticationService implements ICallAbleServiceAction{
         }, true)
 
         const token = response.data['access_token']
-
+        console.log(123, response)
         if(!token){
             throw new Error("Error during authentication: Could not find acces_token")
         }
