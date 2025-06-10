@@ -6,6 +6,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 // Core modules
 import { DatabaseModule } from './shared/database/database.module';
 import { TenancyModule } from './shared/tenancy/tenancy.module';
+import { AuditingModule } from './shared/database/auditing/auditing.module';
 
 // Feature modules
 import { AuthModule } from './modules/auth/auth.module';
@@ -44,6 +45,7 @@ import { GitlabModule } from './modules/gitlab/gitlab.module';
     // Core modules
     DatabaseModule,
     TenancyModule,
+    AuditingModule,
 
     // Feature modules
     AuthModule,

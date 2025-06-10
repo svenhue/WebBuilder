@@ -1,11 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-import { IPageConfiguration } from 'webbuilderalphautils';
+import { IPageConfiguration } from 'webbuilderalphautils';
+import { AuditableSchema } from '../../../shared/database/auditing/schemas/auditable.schema';
+
 export type ApplicationDocument = Application & Document;
 
 @Schema({ timestamps: true })
-export class Application {
+export class Application extends AuditableSchema {
 
   @ApiProperty({ description: 'Application name', example: 'My WebBuilder App' })
   @Prop({ required: false })
@@ -67,14 +69,6 @@ export class Application {
   @ApiProperty({ description: 'Application status', example: 'active' })
   @Prop({ default: 'active' })
   status?: string;
-
-  @ApiProperty({ description: 'Created by user ID' })
-  @Prop()
-  createdBy?: string;
-
-  @ApiProperty({ description: 'Last modified by user ID' })
-  @Prop()
-  lastModifiedBy?: string;
 }
 
 export const ApplicationSchema = SchemaFactory.createForClass(Application);

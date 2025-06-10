@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { GlobalAPIInterceptor } from './interceptors/GlobalAPIInterceptor';
 import { HttpExceptionFilter } from './utils/HttpExceptionFilter';
+import { AuditContextInterceptor } from './shared/database/auditing/interceptors/audit-context.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -21,7 +22,10 @@ async function bootstrap() {
     credentials: true,
   });
 
-  app.useGlobalInterceptors(new GlobalAPIInterceptor());
+  app.useGlobalInterceptors(
+    new GlobalAPIInterceptor(),
+    app.get(AuditContextInterceptor)
+  );
   app.useGlobalFilters(new HttpExceptionFilter())
   // Global validation pipe
   app.useGlobalPipes(

@@ -2,9 +2,9 @@
     "name": "webbuilderalphautils",
     "version": "1.0.8",
     "type": "module",
-    "main": "index.ts",
+    "main": "dist/index.js",
     "types": "./index.d.ts",
-    "module": "index.ts",
+    "module": "./dist/index.js",
     "scripts": {
         "build": "vite build",
         "lint": "eslint --ext .js,.ts,.vue ./",

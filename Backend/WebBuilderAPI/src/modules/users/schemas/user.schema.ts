@@ -1,11 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
+import { AuditableSchema } from '../../../shared/database/auditing/schemas/auditable.schema';
 
 export type UserDocument = User & Document;
 
 @Schema({ timestamps: true })
-export class User {
+export class User extends AuditableSchema {
   @ApiProperty({ description: 'User email address', example: 'user@example.com' })
   @Prop({ required: true, unique: true, lowercase: true })
   email: string;
