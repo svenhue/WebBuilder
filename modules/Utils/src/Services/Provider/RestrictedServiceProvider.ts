@@ -1,22 +1,20 @@
 import { inject, injectable } from "inversify";
 import { NavigationService } from "../Navigation/NavigationService.js";
-import { AuthenticationService } from "../Auth/AuthenticationService.js";
 
 @injectable()
 export class RestrictedServiceProvider{
     
     public static allowedServices: string[] = [
         'HTTPClientService',
-        'AuthenticationService',
         'DataAdapterConstructor',
         'NavigationService',
     ]
     
 
     constructor(
-        @inject('AuthenticationService') private authenticationService: AuthenticationService,
+     
     ){
-        this.authenticationService = authenticationService;
+     
        
     }
 
@@ -29,8 +27,6 @@ export class RestrictedServiceProvider{
         switch(service){
             case 'NavigationService':
                 return new NavigationService();
-            case 'AuthenticationService':
-                return this.authenticationService
         }
     }
 }

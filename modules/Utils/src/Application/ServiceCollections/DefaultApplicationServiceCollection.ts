@@ -98,9 +98,5 @@ export class DefaultApplicationServiceCollection implements IStartup{
 
                 container.bind<RestrictedServiceProvider>('RestrictedServiceProvider').to(RestrictedServiceProvider).inSingletonScope();
 
-                const authService = new AuthenticationService(container.get<IHTTPClientService>('HTTPClientService'), authConfig);
-                container.bind<AuthenticationService>("AuthenticationService").toConstantValue(authService);
-
-
     }
 }

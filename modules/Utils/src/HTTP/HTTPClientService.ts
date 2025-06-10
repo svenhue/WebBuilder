@@ -8,14 +8,16 @@ import { inject, injectable } from 'inversify';
 import { AuthenticationService } from '../Services/Auth/AuthenticationService.js';
 
 @injectable()
-export class HTTPClientService implements IHTTPClientService{
+export class HTTPClientService extends AuthenticationService implements IHTTPClientService {
     
     public networks: Array<IExternalNetworkConfiguration> = Array<IExternalNetworkConfiguration>();;
     private authService: AuthenticationService;
     clients: Array<AxiosWrapper>;
 
     constructor(
+
     ){
+        super()
         this.clients = Array<AxiosWrapper>();
 
     }
@@ -58,16 +60,35 @@ export class HTTPClientService implements IHTTPClientService{
         return client;
     }
 
-    public async sendRequest<T = {}>(request: IRequestConfig): AxiosResponse<T>{
-        console.log(123, request)
-        const client = this.GetOrCreateClient(request);
-        const result = await client.sendRequest(request) as Promise<AxiosResponse>;
+    private addRequestInterceptors(request: IRequestConfig){
+        this.setAuthRequestConfigInterceptor(request);
+    }
+    public override async  sendRequest<T = {}>(request: IRequestConfig, skipAllInterceptors: boolean = false): AxiosResponse<T>{
+        try{
+            
+            this.addRequestInterceptors(request)
+            const client = this.GetOrCreateClient(request);
+            let result = await client.sendRequest(request) as Promise<AxiosResponse>;
 
-        if(this.AuthenticationFailed(result)){
-            this.authService.Authenticate(this.GetAuthConfig(request))
+            if(skipAllInterceptors){
+                return result
+            }
+            if(this.AuthenticationFailed(result)){
+                await this.Authenticate(this.GetAuthConfig(request))
+                if(!this.isAuthenticated()){
+                    throw new Error("Unable to authenticate")
+                }else{
+                    this.addRequestInterceptors(request)
+                    result = client.sendRequest(request, true)
+                }
+            }   
+            return result;
+
+        }catch(error){
+            throw new Error("error during request:", error)
         }
        
-        return result;
+        
     }
     private AuthenticationFailed(response: AxiosResponse){
         return response?.status == 401;

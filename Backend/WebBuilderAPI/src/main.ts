@@ -4,6 +4,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
+import { GlobalAPIInterceptor } from './interceptors/GlobalAPIInterceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,11 +20,12 @@ async function bootstrap() {
     credentials: true,
   });
 
+    app.useGlobalInterceptors(new GlobalAPIInterceptor());
   // Global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
-      forbidNonWhitelisted: true,
+      forbidNonWhitelisted: false,
       transform: true,
       transformOptions: {
         enableImplicitConversion: true,

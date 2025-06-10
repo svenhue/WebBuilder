@@ -13,7 +13,7 @@ export const useIdentityStore = defineStore('identity', () => {
     }
         
     function getIdentity(){
-        return identity
+        return identity.value
     }
     function setIdentity (i) {
         identity.value = i;

@@ -21,8 +21,7 @@ export class GlobalDataSynchronizer{
         switch(options.type){
             case APITypes.REST:
                 const request = this.CreateRESTRequest(value, changeType, options.url, options.networkname)
-                const result = await this.httpService.sendRequest(request)
-                console.log(result)
+                await this.httpService.sendRequest(request)
                 break;
             default: 
                 throw new Error('API Type not supported: ' + options.type)

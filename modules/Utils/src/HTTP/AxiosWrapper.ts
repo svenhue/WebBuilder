@@ -18,12 +18,12 @@ export class AxiosWrapper{
         this.instance = axios.create({
             baseURL: config.url,
             headers: config?.headers,
-            data: config.data
+            data: config?.data
         })
     }
     public Get(url: string, config?: AxiosRequestConfig, callback?: (response: AxiosResponse) => void){
         
-        return this.instance?.get(url + config.url, config).then((response: AxiosResponse) => {
+        return this.instance?.get(url, config).then((response: AxiosResponse) => {
             
             if(callback != undefined){
                 callback(response);
@@ -37,8 +37,18 @@ export class AxiosWrapper{
         });
             
     }
-    public Post(url: string, config?: AxiosRequestConfig){
-        return this.instance?.post(url,config.data,config);
+    public Post(url: string, config?: AxiosRequestConfig, callback?: () => void){
+        return this.instance?.post(url, config?.data, config).then((response: AxiosResponse) => {
+            
+            if(callback != undefined){
+                callback(response);
+            }
+            return response;
+        }).catch((error: AxiosError) => {
+                return error;
+        }).finally((r) => {
+                return r;  
+        });
     }
     public Put(url: string, config?: AxiosRequestConfig){
         return this.instance?.put(url,config);
@@ -50,8 +60,8 @@ export class AxiosWrapper{
         const config: AxiosRequestConfig = {
             url: options.url,
             method: options.method,
-            headers: options.headers,
-            data: options.data
+            headers: options?.headers,
+            data: options?.data
         }
         return config;
     }
@@ -59,26 +69,32 @@ export class AxiosWrapper{
         const config = this.createAxiosConfig(options);
         let url;
 
-        if(options.isCompleteUrl || options?.isolated){
+        if(options?.isCompleteUrl || options?.isolated){
             url = options.url;
         }else{
             url = this.config.url + options.url;
         }
         try{
-            switch(options.method){
-                case "GET":
-                    return this.Get(url, config, callback);
-                case "POST":
-                    return this.Post(url,config);
-                case "PUT":
-                    return this.Put(url,config);
-                case "DELETE":
-                    return this.Delete(url,config);
-            }
-        }catch(error){
-            console.log(error, options)
-            return error;
+        switch(options?.method){
+            case "GET":
+                return this.Get(url, config, callback);
+                break;
+            case "POST":
+                return this.Post(url,config);
+                break;
+            case "PUT":
+                return this.Put(url,config);
+                break;
+            case "DELETE":
+                return this.Delete(url,config);
+                break;
+            default:
+                throw new Error("Method" + options.method + "not supported!")
         }
+        }catch(error){
+            throw new Error("Send request error:", error)
+        }
+
     }
     
 

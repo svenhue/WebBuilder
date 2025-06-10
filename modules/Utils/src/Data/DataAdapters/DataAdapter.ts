@@ -16,7 +16,7 @@ import { BORepository } from '../Repositorys/BORepository.js';
 import { GlobalDataSynchronizer } from './GlobalDataSynchronizer.js';
 import {IHTTPClientService} from '../../HTTP/IHTTPClientService';
 import { IRequestConfig } from '../../HTTP/IRequestConfig.js';
-
+import {toValue, toRaw} from 'vue'
 @injectable()
 export class DataAdapter implements IDataAdapter {
 
@@ -88,7 +88,7 @@ export class DataAdapter implements IDataAdapter {
         this.SetBoType(value)
         
         if(this.options.persistGlobalStorage == true){
-            this.synchronizer.SyncData(value, StateChangeTypes.create, this.options.apiDefinition)
+            this.synchronizer.SyncData(toRaw(value), StateChangeTypes.create, this.options.apiDefinition)
         }
         
 
