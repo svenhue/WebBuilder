@@ -1,15 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Application, ApplicationDocument } from './schemas/application.schema';
-
-import { UITemplateDocument } from './schemas/template.schema';
+import { UITemplate, UITemplateDocument } from './schemas/template.schema';
 import { TemplateDto } from './dto/template.dto';
 
 @Injectable()
 export class UITemplatesService {
   constructor(
-    @InjectModel(Application.name) private uiTemplatenModel: Model<UITemplateDocument>
+    @InjectModel(UITemplate.name) private uiTemplatenModel: Model<UITemplateDocument>
   ) {}
 
   async create(createUITemplateDto: TemplateDto): Promise<UITemplateDocument> {

@@ -2,10 +2,12 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { IPageConfiguration } from 'webbuilderalphautils';
+import { TemplateTypes } from '../enums/TemplateTypes';
+import { AuditableSchema } from '@/shared/database/auditing';
 export type UITemplateDocument = UITemplate & Document;
 
 @Schema({ timestamps: true })
-export class UITemplate {
+export class UITemplate extends AuditableSchema{
 
   @ApiProperty({ description: 'UITemplate name', example: 'My WebBuilder UITemplate' })
   @Prop({ required: false })
@@ -39,6 +41,10 @@ export class UITemplate {
   @Prop()
   description?: string;
 
+  @ApiProperty({ description: 'UITemplate description' })
+  @Prop()
+  type?: TemplateTypes;
+
 }
 
-export const ApplicationSchema = SchemaFactory.createForClass(UITemplate);
+export const TemplateSchema = SchemaFactory.createForClass(UITemplate);

@@ -91,8 +91,6 @@ export class DataAdapter implements IDataAdapter {
             this.synchronizer.SyncData(toRaw(value), StateChangeTypes.create, this.options.apiDefinition)
         }
         
-
-
         this.ownsIds.push(value.id)
         return this.repository.Create(value as IBOInstance, this.options.persistLocalStorage, contextid, addToHistory)
     }

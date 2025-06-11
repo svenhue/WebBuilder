@@ -2,6 +2,7 @@ import { Module, Global, OnModuleInit } from '@nestjs/common';
 import { ClsModule } from 'nestjs-cls';
 import { AuditContextService } from './services/audit-context.service';
 import { setGlobalAuditContextProvider } from './plugins/audit.plugin';
+import { HistoryModule } from './historys/history.module';
 import { AuditContextInterceptor } from './interceptors/audit-context.interceptor';
 
 /**
@@ -19,9 +20,10 @@ import { AuditContextInterceptor } from './interceptors/audit-context.intercepto
         idGenerator: (req: any) => req.headers['x-request-id'] || `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       },
     }),
+    HistoryModule,
   ],
   providers: [AuditContextService, AuditContextInterceptor],
-  exports: [AuditContextService, ClsModule],
+  exports: [AuditContextService, ClsModule, HistoryModule],
 })
 export class AuditingModule implements OnModuleInit {
   constructor(private readonly auditContextService: AuditContextService) {}

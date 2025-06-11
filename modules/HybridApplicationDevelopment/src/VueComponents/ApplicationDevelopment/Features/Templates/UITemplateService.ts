@@ -9,8 +9,9 @@ export class UITemplateService{
     private dataAdapter: IDataAdapter
     private httpService: IHTTPClientService
     private focussedService: FocussedViewContextService
-    constructor(c: interfaces.Newable<IDataAdapter>, httpService?: IHTTPClientService, focussedService: FocussedViewContextService){
-        this.httpService = httpService
+    constructor(c: interfaces.Newable<IDataAdapter>, httpService: IHTTPClientService,  focussedService: FocussedViewContextService){
+
+        this.httpService = httpService;
         this.focussedService = focussedService
         if(this.dataAdapter == undefined){
             
@@ -19,10 +20,11 @@ export class UITemplateService{
                     name: 'UIViewTemplate',
                     propertys: [],
                 }),
+                
                 persistLocalStorage: true,
-                persistGlobalStorage: false,
+                persistGlobalStorage: true,
                 apiDefinition:{
-                    url: 'UiApplicationManagement/viewtemplate',
+                    url: '/templates',
                     type: APITypes.REST,
                     networkname: 'WebCreatorBackend'
                 },
@@ -31,7 +33,7 @@ export class UITemplateService{
            this.dataAdapter = adapter
         }
     }
-    public CreateNewViewTemplate(template: TemplateDto){
+    public async CreateNewViewTemplate(template: TemplateDto){
 
         if(template.name == undefined || template.name == ''){
             throw new Error('Template name is required')
@@ -41,19 +43,12 @@ export class UITemplateService{
             template.type = UITemplateTypes.ViewTemplate
         }
 
-
-        var result = this.httpService.sendRequest({
-            networkname: 'WebCreatorBackend',
-            method: 'POST',
-            url: 'UiApplicationManagement/viewtemplate',
-            data: template
-        })
-        this.dataAdapter.Create(template)
+        this.dataAdapter.Create(template, 0)
     }
 
     public async GetPublicTemplates(): Array<TemplateDto>{
         const templates = await this.httpService.sendRequest<Array<TemplateDto>>({
-            url: 'api/UiApplicationManagement/viewtemplate/allPublic',
+            url: 'api/templates',
             method: 'GET',
             networkname: 'WebCreatorBackend'
         })
@@ -62,13 +57,8 @@ export class UITemplateService{
     }
 
     public CreateTemplateValueString(value: IPageConfiguration | IViewConfiguration){
-
-        
-
         //backend creates this with guid
         delete value.parentId
-        
-        
         return JSON.stringify(this.PrepareViewTemplate(value))
     }
 

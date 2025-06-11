@@ -13,5 +13,8 @@ export * from './plugins/audit.plugin';
 // Interceptors
 export * from './interceptors/audit-context.interceptor';
 
+// History Module
+export * from './historys';
+
 // Module
 export * from './auditing.module';
