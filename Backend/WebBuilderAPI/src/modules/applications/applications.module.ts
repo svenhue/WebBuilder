@@ -6,12 +6,17 @@ import { Application, ApplicationSchema } from './schemas/application.schema';
 import { TemplatesController } from './ui.templates.controller';
 import { UITemplatesService } from './ui.templates.service';
 import { TemplateSchema, UITemplate } from './schemas/template.schema';
+import { TemplateCategory } from './schemas/template.categorys';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: Application.name, schema: ApplicationSchema },
-      { name: UITemplate.name, schema: TemplateSchema}
+      { name: UITemplate.name, schema: TemplateSchema},
+      {
+        name: TemplateCategory.name,
+        schema: TemplateSchema
+      }
     ]),
   ],
   controllers: [ApplicationsController, TemplatesController],

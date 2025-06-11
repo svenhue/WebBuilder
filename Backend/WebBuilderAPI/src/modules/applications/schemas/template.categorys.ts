@@ -4,10 +4,10 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IPageConfiguration } from 'webbuilderalphautils';
 import { TemplateTypes } from '../enums/TemplateTypes';
 import { AuditableSchema } from '@/shared/database/auditing';
-export type UITemplateDocument = UITemplate & Document;
+export type TemplateCategoryDocument = TemplateCategory & Document;
 
 @Schema({ timestamps: true })
-export class UITemplate extends AuditableSchema{
+export class TemplateCategory extends AuditableSchema{
 
   @ApiProperty({ description: 'UITemplate name', example: 'My WebBuilder UITemplate' })
   @Prop({ required: false })
@@ -51,4 +51,4 @@ export class UITemplate extends AuditableSchema{
 
 }
 
-export const TemplateSchema = SchemaFactory.createForClass(UITemplate);
+export const TemplateCategorySchema = SchemaFactory.createForClass(TemplateCategory);
