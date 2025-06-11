@@ -25,13 +25,13 @@ import { CodeContextProvider } from '../../CodeExecution/CodeContextProvider.js'
 import { ApplicationModes } from '../ApplicationModes.js';
 import { inject } from 'vue';
 import { Pinia } from 'pinia';
-import { AuthenticationService } from '../../Services/Auth/AuthenticationService.js';
 import { WorkflowEngine } from '../../ClientActions/Workflow/WorkflowEngine.js';
 import { CallServiceAction } from '../../ClientActions/Actions/CallService/CallServiceAction.js';
 import { GlobalDataSynchronizer } from '../../Data/DataAdapters/GlobalDataSynchronizer.js';
 import { RestrictedServiceProvider } from '../../Services/Provider/RestrictedServiceProvider.js';
 import { IHTTPClientService } from '../../HTTP/IHTTPClientService.js';
 import { IAuthenticationConfiguration } from '../Authentication/IAuthenticationConfiguration.js';
+import { LoggingService } from '../../Logging/LoggingService.js';
 
 export class DefaultApplicationServiceCollection implements IStartup{
 
@@ -49,6 +49,7 @@ export class DefaultApplicationServiceCollection implements IStartup{
             authConfig = {} as IAuthenticationConfiguration
         }
         
+        container.bind<LoggingService>("LoggingService").to(LoggingService).inSingletonScope();
        container.bind<ITransactionService>("TransactionService")
                 .to(TransactionService)
                 .inSingletonScope();

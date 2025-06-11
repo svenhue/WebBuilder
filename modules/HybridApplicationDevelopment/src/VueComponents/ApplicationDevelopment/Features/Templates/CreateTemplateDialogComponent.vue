@@ -2,11 +2,10 @@
     <q-dialog :model-value="show">
         <q-card>
             <q-card-section>
-                
                     Create Template based on component {{  value?.publicidentifier }}
-                
                 <q-card-section>
                     <q-input v-model="template.name" label="Template Name" />
+                    <q-checkbox v-model="template.isPublic" label="Public (everyone can use it for free)"></q-checkbox>
                 </q-card-section>
                 <q-card-section>
                     <q-uploader ref="Uploader" label="Template image"  hide-upload-btn :filter="checkFileType" @rejected="onRejected">
@@ -74,7 +73,8 @@ const template = reactive<TemplateDto>({
     name: '',
     description: '',
     value: undefined,
-    type: UITemplateTypes.ViewTemplate
+    type: UITemplateTypes.ViewTemplate,
+    isPublic: false
 })
 
 
@@ -97,7 +97,8 @@ function setView(view){
     template.value = service.CreateTemplateValueString(cleanView);
     
     waitForElm('#XXXX').then((elm) => {
-        CreateJsonEditor();
+        //dont needed yet
+        //CreateJsonEditor();
     })
 }
 
@@ -136,7 +137,6 @@ function onRejected(rejectedEntries){
 
 async function CreateTemplate(){
     const files = Uploader.value.files;
-    
     
     if(files[0] != undefined){
         const fileString = await ToBase64String(files[0] as File);
