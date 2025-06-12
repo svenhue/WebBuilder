@@ -1,14 +1,15 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
-import { PermissionGrant, PermissionGrantDocument, GrantType, PermissionAction, ResourceType } from './schemas/permission.grant.schema';
+import { PermissionGrant, PermissionGrantDocument, GrantProviders, PermissionAction, ResourceType } from './schemas/permission.grant.schema';
 import { Permission, PermissionDocument } from './schemas/permission.schema';
 import { PermissionGroup } from './schemas/permission.groups.schema';
 import { Role } from './schemas/role.schema';
+import { UserRole, UserRoleDocument } from './schemas/user.roles.schema';
 
 export interface PermissionCheckRequest {
   grantId: string;
-  grantType: GrantType;
+  grantType: GrantProviders;
   resourceType: ResourceType;
   resourceId: string;
   action: PermissionAction;
@@ -17,7 +18,7 @@ export interface PermissionCheckRequest {
 export interface CreatePermissionGrantRequest {
   permissionId: string;
   grantId: string;
-  grantType: GrantType;
+  grantType: GrantProviders;
   resourceType: ResourceType;
   resourceId: string;
   action: PermissionAction;
@@ -37,6 +38,7 @@ export class PermissionsService {
     @InjectModel(Permission.name) private permissionModel: Model<PermissionDocument>,
     @InjectModel(PermissionGroup.name) private permissionGroupModel: Model<PermissionGroup>,
     @InjectModel(Role.name) private roleModel: Model<Role>,
+    @InjectModel(UserRole.name) private userRoleModel: Model<UserRole>
   ) {}
 
   // ===== PERMISSION GRANT CRUD METHODS =====
@@ -74,6 +76,23 @@ export class PermissionsService {
     if (!result) {
       throw new NotFoundException(`Permission grant with ID ${id} not found`);
     }
+  }
+
+  // === PERMISSION GRANT HELPERS
+
+  async getAllPermissionGrantsForUser(userId: string){
+    //todo this values should be stored in session/ token/ REALLY bad performance with this approach!
+    //todo add the grants to request.user.permissionKeys!
+
+    const userPermissionGrants = await this.permissionGrantModel.find({providerName: GrantProviders.USER, providerKey: userId }).exec()
+    const userRoles = await this.userRoleModel.find({userId: userId}).exec();
+
+    const userRolePermissionGrants = await this.permissionGrantModel
+      .where('providerName').equals(GrantProviders.ROLE)
+      .where('providerKey').in(userRoles.map(userRole => {return userRole.roleName}))
+      .exec()
+
+      return [...userPermissionGrants, ...userRolePermissionGrants]
   }
 
   // ===== PERMISSION CRUD METHODS =====

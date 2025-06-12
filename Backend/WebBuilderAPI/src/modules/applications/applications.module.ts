@@ -24,3 +24,4 @@ import { TemplateCategory, TemplateCategorySchema } from './schemas/template.cat
   exports: [ApplicationsService],
 })
 export class ApplicationsModule {}
+

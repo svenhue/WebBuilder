@@ -5,7 +5,7 @@ import { AuditableSchema } from '@/shared/database/auditing';
 
 export type PermissionGrantDocument = PermissionGrant & Document;
 
-export enum GrantType {
+export enum GrantProviders {
   USER = 'user',
   ROLE = 'role',
   GROUP = 'group',

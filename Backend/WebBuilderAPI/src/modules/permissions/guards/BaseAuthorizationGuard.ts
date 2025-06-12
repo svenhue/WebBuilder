@@ -31,11 +31,16 @@ export class BaseAuthorizationGuard implements CanActivate {
     public canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
         const request = context.switchToHttp().getRequest();
         
-        const user = request['user']
         const authContext: IAuthorizationContext = this.reflector.getAllAndOverride<IAuthorizationContext>(AUTH_KEY, [
               context.getHandler(),
               context.getClass(),
         ]);
+
+        if(!authContext || (!authContext.permissions && !authContext.roles)){
+            return true;
+        }
+        const user = request['user']
+        
 
         const userCanActivate = this.authService.authorizeUser(user, authContext)
 

@@ -7,6 +7,9 @@ import { PermissionGroup, PermissionGroupSchema } from './schemas/permission.gro
 import { PermissionsService } from './permissions.service';
 import { PermissionsController } from './permissions.controller';
 import { UsersModule } from '../users/users.module';
+import { BaseAuthorizationGuard } from './guards/BaseAuthorizationGuard';
+import { AuthorizationService } from './authorization.service';
+import { UserRole, UserRoleSchema } from './schemas/user.roles.schema';
 
 @Module({
   imports: [
@@ -19,11 +22,12 @@ import { UsersModule } from '../users/users.module';
           schema: PermissionGrantSchema
         },
         { name: PermissionGroup.name, schema: PermissionGroupSchema},
+        { name: UserRole.name, schema: UserRoleSchema}
       ]),
     ],
-  providers: [PermissionsService],
+  providers: [PermissionsService, AuthorizationService, BaseAuthorizationGuard],
   controllers: [PermissionsController],
-  exports: [PermissionsService],
+  exports: [PermissionsService, BaseAuthorizationGuard]
   
 })
 export class PermissionsModule {}
