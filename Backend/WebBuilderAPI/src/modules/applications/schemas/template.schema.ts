@@ -45,9 +45,57 @@ export class UITemplate extends AuditableSchema{
   @Prop()
   description?: string;
 
-  @ApiProperty({ description: 'UITemplate description' })
-  @Prop()
-  type?: TemplateTypes;
+  @ApiProperty({ description: 'UITemplate type' })
+  @Prop({required: true})
+  type?: string;
+
+  @ApiProperty({ description: 'Template price in USD', example: 49.99 })
+  @Prop({ required: false, default: 0 })
+  price?: number;
+
+  @ApiProperty({ description: 'Is template free', example: true })
+  @Prop({ required: false, default: true })
+  isFree?: boolean;
+
+  @ApiProperty({ description: 'Is template publicly available', example: true })
+  @Prop({ required: false, default: false })
+  isPublic?: boolean;
+
+  @ApiProperty({ description: 'Template thumbnail image URL' })
+  @Prop({ required: false })
+  thumbnail?: string;
+
+  @ApiProperty({ description: 'Template preview images', type: [String] })
+  @Prop({ type: [String], default: [] })
+  previewImages?: string[];
+
+  @ApiProperty({ description: 'Template author/creator ID' })
+  @Prop({ required: false })
+  authorId?: string;
+
+  @ApiProperty({ description: 'Template download count', example: 1247 })
+  @Prop({ required: false, default: 0 })
+  downloads?: number;
+
+  @ApiProperty({ description: 'Template rating (1-5)', example: 4.8 })
+  @Prop({ required: false, default: 0 })
+  rating?: number;
+
+  @ApiProperty({ description: 'Number of reviews', example: 89 })
+  @Prop({ required: false, default: 0 })
+  reviewCount?: number;
+
+  @ApiProperty({ description: 'Template tags for search', type: [String] })
+  @Prop({ type: [String], default: [] })
+  tags?: string[];
+
+  @ApiProperty({ description: 'Template featured status', example: false })
+  @Prop({ required: false, default: false })
+  isFeatured?: boolean;
+
+  @ApiProperty({ description: 'Template approval status', example: 'approved' })
+  @Prop({ required: false, default: 'pending' })
+  approvalStatus?: string;
 
 }
 

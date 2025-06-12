@@ -6,7 +6,7 @@ import { Application, ApplicationSchema } from './schemas/application.schema';
 import { TemplatesController } from './ui.templates.controller';
 import { UITemplatesService } from './ui.templates.service';
 import { TemplateSchema, UITemplate } from './schemas/template.schema';
-import { TemplateCategory } from './schemas/template.categorys';
+import { TemplateCategory, TemplateCategorySchema } from './schemas/template.categorys';
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { TemplateCategory } from './schemas/template.categorys';
       { name: UITemplate.name, schema: TemplateSchema},
       {
         name: TemplateCategory.name,
-        schema: TemplateSchema
+        schema: TemplateCategorySchema
       }
     ]),
   ],

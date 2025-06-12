@@ -46,8 +46,8 @@ export class TemplateCategory extends AuditableSchema{
   description?: string;
 
   @ApiProperty({ description: 'UITemplate description' })
-  @Prop()
-  type?: TemplateTypes;
+  @Prop({required:true})
+  type?: string;
 
 }
 
