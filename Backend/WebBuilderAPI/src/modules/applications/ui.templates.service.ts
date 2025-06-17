@@ -1,15 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Application, ApplicationDocument } from './schemas/application.schema';
-
-import { UITemplateDocument } from './schemas/template.schema';
+import { UITemplate, UITemplateDocument } from './schemas/template.schema';
 import { TemplateDto } from './dto/template.dto';
+import { TemplateCategory, TemplateCategoryDocument } from './schemas/template.categorys';
 
 @Injectable()
 export class UITemplatesService {
   constructor(
-    @InjectModel(Application.name) private uiTemplatenModel: Model<UITemplateDocument>
+    @InjectModel(UITemplate.name) private uiTemplatenModel: Model<UITemplateDocument>,
+    @InjectModel(TemplateCategory.name) private categoryModel: Model<TemplateCategoryDocument>
   ) {}
 
   async create(createUITemplateDto: TemplateDto): Promise<UITemplateDocument> {
@@ -52,5 +52,18 @@ export class UITemplatesService {
             throw new NotFoundException(`UITemplate with ID ${id} not found`);
         }
     }
+
+
+
+
+    // -------------------------- category section
+
+    async createCategory(name: string): Promise<TemplateCategoryDocument> {
+
+    const category = new this.categoryModel({
+      name: name
+    });
+    return category.save();
+  }
 
 }

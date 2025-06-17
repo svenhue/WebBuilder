@@ -10,14 +10,15 @@ import { IApplicationConfiguration } from "src/Application/IApplicationConfigura
 import { IUserIdentity } from "../Identity/IUserIdentity.js";
 
 import { AxiosRequestConfig, METHOD } from "axios"
+import { LoggingService } from "src/Logging/LoggingService.js";
 
 @injectable()
 abstract class AuthenticationService implements ICallAbleServiceAction{
 
     
     private config: IAuthenticationConfiguration;
-
     private store: ReturnType<typeof useIdentityStore>;
+    private loggingService: LoggingService
 
     constructor(
         config: IAuthenticationConfiguration
@@ -37,6 +38,7 @@ abstract class AuthenticationService implements ICallAbleServiceAction{
                 await this.AuthenticateJWT(config.username, config.password, config.tokenEndpoint)
                 break;
             default:
+                this.loggingService.log({message: "Unsupported authentication mechanism:" +  config.mechanism})
                 throw new Error('Unsupported authentication mechanism');
         }
         if(!this.isAuthenticated){
@@ -77,6 +79,7 @@ abstract class AuthenticationService implements ICallAbleServiceAction{
         const token = response.data['access_token']
 
         if(!token){
+            this.loggingService.log({message:"Error during authentication: Could not find acces_token" })
             throw new Error("Error during authentication: Could not find acces_token")
         }
         this.store.setIsAuthenticated(true)

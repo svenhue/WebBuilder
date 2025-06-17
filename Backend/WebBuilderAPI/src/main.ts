@@ -1,10 +1,17 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { GlobalAPIInterceptor } from './interceptors/GlobalAPIInterceptor';
+import { HttpExceptionFilter } from './utils/HttpExceptionFilter';
+import { AuditContextInterceptor } from './shared/database/auditing/interceptors/audit-context.interceptor';
+import { AuthGuard } from './modules/auth/auth.guard';
+import { BaseAuthorizationGuard } from './modules/permissions/guards/BaseAuthorizationGuard';
+import { AuthorizationService } from './modules/permissions/authorization.service';
+import { JwtService } from '@nestjs/jwt';
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -20,7 +27,15 @@ async function bootstrap() {
     credentials: true,
   });
 
-    app.useGlobalInterceptors(new GlobalAPIInterceptor());
+  app.useGlobalGuards(
+    new AuthGuard(app.get(JwtService), app.get(Reflector)),
+    new BaseAuthorizationGuard(app.get(AuthorizationService), app.get(Reflector))
+  )
+  app.useGlobalInterceptors(
+    new GlobalAPIInterceptor(),
+    app.get(AuditContextInterceptor)
+  );
+  app.useGlobalFilters(new HttpExceptionFilter())
   // Global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({

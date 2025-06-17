@@ -584,8 +584,12 @@ export class RunTimeVueApplicationViewModel{
         return app;
     }
     public DeleteElement(id: number, commitHistory = true, addToHistory = true){
-        const element = this.GetViews().find(c => c.id == id);
+
         
+        const element = this.GetViews().find(c => c.id == id);
+        if(element.tag.includes("DefaultRootComponent")){
+            return;
+        }
         const page = this.pageViewModels.find(p => p.model.views.find(v => v.id == id) != undefined);
         const node = this.GetViews().find(c => c.id == id); 
         this.RemoveNodeFromParentChildren(node, addToHistory)

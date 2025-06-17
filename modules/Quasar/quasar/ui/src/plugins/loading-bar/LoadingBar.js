@@ -1,6 +1,6 @@
 import { h, ref } from 'vue'
 
-import QAjaxBar from '../../components/ajax-bar/QAjaxBar.js'
+import { QAjaxBar } from '../../components/ajax-bar/index.js'
 import { createChildApp } from '../../install-quasar.js'
 
 import { createReactivePlugin } from '../../utils/private.create/create.js'

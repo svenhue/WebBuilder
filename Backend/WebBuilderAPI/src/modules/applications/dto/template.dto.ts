@@ -1,6 +1,7 @@
 import { IsString, IsNumber, IsBoolean, IsOptional, IsArray, IsObject } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IPageConfiguration } from 'webbuilderalphautils';
+import { TemplateTypes } from '../enums/TemplateTypes';
 
 export class TemplateDto{
 
@@ -15,6 +16,10 @@ export class TemplateDto{
       @ApiPropertyOptional({ description: 'Page configurations', type: [Object] })
       @IsOptional()
       pages?: Array<IPageConfiguration>;
+
+      @ApiProperty({ description: 'Template type' })
+      @IsOptional()
+      type?: TemplateTypes;
     
       @ApiPropertyOptional({ description: 'UITemplate stylesheets configuration' })
       @IsOptional()

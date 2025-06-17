@@ -22,6 +22,8 @@ import { ApplicationsService } from './applications.service';
 import { CreateApplicationDto } from './dto/create-application.dto';
 import { UpdateApplicationDto } from './dto/update-application.dto';
 import { TenantInterceptor } from '../../shared/tenancy/tenant.interceptor';
+import { Auth } from '../permissions/decorators/authorization.decorator';
+import { ApplicationModuleRoles } from './domainDefinitions/roles';
 
 @ApiTags('Applications')
 @ApiBearerAuth()
@@ -34,6 +36,7 @@ export class ApplicationsController {
   @ApiOperation({ summary: 'Create a new application' })
   @ApiResponse({ status: 201, description: 'Application created successfully' })
   @ApiResponse({ status: 400, description: 'Bad request' })
+  @Auth({roles: [ApplicationModuleRoles.Customer.name]})
   create(@Body() createApplicationDto: CreateApplicationDto) {
     return this.applicationsService.create(createApplicationDto);
   }

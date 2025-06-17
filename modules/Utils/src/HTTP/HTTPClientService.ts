@@ -6,6 +6,7 @@ import { AxiosResponse } from 'axios';
 import { IRequestConfig } from './IRequestConfig.js';
 import { inject, injectable } from 'inversify';
 import { AuthenticationService } from '../Services/Auth/AuthenticationService.js';
+import { LoggingService } from 'src/Logging/LoggingService.js';
 
 @injectable()
 export class HTTPClientService extends AuthenticationService implements IHTTPClientService {
@@ -15,7 +16,7 @@ export class HTTPClientService extends AuthenticationService implements IHTTPCli
     clients: Array<AxiosWrapper>;
 
     constructor(
-
+        @inject("LoggingService") private loggingService: LoggingService
     ){
         super()
         this.clients = Array<AxiosWrapper>();
