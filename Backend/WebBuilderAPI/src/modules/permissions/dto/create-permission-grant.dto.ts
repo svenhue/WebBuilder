@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsEnum, IsBoolean, IsOptional, IsDateString, IsNumber, IsObject } from 'class-validator';
-import { GrantType, PermissionAction, ResourceType } from '../schemas/permission.grant.schema';
+import {  GrantProviders, PermissionAction, ResourceType } from '../schemas/permission.grant.schema';
 
 export class CreatePermissionGrantDto {
   @ApiProperty({ description: 'Permission identifier', example: 'template.read' })
@@ -11,9 +11,9 @@ export class CreatePermissionGrantDto {
   @IsString()
   grantId: string;
 
-  @ApiProperty({ enum: GrantType, description: 'Type of grant', example: GrantType.USER })
-  @IsEnum(GrantType)
-  grantType: GrantType;
+  @ApiProperty({ enum: GrantProviders, description: 'Type of grant', example: GrantProviders.USER })
+  @IsEnum(GrantProviders)
+  grantProvider: GrantProviders;
 
   @ApiProperty({ enum: ResourceType, description: 'Type of resource', example: ResourceType.TEMPLATE })
   @IsEnum(ResourceType)

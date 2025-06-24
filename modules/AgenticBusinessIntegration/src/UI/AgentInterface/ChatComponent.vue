@@ -73,7 +73,6 @@ function renderMarkdownHTML(markdown: string){
 onMounted(() => {
     watch(viewModel.history.value.entries, () => {
         const el = document.getElementById("chatMessagesContainer");
-        console.log(23333)
         setTimeout(() => {
             el?.scroll({
             top: el.scrollHeight,

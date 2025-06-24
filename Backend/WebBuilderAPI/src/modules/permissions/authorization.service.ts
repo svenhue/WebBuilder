@@ -13,16 +13,27 @@ export class AuthorizationService {
 
   }
 
-  public authorizeUser(user: User, context: IAuthorizationContext): boolean{
+  public async authorizeUser(user: User, context: IAuthorizationContext): Promise<boolean>{
     if(!user){
         throw new NotFoundException("User is undefined. Cant check permissions")
     }
     if(!context){
         return true
     }
+    
     //todo sub not clean
-    const grants = this.permissionService.getAllPermissionGrantsForUser(user['sub'])
+    const grants = await this.permissionService.getAllPermissionGrantsForUser(user['sub'])
 
+    for(const permission of context?.permissions){
+        if(grants.find(grant => grant.providerKey == permission) == undefined){
+            return false
+        }
+    }
+    for(const role of context?.roles){
+        if(grants.find(grant => grant.providerKey == role)){
+          return true
+        }
+    }
     return false;
   }
 

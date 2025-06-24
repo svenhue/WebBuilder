@@ -18,7 +18,7 @@ export interface PermissionCheckRequest {
 export interface CreatePermissionGrantRequest {
   permissionId: string;
   grantId: string;
-  grantType: GrantProviders;
+  grantProvider: GrantProviders;
   resourceType: ResourceType;
   resourceId: string;
   action: PermissionAction;

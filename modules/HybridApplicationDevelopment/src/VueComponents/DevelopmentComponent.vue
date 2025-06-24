@@ -137,7 +137,6 @@ import { EditorModes } from './ApplicationDevelopment/ApplicationSettings/Enums/
 import { useViewPositioning } from '../utils/Helpers/ViewPositioningHelper';
 import ApplicationServerTerminal from './ApplicationDevelopment/Code/ApplicationServerTerminal.vue';
 import { waitForElm } from 'alphautils';
-import { e } from 'vite/dist/node/types.d-FdqQ54oU';
 
 
 const showleftBar = ref(true)

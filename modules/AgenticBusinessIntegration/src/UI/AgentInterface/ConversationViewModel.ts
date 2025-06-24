@@ -83,7 +83,6 @@ export class ConversationViewModel extends WSClient{
     }
 
     private handleLMMAnswer(answer: ILLMAnswer){
-        console.log(answer)
         if(answer?.userMessage){
             this.history.value.entries.push({
                 id: new Date().toISOString(),
