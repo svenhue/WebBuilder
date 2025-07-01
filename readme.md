@@ -7,6 +7,7 @@ Core functionality: Building web applications with an visual interface
 
 ## Features
 
+- configure you application by text input assisted by llm agents
 - Export your created solution as an nuxtjs project (in the browser, with WebContainers!) - you will get an project with the common nuxtjs file structure with the difference that the views in the generated page files a rendererd dynamically based on the configuration (json) in AppConfigs/pages.ts
 - Create as many pages as you want with the visual builder
 - Custom theming
