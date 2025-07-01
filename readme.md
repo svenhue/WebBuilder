@@ -2,9 +2,7 @@ Started this project to learn TS, Nodejs, Nitro, Tailwind, Vue, Nuxt, Langchain 
 
 Core functionality: Building web applications with an visual interface
 
-
-![Uploading Bildschirmfoto 2025-07-01 um 09.07.44.png…]()
-
+<img width="1505" alt="Bildschirmfoto 2025-07-01 um 09 07 44" src="https://github.com/user-attachments/assets/12e8fb57-87ab-4484-9ea5-7936b5a94a04" />
 
 
 ## Features
