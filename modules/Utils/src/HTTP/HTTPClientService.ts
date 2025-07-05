@@ -36,7 +36,7 @@ export class HTTPClientService extends AuthenticationService implements IHTTPCli
         })
         if(client == undefined){
             let network = this.networks.find((network) => {
-                return request.url?.includes(network?.url) || request?.networkname == network.name ;
+                return request.url?.includes(network?.url) || request?.networkname == network?.name ;
             })
             const isAuthNetwork = this.networks.find((network) => {
                 return network.authentication != undefined && request.url == network.authentication.tokenEndpoint;
@@ -66,9 +66,10 @@ export class HTTPClientService extends AuthenticationService implements IHTTPCli
     }
     public override async  sendRequest<T = {}>(request: IRequestConfig, skipAllInterceptors: boolean = false): AxiosResponse<T>{
         try{
-            
+            console.log(request)
             this.addRequestInterceptors(request)
             const client = this.GetOrCreateClient(request);
+            console.log(request)
             let result = await client.sendRequest(request) as Promise<AxiosResponse>;
 
             if(skipAllInterceptors){
@@ -96,7 +97,7 @@ export class HTTPClientService extends AuthenticationService implements IHTTPCli
     }
     private GetAuthConfig(request: IRequestConfig){
         const network = this.networks.find((network) => {
-            return network.name == request.networkname;
+            return network?.name == request.networkname;
         })
         if(network == undefined){
             throw new Error('No network found with name: ' + request.networkname)

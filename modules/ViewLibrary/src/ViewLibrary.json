@@ -4,6 +4,7 @@
     {
         "type": "viewdefinition:Application:DefaultRootComponent",
         "tag": "component:DefaultRootComponent",
+        "tags": ["ultimateWeb"],
         "name": "Default Root Component",
         "htmlattributes":{
           
@@ -34,6 +35,7 @@
               }
             }
       ],
+      "tags": ["ultimateWeb"],
       "createTransaction": true,
       "name": "Form Block",
       "icon": "FormBlock.svg",
@@ -52,12 +54,14 @@
     {
       "name": "Icon",
       "type": "viewdefinition:Media:IconComponent",
+      "tags": ["ultimateWeb"],
       "tag": "component:IconComponent"
     },
     {
       "name": "Minimal Calendar",
       "tag": "component:MinimalCalendarComponent",
       "type": "viewdefinition:Advanced:MinimalCalendarComponent",
+      "tags": ["ultimateWeb"],
       "htmlattributes": {
         "label": "Minimal Calendar"
       },
@@ -70,6 +74,7 @@
       "name" : "Rating",
       "tag" : "component:RatingComponent",
       "type" : "viewdefinition:Form:RatingComponent",
+      "tags": ["ultimateWeb"],
       "htmlattributes" : {
         "label" : "Rating"
       },
@@ -84,6 +89,7 @@
       "name": "Code Editor",
       "tag": "component:CodeEditorComponent",
       "type": "viewdefinition:Editor:CodeEditorComponent",
+      "tags": ["ultimateWeb"],
       "htmlattributes": {
         "label": "Code Editor"
       },
@@ -96,6 +102,7 @@
       "icon": "Header.png",
       "tag": "component:HeaderComponent",
       "type": "viewdefinition:Layout:HeaderComponent",
+      "tags": ["ultimateWeb"],
       "style": {
         "width": "100%",
         "min-height": "50px",
@@ -111,6 +118,7 @@
       "name": "JSON Editor",
       "tag": "component:JSONEditorComponent",
       "type": "viewdefinition:Editor:JSONEditorComponent",
+      "tags": ["ultimateWeb"],
       "htmlattributes": {
         "label": "JSON Editor"
       },
@@ -123,6 +131,7 @@
       "isDisabled": true,
       "tag" : "component:WYSIWYGEditorComponent",
       "type": "viewdefinition:Typography:WYSIWYGEditorComponent",
+      "tags": ["ultimateWeb"],
       "htmlattributes": {
         "label": "WYSIWYGEditor"
       },
@@ -134,6 +143,7 @@
       "name": "Table",
       "tag": "component:TableComponent",
       "type": "viewdefinition:Data:TableComponent",
+      "tags": ["ultimateWeb"],
       "icon": "bx-table.svg",
       "properties":{
 
@@ -145,6 +155,7 @@
       "name": "Page Footer",
       "tag": "component:FooterComponent",
       "type": "viewdefinition:Layout:FooterComponent",
+      "tags": ["ultimateWeb"],
       "style": {
 
         "backgroundColor": "red"
@@ -157,6 +168,7 @@
       "class": "InputView",
       "tag": "component:InputComponent",
       "type": "viewdefinition:Form:InputComponent",
+      "tags": ["ultimateWeb"],
       "content":{
         "label": "Input"
       },
@@ -172,6 +184,7 @@
       "name": "Toolbar",
       "tag": "component:ToolbarComponent",
       "type": "viewdefinition:Layout:ToolbarComponent",
+      "tags": ["ultimateWeb"],
       "style":{
         "width": "100%",
         "min-height": "30px"
@@ -182,6 +195,7 @@
       "icon": "Checkbox.svg", 
       "tag": "component:CheckBoxComponent",
       "type": "viewdefinition:Form:CheckboxComponent",
+      "tags": ["ultimateWeb"],
       "content":{
         "label": "Checkbox"
       },
@@ -197,6 +211,7 @@
       "icon": "FormButton.svg", 
       "tag": "component:FormButtonComponent",
       "type": "viewdefinition:Form:FormButtonComponent",
+      "tags": ["ultimateWeb"],
       "htmlattributes": {
         "label": "FormButton"
       },
@@ -209,6 +224,7 @@
       "icon": "Select.svg",
       "tag": "component:SelectComponent",
       "type": "viewdefinition:Form:SelectComponent",
+      "tags": ["ultimateWeb"],
       "htmlattributes": {
         "style": {
           "width": "200px"
@@ -226,6 +242,7 @@
       "icon": "TextArea.svg",
       "tag": "component:TextAreaComponent",
       "type": "viewdefinition:Form:TextAreaComponent",
+      "tags": ["ultimateWeb"],
       "specifications": {
         "data-atomic": true
       }
@@ -234,6 +251,7 @@
       "name": "List",
       "icon": "List.png",
       "tag": "component:ListComponent",
+      "tags": ["ultimateWeb"],
       "type": "viewdefinition:Basic:ListComponent",
 
         "style": {
@@ -247,6 +265,7 @@
       "name": "List Item",
       "icon":"ListItem.png",
       "tag": "component:ListItemComponent",
+      "tags": ["ultimateWeb"],
       "type": "viewdefinition:Basic:ListItemComponent",
       "style":{
   
@@ -260,6 +279,7 @@
     },
     {
       "name": "Expansion Item",
+      "tags": ["ultimateWeb"],
       "icon": "ExpansionItem.png",
       "tag": "component:ExpansionItemComponent",
       "type": "viewdefinition:Basic:ExpansionItemComponent",
@@ -272,6 +292,7 @@
     },
     {
       "name": "Image",
+      "tags": ["ultimateWeb"],
       "icon": "Image.svg",
       "tag": "component:ImageComponent",
       "type": "viewdefinition:Media:ImageComponent",
@@ -285,6 +306,7 @@
     },
     {
       "name": "YouTube",
+      "tags": ["ultimateWeb"],
       "icon": "YouTube.svg",
       "tag": "component:YouTubeComponent",
       "type": "viewdefinition:Media:YouTubeComponent",
@@ -302,6 +324,7 @@
     {
       "name": "Video",
       "icon": "Video.svg",
+      "tags": ["ultimateWeb"],
       "tag": "component:VideoComponent",
       "type": "viewdefinition:Media:VideoComponent",
       "htmlattributes": {
@@ -318,6 +341,7 @@
     {
       "name": "Container",
       "icon": "Container.png",
+      "tags": ["ultimateWeb"],
       "tag": "component:ContainerComponent",
       "type": "viewdefinition:Structure:ContainerComponent",
       "style": {
@@ -328,6 +352,7 @@
     {
       "name": "TabbedContainer",
       "icon": "TabbedContainer.png",
+      "tags": ["ultimateWeb"],
       "tag": "component:TabbedContainerComponent",
       "type": "viewdefinition:Structure:TabbedContainerComponent",
       "style": {
@@ -394,6 +419,7 @@
       "name": "Section",
       "icon": "Section.png",
       "tag": "component:SectionComponent",
+      "tags": ["ultimateWeb"],
       "type": "viewdefinition:Structure:SectionComponent",
       "htmlattributes": {
         "label": "Section"
@@ -406,6 +432,7 @@
     {
       "name": "Block Quote",
       "icon": "BlockQuote.svg",
+      "tags": ["ultimateWeb"],
       "tag": "component:BlockQuoteComponent",
       "type": "viewdefinition:Typography:BlockQuoteComponent",
       "htmlattributes": {
@@ -425,6 +452,7 @@
     {
       "name": "Accordion",
       "isDisabled": true,
+      "tags": ["ultimateWeb"],
       "icon": "Accordion.svg",
       "tag": "component:AccordionComponent",
       "type": "viewdefinition:Basic:AccordionComponent",
@@ -437,6 +465,7 @@
       "name": "Heading",
       "icon": "Heading.svg",
       "tag": "component:HeadingComponent",
+      "tags": ["ultimateWeb"],
       "type": "viewdefinition:Typography:HeadingComponent",
       "content": {
         "text" : "Lorem ipsum!"
@@ -459,6 +488,7 @@
       "name": "Text Link",
       "icon": "TextLink.svg",
       "tag": "component:TextLinkComponent",
+      "tags": ["ultimateWeb"],
       "type": "viewdefinition:Typography:TextLinkComponent",
       "content": {
         "text": "Your Link"
@@ -474,6 +504,7 @@
       "name" : "Avatar",
       "icon": "avatar.png",
       "tag" : "component:AvatarComponent",
+      "tags": ["ultimateWeb"],
       "type" : "viewdefinition:Basic:AvatarComponent",
       "style": {
         
@@ -482,6 +513,7 @@
     {
       "type": "viewdefinition:Layout:DrawerComponent",
       "name": "Drawer",
+      "tags": ["ultimateWeb"],
       "tag": "component:DrawerComponent",
       "specifications":{
           "noOverrideStyle": true
@@ -491,6 +523,7 @@
       "name" : "Carousel",
       "tag" : "component:CarouselComponent",
       "type" : "viewdefinition:Media:CarouselComponent",
+      "tags": ["ultimateWeb"],
       "behavior": {
         "autoPlay": 20,
         "animated": true,
@@ -505,6 +538,7 @@
       "name" : "Link",
       "icon": "Link.png",
       "tag" : "component:LinkComponent",
+      "tags": ["ultimateWeb"],
       "type" : "viewdefinition:Navigation:LinkComponent",
       "content":{
         "url": "https://google.com",
@@ -513,6 +547,7 @@
     },
     {
       "name" : "Dialog",
+      "tags": ["ultimateWeb"],
        "isDisabled": true,
         "tag" : "component:DialogComponent",
         "type" : "viewdefinition:Basic:DialogComponent",
@@ -532,6 +567,7 @@
     {
       "name" : "Card",
       "icon": "Card.png",
+      "tags": ["ultimateWeb"],
       "tag" : "component:CardComponent",
       "type" : "viewdefinition:Basic:CardComponent"
     },
@@ -539,6 +575,7 @@
       "name" : "Badge",
       "icon": "Badge.png",
       "tag" : "component:BadgeComponent",
+      "tags": ["ultimateWeb"],
       "type" : "viewdefinition:Basic:BadgeComponent",
       "content": {
         "label": "Badge"
@@ -552,6 +589,7 @@
       "name": "Paragraph",
       "icon": "Paragraph.svg",
       "tag": "component:ParagraphComponent",
+      "tags": ["ultimateWeb"],
       "type": "viewdefinition:Typography:ParagraphComponent",
       "content": {
         "text": "<strong>123</strong>111"
@@ -567,6 +605,7 @@
     {
       "name": "Rich Text",
       "isDisabled": true,
+      "tags": ["ultimateWeb"],
       "icon": "RichText.svg",
       "tag": "component:RichTextComponent",
       "type": "viewdefinition:Typography:RichTextComponent",
@@ -580,6 +619,7 @@
       "name": "Button",
       "icon": "Button.png",
       "tag": "component:ButtonComponent",
+      "tags": ["ultimateWeb"],
       "type": "viewdefinition:Basic:ButtonComponent",
       "content":"Button",
       "htmlattributes": {
@@ -590,6 +630,7 @@
       "name": "Div Block",
       "isDisabled": true,
       "icon": "DivBlock.svg",
+      "tags": ["ultimateWeb"],
       "tag": "component:DivBlockComponent",
       "type": "viewdefinition:Basic:DivBlockComponent",
       "htmlattributes": {
@@ -602,6 +643,7 @@
     {
       "name": "Navigation Bar",
       "icon": "Navigation.png",
+      "tags": ["ultimateWeb"],
       "tag": "component:NavBarComponent",
       "type": "viewdefinition:Navigation:NavBarComponent",
       "style":{
@@ -613,12 +655,14 @@
     {
       "name": "Grid Element",
       "tag": "tag:div",
-      "type": "viewdefinition:RawHTML:GridElement"
+      "type": "viewdefinition:RawHTML:GridElement",
+      "tags": ["ultimateWeb"]
     },
     {
       "name": "Dropdown Menu",
       "icon": "DropdownMenu.png",
       "tag": "component:DropdownMenuComponent",
+      "tags": ["ultimateWeb"],
       "type": "viewdefinition:Navigation:DropdownMenuComponent",
       "style":{
         "width": "max-content",

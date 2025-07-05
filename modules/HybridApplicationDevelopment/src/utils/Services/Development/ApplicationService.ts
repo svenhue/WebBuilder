@@ -60,20 +60,20 @@ export class ApplicationService extends BaseServiceProvider{
         const c = this.contextManager.NewContext(undefined, ContextLevel.Application);
         return c.contextid;
     }
-    public CreateNewApplication(config: IApplicationConfiguration){
+    public async CreateNewApplication(config: IApplicationConfiguration){
       
         config.version = '0.0.1'
         config.boType = new BusinessObject({
             name: 'Application',
         })
         config = this.InitializeApplication(config)
-        config = this.dataAdapter.Create(config, undefined, false);
+        config = await this.dataAdapter.Create(config, undefined, false);
       
         this.tabService.AddAndOpenTab({title: "App:" + config.name,path: `appdevelopment/development/${config.name}`})
         return config;
     }
 
-    public GetApplicationConfigByName(name: string){
+    public async GetApplicationConfigByName(name: string){
         let application = this.dataAdapter.Find('Application', (value: IApplicationConfiguration) => { return value.name ==  name})
         if(application?.id == undefined){
             // occurs on page reload
@@ -84,7 +84,7 @@ export class ApplicationService extends BaseServiceProvider{
            
            application = this.ConfigureApplication(application)
            this.InitializeApplication(application)
-           this.dataAdapter.Create(application, undefined, false)
+           await this.dataAdapter.Create(application, undefined, false)
         }
         return application;
     }

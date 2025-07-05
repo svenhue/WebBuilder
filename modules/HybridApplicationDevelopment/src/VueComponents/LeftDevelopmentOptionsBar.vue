@@ -165,7 +165,7 @@ defineExpose({
 
 <style scoped lang="scss">
 .left-development-options-bar{
-   
+    color: white!important;
     top: 1;
     left: 0;
     height: 100%;

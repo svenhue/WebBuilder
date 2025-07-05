@@ -17,6 +17,7 @@ import { GlobalDataSynchronizer } from './GlobalDataSynchronizer.js';
 import {IHTTPClientService} from '../../HTTP/IHTTPClientService';
 import { IRequestConfig } from '../../HTTP/IRequestConfig.js';
 import {toValue, toRaw} from 'vue'
+
 @injectable()
 export class DataAdapter implements IDataAdapter {
 
@@ -43,9 +44,9 @@ export class DataAdapter implements IDataAdapter {
         }
         this.boService = iotContainer.get<BOService>('BOService')
         
-        if(options.persistGlobalStorage == true){
+       
             this.synchronizer = iotContainer.get<GlobalDataSynchronizer>('GlobalDataSynchronizer')
-        }
+       
     }
     public Dispose(){
         this.Unsubscribe()
@@ -76,7 +77,7 @@ export class DataAdapter implements IDataAdapter {
         this.repository.Subscribe(this)
     }
 
-    public Create(value: IBOInstance, contextid?: number, addToHistory = true){
+    public async Create(value: IBOInstance, contextid?: number, addToHistory = true){
         if(value.id == undefined){
             this.boService.NewId(value)
         }
@@ -88,7 +89,9 @@ export class DataAdapter implements IDataAdapter {
         this.SetBoType(value)
         
         if(this.options.persistGlobalStorage == true){
-            this.synchronizer.SyncData(toRaw(value), StateChangeTypes.create, this.options.apiDefinition)
+            const responseValue = await this.synchronizer.SyncData(toRaw(value), StateChangeTypes.create, this.options.apiDefinition)
+            Object.assign(value, responseValue.data)
+            console.log(123, responseValue, value)
         }
         
         this.ownsIds.push(value.id)
@@ -156,8 +159,21 @@ export class DataAdapter implements IDataAdapter {
             throw new Error('No data found for url: ' + url)
         }
         const respository = BaseServiceProvider.Service<BORepository>("BORepository")
+        
         return respository.CreateMany(result.data, true)
+
     }
+
+    public async IsolatedRequest(method: string, url: string, stateChangeType: StateChangeTypes, data?: any){
+        
+        this.synchronizer.SyncData(data, stateChangeType, {
+            networkname: this.options?.apiDefinition?.networkname,
+            url: url ?? this.options?.apiDefinition?.url,
+            type: this.options?.apiDefinition?.type
+        } )
+    }
+
+
     
 
 

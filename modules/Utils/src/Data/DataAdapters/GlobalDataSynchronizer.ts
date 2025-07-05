@@ -18,10 +18,13 @@ export class GlobalDataSynchronizer{
     }
 
     public async SyncData(value: object, changeType: StateChangeTypes, options: GlobalDataSynchronizeOptions){
+        if(options.type == undefined){
+            options.type = APITypes.REST
+        }
         switch(options.type){
             case APITypes.REST:
                 const request = this.CreateRESTRequest(value, changeType, options.url, options.networkname)
-                this.httpService.sendRequest(request)
+                return this.httpService.sendRequest(request)
                 break;
             default: 
                 throw new Error('API Type not supported: ' + options.type)

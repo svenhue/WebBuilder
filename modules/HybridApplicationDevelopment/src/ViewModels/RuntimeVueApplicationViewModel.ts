@@ -68,7 +68,7 @@ export class RunTimeVueApplicationViewModel{
     hoveredView: Ref<IViewConfiguration | undefined> = ref(undefined);
     disableHover: Ref<boolean> = ref(false);
 
-    viewDataAdapter: IDataAdapter
+    dataAdapter: IDataAdapter
 
     versionManager: ApplicationVersionManager
 
@@ -108,7 +108,16 @@ export class RunTimeVueApplicationViewModel{
         this.settingsService = BaseServiceProvider.ServiceWithContext<ApplicationDevelopmentSettingsService>('ApplicationDevelopmentSettingsService', 0) as ApplicationDevelopmentSettingsService;
 
         this.dataAdapterConstructor = this.UseService<interfaces.Newable<IDataAdapter>>('DataAdapterConstructor');
-        
+        this.dataAdapter = new this.dataAdapterConstructor({
+            apiDefinition: {
+                networkname: "WebCreatorBackend"
+            },
+            boType: new ApplicationConfiguration(),
+            persistLocalStorage: false,
+            contextId: 0,
+        }, 0, inject('iotcontainer_0',undefined) as Container);
+
+
         provide('styleManager_' + this.model.contextid, this.styleManager)
         provide('applicationViewModel', this)
         provide('devMode', this.settingsService.store.devSettings.developmentMode)
@@ -153,7 +162,15 @@ export class RunTimeVueApplicationViewModel{
         this.app.rootApp.provide('languageVM_' + this.model.contextid, vM);
   
     }
-
+    public SaveChanges(){
+        /*
+        this.repository.CommitHistory()
+        this.PrepareConfiguration();
+        */
+        const config = this.GetConfiguration()
+        console.log(this.viewDataAdapter)
+        this.dataAdapter.IsolatedRequest('POST', '/applications', 'update', config);
+    }
     public NavigateToPage(name: string){
         const page = this.pageViewModels.find(p => p.model.name == name);
         if(page == undefined){

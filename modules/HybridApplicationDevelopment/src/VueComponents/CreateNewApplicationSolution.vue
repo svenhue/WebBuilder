@@ -39,10 +39,10 @@ const apptypes = Object.values(ApplicationTypes)
 
 const service = BaseServiceProvider.Service<ApplicationService>('ApplicationService')
 
-function createSolution(){
+async function createSolution(){
     //ApplicationSolutionObject.remoteRepository = repository;
 
-    service.CreateNewApplication(ApplicationSolutionObject)
+    await service.CreateNewApplication(ApplicationSolutionObject)
 }
 
 function close(){

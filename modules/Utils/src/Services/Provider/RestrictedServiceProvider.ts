@@ -1,5 +1,4 @@
 import { inject, injectable } from "inversify";
-import { NavigationService } from "../Navigation/NavigationService.js";
 
 @injectable()
 export class RestrictedServiceProvider{
@@ -25,8 +24,7 @@ export class RestrictedServiceProvider{
         }
 
         switch(service){
-            case 'NavigationService':
-                return new NavigationService();
+            
         }
     }
 }

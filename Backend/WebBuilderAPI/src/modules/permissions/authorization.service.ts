@@ -24,15 +24,20 @@ export class AuthorizationService {
     //todo sub not clean
     const grants = await this.permissionService.getAllPermissionGrantsForUser(user['sub'])
 
-    for(const permission of context?.permissions){
-        if(grants.find(grant => grant.providerKey == permission) == undefined){
-            return false
-        }
+    if(context?.permissions){
+      for(const permission of context?.permissions){
+          if(grants.find(grant => grant.providerKey == permission) == undefined){
+              return false
+          }
+      }
     }
-    for(const role of context?.roles){
-        if(grants.find(grant => grant.providerKey == role)){
-          return true
-        }
+    if(context?.roles){
+
+      for(const role of context?.roles){
+          if(grants.find(grant => grant.providerKey == role)){
+            return true
+          }
+      }
     }
     return false;
   }

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :style="{color: 'white', minWidth: '250px'}">
         <div class="drawer-header">
             Version control
             <q-btn class="close-btn" dense unelevated size="10px" icon="close" 
@@ -7,10 +7,7 @@
 
         </div>
         <div>
-            Pending
-            <q-list>
-                todo
-            </q-list>
+            <q-btn :style="{margin: '5px'}" dense :label="$t('Save Changes')" @click="viewModel.SaveChanges()" ></q-btn>
         </div>
         <div>
             Changes
@@ -56,8 +53,8 @@
 <script setup lang="ts">
 import { BaseServiceProvider, BORepository } from 'alphautils';
 import { IHistoryEntrys, IHistoryStack } from 'alphautils/src/Data/StateManagement/StateHistory/IHistoryStack';
-import { computed, ComputedRef, Ref, watch } from 'vue';
-
+import { RunTimeVueApplicationViewModel } from '../../ViewModels/RuntimeVueApplicationViewModel';
+import { computed, ComputedRef, Ref, inject } from 'vue';
 
 const props = defineProps({
     contextid: {
@@ -67,7 +64,7 @@ const props = defineProps({
 })
 
 const emits = defineEmits(['close'])
-
+const viewModel = inject('applicationViewModel') as RunTimeVueApplicationViewModel
 const changeDescription = (item: IHistoryEntrys) => {
     if(item?.entrys == undefined){
         return item;
