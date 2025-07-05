@@ -1,13 +1,13 @@
-Started this project to learn TS, Nodejs, Nitro, Tailwind, Vue, Nuxt and Quasar
+Started this project to learn TS, Nodejs, Nitro, Tailwind, Vue, Nuxt, Langchain and FastAPI
 
 Core functionality: Building web applications with an visual interface
 
-
-![UI](gitassets/UIScreenshot.png)
+<img width="1505" alt="Bildschirmfoto 2025-07-01 um 09 07 44" src="https://github.com/user-attachments/assets/12e8fb57-87ab-4484-9ea5-7936b5a94a04" />
 
 
 ## Features
 
+- configure you application by text input assisted by llm agents
 - Export your created solution as an nuxtjs project (in the browser, with WebContainers!) - you will get an project with the common nuxtjs file structure with the difference that the views in the generated page files a rendererd dynamically based on the configuration (json) in AppConfigs/pages.ts
 - Create as many pages as you want with the visual builder
 - Custom theming
