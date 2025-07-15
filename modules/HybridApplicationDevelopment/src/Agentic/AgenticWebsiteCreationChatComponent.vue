@@ -65,122 +65,7 @@ onMounted(() => {
 
   viewModel = chatComponent.value.viewModel.viewModel
 })
-Object.assign(requirements, {
-    "websiteType": "landingpage",
-    "goalsOfTheWebsite": [
-        {
-            "title": "Lead Generation",
-            "description": "Convert visitors into potential fitness coaching clients",
-            "kpis": [
-                "Contact Form Submissions",
-                "Call Booking Rate",
-                "Landing Page Conversion Rate"
-            ]
-        },
-        {
-            "title": "Brand Authority",
-            "description": "Establish professional credibility in fitness coaching",
-            "kpis": [
-                "Time on Pagell",
-                "Testimonial Section Engagement"
-            ]
-        },
-        {
-            "title": "Service Showcase",
-            "description": "Clearly communicate fitness coaching offerings and benefits",
-            "kpis": [
-                "Program Section Click-through Rate",
-                "Package Inquiry Rate"
-            ]
-        }
-    ],
-    "targetAudience": "Health-conscious individuals seeking personalized fitness coaching, typically aged 25-45, looking to transform their lifestyle and achieve specific fitness goals",
-    "companyDetails": "Professional Fitness Coaching Business",
-    "scope": {
-        "timelineToBuildWebsite": {
-            "workHours": 40,
-            "endDate": "2024-02-29T00:00:00.000Z"
-        }
-    },
-    "designStyle": {
-        "logoUrl": "placeholder-logo-url",
-        "colorPalette": {
-            "primary": "#1a237e",
-            "secondary": "#42a5f5",
-            "accent": "#ff5722",
-            "positive": "#4caf50",
-            "dark": "#121212",
-            "light": "#ffffff",
-            "gray": {
-                "light": "#f5f5f5",
-                "medium": "#9e9e9e",
-                "dark": "#424242"
-            },
-            "text": {
-                "primary": "#212121",
-                "muted": "#757575",
-                "inverse": "#ffffff"
-            }
-        },
-        "typography": {
-            "baseFont": {
-                "fontFamily": "Inter",
-                "fontWeight": 400,
-                "fontSize": "16px",
-                "lineHeight": "1.6"
-            },
-            "headings": {
-                "h1": {
-                    "fontFamily": "Montserrat",
-                    "fontWeight": 700,
-                    "fontSize": "3.5rem",
-                    "lineHeight": "1.2",
-                    "textTransform": "none"
-                },
-                "h2": {
-                    "fontFamily": "Montserrat",
-                    "fontWeight": 600,
-                    "fontSize": "2.5rem",
-                    "lineHeight": "1.3"
-                },
-                "h3": {
-                    "fontFamily": "Montserrat",
-                    "fontWeight": 600,
-                    "fontSize": "2rem",
-                    "lineHeight": "1.4"
-                }
-            },
-            "fallbackFonts": [
-                "Helvetica",
-                "Arial",
-                "sans-serif"
-            ],
-            "fontScale": "md",
-            "responsive": true
-        },
-        "brandVoice": {
-            "tone": "inspirational",
-            "personalityTraits": [
-                "motivating",
-                "professional",
-                "encouraging",
-                "knowledgeable"
-            ],
-            "targetAudience": "fitness-minded individuals seeking professional guidance",
-            "writingStyle": "conversational",
-            "emojiUsage": "minimal",
-            "useOfJargon": "light",
-            "taglineStyle": "short & punchy",
-            "preferredVocabulary": [
-                "transform",
-                "achieve",
-                "strengthen",
-                "empower",
-                "results"
-            ]
-        }
-    }
-})
+
 function handleLLMAnswer(answer: ILLMAnswer){
     if(answer['additionalJSON'] != undefined){
         const r = answer['additionalJSON']['requirements'] as WebsiteCreationRequirementsObject
@@ -190,15 +75,20 @@ function handleLLMAnswer(answer: ILLMAnswer){
         console.log(123, requirements)
     }
 }
-
+const tool = new OpenEditorAndConfigureAppConfiguration();
 async function createConfigAndRouteToEditor(){
   const result = httpService.sendRequest({
     url: "http://localhost:3002/ee/initAppConfigWithRequirements",
     method: 'POST',
     data: requirements,
     isolated: true
-  }).then((r) => {
-    console.log(555, r)
+  }).then(async (r) => {
+    
+   console.log(1234, r)
+    const actionSuggestions = r.data.clientToolSuggestions?.find((s) => s.action.toolName == "CreateApplicationConfiguration")?.action?.input;
+    console.log(77, actionSuggestions)
+    await tool.execute(actionSuggestions)
+    console.log(12355, actionSuggestions)
   })
   console.log(123, result)
 }

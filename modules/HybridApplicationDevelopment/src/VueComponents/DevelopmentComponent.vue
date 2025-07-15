@@ -143,6 +143,7 @@ import { BaseServiceProvider, HTTPClientService, IApplicationConfiguration, wait
 const route = useRoute()
 const solutionname = route.params.appName // our application id!
 const httpService = BaseServiceProvider.ServiceWithAppContext<HTTPClientService>('HTTPClientService', 0)?.service
+// fetch config from backend -  must exist!
 const config = await httpService.sendRequest<IApplicationConfiguration>(
     {
         networkname: 'WebCreatorBackend',
@@ -160,7 +161,7 @@ const XXX = ref<HTMLElement>(null)
 
 const instance = getCurrentInstance(); // capture while context is available
 
-const viewModel = new RunTimeVueApplicationViewModel(config.data, facade, useI18n(), "mountpoint", instance)
+const viewModel = new RunTimeVueApplicationViewModel(solutionname, config?.data, facade, useI18n(), "mountpoint", instance)
 
 const positioningHelper = new ViewPositioningHelper(viewModel)
 

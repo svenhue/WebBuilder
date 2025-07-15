@@ -41,7 +41,7 @@ export class ConversationViewModel extends WSClient{
             entries: []
 
         });
-        //this.init(config)
+        this.init(config)
       
     }
     private async init(config: IConversationConfiguration){
@@ -56,7 +56,7 @@ export class ConversationViewModel extends WSClient{
             this.thread_id = data.thread_id
         })
         //get stream messages
-        this.socket.on(config.answerMessageName, (answer) => {
+        this.socket.on(config.answerMessageName, (answer: ILLMAnswer) => {
             this.handleLMMAnswer(answer)
         })
     }

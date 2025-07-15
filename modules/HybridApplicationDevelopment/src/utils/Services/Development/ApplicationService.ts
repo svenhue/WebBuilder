@@ -72,6 +72,24 @@ export class ApplicationService extends BaseServiceProvider{
         this.tabService.AddAndOpenTab({title: "App:" + config.name, path: `appdevelopment/development/${config._id}`})
         return config;
     }
+    public async CreateNewApplicationOnBackendAndThenRoute(config: IApplicationConfiguration){
+        config.version = '0.0.1'
+        config.boType = new BusinessObject({
+            name: 'Application',
+        })
+        config.mode = ApplicationModes.shadow;
+        config = this.InitializeApplication(config)
+        await this.dataAdapter.IsolatedRequest('/applications', 'POST', config, undefined).catch((e) => {
+            console.error('Error creating application on backend', e)
+        }).then((response) => {
+            console.log('Response from backend', response)
+            if(response?.data){
+                this.tabService.AddAndOpenTab({title: "App:" + config.name, path: `appdevelopment/development/${response.data._id}`})
+            }
+        })
+        return config;
+    
+    }
     public async GetApplicationConfigById(id: string) : Promise<IApplicationConfiguration> {
         //look in client runtime
      

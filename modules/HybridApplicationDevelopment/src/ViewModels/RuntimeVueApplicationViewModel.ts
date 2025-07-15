@@ -76,6 +76,7 @@ export class RunTimeVueApplicationViewModel{
     versionManager: ApplicationVersionManager
 
     constructor(
+        appId: string,
         config: IApplicationConfiguration,
         facadeRef: typeof BackgroundFacadeComponent,
         i18n: VueI18n,
@@ -176,7 +177,6 @@ this.serviceProvider = new BaseServiceProvider(this.sessioncontextid)
         this.PrepareConfiguration();
         */
         const config = this.GetConfiguration()
-        console.log("SaveChanges", config)
         try{
             this.dataAdapter.IsolatedRequest('/applications?id='+config._id, 'PATCH', config);
         }catch(e){
