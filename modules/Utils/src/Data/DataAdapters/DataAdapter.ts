@@ -178,12 +178,14 @@ export class DataAdapter implements IDataAdapter {
         return respository.CreateMany(result.data, true)
 
     }
-    public async IsolatedRequest(method: string, url: string, stateChangeType: StateChangeTypes, data?: any){ 
-        return this.synchronizer.SyncData(data, stateChangeType, {
+    public async IsolatedRequest(url: string, method: string,  data?: any, stateChangeType: StateChangeTypes = StateChangeTypes.update): Promise<any> { 
+
+        return await this.synchronizer.SyncData(data, stateChangeType, {
+            
             networkname: this.options?.apiDefinition?.networkname,
             url: url ?? this.options?.apiDefinition?.url,
             type: this.options?.apiDefinition?.type
-        } )
+        }, method )
     }
 
     public async Fetch<T>(url: string, method: string = "GET", data?: any, contextid?: number): T {

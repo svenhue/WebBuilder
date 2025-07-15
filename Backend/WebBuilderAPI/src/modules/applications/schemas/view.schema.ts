@@ -2,6 +2,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 
+@Schema({ _id: false })
+class ViewChildren {
+  @Prop({ required: true })
+  type: string;
+
+  @Prop({ required: true })
+  value: any[];
+}
 
 @Schema({ _id: false })
 class RequiresAuth {
@@ -32,6 +40,7 @@ export class ViewConfiguration extends Document {
   @Prop({ required: false })
   contextid: number;
 
+
   @Prop()
   publicidentifier?: string;
 
@@ -41,16 +50,21 @@ export class ViewConfiguration extends Document {
   @Prop({ type: Object }) // You may want to further type this
   route: Object;
 
+  @Prop({ type: Object }) // You may want to further type this
+  dataConfig?: Object;
+
   @Prop({ required: true })
   type: string;
 
+  @Prop()
+  name?: string;
   @Prop()
   appName?: string;
 
   @Prop()
   template?: string;
 
-  @Prop()
+  @Prop({required:false})
   isRoot?: boolean;
 
   @Prop()
@@ -95,8 +109,8 @@ export class ViewConfiguration extends Document {
   @Prop()
   parentId?: number;
 
-  @Prop({ type: [MongooseSchema.Types.Mixed] }) // recursive nesting
-  children?: any[];
+  @Prop({ type: [ViewChildren] })
+  children?: ViewChildren[];
 
   @Prop({ type: [MongooseSchema.Types.Mixed] }) // possibly same as children
   value: any[];

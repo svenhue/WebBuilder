@@ -35,6 +35,7 @@ import { PageModel } from '../Models/PageModel';
 import { NodeApplicationServerService } from '../utils/Services/Development/Runtime/NodeApplicationServerService';
 import { VersionManager } from 'localversioncontrol';
 import { ApplicationVersionManager } from '../utils/Features/VersionManagement/ApplicationVersionManager';
+import { ContextLevel } from 'alphautils/src/Data/StateManagement/ContextLevel';
 export class RunTimeVueApplicationViewModel{
     
     private vueApp: ComponentInternalInstance
@@ -82,33 +83,36 @@ export class RunTimeVueApplicationViewModel{
         instance
 
         ){
-        this.contextManager = BaseServiceProvider.ServiceWithContext<DataContextManager>('DataContextManager', 0);
-        config.contextid = this.contextManager.NewContext(0, 'Application').contextid;
-        this.model = new reactive(new ApplicationModel(config));
-        this.FocussedViewService = this.UseService<FocussedViewContextService>('FocussedViewContextService');
-        this.facadeRef = facadeRef;
-        this.service = BaseServiceProvider.Service<ApplicationService>('ApplicationService') as ApplicationService;
-        this.viewService = this.UseService<ViewConfigurationService>('ViewConfigurationService');
-
         this.vueApp = instance;
+        this.contextManager = BaseServiceProvider.ServiceWithContext<DataContextManager>('DataContextManager', 0);
+        this.currentPage = ref();        
+        this.pagesContextRef = ref([])
+
+            
+            
+
+        this.FocussedViewService = BaseServiceProvider.ServiceWithContext<FocussedViewContextService>('FocussedViewContextService', 0);
+        this.facadeRef = facadeRef;
+        this.service = BaseServiceProvider.ServiceWithContext<ApplicationService>('ApplicationService', 0) as ApplicationService;
+        this.viewService =  BaseServiceProvider.ServiceWithContext<ViewConfigurationService>('ViewConfigurationService', 0);
+        
+
+        config.contextid = this.contextManager.NewContext(undefined, ContextLevel.Application).contextid;
+        this.model = new reactive(new ApplicationModel(config));
+        this.sessioncontextid = this.model.contextid;
+this.serviceProvider = new BaseServiceProvider(this.sessioncontextid)
+        this.InitializeApplicationContext(this.model)        
         
         this.init(i18n)
 
     }
     public init(i18n){
-               console.log(88, this.model) 
-        this.sessioncontextid = this.model.contextid;
-        this.currentPage = ref();        
-            this.pagesContextRef = ref([])
-
-            
-            this.serviceProvider = new BaseServiceProvider(this.sessioncontextid)
-
+        
             this.WatchForScreenChanges();
 
             this.styleManager = new StyleManagerViewModel();
             
-            this.dataAdapterConstructor = this.UseService<interfaces.Newable<IDataAdapter>>('DataAdapterConstructor');
+            this.dataAdapterConstructor = BaseServiceProvider.ServiceWithContext<interfaces.Newable<IDataAdapter>>('DataAdapterConstructor', 0);
             this.dataAdapter = new this.dataAdapterConstructor({
                 apiDefinition: {
                     networkname: "WebCreatorBackend"
@@ -144,11 +148,9 @@ export class RunTimeVueApplicationViewModel{
         //this.versionManager = new ApplicationVersionManager(config.remoteRepository)
         //this.versionManager.SyncRepository(this.model)
 
-        this.InitializeApplicationContext(this.model, this.vueApp)
 
         this.styleService = this.UseService<StyleService>('StyleService');
         this.settingsService = BaseServiceProvider.ServiceWithContext<ApplicationDevelopmentSettingsService>('ApplicationDevelopmentSettingsService', 0) as ApplicationDevelopmentSettingsService;
-        console.log(12355, this.settingsService, this.styleService)
         provide('styleManager_' + this.sessioncontextid, this.styleManager)
         provide('applicationViewModel', this)
         provide('devMode', this.settingsService.store.devSettings.developmentMode)
@@ -174,15 +176,15 @@ export class RunTimeVueApplicationViewModel{
         this.PrepareConfiguration();
         */
         const config = this.GetConfiguration()
-        console.log(this.viewDataAdapter)
-        this.dataAdapter.IsolatedRequest('POST', '/applications', 'update', config);
+        console.log("SaveChanges", config)
+        this.dataAdapter.IsolatedRequest('/applications?id='+config._id, 'PATCH', config);
     }
     public NavigateToPage(name: string){
         const page = this.pageViewModels.find(p => p.model.name == name);
         if(page == undefined){
             throw Error('Page not found')
         }
-        if(this.currentPage.value == page.contextid){
+        if(this.currentPage?.value == page.contextid){
             return;
         }
 
@@ -408,7 +410,6 @@ export class RunTimeVueApplicationViewModel{
     }
     private InitializePages(pages: Array<IPageConfiguration>){
         for(const page of pages){
-            console.log('Initialize page', page)
             const pageViewModel = new ApplicationPageViewModel(page, this.UseService<interfaces.Newable<IDataAdapter>>('DataAdapterConstructor'), this.viewService, this.app.container, false, false);
             this.pagesContextRef.value.push(pageViewModel.contextid);
             this.pageViewModels.push(pageViewModel);
@@ -595,7 +596,6 @@ export class RunTimeVueApplicationViewModel{
         const router = useRouter();
         
         const startup = new DefaultRuntimeApplicationStartup();
-        console.log(555, config)
         const pinia = getActivePinia()
         const app =  new VueApplication(config, undefined, vueApp, router, undefined, pinia)
                         .setup()
@@ -650,9 +650,6 @@ export class RunTimeVueApplicationViewModel{
   
     }
     private UseService<T>(name: string): T{
-        if(this.model == undefined){
-            return BaseServiceProvider.Service<T>(name)
-        }
         return BaseServiceProvider.ServiceWithAppContext<T>(name, this.sessioncontextid)?.service;
     }
     /* #endregion */

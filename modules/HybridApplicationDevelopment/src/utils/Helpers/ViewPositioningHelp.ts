@@ -75,7 +75,8 @@ export class ViewPositioningHelper{
                 //rerender the root required to render elements in the correct order by the position property
                 //const rootView = this.viewModel.GetViews().find(v => v.isRoot == true);
                 //this.viewModel.PartialUpdateView(rootView.id, {keyValuePairs: [{key: 'key', value: Math.random()}]});
-            this.viewModel.repository.CommitHistory();
+            console.log(parent, elementsToPosition)
+            this.viewModel.repository.CommitHistory(elementsToPosition[0].contextid ?? parent.contextid);
           
         }
         this.marker.removeMarks();

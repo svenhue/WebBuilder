@@ -58,12 +58,12 @@ export class ApplicationsController {
   }
 
 
-  @Patch(':id')
+  @Patch()
   @ApiOperation({ summary: 'Update application' })
   @ApiResponse({ status: 200, description: 'Application updated successfully' })
   @ApiResponse({ status: 404, description: 'Application not found' })
   @Auth({roles: [ApplicationModuleRoles.Customer.name]})
-  update(@Param('id') id: string, @Body() updateApplicationDto: UpdateApplicationDto) {
+  update(@Query('id') id: string, @Body() updateApplicationDto: UpdateApplicationDto) {
     return this.applicationsService.update(id, updateApplicationDto);
   }
 

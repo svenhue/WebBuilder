@@ -56,6 +56,19 @@ export class AxiosWrapper{
     public Delete(url: string, config?: AxiosRequestConfig){
         return this.instance?.delete(url,config);
     }
+    public async Patch(url: string, config?: AxiosRequestConfig, callback?: (response: AxiosResponse) => void){
+        return this.instance?.patch(url, config?.data, config).then((response: AxiosResponse) => {
+            
+            if(callback != undefined){
+                callback(response);
+            }
+            return response;
+        }).catch((error: AxiosError) => {
+                return error;
+        }).finally((r) => {
+                return r;  
+        });
+    }
     private createAxiosConfig(options: IRequestConfig): AxiosRequestConfig{
         const config: AxiosRequestConfig = {
             url: options.url,
@@ -86,6 +99,9 @@ export class AxiosWrapper{
                 break;
             case "DELETE":
                 return this.Delete(url,config);
+                break
+            case "PATCH":
+                return await this.Patch(url, config);
                 break;
             default:
                 throw new Error("Method" + options.method + "not supported!")

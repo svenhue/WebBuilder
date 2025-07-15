@@ -17,24 +17,24 @@ export class GlobalDataSynchronizer{
         this.httpService = httpService
     }
 
-    public async SyncData(value: object, changeType: StateChangeTypes, options: GlobalDataSynchronizeOptions){
+    public async SyncData(value: object, changeType: StateChangeTypes, options: GlobalDataSynchronizeOptions, method?: Method): Promise<any> {
         if(options.type == undefined){
             options.type = APITypes.REST
         }
         switch(options.type){
             case APITypes.REST:
-                const request = this.CreateRESTRequest(value, changeType, options.url, options.networkname)
-                return this.httpService.sendRequest(request)
+                const request = this.CreateRESTRequest(value, changeType, options.url, options.networkname, method)
+                return await this.httpService.sendRequest(request)
                 break;
             default: 
                 throw new Error('API Type not supported: ' + options.type)
         }
     }
-    private CreateRESTRequest(value: object, changeType: StateChangeTypes, url: string, networkname: string): IRequestConfig{
+    private CreateRESTRequest(value: object, changeType: StateChangeTypes, url: string, networkname: string, method? ): IRequestConfig{
         return {
             url: url,
             networkname: networkname,
-            method: this.CreateRestMethod(changeType),
+            method:  method?? this.CreateRestMethod(changeType),
             headers: {
                 "Content-Type": "application/json"
             },

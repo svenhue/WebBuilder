@@ -74,10 +74,12 @@ export class HTTPClientService extends AuthenticationService implements IHTTPCli
                 return result
             }
             if(this.AuthenticationFailed(result)){
+                console.log('Authentication failed, trying to authenticate again')
                 await this.Authenticate(this.GetAuthConfig(request))
                 if(!this.isAuthenticated()){
                     throw new Error("Unable to authenticate")
                 }else{
+                    console.log('Authentication successful, retrying request')
                     this.addRequestInterceptors(request)
                     result = await client.sendRequest(request)
                 }
@@ -85,7 +87,7 @@ export class HTTPClientService extends AuthenticationService implements IHTTPCli
             return result;
 
         }catch(error){
-            console.error("Error during request:", error);
+            console.error("Error during request:" + error);
             throw new Error("error during request:", error)
         } 
     }

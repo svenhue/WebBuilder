@@ -27,7 +27,7 @@ const props = defineProps({
         required:true
     },
     view:{
-        type: Object as () => IViewConfiguration | IPageConfiguration,
+        type: Object as () => IViewConfiguration | IPageConfiguration ,
         required: true,
     },
     isPage:{

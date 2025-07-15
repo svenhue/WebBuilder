@@ -83,6 +83,7 @@ export class BORepository implements IRepository{
         //todo merge objects ( from non-partial update)
 
         public Create(value: IBOInstance, persistslocalStore = false, contextid: number = null, useHistory = true){
+                console.log("BORepository Create", value, contextid, persistslocalStore)
                 if(persistslocalStore == true){
                         let containerId = this.store.containers.find(c => c.boType?.name == value.boName)?.id;
 
@@ -131,7 +132,7 @@ export class BORepository implements IRepository{
         }
         //todo the state shadowonwer (most cases the viewmodel) has to provide undo/ redo functions for all types of bos
         public CreateHistory(contextid: number, commands: IStateHistoryCommands[]){
-                
+                if(!contextid) throw new Error('ContextId is required to create a history stack');
                 if(commands?.length > 0){
                         for(const commandSet of commands){
                                 if(!commandSet.create){
@@ -158,9 +159,9 @@ export class BORepository implements IRepository{
                                 } as IStateHistoryCommands,
                         ]
                 }
-                console.log("new history", contextid)
                 const history = new StateHistory(contextid, commands);
                 this.history.push(history);
+                return history
         }
         public CommitHistory(contextid: number){
                 let history = this.GetHistoryToStack(contextid);
@@ -389,7 +390,6 @@ export class BORepository implements IRepository{
                 }
                 if(history == undefined){
                         history = this.CreateHistory(contextid)
-                        this.history.push(history)
                 }
                 return history;
         }

@@ -25,6 +25,6 @@ export interface IDataAdapter{
 
     CommitHistory()
 
-    IsolatedRequest(method: string, url: string, stateChangeType: StateChangeTypes, data?: any)
+    IsolatedRequest( url: string, method: string, data?: any)
 
 }

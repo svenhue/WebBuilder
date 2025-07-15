@@ -36,9 +36,9 @@ export class ApplicationPageViewModel{
             boType: this.boType,
             persistLocalStorage: true,
             persistGlobalStorage: false,
-            contextId: 0 // the root context has always the id = 0
-        }, 0, container)
-        
+            contextId: page.contextid // the root context has always the id = 0
+        }, page.contextid, container)
+        console.log("page", page, this.dataAdapter, this.viewservice)
         const npage = this.dataAdapter.Create(page, undefined, addToHistory) as unknown as IPageConfiguration 
         this.model = reactive(new PageModel(npage))
         this.model.views = []
@@ -56,10 +56,8 @@ export class ApplicationPageViewModel{
 
         for(const view of JSON.parse(JSON.stringify(npage.views))){
             const initView = this.viewservice.Create(view.type, view, view.parentId, false, undefined, false, npage.views)
-            console.log("initView", initView)
             for(const v of initView){
                 const newV = this.viewDataAdapter.Create(v, this.contextid, addToHistory) as unknown as IPageConfiguration
-                console.log("newV", newV)
                 this.model.views.push(newV)
             }
         }

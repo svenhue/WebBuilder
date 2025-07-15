@@ -1,0 +1,220 @@
+{
+    "_id": "687683748421beac8554a562",
+    "name": "dqwdqq",
+    "mode": "shadow",
+    "modules": [],
+    "deploymentMode": "mpa",
+    "pages": [
+        {
+            "flatterndViews": [],
+            "name": "Your Page",
+            "role": "Landingpage",
+            "views": [
+                {
+                    "id": 10,
+                    "type": "viewdefinition:Application:DefaultRootComponent",
+                    "isRoot": true,
+                    "tag": "component:DefaultRootComponent",
+                    "class": [],
+                    "value": [],
+                    "_id": "687683748421beac8554a563",
+                    "children": [
+                        {
+                            "type": "childrenCollection",
+                            "value": [
+                                14
+                            ]
+                        }
+                    ],
+                    "tags": [
+                        "ultimateWeb"
+                    ],
+                    "name": "Default Root Component_10",
+                    "htmlattributes": {
+                        "data-element": "element_10"
+                    },
+                    "style": {
+                        "height": "1000px",
+                        "width": "900px"
+                    },
+                    "properties": {},
+                    "boName": "ViewConfiguration",
+                    "publicidentifier": "element_10",
+                    "dataConfig": {},
+                    "contextid": 5
+                },
+                {
+                    "name": "Button_14",
+                    "icon": "Button.png",
+                    "tag": "component:ButtonComponent",
+                    "tags": [
+                        "ultimateWeb"
+                    ],
+                    "type": "viewdefinition:Basic:ButtonComponent",
+                    "content": "Button",
+                    "htmlattributes": {
+                        "data-element": "element_14"
+                    },
+                    "properties": {},
+                    "id": 14,
+                    "style": {},
+                    "parentId": 10,
+                    "boName": "ViewConfiguration",
+                    "publicidentifier": "element_14",
+                    "dataConfig": {
+                        "appContextName": "dqwdqq"
+                    },
+                    "contextid": 5,
+                    "position": 0
+                }
+            ],
+            "id": 3,
+            "contextid": 5,
+            "boName": "Page",
+            "route": {}
+        }
+    ]
+
+
+}
+
+{
+    "_id": "687683748421beac8554a562",
+    "name": "dqwdqq",
+    "mode": "shadow",
+    "modules": [],
+    "deploymentMode": "mpa",
+    "pages": [
+        {
+            "name": "Your Page",
+            "role": "Landingpage",
+            "views": [
+                {
+                    "id": 10,
+                    "contextid": 5,
+                    "type": "viewdefinition:Application:DefaultRootComponent",
+                    "isRoot": true,
+                    "tag": "component:DefaultRootComponent",
+                    "class": [],
+                    "children": [
+                        {
+                            "type": "childrenCollection",
+                            "value": [
+                                14
+                            ]
+                        }
+                    ],
+                    "value": [],
+                    "_id": "687683798421beac8554a56d"
+                },
+                {
+                    "id": 14,
+                    "contextid": 5,
+                    "type": "viewdefinition:Basic:ButtonComponent",
+                    "tag": "component:ButtonComponent",
+                    "position": 0,
+                    "class": [],
+                    "parentId": 10,
+                    "value": [],
+                    "_id": "687683798421beac8554a56e",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "stylesheets": {
+        "colors": [
+            {
+                "key": "Brand_Primary",
+                "value": "#3170F8"
+            },
+            {
+                "key": "Brand_Secondary",
+                "value": "#3D3D3D"
+            },
+            {
+                "key": "Brand_Accent",
+                "value": "#FF4081"
+            },
+            {
+                "key": "Brand_Dark",
+                "value": "#212121"
+            },
+            {
+                "key": "Status_Success",
+                "value": "#4CAF50"
+            },
+            {
+                "key": "Status_Warning",
+                "value": "#FFC107"
+            },
+            {
+                "key": "Status_Error",
+                "value": "#F44336"
+            },
+            {
+                "key": "Status_Info",
+                "value": "#2196F3"
+            },
+            {
+                "key": "Text_Dark",
+                "value": "#212121"
+            },
+            {
+                "key": "Text_Light",
+                "value": "#FFFFFF"
+            }
+        ]
+    },
+    "globalVariables": {
+        "vars": {
+            "keyValuePairs": [
+                {
+                    "key": "defaultTabletWidth",
+                    "value": "768px"
+                },
+                {
+                    "key": "defaultDesktopWidth",
+                    "value": "100%"
+                },
+                {
+                    "key": "defaultMobileHeight",
+                    "value": "480px"
+                },
+                {
+                    "key": "defaultMobileWidth",
+                    "value": "250px"
+                },
+                {
+                    "key": "defaultTabletHeight",
+                    "value": "481px"
+                },
+                {
+                    "key": "defaultDesktopHeight",
+                    "value": "100%"
+                }
+            ]
+        }
+    },
+    "networkConfigs": [
+        []
+    ],
+    "internationalization": {
+        "defaultLocale": "de-DE",
+        "locale": "de-DE",
+        "locales": []
+    },
+    "querys": [
+        []
+    ],
+    "version": "0.0.1",
+    "tags": [],
+    "status": "active",
+    "createdDate": "2025-07-15T16:36:04.295Z",
+    "lastchangedDate": "2025-07-15T16:36:09.375Z",
+    "createdAt": "2025-07-15T16:36:04.295Z",
+    "updatedAt": "2025-07-15T16:36:09.375Z",
+    "createdBy": "684493ff37a4299e9d76cc1a",
+    "lastchangedBy": "684493ff37a4299e9d76cc1a",
+    "__v": 0
+}

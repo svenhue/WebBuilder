@@ -31,7 +31,7 @@ export class DataContextManager{
         
         const context = {
             contextid: id,
-            parentId: parentContext != undefined ? parentContext.contextid :0,
+            parentId: parentContext != undefined ? parentContext.contextid : this.rootContext != undefined ? this.rootContext.contextid : 0,
             children: [],
             contextLevel: level == undefined ? ContextLevel.State : level
         } as IDataContext
@@ -47,9 +47,16 @@ export class DataContextManager{
         }
         return context;
     }
-    public GetParentContext(context: IDataContext): IDataContext{
-        return this.findContextById(context.parentId);
-    }
+    public GetParentContext(context: IDataContext, searchIn?: IDataContext): IDataContext{
+        if(this.rootContext.contextid == context.parentId) {
+            return this.rootContext
+        }else{
+            const searchin = searchIn ?? this.rootContext;
+            for(const child of searchin.children){
+                return this.GetParentContext(child)
+            }
+        }
+   }
     //todo remove this non sense logic?
     public getApplicationContext(contextid: number): IDataContext{
         const context = this.findContextById(contextid);
@@ -68,7 +75,6 @@ export class DataContextManager{
         return this.rootContext;
     }
     private findContextById(contextId: number): IDataContext | null {
-        
         if(contextId == undefined){
             return undefined
         }
@@ -83,7 +89,7 @@ export class DataContextManager{
             return node;
         }
 
-        for (const child of node.children){
+        for (const child of node.children){       
             const result = this.traverseTree(child as IDataContext, contextId);
             if (result) {
                 return result;
