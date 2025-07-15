@@ -79,7 +79,7 @@
                                     <ComponentTreeBase
                                     v-if="viewModel?.currentPage?.value == page"
                                     :contextid="page"
-                                    :view="viewModel.GetRootView(page)">
+                                    :view="viewModel.GetPageViews(page)?.value">
                                     </ComponentTreeBase>
                                 </KeepAlive>
                             </div>
@@ -104,7 +104,7 @@
                 <DevelopmentContextBarComponent
                 :contextid="viewModel?.currentPage?.value"
                 :element="viewModel.GetFocussedElement()?.value"
-                @delete-element="() => viewModel.DeleteElement(viewModel.GetFocussedElement()?.value.id, false,false)"
+                @delete-element="() => viewModel.DeleteElement(viewModel.GetFocussedElement()?.value.id, true,true)"
                 :targetId="'development-container'">
 
                 </DevelopmentContextBarComponent>

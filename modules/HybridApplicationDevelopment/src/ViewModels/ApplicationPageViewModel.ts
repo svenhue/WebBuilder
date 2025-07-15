@@ -15,6 +15,7 @@ export class ApplicationPageViewModel{
     public role: Ref<string> 
     public contextid: number
     public model: PageModel
+    public isReady: Ref<boolean> = ref(false)
     private dataAdapter: DataAdapter
     private boType = new BusinessObject({
         name: 'Page',
@@ -64,6 +65,7 @@ export class ApplicationPageViewModel{
         if(commitHistory){
             this.dataAdapter.CommitHistory()
         }
+        
     }
     private AddNestedViews(views: Array<IViewConfiguration>){
     

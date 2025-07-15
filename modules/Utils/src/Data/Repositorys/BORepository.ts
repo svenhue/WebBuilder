@@ -42,7 +42,13 @@ export class BORepository implements IRepository{
             this.store = useDataStore(pinia)
             this.history = new Array();
         }
-    
+        //how to handle this with datadapter sync?
+        public setHistoryIsSavedPermanently(contextid: number, guid: string, isSavedPermanently: boolean){
+                const history = this.GetHistoryToStack(contextid);
+                history.history.value.values.forEach((value: IHistoryEntrys) => {
+                        value.isSavedPermanently = true
+                })
+        }
         public static MergeKeyValueCollection(newvalues: KeyValuePair[], oldValue: IBOInstance): IBOInstance{
                 for(const keyValuePair of newvalues){
                         const old = get(oldValue, keyValuePair.key)
@@ -83,7 +89,6 @@ export class BORepository implements IRepository{
         //todo merge objects ( from non-partial update)
 
         public Create(value: IBOInstance, persistslocalStore = false, contextid: number = null, useHistory = true){
-                console.log("BORepository Create", value, contextid, persistslocalStore)
                 if(persistslocalStore == true){
                         let containerId = this.store.containers.find(c => c.boType?.name == value.boName)?.id;
 

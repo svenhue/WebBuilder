@@ -71,7 +71,6 @@ export class UITreeProviderService extends BaseServiceProvider{
 
     // children are ROUTABLE views
     private AddNestedChildren(views: Array<IViewConfiguration | IPageConfiguration>){
-        console.log("AddNestedChildren", views)
         for(const view of views){
             if(view.children != undefined){
                 this.flatViews.value.push(...view.children)
@@ -112,7 +111,6 @@ export class UITreeProviderService extends BaseServiceProvider{
         })
 
         this.dataAdapter = new DataAdapter(options, contextid)
-        console.log("dataAdapterUIchanges", this.dataAdapter)
         const handler = (id: number, newValue: IBOInstance, changeType: StateChangeTypes) => this.HandleStateChange(id, newValue, changeType)
         this.dataAdapter.SetStateChangeHandler(handler)
         

@@ -8,6 +8,7 @@
         </div>
         <div>
             <q-btn :style="{margin: '5px'}" dense :label="$t('Save Changes')" @click="viewModel.SaveChanges()" ></q-btn>
+            <p> {{unsavedChanges}} unsaved Changes</p>
         </div>
         <div>
             Changes
@@ -28,12 +29,12 @@
                         </q-item-label>
                     </q-item-section>
                     <q-item-section side :style="{display: 'inline'}"> 
-                        <q-btn dense icon="undo" borderless unelevated @click="doUndo(item)">
+                        <q-btn disable dense icon="undo" borderless unelevated @click="doUndo(item)">
                             <q-tooltip>
                             Discard
                             </q-tooltip>
                         </q-btn>
-                        <q-btn dense icon="commit" borderless unelevated @click="doUndo(item)">
+                        <q-btn disable dense icon="commit" borderless unelevated @click="doUndo(item)">
                             <q-tooltip>
                             Commit
                             </q-tooltip>
@@ -81,6 +82,11 @@ const history: ComputedRef<{redoStack: Ref<IHistoryStack>, undoStack: Ref<IHisto
     return boRepository.GetHistoryComputed(props.contextid).value
 })
 
+const unsavedChanges = computed(() => {
+    return history.value.history.value.values.filter((value: IHistoryEntrys) => {
+        return value.isSavedPermanently == false || value.isSavedPermanently == undefined
+    })?.length
+})
 function doUndo(item: IHistoryEntrys){
     boRepository.ManualHistoryUndo(props.contextid, item)
 }

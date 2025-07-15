@@ -19,4 +19,6 @@ export interface IRepository{
         CommitHistory(contextid?: number)
         CreateHistory(contextid: number)
 
+        setHistoryIsSavedPermanently(contextid: number, guid: string, isSavedPermanently: boolean){
+
 }

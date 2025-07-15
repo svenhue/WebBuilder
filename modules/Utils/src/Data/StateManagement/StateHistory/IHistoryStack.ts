@@ -17,6 +17,7 @@ interface IHistoryEntrys{
     entrys: Array<IHistoryEntry>;
     timestamp?: number;
     isCommited?: boolean;
+    isSavedPermanently?: boolean;
     guid?: string;
     reverseGuid?: string;
 }

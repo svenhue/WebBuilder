@@ -1,15 +1,15 @@
 <template>
     <div class="development-context-bar">
-        <q-menu  context-menu  @hide="emits('hide')"  ref="test" auto-close   touch-position>
-            <q-list>
-                <q-item clickable @click="deleteView()">
+        <q-menu  context-menu  @hide="emits('hide')" class="development-context-bar" ref="test" auto-close   touch-position>
+            <q-list class="development-context-bar" dense>
+                <q-item dense clickable @click="deleteView()">
                     <q-item-section>
                         <q-item-label>Delete View</q-item-label>
                     </q-item-section>
                 </q-item>
-                <q-item clickable @click="() => ShowTemplateDialog()">
+                <q-item disable clickable @click="() => ShowTemplateDialog()">
                     <q-item-section>
-                        <q-item-label>Save as template</q-item-label>
+                        <q-item-label>Save as template (Coming Soon)</q-item-label>
                     </q-item-section>
                 </q-item>
             </q-list>
@@ -77,6 +77,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .development-context-bar{
-
+    background-color: theme('colors.darkgrey');
+    color:white;
 }
 </style>

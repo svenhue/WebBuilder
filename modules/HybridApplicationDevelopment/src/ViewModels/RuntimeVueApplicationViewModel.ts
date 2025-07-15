@@ -177,7 +177,14 @@ this.serviceProvider = new BaseServiceProvider(this.sessioncontextid)
         */
         const config = this.GetConfiguration()
         console.log("SaveChanges", config)
-        this.dataAdapter.IsolatedRequest('/applications?id='+config._id, 'PATCH', config);
+        try{
+            this.dataAdapter.IsolatedRequest('/applications?id='+config._id, 'PATCH', config);
+        }catch(e){
+            console.error("Error while saving changes", e);
+        }finally{
+            this.repository.setHistoryIsSavedPermanently(this.sessioncontextid);
+        }
+        
     }
     public NavigateToPage(name: string){
         const page = this.pageViewModels.find(p => p.model.name == name);
@@ -445,7 +452,7 @@ this.serviceProvider = new BaseServiceProvider(this.sessioncontextid)
     public GetPageViews(pagecontext: number){
         return computed(() => {
             const page = this.pageViewModels.find(p => p.contextid == pagecontext);
-            return page?.views.value;
+            return page?.model.views;
         })
     }
     private InitializeSpaClient(config: IApplicationConfiguration){
@@ -603,9 +610,7 @@ this.serviceProvider = new BaseServiceProvider(this.sessioncontextid)
                         .build()
         return app;
     }
-    public DeleteElement(id: number, commitHistory = true, addToHistory = true){
-
-        
+    public DeleteElement(id: number, commitHistory = true, addToHistory = true){ 
         const element = this.GetViews().find(c => c.id == id);
         if(element.tag.includes("DefaultRootComponent")){
             return;
