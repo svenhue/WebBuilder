@@ -1,9 +1,10 @@
 //@ts-ignore
 //@ts-nocheck
-import {   ref, Ref, computed, provide, inject, reactive} from 'vue';
+import {   ref, ComponentInternalInstance, Ref, computed, provide, inject, reactive} from 'vue';
 import { RouteRecordRaw } from 'vue-router';
 import { ApplicationDeploymentModes, IApplicationConfiguration, useWebNodeStore, IDataAdapter, 
-    ApplicationConfiguration, waitForElm,  useModellingStore, IViewElement, IViewConfiguration, IApplication, Screen, ApplicationFactory, VueApplication, SimpleNameValueCollection, IPageConfiguration, KeyValuePair } from 'alphautils';
+    ApplicationConfiguration, waitForElm,  useModellingStore, IViewElement, IViewConfiguration, IApplication, Screen, ApplicationFactory, VueApplication, SimpleNameValueCollection, IPageConfiguration, KeyValuePair, 
+    DataContextManager} from 'alphautils';
 
 //import { ApplicationServices } from '../Services/ApplicationServices';
 import { ViewConfigurationService } from '../Services/ViewConfigurationService';
@@ -13,8 +14,6 @@ import { BaseServiceProvider } from 'alphautils';
 import { StyleManagerViewModel } from './StyleManagerViewModel';
 import BackgroundFacadeComponent from '../VueComponents/ApplicationDevelopment/BackgroundFacadeComponent.vue';
 import { set, get } from "lodash-es";
-
-import { getCurrentInstance, Ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { DefaultRuntimeApplicationStartup } from '../utils/Application/Startups/DefaultRuntimeApplicationStartup';
 import { ApplicationPageViewModel } from './ApplicationPageViewModel';
@@ -24,7 +23,6 @@ import { StyleService } from '../utils/Services/Designer/StyleService';
 import { PageService } from '../utils/Services/Development/PageService';
 import { getActivePinia } from 'pinia';
 import { InternationalizationViewModel } from '../utils/Features/Internationalization/InternationalizationViewModel';
-import { getCurrentInstance } from 'vue';
 import { ApplicationDevelopmentSettingsService } from '../VueComponents/ApplicationDevelopment/ApplicationSettings/ApplicationDevelopmentSettingsService';
 import {VueI18n } from 'vue-i18n';
 import { IRepository } from 'alphautils/src/Data/Repositorys/IRepository';
@@ -39,6 +37,9 @@ import { VersionManager } from 'localversioncontrol';
 import { ApplicationVersionManager } from '../utils/Features/VersionManagement/ApplicationVersionManager';
 export class RunTimeVueApplicationViewModel{
     
+    private vueApp: ComponentInternalInstance
+    public sessioncontextid = 0;
+
     public isReady: Ref<boolean> = ref(false);
     FocussedViewService: FocussedViewContextService
     private service: ApplicationService;
@@ -58,6 +59,7 @@ export class RunTimeVueApplicationViewModel{
     public repository: IRepository
     public languageViewModel: InternationalizationViewModel
     public model: ApplicationModel;
+    private contextManager: DataContextManager
     private serverService: NodeApplicationServerService
     customCss: Ref<string> = ref('');
 
@@ -73,80 +75,84 @@ export class RunTimeVueApplicationViewModel{
     versionManager: ApplicationVersionManager
 
     constructor(
-        solutionname: string,
+        config: IApplicationConfiguration,
         facadeRef: typeof BackgroundFacadeComponent,
         i18n: VueI18n,
         mountId: string,
+        instance
 
         ){
+        this.contextManager = BaseServiceProvider.ServiceWithContext<DataContextManager>('DataContextManager', 0);
+        config.contextid = this.contextManager.NewContext(0, 'Application').contextid;
+        this.model = new reactive(new ApplicationModel(config));
         this.FocussedViewService = this.UseService<FocussedViewContextService>('FocussedViewContextService');
         this.facadeRef = facadeRef;
         this.service = BaseServiceProvider.Service<ApplicationService>('ApplicationService') as ApplicationService;
         this.viewService = this.UseService<ViewConfigurationService>('ViewConfigurationService');
 
-        const config: IApplicationConfiguration = this.service.GetApplicationConfigByName(solutionname);
-        this.versionManager = new ApplicationVersionManager(config.remoteRepository)
-       
-        //this.currentRoute = currentRoute;
-      
-        this.model = reactive(new ApplicationModel(config));
-
-        this.versionManager.SyncRepository(this.model)
-
-        this.currentPage = ref();        
-        this.pagesContextRef = ref([])
-        this.sessioncontextid = this.model.contextid;
+        this.vueApp = instance;
         
+        this.init(i18n)
 
-        this.InitializeApplicationContext(this.model)
-        this.serviceProvider = new BaseServiceProvider(config.contextid)
+    }
+    public init(i18n){
+               console.log(88, this.model) 
+        this.sessioncontextid = this.model.contextid;
+        this.currentPage = ref();        
+            this.pagesContextRef = ref([])
 
-        this.WatchForScreenChanges();
+            
+            this.serviceProvider = new BaseServiceProvider(this.sessioncontextid)
 
-        this.styleManager = new StyleManagerViewModel();
+            this.WatchForScreenChanges();
+
+            this.styleManager = new StyleManagerViewModel();
+            
+            this.dataAdapterConstructor = this.UseService<interfaces.Newable<IDataAdapter>>('DataAdapterConstructor');
+            this.dataAdapter = new this.dataAdapterConstructor({
+                apiDefinition: {
+                    networkname: "WebCreatorBackend"
+                },
+                boType: new ApplicationConfiguration(),
+                persistLocalStorage: false,
+                contextId: 0,
+            }, 0, inject('iotcontainer_0',undefined) as Container);
+
+
+            
+
+
+            this.repository = this.UseService<IRepository>('BORepository');
+            this.repository.CreateHistory(
+                this.sessioncontextid,
+                [
+                    {boName: 'ViewConfiguration',
+                    create: (value, addToHistory) => this.AddRawViewElement(value, false, addToHistory),
+                    delete: (id, contextid, addToHistory) => this.DeleteElement(id, contextid, false, addToHistory),
+                    update: (id, value, oldValue, addToHistory) => this.UpdateView(id, value, oldValue, false, addToHistory),
+                    updatePartial: (id, value, oldValues, addToHistory) => this.PartialUpdateView(id, value, oldValues, false, addToHistory)
+                    } as IStateHistoryCommands,
+                    {
+                        boName: 'Page',
+                        create: (value, addToHistory) => this.AddPage(value, false, addToHistory),
+                        delete: (id, contextid, addToHistory) => this.DeletePage(id, contextid, false, addToHistory),
+                        update: (id, value, oldValue, addToHistory) => this.UpdatePage(id, value, oldValue, false, addToHistory),
+                        updatePartial: (id, value, oldValues, addToHistory) => this.PartialUpdatePage(id, value, oldValues, false, addToHistory)
+                    }
+                ]    
+            );
+        //this.versionManager = new ApplicationVersionManager(config.remoteRepository)
+        //this.versionManager.SyncRepository(this.model)
+
+        this.InitializeApplicationContext(this.model, this.vueApp)
+
         this.styleService = this.UseService<StyleService>('StyleService');
         this.settingsService = BaseServiceProvider.ServiceWithContext<ApplicationDevelopmentSettingsService>('ApplicationDevelopmentSettingsService', 0) as ApplicationDevelopmentSettingsService;
-
-        this.dataAdapterConstructor = this.UseService<interfaces.Newable<IDataAdapter>>('DataAdapterConstructor');
-        this.dataAdapter = new this.dataAdapterConstructor({
-            apiDefinition: {
-                networkname: "WebCreatorBackend"
-            },
-            boType: new ApplicationConfiguration(),
-            persistLocalStorage: false,
-            contextId: 0,
-        }, 0, inject('iotcontainer_0',undefined) as Container);
-
-
-        provide('styleManager_' + this.model.contextid, this.styleManager)
+        console.log(12355, this.settingsService, this.styleService)
+        provide('styleManager_' + this.sessioncontextid, this.styleManager)
         provide('applicationViewModel', this)
         provide('devMode', this.settingsService.store.devSettings.developmentMode)
         this.InitInternationalization(i18n);
-
-        this.repository = this.UseService<IRepository>('BORepository');
-        this.repository.CreateHistory(
-            this.model.contextid,
-            [
-                {boName: 'ViewConfiguration',
-                create: (value, addToHistory) => this.AddRawViewElement(value, false, addToHistory),
-                delete: (id, contextid, addToHistory) => this.DeleteElement(id, contextid, false, addToHistory),
-                update: (id, value, oldValue, addToHistory) => this.UpdateView(id, value, oldValue, false, addToHistory),
-                updatePartial: (id, value, oldValues, addToHistory) => this.PartialUpdateView(id, value, oldValues, false, addToHistory)
-            } as IStateHistoryCommands,
-            {
-                boName: 'Page',
-                create: (value, addToHistory) => this.AddPage(value, false, addToHistory),
-                delete: (id, contextid, addToHistory) => this.DeletePage(id, contextid, false, addToHistory),
-                update: (id, value, oldValue, addToHistory) => this.UpdatePage(id, value, oldValue, false, addToHistory),
-                updatePartial: (id, value, oldValues, addToHistory) => this.PartialUpdatePage(id, value, oldValues, false, addToHistory)
-            }
-            ]    
-        );
-
-        //this._codeViewModel = new NodeViewModel(this.model.contextid, this.model.querys);
-
-        //this.serverService = new NodeApplicationServerService(mountId, this.model, this.pageViewModels.map(p => p.model));
-
     }
     public InitInternationalization(i18n){
         const vM = new InternationalizationViewModel(i18n, this.model);
@@ -357,8 +363,6 @@ export class RunTimeVueApplicationViewModel{
     }
     /* #region private Hilfsmethoden */
     private PrepareConfiguration(){
-        
-
         this.model.pages = [];
     
         for(const pageVM of this.pageViewModels){
@@ -404,6 +408,7 @@ export class RunTimeVueApplicationViewModel{
     }
     private InitializePages(pages: Array<IPageConfiguration>){
         for(const page of pages){
+            console.log('Initialize page', page)
             const pageViewModel = new ApplicationPageViewModel(page, this.UseService<interfaces.Newable<IDataAdapter>>('DataAdapterConstructor'), this.viewService, this.app.container, false, false);
             this.pagesContextRef.value.push(pageViewModel.contextid);
             this.pageViewModels.push(pageViewModel);
@@ -413,11 +418,8 @@ export class RunTimeVueApplicationViewModel{
     private InitializeApplicationContext(config: IApplicationConfiguration){
         const app = this.CreateShadowApplication(config);
         this.app = app
-        if(this.model.deploymentMode == ApplicationDeploymentModes.spaclient){
-            this.InitializeSpaClient(this.model)
-        }else{
-            this.InitializePages(config.pages)
-        }
+        
+        this.InitializePages(config.pages)
         
         const landingPage = this.GetPageEntitys().value.find(p => p.role == 'Landingpage');
         if(landingPage == undefined){
@@ -589,10 +591,11 @@ export class RunTimeVueApplicationViewModel{
     private CreateShadowApplication(config: IApplicationConfiguration): IApplication{
         this.factory = BaseServiceProvider.Service<ApplicationFactory>('ApplicationFactory') as ApplicationFactory;
 
-        const vueApp = getCurrentInstance().appContext.app;
+        const vueApp = this.vueApp.appContext.app;
         const router = useRouter();
         
         const startup = new DefaultRuntimeApplicationStartup();
+        console.log(555, config)
         const pinia = getActivePinia()
         const app =  new VueApplication(config, undefined, vueApp, router, undefined, pinia)
                         .setup()
@@ -650,7 +653,7 @@ export class RunTimeVueApplicationViewModel{
         if(this.model == undefined){
             return BaseServiceProvider.Service<T>(name)
         }
-        return BaseServiceProvider.ServiceWithAppContext<T>(name, this.model.contextid)?.service;
+        return BaseServiceProvider.ServiceWithAppContext<T>(name, this.sessioncontextid)?.service;
     }
     /* #endregion */
     

@@ -64,12 +64,10 @@ export class HTTPClientService extends AuthenticationService implements IHTTPCli
     private addRequestInterceptors(request: IRequestConfig){
         this.setAuthRequestConfigInterceptor(request);
     }
-    public override async  sendRequest<T = {}>(request: IRequestConfig, skipAllInterceptors: boolean = false): AxiosResponse<T>{
+    public override async sendRequest<T = {}>(request: IRequestConfig, skipAllInterceptors: boolean = false): AxiosResponse<T>{
         try{
-            console.log(request)
             this.addRequestInterceptors(request)
             const client = this.GetOrCreateClient(request);
-            console.log(request)
             let result = await client.sendRequest(request) as Promise<AxiosResponse>;
 
             if(skipAllInterceptors){
@@ -81,16 +79,15 @@ export class HTTPClientService extends AuthenticationService implements IHTTPCli
                     throw new Error("Unable to authenticate")
                 }else{
                     this.addRequestInterceptors(request)
-                    result = client.sendRequest(request, true)
+                    result = await client.sendRequest(request)
                 }
             }   
             return result;
 
         }catch(error){
+            console.error("Error during request:", error);
             throw new Error("error during request:", error)
-        }
-       
-        
+        } 
     }
     private AuthenticationFailed(response: AxiosResponse){
         return response?.status == 401;

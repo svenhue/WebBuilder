@@ -41,13 +41,6 @@ export class ApplicationsController {
     return this.applicationsService.create(createApplicationDto);
   }
 
-  @Get()
-  @ApiOperation({ summary: 'Get all applications' })
-  @ApiResponse({ status: 200, description: 'Applications retrieved successfully' })
-  findAll() {
-    return this.applicationsService.findAll();
-  }
-
   @Get('search')
   @ApiOperation({ summary: 'Search applications by name' })
   @ApiQuery({ name: 'name', description: 'Application name to search for' })
@@ -56,12 +49,12 @@ export class ApplicationsController {
     return this.applicationsService.findByName(name);
   }
   
-  @Get('app/:id')
+  @Get('')
   @ApiOperation({ summary: 'Get application by application ID' })
   @ApiResponse({ status: 200, description: 'Application retrieved successfully' })
   @ApiResponse({ status: 404, description: 'Application not found' })
-  findByApplicationId(@Param('id') id: string) {
-    return this.applicationsService.findByApplicationId(parseInt(id));
+  findByApplicationId(@Query('id') id: string) {
+    return this.applicationsService.findByApplicationId(id);
   }
 
 

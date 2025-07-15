@@ -1,0 +1,98 @@
+{
+  name: "dwedwd",
+  deploymentMode: "mpa",
+  version: "0.0.1",
+  globalVariables: {
+    vars: {
+      keyValuePairs: [
+        {
+          key: "defaultTabletWidth",
+          value: "768px",
+        },
+        {
+          key: "defaultDesktopWidth",
+          value: "100%",
+        },
+        {
+          key: "defaultMobileHeight",
+          value: "480px",
+        },
+        {
+          key: "defaultMobileWidth",
+          value: "250px",
+        },
+        {
+          key: "defaultTabletHeight",
+          value: "481px",
+        },
+        {
+          key: "defaultDesktopHeight",
+          value: "100%",
+        },
+      ],
+    },
+  },
+  stylesheets: {
+    colors: [
+      {
+        key: "Brand_Primary",
+        value: "#3170F8",
+      },
+      {
+        key: "Brand_Secondary",
+        value: "#3D3D3D",
+      },
+      {
+        key: "Brand_Accent",
+        value: "#FF4081",
+      },
+      {
+        key: "Brand_Dark",
+        value: "#212121",
+      },
+      {
+        key: "Status_Success",
+        value: "#4CAF50",
+      },
+      {
+        key: "Status_Warning",
+        value: "#FFC107",
+      },
+      {
+        key: "Status_Error",
+        value: "#F44336",
+      },
+      {
+        key: "Status_Info",
+        value: "#2196F3",
+      },
+      {
+        key: "Text_Dark",
+        value: "#212121",
+      },
+      {
+        key: "Text_Light",
+        value: "#FFFFFF",
+      },
+    ],
+  },
+  networkConfigs: [
+    [
+    ],
+  ],
+  internationalization: {
+    defaultLocale: "de-DE",
+    locale: "de-DE",
+    locales: [
+    ],
+  },
+  mode: "shadow",
+  pages: [
+    [
+    ],
+  ],
+  querys: [
+    [
+    ],
+  ],
+}

@@ -17,11 +17,9 @@ export class GlobalVariableDataProvider{
         dataAdapter: interfaces.Newable<IDataAdapter>,
         contextManager: DataContextManager,
         container: Container
-    ){
-        
+    ){        
         this.contextManager = contextManager;
-        
-        
+
         this.ProvideContainer(config.contextid, dataAdapter, config);
         container.bind<GlobalVariableDataProvider>('GlobalVariableDataProvider').toConstantValue(this);
 

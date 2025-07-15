@@ -13,6 +13,7 @@ import { ITask } from '../shared/tasks/ITask.js';
 export interface IApplicationConfiguration{
         
     id: number;
+    _id: string; // MongoDB ID
     name: string;
     rootComponent?: IViewConfiguration;
     mode?: ApplicationModes

@@ -67,32 +67,28 @@ export class ApplicationService extends BaseServiceProvider{
             name: 'Application',
         })
         config = this.InitializeApplication(config)
-        config = await this.dataAdapter.Create(config, undefined, false);
-      
-        this.tabService.AddAndOpenTab({title: "App:" + config.name,path: `appdevelopment/development/${config.name}`})
+        config = await this.dataAdapter.CreateAsync(config, undefined, false);
+        console.log(config)
+        this.tabService.AddAndOpenTab({title: "App:" + config.name, path: `appdevelopment/development/${config._id}`})
         return config;
     }
+    public async GetApplicationConfigById(id: string) : Promise<IApplicationConfiguration> {
+        //look in client runtime
+     
+        let application = this.dataAdapter.Find('Application', (value: IApplicationConfiguration) => { return value._id == id})
 
-    public async GetApplicationConfigByName(name: string){
-        let application = this.dataAdapter.Find('Application', (value: IApplicationConfiguration) => { return value.name ==  name})
         if(application?.id == undefined){
             // occurs on page reload
-           application = this.FetchApplicationConfiguration(name)
-
-           //only in dev
-
-           
-           application = this.ConfigureApplication(application)
-           this.InitializeApplication(application)
-           await this.dataAdapter.Create(application, undefined, false)
+            application = await this.dataAdapter.Fetch<IApplicationConfiguration>(`/applications?id=${id}`, 'GET', undefined, 0);
+            console.log('application', application)
+            application.mode = ApplicationModes.shadow; // remove this!
+            if(application == undefined){
+                throw new Error('Application with id ' + id + ' not found')
+            }
+            this.dataAdapter.Create(application, undefined, false, false);
         }
+
         return application;
-    }
-
-    private FetchApplicationConfiguration(name: string): IApplicationConfiguration{
-        return {
-            name: name
-        }
     }
     private InitializeApplication(config: IApplicationConfiguration): IApplicationConfiguration{
 
@@ -202,6 +198,7 @@ export class ApplicationService extends BaseServiceProvider{
             locale: 'de-DE',
             locales:[]
         }
+        
         config.remoteRepository = {
             source: 'github'
         }
@@ -211,6 +208,7 @@ export class ApplicationService extends BaseServiceProvider{
         config.deploymentMode = 'mpa'; // use Enum, why doesnt work?
         config.pages = [
             {
+                id: 44,
                 name: 'Your Page',
                 meta:{
                     title: 'Your Page'
@@ -240,11 +238,10 @@ export class ApplicationService extends BaseServiceProvider{
     }
     public createDefaultRootView(app: IApplicationConfiguration): IViewConfiguration{
         const config = {
+            id: 10,
             type: 'viewdefinition:Application:DefaultRootComponent',
             tag: 'component:DefaultRootComponent',
             name: 'Default Root Component',
-            htmlattributes:{
-            },
             style: {
                 position: 'relative',
                 height: '100%',

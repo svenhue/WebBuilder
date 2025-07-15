@@ -35,6 +35,7 @@ export class ApplicationPageViewModel{
         this.dataAdapter = new dataAdapterConstructor({
             boType: this.boType,
             persistLocalStorage: true,
+            persistGlobalStorage: false,
             contextId: 0 // the root context has always the id = 0
         }, 0, container)
         
@@ -55,8 +56,10 @@ export class ApplicationPageViewModel{
 
         for(const view of JSON.parse(JSON.stringify(npage.views))){
             const initView = this.viewservice.Create(view.type, view, view.parentId, false, undefined, false, npage.views)
+            console.log("initView", initView)
             for(const v of initView){
                 const newV = this.viewDataAdapter.Create(v, this.contextid, addToHistory) as unknown as IPageConfiguration
+                console.log("newV", newV)
                 this.model.views.push(newV)
             }
         }

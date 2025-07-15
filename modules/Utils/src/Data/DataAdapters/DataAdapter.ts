@@ -45,7 +45,7 @@ export class DataAdapter implements IDataAdapter {
         this.boService = iotContainer.get<BOService>('BOService')
         
        
-            this.synchronizer = iotContainer.get<GlobalDataSynchronizer>('GlobalDataSynchronizer')
+        this.synchronizer = iotContainer.get<GlobalDataSynchronizer>('GlobalDataSynchronizer')
        
     }
     public Dispose(){
@@ -77,7 +77,23 @@ export class DataAdapter implements IDataAdapter {
         this.repository.Subscribe(this)
     }
 
-    public async Create(value: IBOInstance, contextid?: number, addToHistory = true){
+    public Create(value: IBOInstance, contextid?: number, addToHistory = true){
+        if(value.id == undefined){
+            this.boService.NewId(value)
+        }
+        if(contextid != undefined){
+             value.contextid = contextid    
+        }else if(value.contextid == undefined && value.contextid == undefined){
+            value.contextid = this.options.contextId
+        }
+        this.SetBoType(value)
+    
+        
+        this.ownsIds.push(value.id)
+        return this.repository.Create(value as IBOInstance, this.options.persistLocalStorage, contextid, addToHistory)
+    }
+
+    public async CreateAsync(value: IBOInstance, contextid?: number, addToHistory = true, persistGlobalStorage = this.options.persistGlobalStorage ?? false){
         if(value.id == undefined){
             this.boService.NewId(value)
         }
@@ -88,10 +104,9 @@ export class DataAdapter implements IDataAdapter {
         }
         this.SetBoType(value)
         
-        if(this.options.persistGlobalStorage == true){
+        if(this.options.persistGlobalStorage == true && persistGlobalStorage == true){
             const responseValue = await this.synchronizer.SyncData(toRaw(value), StateChangeTypes.create, this.options.apiDefinition)
             Object.assign(value, responseValue.data)
-            console.log(123, responseValue, value)
         }
         
         this.ownsIds.push(value.id)
@@ -163,14 +178,26 @@ export class DataAdapter implements IDataAdapter {
         return respository.CreateMany(result.data, true)
 
     }
-
-    public async IsolatedRequest(method: string, url: string, stateChangeType: StateChangeTypes, data?: any){
-        
-        this.synchronizer.SyncData(data, stateChangeType, {
+    public async IsolatedRequest(method: string, url: string, stateChangeType: StateChangeTypes, data?: any){ 
+        return this.synchronizer.SyncData(data, stateChangeType, {
             networkname: this.options?.apiDefinition?.networkname,
             url: url ?? this.options?.apiDefinition?.url,
             type: this.options?.apiDefinition?.type
         } )
+    }
+
+    public async Fetch<T>(url: string, method: string = "GET", data?: any, contextid?: number): T {
+        const httpService = BaseServiceProvider.ServiceWithContext<IHTTPClientService>("HTTPClientService", contextid)
+        const config = {
+            method: method,
+            url: url,
+            data: data,
+            networkname: this.options?.apiDefinition?.networkname,
+        } as IRequestConfig
+        if(contextid != undefined){
+            config.contextid = contextid
+        }
+        return await httpService.sendRequest(config).data
     }
 
 

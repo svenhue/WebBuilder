@@ -60,11 +60,10 @@ export class VueApplication implements IApplication{
             this.rootApp = app;
         }
        
-        if(this.config.deploymentMode == ApplicationDeploymentModes.spaclient){
-            
+        if(this.config?.deploymentMode == ApplicationDeploymentModes.spaclient){
             if(router != undefined){
                 this.vueRouter = router;
-            this.SetupRoutes(this.config.pages)
+                this.SetupRoutes(this.config.pages)
             }            
             
         }
@@ -114,7 +113,7 @@ export class VueApplication implements IApplication{
 
         let parentcontainer;
 
-        if(this.config.mode == ApplicationModes.shadow){
+        if(this.config?.mode == ApplicationModes.shadow){
             parentcontainer = inject('iotcontainer_0') as Container
         }
 
@@ -147,7 +146,7 @@ export class VueApplication implements IApplication{
         defaultServiceCollection.InitializeServices(this.container, this.config, this.pinia)
         
 
-        if(this.config.mode == ApplicationModes.standalone){
+        if(this.config?.mode == ApplicationModes.standalone){
             this.setupStandalone();
         }
 
@@ -191,6 +190,8 @@ export class VueApplication implements IApplication{
             children: component.views?.filter(v => v?.isRouteable == true)?.map(child => this.CreateRoute(child))
         } as RouteRecordRaw
     }
+
+    
     public mount(){
         if(this.config.mode != ApplicationModes.standalone){
             return this;
@@ -202,18 +203,12 @@ export class VueApplication implements IApplication{
     }
 
     private setupStandalone(){
-   
-
-
         const newApp = createApp(ApplicationRootComponent)
         //Quasar.install(newApp, {})
         
-        //Quasar.install(newApp, {})
-
-        
+        //Quasar.install(newApp, {})   
         newApp.use(this.vueRouter)
         this.rootApp = newApp;
-        
     }
     public build(): VueApplication{
         const contextManager = this.container.get<DataContextManager>('DataContextManager')
@@ -224,7 +219,7 @@ export class VueApplication implements IApplication{
         const rootManager = this.container?.parent?.get<DataContextManager>('DataContextManager')
         let rootContext;
         
-        if(this.config.mode == 'shadow'){
+        if(this.config?.mode == 'shadow'){
             
             rootContext = contextManager.UpgradeContextLevel(this.config.contextid, ContextLevel.Application, rootManager).contextid
             contextManager.hasParentManager = true

@@ -42,9 +42,11 @@ function getAuditContextProvider(config?: IAuditConfig): IAuditContextProvider |
  * @param options Optional configuration for auditing behavior
  */
 export function auditPlugin(schema: Schema, options: IAuditConfig = {}): void {
+  
   const config = { ...DEFAULT_AUDIT_CONFIG, ...options };
 
   // Add audit fields to schema if they don't exist
+  /*
   if (config.enableCreatedBy && !schema.paths.createdBy) {
     schema.add({
       createdBy: {
@@ -81,7 +83,7 @@ export function auditPlugin(schema: Schema, options: IAuditConfig = {}): void {
       },
     });
   }
-
+*/
   // Pre-save hook for new documents
   schema.pre('save', function (next) {
     const contextProvider = getAuditContextProvider(config);
@@ -95,19 +97,19 @@ export function auditPlugin(schema: Schema, options: IAuditConfig = {}): void {
 
     // Set audit fields for new documents
     if (this.isNew) {
-      if (config.enableCreatedBy && currentUserId) {
+      if (config.enableCreatedBy && currentUserId && schema.paths.createdBy) {
         this.createdBy = currentUserId;
       }
-      if (config.enableCreatedDate) {
+      if (config.enableCreatedDate && schema.paths.createdDate) {
         this.createdDate = now;
       }
     }
 
     // Always update lastchanged fields for any save operation
-    if (config.enableLastchangedBy && currentUserId) {
+    if (config.enableLastchangedBy && currentUserId && schema.paths.lastchangedBy) {
       this.lastchangedBy = currentUserId;
     }
-    if (config.enableLastchangedDate) {
+    if (config.enableLastchangedDate && schema.paths.lastchangedDate) {
       this.lastchangedDate = now;
     }
 
@@ -126,10 +128,10 @@ export function auditPlugin(schema: Schema, options: IAuditConfig = {}): void {
     const now = new Date();
     const update: any = {};
 
-    if (config.enableLastchangedBy && currentUserId) {
+    if (config.enableLastchangedBy && currentUserId && schema.paths.lastchangedBy) {
       update.lastchangedBy = currentUserId;
     }
-    if (config.enableLastchangedDate) {
+    if (config.enableLastchangedDate && schema.paths.lastchangedDate) {
       update.lastchangedDate = now;
     }
 
@@ -145,16 +147,16 @@ export function auditPlugin(schema: Schema, options: IAuditConfig = {}): void {
   schema.pre('replaceOne', updateHook);
 
   // Add indexes for audit fields to improve query performance
-  if (config.enableCreatedBy) {
+  if (config.enableCreatedBy && schema.paths.createdBy) {
     schema.index({ createdBy: 1 });
   }
-  if (config.enableLastchangedBy) {
+  if (config.enableLastchangedBy && schema.paths.lastchangedBy) {
     schema.index({ lastchangedBy: 1 });
   }
-  if (config.enableCreatedDate) {
+  if (config.enableCreatedDate && schema.paths.createdDate) {
     schema.index({ createdDate: 1 });
   }
-  if (config.enableLastchangedDate) {
+  if (config.enableLastchangedDate && schema.paths.lastchangedDate) {
     schema.index({ lastchangedDate: 1 });
   }
 }

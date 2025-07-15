@@ -1,6 +1,7 @@
 
 <template>
     <ClientOnly>
+        <Suspense>
         <q-layout v-if="viewModel?.isReady.value" view="hHh lpr fFr" >
             <q-header class="dev-toolbar-header">
                 <div id="dev-toolbar">
@@ -31,7 +32,7 @@
                 <DevelopmentOptionsDrawer
                 @focusView="(view) => viewModel.focusView(view, true)"
                 @updateelement="(values) => viewModel.UpdateFocusedElement(values)"
-                :contextid="viewModel.model.contextid"
+                :contextid="viewModel.model?.contextid"
                 :currentElement="viewModel.GetFocussedElement()">
                 </DevelopmentOptionsDrawer>
 
@@ -55,7 +56,7 @@
                     ref="componentWrapper"
                     @mousemove="(e) => tryFocus(e, false)" 
                     @mousedown="(e) => tryFocus(e, true)"
-                    :id="'developmentcomponent_' + viewModel.model.contextid"
+                    :id="'developmentcomponent_' + viewModel.model?.contextid"
                 >
                     
                     
@@ -102,10 +103,9 @@
                 
                 <DevelopmentContextBarComponent
                 :contextid="viewModel?.currentPage?.value"
-                :element="viewModel.GetFocussedElement().value"
-                @delete-element="() => viewModel.DeleteElement(viewModel.GetFocussedElement().value?.id)"
-                :targetId="'development-container'"
-                >
+                :element="viewModel.GetFocussedElement()?.value"
+                @delete-element="() => viewModel.DeleteElement(viewModel.GetFocussedElement()?.value.id, false,false)"
+                :targetId="'development-container'">
 
                 </DevelopmentContextBarComponent>
                 <div :id="'developmentcomponent_container' + viewModel?.model.name">
@@ -115,12 +115,13 @@
             </div>
         </q-page-container>
     </q-layout>
+    </Suspense>
     </ClientOnly>
 </template>
 
 <script setup lang="ts">   
 
-import { defineExpose, ref, computed, Ref } from 'vue';
+import { defineExpose, ref, computed, getCurrentInstance, watch, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router'
 import { RunTimeVueApplicationViewModel } from '../ViewModels/RuntimeVueApplicationViewModel'
 import TreePathComponent from './ApplicationDevelopment/TreePathComponent.vue';
@@ -136,25 +137,36 @@ import {useI18n } from 'vue-i18n';
 import { EditorModes } from './ApplicationDevelopment/ApplicationSettings/Enums/EditorModes';
 import { useViewPositioning } from '../utils/Helpers/ViewPositioningHelper';
 import ApplicationServerTerminal from './ApplicationDevelopment/Code/ApplicationServerTerminal.vue';
-import { waitForElm } from 'alphautils';
+import { BaseServiceProvider, HTTPClientService, IApplicationConfiguration, waitForElm } from 'alphautils';
 
+
+const route = useRoute()
+const solutionname = route.params.appName // our application id!
+const httpService = BaseServiceProvider.ServiceWithAppContext<HTTPClientService>('HTTPClientService', 0)?.service
+const config = await httpService.sendRequest<IApplicationConfiguration>(
+    {
+        networkname: 'WebCreatorBackend',
+        url: '/applications?id=' + solutionname,
+        method: 'GET',
+    }
+)
 
 const showleftBar = ref(true)
 const optionsBar = ref(true)
 const facade = ref(null)
 const leftBar = ref(null)
-const route = useRoute()
+
 const XXX = ref<HTMLElement>(null)
-const solutionname = route.params.appName
 
-const viewModel = new RunTimeVueApplicationViewModel(solutionname, facade, useI18n(), "mountpoint")
+const instance = getCurrentInstance(); // capture while context is available
 
+const viewModel = new RunTimeVueApplicationViewModel(config.data, facade, useI18n(), "mountpoint", instance)
 
 const positioningHelper = new ViewPositioningHelper(viewModel)
 
 let newElements = null
 
-const { setNextViewElement, startAddNewComponent } = useViewPositioning(viewModel, 'developmentcomponent_' + viewModel.model.contextid)
+const { setNextViewElement, startAddNewComponent } = useViewPositioning(viewModel, 'developmentcomponent_' + viewModel.model?.contextid)
 
 
 function newElementMouseMoveHandler(e: MouseEvent){

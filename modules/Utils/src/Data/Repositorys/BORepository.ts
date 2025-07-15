@@ -130,19 +130,33 @@ export class BORepository implements IRepository{
                 return value;
         }
         //todo the state shadowonwer (most cases the viewmodel) has to provide undo/ redo functions for all types of bos
-        public CreateHistory(contextid: number, commands: IStateHistoryCommands){
-
-                if(!commands.create){
-                        commands.create = this.Create
-                }
-                if(!commands.delete){
-                        commands.delete = this.Delete
-                }
-                if(!commands.update){
-                        commands.update = this.Update
-                }
-                if(!commands.delete){
-                        commands.delete = this.Delete
+        public CreateHistory(contextid: number, commands: IStateHistoryCommands[]){
+                
+                if(commands?.length > 0){
+                        for(const commandSet of commands){
+                                if(!commandSet.create){
+                                        commandSet.create = this.Create
+                                }
+                                if(!commandSet.delete){
+                                        commandSet.delete = this.Delete
+                                }
+                                if(!commandSet.update){
+                                        commandSet.update = this.Update
+                                }
+                                if(!commandSet.delete){
+                                        commandSet.delete = this.Delete
+                                }
+                        }
+                }else{
+                        commands = [
+                                {
+                                        boName: 'View',
+                                        create: (value, addToHistory) => this.Create(value, false, undefined, addToHistory),
+                                        delete: (id, contextid, addToHistory) => this.Delete(id, false, contextid, addToHistory),
+                                        update: (id, value, oldValue, addToHistory) => this.Update(id, value, oldValue, false, contextid, addToHistory),
+                                        updatePartial: (id, value, oldValues, addToHistory) => this.UpdatePartial(id, value, oldValues, false, contextid, addToHistory)
+                                } as IStateHistoryCommands,
+                        ]
                 }
                 console.log("new history", contextid)
                 const history = new StateHistory(contextid, commands);

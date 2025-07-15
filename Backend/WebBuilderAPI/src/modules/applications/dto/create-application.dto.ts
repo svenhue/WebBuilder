@@ -1,5 +1,14 @@
-import { IsString, IsNumber, IsBoolean, IsOptional, IsArray, IsObject } from 'class-validator';
+import {
+  IsString,
+  IsNumber,
+  IsOptional,
+  IsArray,
+  IsObject,
+  ValidateNested,
+} from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { PageConfigurationDto } from './page.dto'; // Pfad ggf. anpassen
 
 export class CreateApplicationDto {
   @ApiPropertyOptional({ description: 'Application ID', example: 1 })
@@ -12,7 +21,6 @@ export class CreateApplicationDto {
   name: string;
 
   @ApiPropertyOptional({ description: 'Application mode', example: 'development' })
-  @IsOptional()
   @IsString()
   mode?: string;
 
@@ -22,14 +30,20 @@ export class CreateApplicationDto {
   modules?: Record<string, any>[];
 
   @ApiPropertyOptional({ description: 'Deployment mode', example: 'spa' })
-  @IsString()
   @IsOptional()
+  @IsString()
   deploymentMode: string;
 
-  @ApiPropertyOptional({ description: 'Page configurations', type: [Object] })
+  @ApiPropertyOptional({
+    description: 'Page configurations',
+    type: [PageConfigurationDto],
+    default: [],
+  })
   @IsOptional()
   @IsArray()
-  pages?: Record<string, any>[];
+  @ValidateNested({ each: true })
+  @Type(() => PageConfigurationDto)
+  pages?: PageConfigurationDto[];
 
   @ApiPropertyOptional({ description: 'Application stylesheets configuration' })
   @IsOptional()
@@ -52,9 +66,9 @@ export class CreateApplicationDto {
   authentication?: Record<string, any>;
 
   @ApiPropertyOptional({ description: 'Internationalization configuration' })
-  @IsObject()
   @IsOptional()
-  internationalization: Record<string, any>;
+  @IsObject()
+  internationalization?: Record<string, any>;
 
   @ApiPropertyOptional({ description: 'Application queries/tasks', type: [Object] })
   @IsOptional()
@@ -62,14 +76,14 @@ export class CreateApplicationDto {
   querys?: Record<string, any>[];
 
   @ApiPropertyOptional({ description: 'Application version', example: '1.0.0' })
-  @IsString()
   @IsOptional()
-  version: string;
+  @IsString()
+  version?: string;
 
-  @ApiProperty({ description: 'Repository URL', example: 'https://github.com/user/repo.git' })
-  @IsString()
+  @ApiPropertyOptional({ description: 'Repository URL', example: 'https://github.com/user/repo.git' })
   @IsOptional()
-  repositoryUrl: string;
+  @IsString()
+  repositoryUrl?: string;
 
   @ApiPropertyOptional({ description: 'Application description' })
   @IsOptional()
@@ -81,5 +95,4 @@ export class CreateApplicationDto {
   @IsArray()
   @IsString({ each: true })
   tags?: string[];
-
 }

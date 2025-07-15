@@ -3,6 +3,7 @@ import { Document } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { IPageConfiguration } from 'webbuilderalphautils';
 import { AuditableSchema } from '../../../shared/database/auditing/schemas/auditable.schema';
+import { PageConfiguration, PageConfigurationSchema } from './page.schema';
 
 export type ApplicationDocument = Application & Document;
 
@@ -13,6 +14,10 @@ export class Application extends AuditableSchema {
   @Prop({ required: false })
   name: string;
 
+  @ApiProperty({ description: 'Application mode', example: 'My WebBuilder App' })
+  @Prop({ required: true })
+  mode: string;
+
   @ApiProperty({ description: 'Application modules', type: [Object] })
   @Prop({ type: [Object], default: [] })
   modules?: Record<string, any>[];
@@ -22,8 +27,8 @@ export class Application extends AuditableSchema {
   deploymentMode: string;
 
   @ApiProperty({ description: 'Page configurations', type: [Object] })
-  @Prop({ type: [Object], default: [] })
-  pages?: Array<IPageConfiguration>;
+  @Prop({ type: [PageConfigurationSchema], default: [] })
+  pages?: PageConfiguration[];
 
   @ApiProperty({ description: 'Application stylesheets configuration' })
   @Prop({ type: Object })

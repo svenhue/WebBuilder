@@ -21,7 +21,7 @@ export class AxiosWrapper{
             data: config?.data
         })
     }
-    public Get(url: string, config?: AxiosRequestConfig, callback?: (response: AxiosResponse) => void){
+    public async Get(url: string, config?: AxiosRequestConfig, callback?: (response: AxiosResponse) => void){
         
         return this.instance?.get(url, config).then((response: AxiosResponse) => {
             
@@ -65,7 +65,7 @@ export class AxiosWrapper{
         }
         return config;
     }
-    public sendRequest(options: IRequestConfig, callback?: (response: AxiosResponse) => Promise<AxiosResponse>){
+    public async sendRequest(options: IRequestConfig, callback?: (response: AxiosResponse) => Promise<AxiosResponse>){
         const config = this.createAxiosConfig(options);
         let url;
 
@@ -74,10 +74,9 @@ export class AxiosWrapper{
         }else{
             url = this.config.url + options.url;
         }
-        try{
         switch(options?.method){
             case "GET":
-                return this.Get(url, config, callback);
+                return await this.Get(url, config, callback);
                 break;
             case "POST":
                 return this.Post(url,config);
@@ -90,9 +89,6 @@ export class AxiosWrapper{
                 break;
             default:
                 throw new Error("Method" + options.method + "not supported!")
-        }
-        }catch(error){
-            throw new Error("Send request error:", error)
         }
 
     }

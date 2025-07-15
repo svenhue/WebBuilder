@@ -1,11 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { ObjectId } from 'mongodb';
 import { Application, ApplicationDocument } from './schemas/application.schema';
 import { TenancyService } from '../../shared/tenancy/tenancy.service';
 import { CreateApplicationDto } from './dto/create-application.dto';
 import { UpdateApplicationDto } from './dto/update-application.dto';
 import { ApplicationDeploymentModes } from 'webbuilderalphautils';
+import mongoose from 'mongoose';
 
 @Injectable()
 export class ApplicationsService {
@@ -42,9 +44,9 @@ export class ApplicationsService {
     return application;
   }
 
-  async findByApplicationId(applicationId: number): Promise<ApplicationDocument> {
+  async findByApplicationId(applicationId: string): Promise<ApplicationDocument> {
 
-    const application = await this.applicationModel.findOne({ id: applicationId }).exec();
+    const application = await this.applicationModel.findOne({ "_id": new mongoose.Types.ObjectId(applicationId) }).exec();
     if (!application) {
       throw new NotFoundException(`Application with ID ${applicationId} not found`);
     }
