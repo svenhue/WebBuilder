@@ -1,6 +1,7 @@
 Started this project to learn TS, Nodejs, Nitro, Tailwind, Vue, Nuxt, Langchain and FastAPI
 
-Core functionality: Building web applications with an visual interface
+Core functionality: Building web applications with an visual interface, Export as casual Nuxtjs Application and generate json config with langgraph (based on the json config the app will be generated)
+
 
 <img width="1505" alt="Bildschirmfoto 2025-07-01 um 09 07 44" src="https://github.com/user-attachments/assets/12e8fb57-87ab-4484-9ea5-7936b5a94a04" />
 
