@@ -8,18 +8,29 @@ export class AxiosWrapper{
     instance?: AxiosInstance;
     config: IExternalNetworkConfiguration;
 
-    constructor(config: IExternalNetworkConfiguration){
+    constructor(
+        config: IExternalNetworkConfiguration,
+        requestInterceptors?: Array<(request: AxiosRequestConfig) => AxiosRequestConfig>){
         this.config = config;
-        this.setup(config);
+        this.setup(config, requestInterceptors);
         
     }
 
-    private setup(config: IExternalNetworkConfiguration){
+    private setup(config: IExternalNetworkConfiguration, requestInterceptors?: Array<(request: AxiosRequestConfig) => AxiosRequestConfig>){
         this.instance = axios.create({
             baseURL: config.url,
             headers: config?.headers,
             data: config?.data
         })
+        if(requestInterceptors != undefined){
+            requestInterceptors?.forEach((interceptor) => {
+                this.instance.interceptors.request.use(interceptor);
+            }, (error: AxiosError) => {
+                console.error("Request Interceptor Error:", error);
+                return Promise.reject(error);
+            });
+        }
+ 
     }
     public async Get(url: string, config?: AxiosRequestConfig, callback?: (response: AxiosResponse) => void){
         

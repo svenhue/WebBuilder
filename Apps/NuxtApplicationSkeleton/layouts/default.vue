@@ -1,6 +1,8 @@
 <template>
     <div style="height: 100%; width: 100%">
-      <UNavigationMenu orientation="vertical" :items="items" class="data-[orientation=vertical]:w-48" />
+     <div style="height: 100%; width: 100%">
+      <HeaderComponent></HeaderComponent>
+    </div>
         <main style="height: 100%; width: 100%">
         <slot ></slot>
         </main>
@@ -9,8 +11,7 @@
 
 
 <script setup lang="ts">
-import type { NavigationMenuItem,  } from '@nuxt/ui'
-
+import HeaderComponent from '~/components/HeaderComponent.vue';
 const items = [
 
 ]

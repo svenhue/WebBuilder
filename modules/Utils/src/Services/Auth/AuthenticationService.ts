@@ -19,26 +19,29 @@ abstract class AuthenticationService implements ICallAbleServiceAction{
     private config: IAuthenticationConfiguration;
     private store: ReturnType<typeof useIdentityStore>;
     private loggingService: LoggingService
+    private httpService: IHTTPClientService;
 
     constructor(
-        config: IAuthenticationConfiguration
+        config: IAuthenticationConfiguration,
+        httpService: IHTTPClientService,
     ){
+        this.httpService = httpService;
         this.config = config
         this.store = useIdentityStore();
     }
     public execute(): void {
         this.Authenticate(this.config);
     }
-    public async Authenticate(config: IAuthenticationConfiguration){
-        switch(config.mechanism){
+    public async Authenticate(): Promise<void>{
+        switch(this.config.mechanism){
             case AuthenticationMechanism.UserCredentials:
-                this.AuthenticateOAuth2();
+                await this.AuthenticateOAuth2();
                 break;
             case 2:
-                await this.AuthenticateJWT(config.username, config.password, config.tokenEndpoint)
+                await this.AuthenticateJWT(this.config.username, this.config.password, this.config.tokenEndpoint)
                 break;
             default:
-                this.loggingService.log({message: "Unsupported authentication mechanism:" +  config.mechanism})
+                this.loggingService.log({message: "Unsupported authentication mechanism:" +  this.config.mechanism})
                 throw new Error('Unsupported authentication mechanism');
         }
         if(!this.isAuthenticated){
@@ -60,13 +63,13 @@ abstract class AuthenticationService implements ICallAbleServiceAction{
     private SetIdentity(data: IUserIdentity){
         this.store.setIdentity(data)
     }
-    private async AuthenticateJWT(emailOrUsername: string, password: string, tokenEndpoint: string){
+    private async AuthenticateJWT(emailOrUsername: string, password: string, tokenEndpoint: string, req){
         const body = {
             email: emailOrUsername,
             username: emailOrUsername,
             password: password
         }
-        const response = await this.sendRequest({
+        const response = await this.httpService.sendRequest({
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -75,26 +78,29 @@ abstract class AuthenticationService implements ICallAbleServiceAction{
             data: JSON.stringify(body),
             isolated: true
         }, true)
-
-        const token = response.data['access_token']
+        console.log("Response from authentication:", response, body, tokenEndpoint)
+        const token = response.data['access_token'] ?? false;
 
         if(!token){
-            this.loggingService.log({message:"Error during authentication: Could not find acces_token" })
+           // this.loggingService.log({message:"Error during authentication: Could not find acces_token" })
             throw new Error("Error during authentication: Could not find acces_token")
         }
         this.store.setIsAuthenticated(true)
         this.store.setIdentity(response.data)
     }
-    public setAuthRequestConfigInterceptor(request: IRequestConfig){
+    public SetAuthenticationHeader(request: AxiosRequestConfig){
+        if(this.GetToken() == undefined) throw new Error("No token found, please authenticate first");
+        request.headers.Authorization = `Bearer ${this.GetToken()}`;
+    }
+    public async setAuthRequestConfigInterceptor(request: IRequestConfig){
         if(this.isAuthenticated()){
             if(!request?.headers){
                 request.headers = {}
             }
             request.headers['Authorization'] = `Bearer ${this.GetToken()}`
+        }else {
+            await this.Authenticate(this.config, request)
         }
-    }
-    public abstract sendRequest<T = {}>(request: IRequestConfig, skipAllInterceptors: boolean = false): AxiosResponse<T>{
-        throw new Error("Method not implemented")
     }
 
     public async RequestToken(username: string, password: string): Promise<{access_token: string, expires_in: string, token_type: string}>{
@@ -113,7 +119,7 @@ abstract class AuthenticationService implements ICallAbleServiceAction{
             params.append(property, formdata[property]);
         }
 
-        const result = await this.sendRequest<{
+        const result = await this.httpService.sendRequest<{
             access_token: string, 
             expires_in: string, 
             token_type: string

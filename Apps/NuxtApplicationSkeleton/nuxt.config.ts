@@ -3,23 +3,23 @@
 import { resolve } from 'path'
 import { config } from './AppConfigs/pages'
 const prefix = `monaco-editor/esm/vs`;
-
+import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
 
   ssr: false, // Enable server-side rendering
   devtools: { enabled: true },
-  modules:[/*'nuxt-electron',*/ 'alphaauthmodule',   'nuxt-monaco-editor', '@nuxt/ui','nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n",'@nuxtjs/tailwindcss',"alphaviewlibrary/nuxt", "hybridappdev/nuxt"],
+  modules:[/*'nuxt-electron',*/ 'alphaauthmodule',  'nuxt-monaco-editor', 'nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n","alphaviewlibrary/nuxt", "hybridappdev/nuxt"],
 
-  tailwindcss:{
-    exposeConfig: true,
-    cssPath: ['~/assets/css/tailwind.css', { injectPosition: "first" }],
-    configPath: 'tailwind.config.ts',
-    viewer: true,
-  },
+  css: [
+  'quasar/src/css/index.sass',
+  '@quasar/extras/material-icons/material-icons.css'
+],
+build: {
+  transpile: ['quasar']
+},
   quasar:{
     plugins: ['Notify']
   },
-
   i18n:{
     vueI18n: './i18n.config.ts',
     defaultLocale: 'en',
@@ -39,16 +39,16 @@ export default defineNuxtConfig({
     },
     routeRules:{
       '**':{
-        headers: {
-          'Cross-Origin-Embedder-Policy': 'require-corp',
-          'Cross-Origin-Opener-Policy': 'same-origin',
-        },
+       
       }
     }
   },
 
   vite: {
     //plugins: [nodePolyfills()],
+    plugins: [
+      tailwindcss(),
+    ],
     resolve: {
       alias:{
         "alphautils": "webbuilderalphautils"
@@ -59,12 +59,6 @@ export default defineNuxtConfig({
         allow:[
           'C:/Projects/WEBUI/WebUI/WebBuilder/modules/HybridApplicationDevelopment/assets/icons/'
         ]
-      },
-      headers:{
-        'Cross-Origin-Opener-Policy': 'same-origin',
-        'Cross-Origin-Embedder-Policy': 'require-corp',
-        'Cross-Origin-Resource-Policy': 'cross-origin'
-      
       }
     },
     optimizeDeps:{

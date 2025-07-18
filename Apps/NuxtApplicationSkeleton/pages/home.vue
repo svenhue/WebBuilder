@@ -1,16 +1,14 @@
 <template>
-
-        <NuxtLayout name="tabslayout">
-            <NuxtPage />
-        </NuxtLayout>
-
+    <div>
+        
+    </div>
 </template>
 
 
 <script setup lang="ts">
 
 definePageMeta({
-    layout: 'tablayout',
+    layout: 'default',
     middleware: 'auth'
 })
 </script>

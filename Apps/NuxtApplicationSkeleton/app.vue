@@ -1,14 +1,15 @@
 <template>
+
     <div class="app-home">
       <NuxtLayout name="default">
         <NuxtPage />
       </NuxtLayout>
     </div>
+
 </template>
 
 
 <script setup lang="ts">
-
 
 </script>
 

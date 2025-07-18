@@ -1,10 +1,10 @@
 import { defineNuxtModule, createResolver, extendPages } from '@nuxt/kit'
-import { resolve } from 'path'
 
 export default defineNuxtModule({
 
   
   setup(options){
+    console.log('Hybrid Application Development Module Loaded')
     const resolver = createResolver(import.meta.url)
     extendPages((pages => {
       const homePage = pages.find(page => page.path === '/home')

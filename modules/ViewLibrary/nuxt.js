@@ -2,6 +2,9 @@ import { defineNuxtModule, createResolver } from '@nuxt/kit'
 import { resolve } from 'path'
 
 export default defineNuxtModule({
+  setup(options, nuxt) {
+    console.log('Nuxt Application Skeleton Module Loaded')
+  },
   hooks: {
     'components:dirs': (dirs) => {
       const { resolve } = createResolver(import.meta.url)

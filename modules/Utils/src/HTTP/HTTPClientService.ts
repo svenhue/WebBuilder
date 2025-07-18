@@ -5,25 +5,33 @@ import { IHTTPClientService } from './IHTTPClientService.js';
 import { AxiosResponse } from 'axios';
 import { IRequestConfig } from './IRequestConfig.js';
 import { inject, injectable } from 'inversify';
-import { AuthenticationService } from '../Services/Auth/AuthenticationService.js';
+
 import { LoggingService } from 'src/Logging/LoggingService.js';
+import { AxiosAuthenticationInterceptor } from './Interceptors/axiosAuthenticationInterceptor.js';
+import { AuthenticationService } from '../Services/Auth/AuthenticationService.js';
 
 @injectable()
-export class HTTPClientService extends AuthenticationService implements IHTTPClientService {
+export class HTTPClientService implements IHTTPClientService {
     
     public networks: Array<IExternalNetworkConfiguration> = Array<IExternalNetworkConfiguration>();;
     private authService: AuthenticationService;
-    clients: Array<AxiosWrapper>;
-
+    clients: Array<AxiosWrapper>
     constructor(
         @inject("LoggingService") private loggingService: LoggingService
     ){
-        super()
         this.clients = Array<AxiosWrapper>();
 
     }
     private createClient(config: IExternalNetworkConfiguration){
-        const client = new AxiosWrapper(config);
+        let requestInterceptors: Array<(request: IRequestConfig) => IRequestConfig> = [];
+        if(config.authentication){
+            if(!this.authService){
+                this.authService = new AuthenticationService(config.authentication, this);
+            }
+            console.log("add interceptor")
+            requestInterceptors.push(AxiosAuthenticationInterceptor(this.authService).intercept)
+        }
+        const client = new AxiosWrapper(config, requestInterceptors);
         return client
     }
     private GetOrCreateClient(request: IRequestConfig): AxiosWrapper
@@ -61,33 +69,16 @@ export class HTTPClientService extends AuthenticationService implements IHTTPCli
         return client;
     }
 
-    private addRequestInterceptors(request: IRequestConfig){
-        this.setAuthRequestConfigInterceptor(request);
-    }
     public override async sendRequest<T = {}>(request: IRequestConfig, skipAllInterceptors: boolean = false): AxiosResponse<T>{
         try{
-            this.addRequestInterceptors(request)
             const client = this.GetOrCreateClient(request);
-            let result = await client.sendRequest(request) as Promise<AxiosResponse>;
 
-            if(skipAllInterceptors){
-                return result
-            }
-            if(this.AuthenticationFailed(result)){
-                console.log('Authentication failed, trying to authenticate again')
-                await this.Authenticate(this.GetAuthConfig(request))
-                if(!this.isAuthenticated()){
-                    throw new Error("Unable to authenticate")
-                }else{
-                    console.log('Authentication successful, retrying request')
-                    this.addRequestInterceptors(request)
-                    result = await client.sendRequest(request)
-                }
-            }   
+            let result = await client.sendRequest(request) as Promise<AxiosResponse>;
+            console.log("Result from HTTPClientService:", result);
             return result;
 
         }catch(error){
-            console.error("Error during request:" + error);
+            this.loggingService.log({value: error})
             throw new Error("error during request:", error)
         } 
     }
