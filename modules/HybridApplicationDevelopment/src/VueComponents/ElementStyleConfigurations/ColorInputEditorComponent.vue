@@ -21,9 +21,9 @@
                         :style="{backgroundColor: color.value, marginTop: '8px', marginRight: '5px', width: '10px', height: '10px'}">
                       
                         </div>
-                        <div-section>
+                        <div>
                                 {{ color.label }}
-                        </div-section>
+                        </div>
                         
                     </div>
                 </div>

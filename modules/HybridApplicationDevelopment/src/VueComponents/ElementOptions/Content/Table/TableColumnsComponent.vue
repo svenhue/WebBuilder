@@ -19,7 +19,7 @@
         <div dense >
             
             <div v-show="showNewItem" dense>
-                <div-section>
+                <div>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense 
                     v-model="newColumnModel.field" 
@@ -27,11 +27,11 @@
                     @update:model-value="(v) => {newColumnModel.name = v, newColumnModel.label = v, newColumnModel.align = 'left'}">
 
                     </InputComponent>
-                </div-section>
-                <div-section side> 
+                </div>
+                <div side> 
                     <ButtonComponent dense icon='edit' @click='editColumn(newColumnModel)'></ButtonComponent>
                     <ButtonComponent dense icon='delete' @click='deleteColumn(newColumnModel)'></ButtonComponent>
-                </div-section>
+                </div>
             </div>
             <div dense v-for='column in columnsModel' :key='column'>
              
@@ -45,13 +45,13 @@
                     }">
                     </InputComponent>
             
-                <div-section side> 
+                <div side> 
                     <ButtonComponent dense icon='edit' @click='editColumn(column)'></ButtonComponent>
                     
-                </div-section>
-                <div-section side>
+                </div>
+                <div side>
                     <ButtonComponent dense icon='delete' @click='deleteColumn(column)'></ButtonComponent>
-                </div-section>
+                </div>
             </div>
         </div>
        

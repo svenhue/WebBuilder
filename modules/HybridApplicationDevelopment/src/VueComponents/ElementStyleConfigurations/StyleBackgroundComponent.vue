@@ -298,10 +298,11 @@ import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ref, computed, reactive, inject } from 'vue';
-import { colors } from 'quasar';
+
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';
 
-
+//todo
+const colors = []
 const darkgrey = colors.getPaletteColor('darkgrey')
 const brightgrey = colors.getPaletteColor('brightgrey')
 const props = defineProps({

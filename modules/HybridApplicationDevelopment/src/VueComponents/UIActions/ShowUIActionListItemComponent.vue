@@ -7,11 +7,11 @@
         </div>
 
         <div clickable @click="editAction">
-            <div-section>
-                <div-label>
+            <div>
+                <div>
                     {{ action.config.actionIdentifier }}
-                </div-label>
-            </div-section>
+                </div>
+            </div>
         </div>
     </div>
 </template>

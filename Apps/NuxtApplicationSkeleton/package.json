@@ -13,6 +13,8 @@
     "generatePages": "npx tsx modules/AlphaApp/GeneratePagesScript.ts --experimentalDecorators"
   },
   "dependencies": {
+    "@nuxt/image": "^1.10.0",
+    "@nuxt/ui-pro": "^3.2.0",
     "@nuxtjs/i18n": "^9.1.3",
     "@pinia/nuxt": "^0.5.1",
     "@rollup/plugin-typescript": "^11.1.6",

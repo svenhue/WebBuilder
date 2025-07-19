@@ -17,12 +17,12 @@
         @click="focssedEvent = event, showEdit = true"
         clickable
         dense>
-            <div-section>
-                <div-label>{{ event?.identifier }}</div-label>
-            </div-section>
-            <div-section>
-                <div-label> {{  event?.actions?.map(a => { return a.identifier} ) }}</div-label>
-            </div-section>
+            <div>
+                <div>{{ event?.identifier }}</div>
+            </div>
+            <div>
+                <div> {{  event?.actions?.map(a => { return a.identifier} ) }}</div>
+            </div>
         </div>
     </div>
 

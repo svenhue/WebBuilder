@@ -2,14 +2,14 @@
     <div class="tree-path">
         <UBreadcrumb  gutter="xs" class="tree-step">
             
-            <UBreadcrumb-el 
+            <UBreadcrumb 
             v-for="el in tree" 
             :class="getClass(el)"
             :key="el.id" 
             :label="formatElementTag(el.tag)" 
             @click="$emit('focusView', el.id, true)" 
             >
-            </UBreadcrumb-el>
+            </UBreadcrumb>
         </UBreadcrumb>
     </div>
 </template>

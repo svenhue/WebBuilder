@@ -17,18 +17,18 @@
                 class="history-stack-item"
                 v-for="item in history.history?.value?.values">
 
-                    <div-section :style="{position: 'relative'}">
-                        <div-label>
+                    <div :style="{position: 'relative'}">
+                        <div>
                             {{changeDescription(item)}}
-                        </div-label>
-                        <div-label>
+                        </div>
+                        <div>
                             <ButtonComponent dense icon="info" borderless unelevated 
                             :style="{position: 'absolute', left: '-18px', top: '-5px'}"  size="sm">
 
                             </ButtonComponent>
-                        </div-label>
-                    </div-section>
-                    <div-section side :style="{display: 'inline'}"> 
+                        </div>
+                    </div>
+                    <div side :style="{display: 'inline'}"> 
                         <ButtonComponent disable dense icon="undo" borderless unelevated @click="doUndo(item)">
                             <UTooltip>
                             Discard
@@ -39,10 +39,10 @@
                             Commit
                             </UTooltip>
                         </ButtonComponent>
-                    </div-section>
-                    <div-section side>
+                    </div>
+                    <div side>
                       
-                    </div-section>
+                    </div>
                 </div>
 
             </div>

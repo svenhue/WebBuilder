@@ -1,11 +1,11 @@
 <template>
-
+  <UApp>
     <div class="app-home">
-      <NuxtLayout name="default">
+      <NuxtLayout >
         <NuxtPage />
       </NuxtLayout>
     </div>
-
+  </UApp>
 </template>
 
 

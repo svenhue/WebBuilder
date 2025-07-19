@@ -13,14 +13,14 @@
         <div dense>
      
             <div dense v-for="option in options" :key="option.value" >
-                <div-section>
+                <div>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense :model-value="option.value" @update:model-value="(val) => saveUpdate(val, option)" @mouseout="updateOptions()" >
                     </InputComponent>
-                </div-section>
-                <div-section side>
+                </div>
+                <div side>
                     <ButtonComponent dense icon='delete' @click='deleteOption(option)'></ButtonComponent>^
-                </div-section>
+                </div>
             </div>
         </div>
 

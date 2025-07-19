@@ -27,12 +27,12 @@
                 @update:model-value="(val) => updateFieldProp(field, 'label',val)">
                 </InputComponent>
                 
-                <div-section side> 
+                <div side> 
                     <ButtonComponent dense icon='edit' @click='editField(field)'></ButtonComponent>
-                </div-section>
-                <div-section side>
+                </div>
+                <div side>
                     <ButtonComponent dense icon='delete' @click='deletefield(field)'></ButtonComponent>
-                </div-section>
+                </div>
             </div>
         
         </div>

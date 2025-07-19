@@ -49,7 +49,7 @@
             </button>
             <div>
                 <div v-for="action in eventCopy.actions" :key="action">
-                    <div-section>
+                    <div>
                         <EditActionComponent
                         @update-action="(action) => UpdateOrSaveAction(action)"
                         @delete-action="(action) => DeleteAction(action)"
@@ -57,7 +57,7 @@
                         :action="action">
 
                         </EditActionComponent>
-                    </div-section>
+                    </div>
                 </div>
             </div>
         </div>

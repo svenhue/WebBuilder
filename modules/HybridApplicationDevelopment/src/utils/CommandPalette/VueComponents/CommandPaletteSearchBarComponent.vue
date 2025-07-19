@@ -22,9 +22,9 @@
     >
         <template #option="scope">
             <div>
-                <div-section class="text-grey">
+                <div class="text-grey">
                     {{ scope.itemProps.label }}
-                </div-section>
+                </div>
             </div>
         </template>
     </SelectComponent>

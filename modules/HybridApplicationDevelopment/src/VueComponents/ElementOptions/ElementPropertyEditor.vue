@@ -3,10 +3,10 @@
         <div label="Propertys">
             <div dense
             v-for="(value, propertyName) in viewProperties" :key="propertyName">
-                <div-section>
-                    <div-label>{{propertyName}}</div-label>
-                </div-section>
-                <div-section>
+                <div>
+                    <div>{{propertyName}}</div>
+                </div>
+                <div>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" @update:model-value="(value) => emits('updateElement', 
@@ -17,7 +17,7 @@
                         }
                     ])" dense borderless type="text" >
                     </InputComponent>
-                </div-section>
+                </div>
             </div>
         </div>
     </div>

@@ -3,6 +3,12 @@ import { IViewConfiguration } from '../../View/IViewConfiguration.js';
 
 export function useViewConfiguration(contextid: number, viewIdentifier: number, view: IViewConfiguration, ignoreError = false) : {view: MaybeRefOrGetter<IViewConfiguration>, children: MaybeRefOrGetter<Array<IViewConfiguration>>} {
   
+    if(!contextid && !viewIdentifier){
+        return {
+            view: {} as IViewConfiguration,
+            children: []
+        }
+    }
     if(view != undefined){
         return {view: view, children: view.children}
     }

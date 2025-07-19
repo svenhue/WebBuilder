@@ -47,11 +47,11 @@ function edit(node){
                 <div dense
                 v-for="node in viewModel?.getAll()?.value" :key="node"
                 >
-                    <div-section>
+                    <div>
                         {{ node?.name }}
-                    </div-section>
+                    </div>
 
-                    <div-section side>
+                    <div side>
                         <q-btn dense icon="menu" unelevated>
                             <div dense menu-anchor="bottom right" autoclose>
                                 <div>
@@ -73,7 +73,7 @@ function edit(node){
                                 </div>
                             </div>
                         </q-btn>
-                    </div-section>
+                    </div>
 
                 </div>
             </div>

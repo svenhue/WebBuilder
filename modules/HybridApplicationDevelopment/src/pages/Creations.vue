@@ -7,13 +7,13 @@
 
         <div>
             <div dense v-for="item in creationsComputed" :key="item.id" clickable>
-                <div-section avatar>
+                <div avatar>
                     <UIcon :name="item.icon" size="2.5rem" class="q-mr-sm" />
-                </div-section>
-                <div-section>
-                    <div-label class="text-h6">{{ item.name }}</div-label>
-                    <div-label caption>{{ item.description }}</div-label>
-                </div-section>
+                </div>
+                <div>
+                    <div class="text-h6">{{ item.name }}</div>
+                    <div caption>{{ item.description }}</div>
+                </div>
             </div>
         </div>
     </div>

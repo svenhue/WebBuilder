@@ -19,9 +19,9 @@
                 <div>
                     <div v-for="option in urlOptions" :key="option" clickable v-ripple
                     @click="() => $emit('updateUrl', option)">
-                        <div-section>
+                        <div>
                             {{ option }}
-                        </div-section>
+                        </div>
                     </div>    
                 </div>
                 </template>

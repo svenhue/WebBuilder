@@ -3,23 +3,23 @@
 
         <div dense ref="listRef">
             <div dense>
-                <div-label>
+                <div>
                     Validation Rules
-                </div-label>
+                </div>
                
                 <ButtonComponent dense icon='add' @click='addRule()'></ButtonComponent>
 
             </div>
             <div dense
             v-for="rule in rules" :key="rule.rule">
-                <div-section>
+                <div>
                     {{  rule.name }}
-                </div-section>
+                </div>
 
-                <div-section side>
+                <div side>
                     <ButtonComponent dense icon='delete' @click='deleteRule(rule)'></ButtonComponent>
                     <ButtonComponent dense icon='edit' @click='openEditor(rule)'></ButtonComponent>
-                </div-section>
+                </div>
 
             </div>
         </div>

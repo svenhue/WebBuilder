@@ -12,14 +12,14 @@
         }">
             <div dense>
                 <div>
-                    <div-section>
-                        <div-label>
+                    <div>
+                        <div>
                             Add Page
-                        </div-label>
-                    </div-section>
-                    <div-section side>
+                        </div>
+                    </div>
+                    <div side>
                         <ButtonComponent icon="add" class="cursor-pointer" @click="viewModel.AddPage()"></ButtonComponent>
-                    </div-section>
+                    </div>
                 </div>
                 <div
                 v-for="page of viewModel.GetPageEntitys().value"
@@ -29,15 +29,15 @@
                 v-ripple
                 :active="viewModel.currentPage.value.id == page.id"
                 @click="viewModel.NavigateToPage(page.name)">
-                    <div-section>
-                        <div-label>
+                    <div>
+                        <div>
                             {{page?.name}}
-                        </div-label>
-                    </div-section>
-                    <div-section side>
+                        </div>
+                    </div>
+                    <div side>
                         <ButtonComponent  icon="edit" class="cursor-pointer" @click="() => {selectedPage = page,showEditDialog = true}" ></ButtonComponent>
                         <ButtonComponent icon="delete" class="cursor-pointer" @click="() => {selectedPage = page, showDeletePageDialog = true}"></ButtonComponent>
-                    </div-section>
+                    </div>
                 </div>
             </div>
 

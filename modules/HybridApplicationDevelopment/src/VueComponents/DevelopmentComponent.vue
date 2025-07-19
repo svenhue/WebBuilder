@@ -2,7 +2,7 @@
 <template>
     <ClientOnly>
         <Suspense>
-
+            <div>
             <UHeader class="dev-toolbar-header">
                 <div id="dev-toolbar">
                     
@@ -114,7 +114,7 @@
                 </div>
                 
             </div>
-
+</div>
     </Suspense>
     </ClientOnly>
 </template>

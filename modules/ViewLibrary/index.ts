@@ -3,7 +3,7 @@ import DefaultRootComponent from './src/Application/DefaultApplicationRootCompon
 import ButtonComponent from './src/Basic/ButtonComponent.vue'
 import DivBlockComponent from './src/Basic/DivBlockComponent.vue'
 import ListComponent from './src/Basic/ListComponent.vue'
-import ListItemComponent from './src/Basic/ListItemComponent.vue'
+
 import SectionComponent from './src/Structure/SectionComponent.vue'
 import TreeComponent from './src/Structure/TreeComponent.vue'
 import QuickStackComponent from './src/Structure/QuickStackComponent.vue'
@@ -54,11 +54,11 @@ import CardComponent from './src/Basic/CardComponent.vue'
 import DialogComponent from './src/Basic/DialogComponent.vue'
 import LinkComponent from './src/Navigation/LinkComponent.vue'
 import CarouselComponent from './src/Media/CarouselComponent.vue'
-import ApplicationRootComponent from './src/Application/ApplicationRootComponent.vue'
+
 import { type IComponentResolver } from './src/Renderer/IComponentResolver.js'
 import { BaseComponentResolver } from './src/Renderer/BaseComponentResolver.js'
 import { UITreeProviderService } from './src/Renderer/UITreeProviderService.js'
 //import { JSONEditor } from 'jsoneditor'
 import BaseViewTreeRenderer from './src/Renderer/BaseViewTreeRenderer.vue'
 import ChatComponent from './src/Chat/ChatComponent.vue'
-export { ChatComponent, ViewLibrary,AlertComponent, BaseViewTreeRenderer,IComponentResolver, LinkComponent,ApplicationRootComponent, UITreeProviderService,BaseComponentResolver, DialogComponent, CarouselComponent, AccordionComponent, BadgeComponent, CardComponent, AvatarComponent, ToolbarComponent, DropdownButtonComponent,SelectComponent, ExpansionItemComponent, VideoComponent, TextAreaComponent, CheckBoxComponent, RatingComponent, JSCodeEditorComponent, type IFormField,TextInputEditorComponent,type IFormViewConfiguration, type ICodeEditorService, TableComponent,InputComponent, FormComponent, ImageSource, ViewDevDefinitions, DrawerComponent, ImageComponent, IconComponent, ViewTemplates, DropdownMenuComponent, FooterComponent, NavBarComponent, LinkBlockComponent, HeaderComponent, ComponentTreeBase, ViewConfigs, FormViewOptionsComponent, TextLinkComponent, BlockQuoteComponent, ParagraphComponent, HeadingComponent, TabbedContainerComponent, DefaultRootComponent, ButtonComponent, DivBlockComponent, ListComponent, ListItemComponent, SectionComponent, TreeComponent, QuickStackComponent, ContainerComponent }
+export { ChatComponent, ViewLibrary,AlertComponent, BaseViewTreeRenderer,IComponentResolver, LinkComponent, UITreeProviderService,BaseComponentResolver, DialogComponent, CarouselComponent, AccordionComponent, BadgeComponent, CardComponent, AvatarComponent, ToolbarComponent, DropdownButtonComponent,SelectComponent, ExpansionItemComponent, VideoComponent, TextAreaComponent, CheckBoxComponent, RatingComponent, JSCodeEditorComponent, type IFormField,TextInputEditorComponent,type IFormViewConfiguration, type ICodeEditorService, TableComponent,InputComponent, FormComponent, ImageSource, ViewDevDefinitions, DrawerComponent, ImageComponent, IconComponent, ViewTemplates, DropdownMenuComponent, FooterComponent, NavBarComponent, LinkBlockComponent, HeaderComponent, ComponentTreeBase, ViewConfigs, FormViewOptionsComponent, TextLinkComponent, BlockQuoteComponent, ParagraphComponent, HeadingComponent, TabbedContainerComponent, DefaultRootComponent, ButtonComponent, DivBlockComponent, ListComponent, SectionComponent, TreeComponent, QuickStackComponent, ContainerComponent }

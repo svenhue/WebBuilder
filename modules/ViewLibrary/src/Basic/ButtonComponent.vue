@@ -24,26 +24,28 @@
 
 <script setup lang='ts'>
 import { ViewElement, useViewConfiguration } from 'alphautils';
-import { ref, onMounted, onBeforeUnmount, MaybeRefOrGetter, computed } from 'vue';
+import { ref, onMounted, onBeforeUnmount, MaybeRefOrGetter, computed, onBeforeMount } from 'vue';
 import { IViewConfiguration } from 'alphautils';
 import { useI18n } from 'vue-i18n';
 
 const props = defineProps({
   viewId: {
     type: Number,
-    required: true,
+    required: false,
   },
   contextid: {
     type: Number,
-    required: true,
+    required: false,
   }
 });
 
 const { t } = useI18n();
 
+
 const viewRef = ref<HTMLButtonElement | null>(null);
 const {view, children } = useViewConfiguration(props.contextid, props.viewId) as MaybeRefOrGetter<[ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]>;
-const viewelement = new ViewElement<HTMLButtonElement>(view);
+
+  const viewelement = new ViewElement<HTMLButtonElement>(view);
 
 // Computed properties for styling and behavior
 const buttonClasses = computed(() => {

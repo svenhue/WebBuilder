@@ -8,11 +8,11 @@
         </div>
         <div>
             <div dense v-for="child in children" :key="child.id">
-                <div-section><InputComponent class="alpha-input-base spec-input"
-                    :input-class="'alpha-input'" dense @update:model-value="(val) => viewModel.PartialUpdateView(child.id, {keyValuePairs:[{key: 'properties.label', value: val}]})" :model-value="child.properties?.label" > </InputComponent> </div-section>
-                <div-section side>
+                <div><InputComponent class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense @update:model-value="(val) => viewModel.PartialUpdateView(child.id, {keyValuePairs:[{key: 'properties.label', value: val}]})" :model-value="child.properties?.label" > </InputComponent> </div>
+                <div side>
                     <UIcon name="close" @click="viewModel.DeleteElement(child.id)"></UIcon>
-                </div-section>
+                </div>
 
             </div>
         </div>

@@ -38,7 +38,7 @@ import { TemplateDto } from './TemplateDto';
 import { UITemplateTypes } from './UITemplateTypes';
 import { interfaces} from 'inversify';
 
-import { QUploader, useQuasar } from 'quasar';
+
 import { FocussedViewContextService } from 'alphautils';
 
 let JsonEditor = null;
@@ -68,7 +68,7 @@ defineExpose({
 })
 
 const $q = useQuasar();
-const Uploader = ref<QUploader | null>(null);
+const Uploader = ref(null);
 const jsoneditorref = ref<HTMLElement | null>(null);
 const template = reactive<TemplateDto>({
     id: '',

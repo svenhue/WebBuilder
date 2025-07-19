@@ -8,7 +8,7 @@
         :style="{left: '92px', top: '2px'}">
         {{  styles.marginTop  }}
         <UPopover 
-        v-model="styles.marginTop" class="c-darkgrey" v-slot="scope">
+        v-model="styles.marginTop" class="c-darkgrey" >
         <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
@@ -32,7 +32,7 @@
         class="spec-input"
         :style="{left: '5px', top: '48px'}"> 
                {{  styles.marginLeft  }}
-        <UPopover v-model="styles.marginLeft" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.marginLeft" class="c-darkgrey" >
                 <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
@@ -57,7 +57,7 @@
         class="spec-input"
         :style="{right: '-8px', top: '49px'}"> 
                {{  styles.marginRight  }}
-        <UPopover v-model="styles.marginLeft" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.marginLeft" class="c-darkgrey" >
             <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
@@ -83,7 +83,7 @@
         class="spec-input"
         :style="{left: '95px', bottom: '0px'}"> 
                {{  styles.marginBottom  }}
-        <UPopover v-model="styles.marginBottom" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.marginBottom" class="c-darkgrey" >
             <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
@@ -113,8 +113,8 @@
         class="spec-input"
         :style="{left: '95px', top: '25px'}"> 
                {{  styles.paddingTop  }}
-        <UPopover v-model="styles.paddingTop" class="c-darkgrey" v-slot="scope">
-            <template #content>
+        <UPopover v-model="styles.paddingTop" class="c-darkgrey" >
+            <template v-slot:content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
@@ -138,7 +138,7 @@
         class="spec-input"
         :style="{left: '35px', top: '48px'}"> 
                {{  styles.paddingLeft  }}
-        <UPopover v-model="styles.paddingLeft" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.paddingLeft" class="c-darkgrey" >
             <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
@@ -163,7 +163,7 @@
         class="spec-input"
         :style="{right: '19px', top: '48px'}"> 
                {{  styles.paddingRight  }}
-        <UPopover v-model="styles.paddingRight" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.paddingRight" class="c-darkgrey" >
             <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
@@ -188,7 +188,7 @@
         class="spec-input"
         :style="{left: '95px', bottom: '25px'}"> 
                {{  styles.paddingBottom  }}
-        <UPopover v-model="styles.paddingBottom" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.paddingBottom" class="c-darkgrey" >
             <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
