@@ -1,14 +1,6 @@
 
 
 <template>
-    <q-table 
-    grid 
-    :columns="columns"
-    :rows="avaibleTemplates">
-        <template v-slot:item="props" >
-            <MarketItem :style="{minWidth: '250px'}" :item="props.row"/>
-        </template>
-    </q-table>
 
 </template>
 

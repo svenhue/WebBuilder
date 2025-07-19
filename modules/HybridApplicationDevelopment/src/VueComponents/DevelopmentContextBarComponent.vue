@@ -1,6 +1,6 @@
 <template>
     <div class="development-context-bar">
-        <q-menu  context-menu  @hide="emits('hide')" class="development-context-bar" ref="test" auto-close   touch-position>
+        <div  context-menu  @hide="emits('hide')" class="development-context-bar" ref="test" auto-close   touch-position>
             <div class="development-context-bar" dense>
                 <div dense clickable @click="deleteView()">
                     <div-section>
@@ -13,7 +13,7 @@
                     </div-section>
                 </div>
             </div>
-        </q-menu>
+        </div>
 
         <CreateTemplateDialogComponent
         :show="showTemplateDialog"

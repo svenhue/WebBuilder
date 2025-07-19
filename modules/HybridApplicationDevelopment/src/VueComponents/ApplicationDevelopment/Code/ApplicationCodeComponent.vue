@@ -53,7 +53,7 @@ function edit(node){
 
                     <div-section side>
                         <q-btn dense icon="menu" unelevated>
-                            <q-menu dense menu-anchor="bottom right" autoclose>
+                            <div dense menu-anchor="bottom right" autoclose>
                                 <div>
                                     <div dense class="codeBtn">
                                         View State
@@ -71,7 +71,7 @@ function edit(node){
                                         Delete
                                     </div>
                                 </div>
-                            </q-menu>
+                            </div>
                         </q-btn>
                     </div-section>
 
