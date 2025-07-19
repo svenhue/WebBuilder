@@ -49,10 +49,10 @@
                     <div>
                         Are you sure you want to delete this page?
                     </div>
-                    <q-card-actions align="right">
+                    <div align="right">
                         <ButtonComponent label="Cancel" color="primary" @click="showDeletePageDialog = false"></ButtonComponent>
                         <ButtonComponent label="Delete" color="negative" @click="() =>{ viewModel.DeletePage(selectedPage.id), showDeletePageDialog = false}"></ButtonComponent>
-                    </q-card-actions>
+                    </div>
                 </CardComponent>
             </q-dialog>
         

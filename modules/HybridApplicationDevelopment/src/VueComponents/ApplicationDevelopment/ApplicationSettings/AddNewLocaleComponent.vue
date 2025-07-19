@@ -9,10 +9,10 @@
                 <div>
                     <q-select  :style="{zIndex: 99999}" v-model="newLocale" label="Locale" :options="viewModel.GetNotUsedLocales()"></q-select>
                 </div>
-                <q-card-actions>
+                <div>
                     <ButtonComponent label="Cancel" :style="{color: 'black'}" @click="show = false"></ButtonComponent>
                     <ButtonComponent label="Add" @click="addLocale" :style="{color: 'black'}"></ButtonComponent>
-                </q-card-actions>
+                </div>
             </CardComponent>
       
     </div>

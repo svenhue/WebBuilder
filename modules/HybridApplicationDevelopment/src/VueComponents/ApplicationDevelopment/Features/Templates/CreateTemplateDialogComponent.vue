@@ -17,11 +17,11 @@
 
                     </div>
                 </div>
-                <q-card-actions align="right">
+                <div align="right">
                     <ButtonComponent label="Cancel" @click="$emit('close')"  />
                          <ButtonComponent label="Create" @click="() => {CreateTemplate()}"  />
 
-                </q-card-actions>
+                </div>
             </div>
         </CardComponent>   
     </q-dialog>
