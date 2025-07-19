@@ -1,6 +1,6 @@
 <template>
     <div ref="viewRef">
-        <q-tree
+        <UTree
         :no-selection-unset="view.properties?.noSelectionUnset"
         :default-expand-all="view.properties?.defaultExpandAll"
         :accordion="view.properties?.accordion"
@@ -19,7 +19,7 @@
 
         
 
-        </q-tree>
+        </UTree>
     </div>
 </template>
 

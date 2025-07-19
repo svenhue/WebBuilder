@@ -1,5 +1,5 @@
 <template>
-    <q-select 
+    <USelect
     :rules="viewElement.ValidateRules()"
     dense
     :style="viewElement.ResolverObjectProperty(view.style)"
@@ -9,18 +9,19 @@
     :options="view.content?.options ?? []"
     v-bind="view.htmlattributes">
 
+
+    </USelect>
+</template>
+
+
+<script setup lang="ts">
+        /*
         <template v-if="view.properties.showLabelBefore == true" v-slot:before >
             <span  textnode>
                 {{  t(viewElement.ResolveTemplateProperty(view.content.label)) }}
             </span>
         </template>
-    </q-select>
-</template>
-
-
-<script setup lang="ts">
-
-
+*/
 import { BaseViewModel, ValueValidationViewElement, useViewConfiguration } from 'alphautils';
 import { onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n'

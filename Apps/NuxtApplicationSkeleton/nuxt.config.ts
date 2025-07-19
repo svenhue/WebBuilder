@@ -3,20 +3,14 @@
 import { resolve } from 'path'
 import { config } from './AppConfigs/pages'
 const prefix = `monaco-editor/esm/vs`;
-import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
 
   ssr: false, // Enable server-side rendering
   devtools: { enabled: true },
   modules:[/*'nuxt-electron',*/ 'alphaauthmodule',  'nuxt-monaco-editor', 'nuxt-quasar-ui', "@pinia/nuxt", "@nuxtjs/i18n","alphaviewlibrary/nuxt", "hybridappdev/nuxt"],
 
-  css: [
-  'quasar/src/css/index.sass',
-  '@quasar/extras/material-icons/material-icons.css'
-],
-build: {
-  transpile: ['quasar']
-},
+
   quasar:{
     plugins: ['Notify']
   },
@@ -46,9 +40,7 @@ build: {
 
   vite: {
     //plugins: [nodePolyfills()],
-    plugins: [
-      tailwindcss(),
-    ],
+
     resolve: {
       alias:{
         "alphautils": "webbuilderalphautils"

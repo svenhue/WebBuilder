@@ -1,11 +1,11 @@
 <template>
-    <q-badge
+    <UBadge
     :style="viewElement.ResolverObjectProperty(view.style)"
     ref="viewRef"
     v-bind="view?.htmlattributes"
     :label="view.content?.label">
 
-    </q-badge>
+    </UBadge>
 </template>
 
 <script setup lang="ts">

@@ -10,7 +10,7 @@
 <script setup lang="ts">
 //import AcceptSuggestedActionComponent from '../Chat/ChatComponents/AcceptSuggestedActionComponent.vue';
 import MarkdownIt from 'markdown-it';
-import { Quasar } from 'quasar'
+
 import { h, createApp, defineComponent, ref, watch, onMounted } from 'vue';
 import { waitForElm } from 'alphautils';
 import type Token from 'markdown-it/lib/token.mjs';
@@ -92,7 +92,7 @@ import type Token from 'markdown-it/lib/token.mjs';
                 },
               render: () => h(compIdent.component, {content: replaceMarkdownProduced(contentProp)}),
             });
-            app.use(Quasar);
+           
             
             token.content = `<div id="${myId}"></div>`
             token.type = 'html_inline'

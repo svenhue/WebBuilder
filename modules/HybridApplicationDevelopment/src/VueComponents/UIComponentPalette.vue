@@ -2,21 +2,19 @@
     <div class="component-palette">
         <div class="drawer-header">
             Add
-            <q-btn 
-            
-            dense
-            icon="store" 
+            <button 
+            class="custom-button custom-button--flat"
             :style="{
                 margin: 'auto'
             }"
             @click="navService.AddAndOpenTab({ path: '/marketplace', title: 'Marketplace'})"
-            clickable
+            title="Marketplace"
             >
-            <q-tooltip>
-            Marketplace
-            </q-tooltip>
-            </q-btn>
-            <q-btn class="close-btn" dense unelevated size="10px" icon="close" @click="emits('close')"></q-btn>
+            <i class="material-icons">store</i>
+            </button>
+            <button class="close-btn custom-button custom-button--flat" @click="emits('close')">
+                <i class="material-icons">close</i>
+            </button>
         </div>
         <q-input dense v-model="tagFilterString" v-on:update:model-value="(v) => handleFilterChanged()">
         </q-input>
@@ -395,6 +393,7 @@ function bindDragElementToMouse(event: MouseEvent){
 </script>
 
 <style scoped lang="scss">
+@import '../assets/custom-buttons.css';
 
 .component-palette{
     width: 250px;

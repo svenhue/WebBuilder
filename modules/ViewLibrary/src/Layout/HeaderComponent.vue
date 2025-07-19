@@ -1,5 +1,5 @@
 <template>
-    <header  
+    <UHeader
     class="alpha-header"
     v-bind="view?.htmlattributes" 
     ref="viewRef" 
@@ -10,7 +10,7 @@
         :view="child"
         :contextid="contextid">
         </BaseViewTreeRenderer>
-    </header>
+    </UHeader>
 </template>
 
 <script setup lang="ts">

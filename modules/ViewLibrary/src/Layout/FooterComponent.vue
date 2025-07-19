@@ -1,13 +1,13 @@
 
 <template>
-    <q-footer v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
+    <UFooter v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
         <BaseViewTreeRenderer
         v-for="child in children" :key="child.id"
         :view="child"
         :contextid="contextid"
         >
         </BaseViewTreeRenderer>
-    </q-footer>
+    </UFooter>
 </template>
 
 <script setup lang="ts">

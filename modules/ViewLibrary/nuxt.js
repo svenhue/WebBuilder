@@ -3,7 +3,7 @@ import { resolve } from 'path'
 
 export default defineNuxtModule({
   setup(options, nuxt) {
-    console.log('Nuxt Application Skeleton Module Loaded')
+    console.log('Nuxt Application ViewLibray Module Loaded')
   },
   hooks: {
     'components:dirs': (dirs) => {

@@ -1,14 +1,7 @@
 <template>
-        <q-list dense v-bind="view?.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)" ref="viewRef">
-           <q-expansion-item dense v-for="child in children" :key="child.id">
-                <BaseViewTreeRenderer 
-            
-                :view="child"
-                :contextid="contextid"
-                >
-                </BaseViewTreeRenderer>
-            </q-expansion-item>
-        </q-list>
+        <UAccordion dense v-bind="view?.htmlattributes" :style="viewElement.ResolverObjectProperty(view.style)" ref="viewRef">
+           
+        </UAccordion>
 </template>
 
 

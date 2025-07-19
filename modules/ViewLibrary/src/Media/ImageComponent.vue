@@ -1,10 +1,10 @@
 <template>
-    <q-img 
+    <UImage
     :alt="view?.content?.alt"
     v-bind="view.htmlattributes" 
     :style="viewElement.ResolverObjectProperty(view.style)" 
     :src="view?.properties?.src" >
-    </q-img>
+    </UImage>
 </template>
 
 <script setup lang="ts">

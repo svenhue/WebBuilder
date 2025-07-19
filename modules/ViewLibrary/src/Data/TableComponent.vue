@@ -1,5 +1,5 @@
 <template>
-    <q-table
+    <UTable
     :style="viewElement.ResolverObjectProperty(viewConfig.style)"
     v-bind="viewConfig?.htmlattributes"
     :rows="viewModel.GetRows().value"
@@ -11,34 +11,12 @@
     @row-click="(e, row) => viewModel.SelectRow(row)"
     :columns="viewModel.GetColumns().value">
 
-        <template v-slot:body="props">
-            <q-tr :props="props">
-                <q-td v-for="column in viewModel.GetColumns().value" 
-                :props="props"
-                :key="column.name">
-                    {{ ValueResolver(contextProvider, contextid, props.row[column.field]) }}   
-                    
-                    <table-cell-popup-edit-component
-                    :contextid="contextid"
-                    v-if="column.useCellPopupEdit != undefined && column.useCellPopupEdit == true"
-                    @update:model-value="(val) => props.row[column.field] = val"
-                    :model-value="props.row[column.field]"
-                    :title="column.label"
-                    :type="column.type"
-                    :auto-save="true"
-                >
-                    </table-cell-popup-edit-component>
-                </q-td>
-                
-                
-            </q-tr>
-        </template>
     
-    </q-table>
+    </UTable>
 </template>
 
 <script setup lang="ts">
-import { QTable } from 'quasar';
+
 import { TableViewConfiguration } from './Table/TableViewConfiguration';
 import { ViewConfiguration, ValueResolver, BaseServiceProvider } from 'alphautils';
 import { useViewConfiguration } from 'alphautils';
@@ -46,7 +24,7 @@ import { TableViewElement } from './Table/TableViewElement.ts';
 import { TableViewModel } from './Table/TableViewModel.ts';
 import {  MaybeRefOrGetter, onMounted, onUnmounted, ref } from 'vue';
 import { ITableViewConfiguration } from './Table/TableViewConfiguration.ts';
-import TableCellPopupEditComponent from './TableCellPopupEditComponent.vue';
+
 const props = defineProps({
     contextid: {
         type: Number,

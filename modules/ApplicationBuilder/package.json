@@ -16,7 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@quasar/extras": "^1.16.9",
     "@types/node": "^20.10.5",
     "@unhead/ssr": "^1.8.9",
     "@unhead/vue": "^1.8.9",
@@ -38,7 +37,6 @@
     "path": "^0.12.7",
     "pinia": "^2.1.6",
     "prettier": "^3.0.3",
-    "quasar": "^2.12.7",
     "reflect-metadata": "^0.1.13",
     "spec": "^1.0.1",
     "ts-node": "^10.9.2",
@@ -53,7 +51,6 @@
     "vue-router": "^4.0.0"
   },
   "devDependencies": {
-    "@quasar/vite-plugin": "^1.6.0",
     "@rollup/plugin-alias": "^5.1.0",
     "hygen": "^6.2.11",
     "rollup-plugin-typescript2": "^0.36.0",

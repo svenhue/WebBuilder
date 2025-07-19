@@ -1,10 +1,10 @@
 <template>
-    <q-icon
+    <UIcon
     v-bind="view.htmlattributes"
     :style="viewElement.ResolverObjectProperty(view.style)"
     :name="view.properties.iconName">
 
-    </q-icon>
+    </UIcon>
 </template>
 
 <script setup lang="ts">

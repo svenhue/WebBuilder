@@ -1,17 +1,7 @@
 <template>
     <div>
-        <q-input  
-        ref="textRef" 
-        dense 
-        label-color="white"
-        :input-style="{color: 'white!important'}"
-        class="t-input-editor-input"
-        :model-value="value"
-        @update:model-value="(val) => UpdateValue(val)"
-        >
-            <template v-slot:before>
-                <div class="editor-input-label"> {{ label }} </div>
-                <q-select 
+        <div class="editor-input-label"> {{ label }} </div>
+                <USelect
                 class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'"
                 :style="{width: '150px', color: 'white'}"
@@ -23,14 +13,20 @@
                 :model-value="selectModel" 
                 @update:model-value="updateExpression">
 
-                </q-select>
-            </template>
-            <template v-slot:after>
-                <q-icon name="open_in_new" @click="codeEditorIsActive = true">
+                </USelect>
+        <UInput 
+        ref="textRef" 
+        dense 
+        label-color="white"
+        :input-style="{color: 'white!important'}"
+        class="t-input-editor-input"
+        :model-value="value"
+        @update:model-value="(val) => UpdateValue(val)"
+        >
+        </UInput>  
+             <UIcon name="open_in_new" @click="codeEditorIsActive = true">
 
-                </q-icon>
-            </template>
-        </q-input>  
+                </UIcon>
         <Teleport  :to="'#XXX'"  v-if="codeEditorIsActive && style == undefined">
             <JSCodeEditorComponent
             @close="codeEditorIsActive = false"
@@ -61,7 +57,7 @@
 import { computed, ref } from 'vue';
 import JSCodeEditorComponent from './JSCodeEditorComponent.vue';
 import { ExpressionValidator } from 'alphautils';
-import { IViewConfiguration } from 'alphautils/view/IViewConfiguration.ts';
+import { IViewConfiguration } from 'alphautils';
 
 
 const props = defineProps({

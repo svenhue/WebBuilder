@@ -1,5 +1,5 @@
 <template>
-    <q-drawer
+    <UDrawer 
     v-bind="view?.htmlattributes" 
     v-model="view.modelValue"
     :side="view.properties?.side"
@@ -13,7 +13,7 @@
         :contextid="contextid"
         >
         </BaseViewTreeRenderer>
-    </q-drawer>
+    </UDrawer >
 </template>
 
 

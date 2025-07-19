@@ -1,11 +1,11 @@
 <template>
-    <q-avatar
+    <UAvatar
     :style="viewElement.ResolverObjectProperty(view.style)"
     v-bind="view?.htmlattributes"
     ref="viewRef"
     :icon="view?.properties?.icon ?? 'account_circle'" >
 
-    </q-avatar>
+    </UAvatar>
 </template>
 
 <script setup lang="ts">

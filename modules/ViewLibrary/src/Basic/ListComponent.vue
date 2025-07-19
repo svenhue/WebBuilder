@@ -1,23 +1,22 @@
 <template>
-    <q-list 
+    <UPageList
     dense  
     :class="view?.class"
     :style="viewElement.ResolverObjectProperty(view.style)" 
     ref="viewRef" 
     v-bind="view?.htmlattributes">
-        <ListItemComponent
+              <BaseViewTreeRenderer
         v-for="child in children" :key="child.id"
-        :viewId="child.id"
-        :contextid="contextid">
-
-        </ListItemComponent>
-    </q-list>
+        :contextid="contextid"
+        :view="child">
+        </BaseViewTreeRenderer>
+    </UPageList>
 </template>
 
 <script setup lang="ts">
 
 import { ViewElement, useViewConfiguration } from "alphautils";
-import  ListItemComponent  from "./ListItemComponent.vue";
+
 import { onMounted, ref, onBeforeUnmount } from "vue";
 const props = defineProps({
     viewId: {
@@ -29,7 +28,7 @@ const props = defineProps({
         required: true,
     }
 })
-const viewRef = ref<InstanceType<typeof ListItemComponent>>(null);
+const viewRef = ref(null);
 const{ view, children } = useViewConfiguration(props.contextid, props.viewId);
 const viewElement = new ViewElement(view);
 

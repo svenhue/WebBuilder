@@ -1,12 +1,12 @@
 <template>
-    <q-toolbar v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
+    <UDashboardNavbar v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
         <BaseViewTreeRenderer
         v-for="child in children" :key="child.id"
         :view="child"
         :contextid="contextid">
         </BaseViewTreeRenderer>
 
-    </q-toolbar>
+    </UDashboardNavbar>
 </template>
 
 <script setup lang="ts">

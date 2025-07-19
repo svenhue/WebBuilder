@@ -1,5 +1,5 @@
 <template>
-    <q-checkbox 
+    <UCheckbox
     
     v-bind="view.htmlattributes" 
     :model-value="view?.modelValue ?? false"
@@ -15,7 +15,7 @@
     :dense="view.properties?.dense"
     >
         
-    </q-checkbox>
+    </UCheckbox>
 </template>
 
 <script setup lang="ts">

@@ -12,7 +12,7 @@
 <script setup lang='ts'>
 import { ViewElement, useViewConfiguration } from 'alphautils';
 import { ref, onMounted, onUnmounted, MaybeRefOrGetter } from 'vue';
-import { QBtn } from 'quasar';
+
 import { IViewConfiguration } from 'alphautils';
 import { inject } from 'vue';
 const props = defineProps({
@@ -30,9 +30,9 @@ const props = defineProps({
     }
 })
 
-const viewRef = ref<InstanceType<typeof QBtn>>(null);
+const viewRef = ref(null);
 const {view } = useViewConfiguration(props.contextid, props.viewId, props.view) as MaybeRefOrGetter<[ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]>
-const viewElement = new ViewElement<typeof QBtn>(view);
+const viewElement = new ViewElement(view);
 
 const devMode = inject('devMode');
 

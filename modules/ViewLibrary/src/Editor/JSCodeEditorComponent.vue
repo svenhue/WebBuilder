@@ -2,12 +2,12 @@
     
         <div  class="code-editor" :style="style" ref="refEditor"
         >
-            <q-btn dense icon='close' @click="() => { emit('close')}">
+            <UButton dense icon='close' @click="() => { emit('close')}">
 
-            </q-btn>
-            <q-btn dense icon='check' @click="() => {updateValue(), emit('close')}">
+            </UButton>
+            <UButton dense icon='check' @click="() => {updateValue(), emit('close')}">
 
-            </q-btn>
+            </UButton>
         </div>
     
 

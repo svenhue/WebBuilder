@@ -1,5 +1,5 @@
 <template>
-    <q-toolbar 
+    <UDashboardToolbar 
     :style="viewElement.ResolverObjectProperty(view.style)"
     v-bind="view.htmlattributes"
     ref="viewRef">
@@ -8,7 +8,7 @@
         :contextid="contextid"
         :view="child">
         </BaseViewTreeRenderer>
-    </q-toolbar>
+    </UDashboardToolbar>
 </template>
 
 <script setup lang="ts">
@@ -17,6 +17,7 @@ import BaseViewTreeRenderer from '../Renderer/BaseViewTreeRenderer.vue';
 import { useViewConfiguration } from 'alphautils';
 import { onMounted, ref, MaybeRefOrGetter} from 'vue';
 import { onUnmounted } from 'vue';
+
 
 const { contextid, viewId }
     = defineProps({

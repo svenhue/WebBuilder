@@ -1,18 +1,7 @@
 <template>
-    <q-rating
-    v-bind="view?.htmlattributes"
-    :icon="view?.properties?.icon"
-    :name="view?.properties?.name"
-    :icon-selected="view?.properties?.iconSelected"
-    :icon-half="view?.properties?.iconHalf"
-    :max="view?.properties?.max"
-    :style="viewElement.ResolverObjectProperty(view.style)"
-    :readonly="view?.properties?.readonly"
-    :disable="view?.properties?.disable"
-    @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'modelValue', value:val})"
-    :model-value="view?.modelValue ?? 0">
-
-    </q-rating>
+    <div>
+        todo!
+    </div>
 </template>
 
 

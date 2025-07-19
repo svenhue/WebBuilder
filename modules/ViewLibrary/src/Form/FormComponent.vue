@@ -1,6 +1,6 @@
 <template>
     
-    <q-form 
+    <UForm
     ref="viewRef"
     :style="viewElement.ResolverObjectProperty(view.style)"
     v-bind="view.htmlattributes">
@@ -10,7 +10,7 @@
         :contextid="props.contextid"
         >
         </BaseViewTreeRenderer>
-    </q-form>
+    </UForm>
 </template>
 
 <script setup lang="ts">

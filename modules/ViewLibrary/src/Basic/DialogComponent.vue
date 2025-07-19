@@ -1,5 +1,5 @@
 <template>
-    <q-dialog
+    <UModal
     :model-value="view?.properties?.isActive"
     dense
     :class="view?.class"
@@ -15,13 +15,13 @@
         :contextid="contextid"
         >
         </BaseViewTreeRenderer>
-    </q-dialog>
+    </UModal>
 </template>
 
 <script setup lang='ts'>
 import { useViewConfiguration } from 'alphautils';
 import { ref, onMounted, onBeforeUnmount, MaybeRefOrGetter } from 'vue';
-import { QBtn, QDialog } from 'quasar';
+
 import { IViewConfiguration } from 'alphautils';
 import  BaseViewTreeRenderer  from '../Renderer/BaseViewTreeRenderer.vue';
 import { DialogViewElement } from './Dialog/DialogViewElement';
@@ -35,7 +35,7 @@ const props = defineProps({
         required: true,
     }
 })
-const viewRef = ref<InstanceType<typeof QBtn>>(null);
+const viewRef = ref(null);
 const {view, children } = useViewConfiguration(props.contextid, props.viewId) as MaybeRefOrGetter<[ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]>
     
     

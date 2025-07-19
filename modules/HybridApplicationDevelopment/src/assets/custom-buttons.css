@@ -1,0 +1,147 @@
+/* Custom Button Styles - Replacement for Quasar q-btn */
+.custom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  outline: none;
+  min-height: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-button:hover {
+  background-color: #e0e0e0;
+  border-color: #999;
+}
+
+.custom-button:active {
+  background-color: #d0d0d0;
+  transform: translateY(1px);
+}
+
+.custom-button:focus {
+  box-shadow: 0 0 0 2px rgba(66, 165, 245, 0.3);
+}
+
+.custom-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+  border-color: #ccc;
+}
+
+.custom-button:disabled:hover {
+  background-color: #f5f5f5;
+  border-color: #ccc;
+  transform: none;
+}
+
+/* Dense variant */
+.custom-button--dense {
+  padding: 4px 8px;
+  min-height: 28px;
+  font-size: 12px;
+}
+
+/* Flat variant */
+.custom-button--flat {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.custom-button--flat:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.custom-button--flat:active {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Round variant */
+.custom-button--round {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+/* Unelevated variant */
+.custom-button--unelevated {
+  box-shadow: none;
+}
+
+/* Size variants */
+.custom-button--size-10px {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  padding: 2px;
+  font-size: 10px;
+}
+
+/* Icon styling */
+.custom-button .material-icons {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.custom-button--dense .material-icons {
+  font-size: 16px;
+}
+
+.custom-button--size-10px .material-icons {
+  font-size: 12px;
+}
+
+/* Color variants */
+.custom-button--primary {
+  background-color: #1976d2;
+  color: white;
+  border-color: #1976d2;
+}
+
+.custom-button--primary:hover {
+  background-color: #1565c0;
+  border-color: #1565c0;
+}
+
+.custom-button--negative {
+  background-color: #f44336;
+  color: white;
+  border-color: #f44336;
+}
+
+.custom-button--negative:hover {
+  background-color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+/* Close button specific styling */
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  padding: 2px;
+}
+
+/* Expand button specific styling */
+.expand-btn {
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  padding: 2px;
+}

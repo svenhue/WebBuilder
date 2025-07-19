@@ -9,8 +9,13 @@
   "exclude": [
     "node_modules"
   ],
+  
   "compilerOptions": {
-    
+     "paths": {
+      "#build/ui": [
+        "./node_modules/@nuxt/ui/.nuxt/ui"
+      ]
+    },
     "baseUrl": ".",
     "outDir": "dist",
     "esModuleInterop": true,
@@ -32,7 +37,7 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue"
-, "src/quasar/QuasarButtonComponent.js"  ],
+ ],
   
   
 }

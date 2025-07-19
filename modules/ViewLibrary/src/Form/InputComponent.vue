@@ -1,5 +1,10 @@
 <template>
-    <QuasarInputComponent
+    <div>
+   
+        <span   v-if="view.properties?.showLabelBefore == true"textnode>
+                {{ t(viewElement.ResolveTemplateProperty(view.content.label)) }}
+        </span>
+    <UInput
     ref="test"
     dense
     :style="viewElement.ResolverObjectProperty(view.style)"
@@ -11,14 +16,10 @@
     :rules="viewElement.ValidateRules()"
     @update:model-value="(value) => { viewModel.PartialUpdate(view, {key:'modelValue', value:value}), formViewModel != undefined ? formViewModel.SetValue(`${view.content.label?.replace(/\s/g, '').toLowerCase()}`, value) : null}"
     >
-    <template v-if="view.properties?.showLabelBefore == true" v-slot:before>
-        
-        <span textnode>
-                {{ t(viewElement.ResolveTemplateProperty(view.content.label)) }}
-        </span>
-    </template>
 
-</QuasarInputComponent>
+
+    </UInput>
+    </div>
 
 </template>
 
@@ -27,7 +28,6 @@ import {  inject, onMounted, onUnmounted} from 'vue';
 import { InputView } from './Input/InputView';
 import { BaseViewModel, ValueValidationViewElement, useViewConfiguration } from 'alphautils';
 import { FormViewModel } from './Form/FormViewModel';
-import QuasarInputComponent from '../quasar/QuasarInputComponent';
 import { useI18n } from 'vue-i18n'
 const props = defineProps({
     viewId: {

@@ -8,7 +8,7 @@
 <script setup lang="ts">
 
 definePageMeta({
-    layout: 'default',
+    layout: 'withheader',
     middleware: 'auth'
 })
 </script>

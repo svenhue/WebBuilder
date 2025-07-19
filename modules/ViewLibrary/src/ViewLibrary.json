@@ -127,19 +127,6 @@
       }
     },
     {
-      "name": "WYSIWYGEditor",
-      "isDisabled": true,
-      "tag" : "component:WYSIWYGEditorComponent",
-      "type": "viewdefinition:Typography:WYSIWYGEditorComponent",
-      "tags": ["ultimateWeb"],
-      "htmlattributes": {
-        "label": "WYSIWYGEditor"
-      },
-      "specifications": {
-        "data-atomic": true
-      }
-    },
-    {
       "name": "Table",
       "tag": "component:TableComponent",
       "type": "viewdefinition:Data:TableComponent",
@@ -260,22 +247,6 @@
           "width": "100%",
           "height": "min-content"
         }
-    },
-    {
-      "name": "List Item",
-      "icon":"ListItem.png",
-      "tag": "component:ListItemComponent",
-      "tags": ["ultimateWeb"],
-      "type": "viewdefinition:Basic:ListItemComponent",
-      "style":{
-  
-      },
-      "content": {
-        "label": "List Item"
-      },
-      "specifications": {
-        "data-atomic": true
-      }
     },
     {
       "name": "Expansion Item",

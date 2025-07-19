@@ -2,8 +2,8 @@
 <script lang='ts'>
 import {  h, inject, Ref } from 'vue';
 import { Teleport, defineAsyncComponent } from 'vue'
-import { IPageConfiguration } from 'alphautils/view/IPageConfiguration.ts';
-import { IViewConfiguration } from 'alphautils/view/IViewConfiguration.ts';
+import { IPageConfiguration } from 'alphautils';
+import { IViewConfiguration } from 'alphautils';
 
 export default {
     props: {

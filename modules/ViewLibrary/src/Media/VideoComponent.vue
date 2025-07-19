@@ -1,13 +1,7 @@
 <template>
-    <q-video
-    :class="view?.class"
-    :style="viewElement.ResolverObjectProperty(view.style)"
-    v-bind="view.htmlattributes"
-    textnode
-    :title="view.content?.title ?? ''"
-    :src="view.content?.src ?? ''">
-
-    </q-video>
+    <div>
+        todo!
+    </div>
 </template>
 
 <script setup lang="ts">

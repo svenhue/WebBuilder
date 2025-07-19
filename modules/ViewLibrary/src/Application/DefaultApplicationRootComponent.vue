@@ -1,5 +1,5 @@
 <template>
-    <q-layout 
+    <UApp 
     v-bind="view.htmlattributes"
     :style="viewElement.ResolverObjectProperty(view.style)"
     ref="viewRef">
@@ -10,10 +10,8 @@
 
         </BaseViewTreeRenderer>
 
-        <q-page-container>
-            <router-view></router-view>
-        </q-page-container>
-    </q-layout>
+        <NuxtPage />
+    </UApp>
 </template>
 
 
@@ -35,7 +33,7 @@ const props = defineProps({
     }
 })
 const viewRef = ref<InstanceType<typeof ViewElement>>(null)
-const {view, children} = useViewConfiguration(props.contextid, props.viewId) as MaybeRefOrGetter<[ MaybeRefOrGetter<ViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]>
+const {view, children} = useViewConfiguration(props.contextid, props.viewId) as {view: MaybeRefOrGetter<IViewConfiguration>, children: MaybeRefOrGetter<Array<ViewConfiguration>>}
 const viewElement = new ViewElement(view)
 
 

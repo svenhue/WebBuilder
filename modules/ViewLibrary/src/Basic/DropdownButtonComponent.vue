@@ -1,5 +1,5 @@
 <template>
-    <q-btn-dropdown v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
+    <UDropdownMenu   v-bind="view?.htmlattributes" ref="viewRef" :style="viewElement.ResolverObjectProperty(view.style)">
 
         <BaseViewTreeRenderer
         v-for="child in children" :key="child.id"
@@ -8,7 +8,7 @@
         >
         </BaseViewTreeRenderer>
 
-    </q-btn-dropdown>
+    </UDropdownMenu >
 </template>
 
 <script setup lang="ts">

@@ -2,13 +2,13 @@
     <q-card class="edit-event-handler">
         <q-card-section>
             Edit Event Handler
-            <q-btn dense icon="cancel" @click="$emit('close')" :style="{
+            <button class="custom-button custom-button--flat" @click="$emit('close')" :style="{
                 position: 'absolute',
                 right: '10px',
                 top: '10px'
             }">
-
-            </q-btn>
+                <i class="material-icons">cancel</i>
+            </button>
         </q-card-section>
         <q-separator></q-separator>
         <q-card-section>
@@ -41,14 +41,14 @@
         <q-separator></q-separator>
         <q-card-section>
             Actions
-            <q-btn dense icon="add" @click="addAction()" :style="{
+            <button class="custom-button custom-button--flat" @click="addAction()" :style="{
                 position: 'absolute',
                 right: '10px',
                 top: '10px',
                 marginBottom: '10px'
             }">
-
-            </q-btn>
+                <i class="material-icons">add</i>
+            </button>
             <q-separator></q-separator>
             <q-list>
                 <q-item v-for="action in eventCopy.actions" :key="action">
@@ -161,6 +161,8 @@ function DeleteAction(action: IUIAction){
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/custom-buttons.css';
+
 .edit-event-handler {
     background-color: theme('colors.brightgrey');
 }

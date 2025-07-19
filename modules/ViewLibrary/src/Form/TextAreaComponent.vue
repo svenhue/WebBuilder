@@ -1,13 +1,12 @@
 <template>
-    <textarea 
+    <UTextArea 
     textnode
     :value="view.content?.text"
     @input="(val) => viewModel.PartialUpdate(view, {key:'content.text', value:val.target.value})"
     v-bind="view.htmlattributes"
     :style="viewElement.ResolverObjectProperty(view.style)"
     >
-        
-    </textarea>
+    </UTextArea>
 </template>
 
 

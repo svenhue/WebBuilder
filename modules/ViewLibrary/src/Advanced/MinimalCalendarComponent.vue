@@ -1,5 +1,5 @@
 <template>
-    <q-date
+    <UCalendar
     v-bind="view.htmlattributes"
     :name="view.properties?.name"
     :landscape="view.properties?.landscape"
@@ -21,7 +21,7 @@
     v-model="modelValue"
     >
 
-    </q-date>
+    </UCalendar>
 </template>
 
 <script setup lang="ts">

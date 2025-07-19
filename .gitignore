@@ -58,3 +58,7 @@ npmrc
 .nx/installation
 .nx/cache
 .nx/workspace-data
+
+# Auto-generated type declarations
+auto-imports.d.ts
+components.d.ts

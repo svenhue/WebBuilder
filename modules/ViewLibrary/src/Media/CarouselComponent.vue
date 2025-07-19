@@ -2,7 +2,7 @@
     <div     :style="viewElement.ResolverObjectProperty(view.style)"
         v-bind="view?.htmlattributes"
       >
-        <q-carousel
+        <UCarousel
         ref="templateRef"
       :model-value="viewElement.ResolveTemplateProperty(view?.content?.currentPanel)"
         @update:model-value="(val) => viewModel.PartialUpdate(view, {key: 'content.currentPanel', value: val})"
@@ -11,7 +11,7 @@
         :swipeable="view.behavior.swipeable ?? true"
         :vertical="view.behavior.vertical ?? false"
         :autoplay="view.behavior.autoplay ?? false"
-
+    :items="children"
         :control-color="view.appearence?.controlColor ?? 'white'"
         :navigation-icon="view.content?.navigationIcon ?? 'fibert_manual_record'"
         :navigation-active-icon="view.content?.navigationActiveIcon ?? 'adjust'"
@@ -22,13 +22,13 @@
         :navigation-position="view.content.navigationPosition ?? 'bottom'"
         :thumbnails="view.content.thumbnails"
         >
-            <q-carousel-slide v-for="child in children" :key="child.id" :name="child.publicidentifier">
+        <template #default="{ item }">
                 <BaseViewTreeRenderer 
-                :view="child"
+                :view="item"
                 :contextid="contextid">
                 </BaseViewTreeRenderer>
-            </q-carousel-slide>
-        </q-carousel>
+            </template>
+        </UCarousel>
     </div>
 </template>
 
@@ -37,7 +37,7 @@ import { BaseViewModel, useViewConfiguration } from 'alphautils';
 import BaseViewTreeRenderer from '../Renderer/BaseViewTreeRenderer.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 import { CarouselViewElement } from './CarouselComponent/CarouselViewElement';
-import { QCarousel } from 'quasar';
+
 const props = defineProps({
     viewId:{
         type: Number,
@@ -49,7 +49,7 @@ const props = defineProps({
     }
 })
 
-const templateRef = ref<QCarousel>(null)
+const templateRef = ref(null)
 const { view, children } = useViewConfiguration(props.contextid, props.viewId);
 
 const viewModel = new BaseViewModel(props.contextid);

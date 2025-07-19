@@ -1,5 +1,5 @@
 <template>
-    <q-card 
+    <UCard
     v-bind="view?.htmlattributes" 
     ref="viewRef" 
     :style="viewElement.ResolverObjectProperty(view.style)">
@@ -8,7 +8,7 @@
         :view="child"
         :contextid="contextid">
         </BaseViewTreeRenderer> 
-    </q-card>
+    </UCard>
 
 </template>
 

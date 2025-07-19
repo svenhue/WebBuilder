@@ -20,6 +20,7 @@
             middleware:[
               
             ],
+            layout: 'empty',
             auth: { requiresAuth: false, redirect:"/auth/login"}
           })
 

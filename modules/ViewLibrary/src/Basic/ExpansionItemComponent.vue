@@ -1,24 +1,5 @@
 <template>
-    <q-expansion-item 
-    :switch-toggle-side="view.properties?.switchToggleSide != undefined ? view.properties.switchToggleSide : false"
-    :label="view.content.label"
-    :style="viewElement.ResolverObjectProperty(view.style)"
-    :caption="view.content.caption"
-    expand-separator
-    dense-toggle
-    dense 
-    v-bind="view.htmlattributes"
-   
-    :model-value="view.modelValue" 
-    @update:model-value="(val) => viewModel.PartialUpdate(view, {key: 'modelValue', value: val})">
-        
-            <BaseViewTreeRenderer
-            v-for="child in children" :key="child.id"
-            :view="child"
-            :contextid="contextid">
-            </BaseViewTreeRenderer>
- 
-    </q-expansion-item>
+
 
 </template>
 
@@ -27,7 +8,6 @@
 import {  BaseViewModel, ViewElement, useViewConfiguration } from 'alphautils';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import BaseViewTreeRenderer from '../Renderer/BaseViewTreeRenderer.vue';
-import { QExpansionItem } from 'quasar';
 
 const props = defineProps({
     viewId:{
@@ -39,7 +19,7 @@ const props = defineProps({
         required: true
     }
 })
-const viewRef = ref<InstanceType<QExpansionItem>>(null);
+const viewRef = ref(null);
 
 const { view, children } = useViewConfiguration(props.contextid, props.viewId);
 
