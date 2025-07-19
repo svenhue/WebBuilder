@@ -1,10 +1,10 @@
 <template>
     <q-dialog v-model="show" >
-        <q-card class="editor-formfield-form">
-            <q-card-section>
+        <CardComponent class="editor-formfield-form">
+            <div>
                 Form Field
-            </q-card-section>
-            <q-card-section>
+            </div>
+            <div>
                 <q-form @submit="onSubmit">
                 <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="formField.label" label="Label" required dense></InputComponent>
@@ -14,13 +14,14 @@
                 <q-separator></q-separator>
                 <ButtonComponent label="Submit" type="submit" color="primary"></ButtonComponent>
                 </q-form>
-            </q-card-section>
-        </q-card>
+            </div>
+        </CardComponent>
     </q-dialog>
 </template>
 
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { IFormField } from 'alphaviewlibrary';

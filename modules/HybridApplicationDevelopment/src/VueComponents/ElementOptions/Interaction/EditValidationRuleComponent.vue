@@ -1,12 +1,12 @@
 <template>
-        <q-card >
+        <CardComponent >
 
-            <q-card-section>
+            <div>
                 Edit Rule
                 <ButtonComponent dense icon='close' @click="$emit('close')"></ButtonComponent>
-            </q-card-section>
+            </div>
             
-            <q-card-section>
+            <div>
             
             <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense :model-value="rule.name" @update:model-value="(val) => $emit('updateElement', {key: 'name', value: val})">
@@ -31,12 +31,13 @@
             :value="rule.rule" 
             @updateValue="(values) => $emit('updateElement', {key: 'rule', value: values})">
         </TextInputEditorComponent>
-        </q-card-section>
-        </q-card>
+        </div>
+        </CardComponent>
     
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { IValueValidationViewConfiguration } from 'alphautils';

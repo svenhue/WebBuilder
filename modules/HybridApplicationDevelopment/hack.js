@@ -16,12 +16,12 @@ for (const file of files) {
 
   if (descriptor.template) {
     const template = descriptor.template.content
-    const hasQBtn = template.includes('<q-input')
+    const hasQBtn = template.includes('<q-card')
 
     if (hasQBtn) {
       const updatedTemplate = template
-        .replace(/<q-input([^>]*)>([\s\S]*?)<\/q-input>/g, '<InputComponent$1>$2</InputComponent>')
-        .replace(/<q-input([^>]*)\/>/g, '<InputComponent$1 />')
+        .replace(/<q-card([^>]*)>([\s\S]*?)<\/q-card>/g, '<CardComponent$1>$2</CardComponent>')
+        .replace(/<q-card([^>]*)\/>/g, '<CardComponent$1 />')
 
       if (updatedTemplate !== template) {
         // Replace template block
@@ -31,7 +31,7 @@ for (const file of files) {
         const scriptBlock = descriptor.script || descriptor.scriptSetup
         if (scriptBlock) {
           const scriptContent = scriptBlock.content
-          const importStatement = `import { InputComponent } from 'alphaviewlibrary'`
+          const importStatement = `import { CardComponent } from 'alphaviewlibrary'`
 
           // Prevent duplicate import
           if (!scriptContent.includes(importStatement)) {
@@ -40,7 +40,7 @@ for (const file of files) {
           }
         } else {
           // No script block – insert <script setup> manually
-          replaced = `<script setup>\nimport { InputComponent } from 'alphaviewlibrary'\n</script>\n` + replaced
+          replaced = `<script setup>\nimport { CardComponent } from 'alphaviewlibrary'\n</script>\n` + replaced
         }
 
         console.log(`✔ Replaced and updated import in: ${file}`)

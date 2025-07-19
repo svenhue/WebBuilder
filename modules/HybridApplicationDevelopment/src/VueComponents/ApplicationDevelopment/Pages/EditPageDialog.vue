@@ -1,17 +1,17 @@
 <template>
-    <q-card class="designer-page-edit">
-        <q-card-section>
+    <CardComponent class="designer-page-edit">
+        <div>
             Edit Page
-        </q-card-section>
+        </div>
         
         
-        <q-card-section>
+        <div>
             <InputComponent label="Url" :model-value="page.route" @update:model-value="(val) => $emit('updatePage', [{key: 'route', value: val}])">
             </InputComponent>
             <InputComponent label="Name" :model-value="page.name" @update:model-value="(val) => $emit('updatePage', [{key: 'name', value: val}])">
             </InputComponent>
-        </q-card-section>
-        <q-card-section>
+        </div>
+        <div>
             <div>
                 Meta
             </div>
@@ -27,12 +27,13 @@
                 </template>
             </q-select>
 
-        </q-card-section>
+        </div>
         
-    </q-card>
+    </CardComponent>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 
 import { IPageConfiguration } from 'alphautils';
 

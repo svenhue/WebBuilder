@@ -1,6 +1,6 @@
 <template>
-    <q-card class="edit-event-handler">
-        <q-card-section>
+    <CardComponent class="edit-event-handler">
+        <div>
             Edit Event Handler
             <button class="custom-button custom-button--flat" @click="$emit('close')" :style="{
                 position: 'absolute',
@@ -9,9 +9,9 @@
             }">
                 <i class="material-icons">cancel</i>
             </button>
-        </q-card-section>
+        </div>
         <q-separator></q-separator>
-        <q-card-section>
+        <div>
             Event
             <q-select
             class="alpha-select"
@@ -37,9 +37,9 @@
                     <div class="editor-input-label"> Trigger </div>
                 </template>
             </q-select>
-        </q-card-section>
+        </div>
         <q-separator></q-separator>
-        <q-card-section>
+        <div>
             Actions
             <button class="custom-button custom-button--flat" @click="addAction()" :style="{
                 position: 'absolute',
@@ -63,22 +63,23 @@
                     </q-item-section>
                 </q-item>
             </q-list>
-        </q-card-section>
+        </div>
 
         <div >
             <q-separator>
 
             </q-separator>
-            <q-card-section >
+            <div >
                 <div id="jfiopqehf73408956234">
                     </div>
-            </q-card-section>
+            </div>
         </div>
-    </q-card>
+    </CardComponent>
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+
 import { IDataAdapter, IUIEvent, IViewConfiguration, UIActionTypes,UIEventTypes, UIEvents, RestrictedServiceProvider, BOService, IUIAction  } from 'alphautils';
 import { BaseServiceProvider } from 'alphautils';
 import { ViewDefinition } from '../../utils/Models/ViewDefinition';

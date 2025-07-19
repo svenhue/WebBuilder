@@ -1,35 +1,36 @@
 <template>
     <q-dialog :model-value="show">
-        <q-card>
-            <q-card-section>
+        <CardComponent>
+            <div>
                     Create Template based on component {{  value?.publicidentifier }}
-                <q-card-section>
+                <div>
                     <InputComponent v-model="template.name" label="Template Name"  />
                     <q-checkbox v-model="template.isPublic" label="Public (everyone can use it for free)"></q-checkbox>
-                </q-card-section>
-                <q-card-section>
+                </div>
+                <div>
                     <q-uploader ref="Uploader" label="Template image"  hide-upload-btn :filter="checkFileType" @rejected="onRejected">
 
                     </q-uploader>
-                </q-card-section>
-                <q-card-section>
+                </div>
+                <div>
                     <div ref="jsoneditorref" id="XXXX" class="jsoneditor1">
 
                     </div>
-                </q-card-section>
+                </div>
                 <q-card-actions align="right">
                     <ButtonComponent label="Cancel" @click="$emit('close')"  />
                          <ButtonComponent label="Create" @click="() => {CreateTemplate()}"  />
 
                 </q-card-actions>
-            </q-card-section>
-        </q-card>   
+            </div>
+        </CardComponent>   
     </q-dialog>
 
 </template>
 
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import {  onMounted, onUnmounted, reactive, ref } from 'vue';

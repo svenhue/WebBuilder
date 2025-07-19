@@ -1,13 +1,13 @@
 <template>
     <div >
         <q-dialog v-model="t" :auto-close="false" >
-            <q-card class="editor-column-form">
-                <q-card-section>
+            <CardComponent class="editor-column-form">
+                <div>
                     
                         Edit Column
                     
-                </q-card-section>
-                <q-card-section>
+                </div>
+                <div>
                     <q-form  @submit="onSubmit">
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="column.name" label="Name" required dense></InputComponent>
@@ -27,13 +27,14 @@
                     <q-separator></q-separator>
                     <ButtonComponent label="Save" type="submit" color="primary"></ButtonComponent>
                     </q-form>
-                </q-card-section>
-        </q-card>
+                </div>
+        </CardComponent>
         </q-dialog>
 </div>
   </template>
   
-  <script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+  <script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
   import { ref } from 'vue';

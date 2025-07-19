@@ -5,21 +5,22 @@
         </ButtonComponent>
 
        
-            <q-card v-show="show" :style="{zIndex: 9999}">
-                <q-card-section>
+            <CardComponent v-show="show" :style="{zIndex: 9999}">
+                <div>
                     <q-select  :style="{zIndex: 99999}" v-model="newLocale" label="Locale" :options="viewModel.GetNotUsedLocales()"></q-select>
-                </q-card-section>
+                </div>
                 <q-card-actions>
                     <ButtonComponent label="Cancel" :style="{color: 'black'}" @click="show = false"></ButtonComponent>
                     <ButtonComponent label="Add" @click="addLocale" :style="{color: 'black'}"></ButtonComponent>
                 </q-card-actions>
-            </q-card>
+            </CardComponent>
       
     </div>
 </template>
 
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ref } from 'vue';
 import { InternationalizationViewModel } from '../../../utils/Features/Internationalization/InternationalizationViewModel';

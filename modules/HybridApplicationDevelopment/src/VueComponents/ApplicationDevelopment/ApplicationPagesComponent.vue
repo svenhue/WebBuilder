@@ -41,19 +41,19 @@
                 </q-item>
             </q-list>
             <q-dialog v-model="showDeletePageDialog">
-                <q-card>
-                    <q-card-section>
+                <CardComponent>
+                    <div>
                             Delete Page
                     
-                    </q-card-section>
-                    <q-card-section>
+                    </div>
+                    <div>
                         Are you sure you want to delete this page?
-                    </q-card-section>
+                    </div>
                     <q-card-actions align="right">
                         <ButtonComponent label="Cancel" color="primary" @click="showDeletePageDialog = false"></ButtonComponent>
                         <ButtonComponent label="Delete" color="negative" @click="() =>{ viewModel.DeletePage(selectedPage.id), showDeletePageDialog = false}"></ButtonComponent>
                     </q-card-actions>
-                </q-card>
+                </CardComponent>
             </q-dialog>
         
 
@@ -67,7 +67,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { inject, ref } from 'vue';
 import { RunTimeVueApplicationViewModel } from '../../ViewModels/RuntimeVueApplicationViewModel';
