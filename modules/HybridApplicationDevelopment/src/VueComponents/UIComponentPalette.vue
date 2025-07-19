@@ -26,9 +26,9 @@
                     <div  class="component-card-image" >
                        <div>
                         
-                        <q-img v-if="view?.icon != undefined"
+                        <NuxtImg v-if="view?.icon != undefined"
                             :src="GetImageURL('../../../assets/icons/', view.icon)" >    
-                        </q-img>
+                        </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
@@ -52,9 +52,9 @@
                 <CardComponent v-for="(view, index) in filter('viewdefinition:Structure')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
-                            <q-img v-if="view?.icon != undefined"
+                            <NuxtImg v-if="view?.icon != undefined"
                             :src="GetImageURL('../../../assets/icons/', view.icon)" >    
-                        </q-img>
+                        </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
@@ -82,9 +82,9 @@
                 <CardComponent v-for="(view, index) in filter('viewdefinition:Navigation')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image">
                       <div>
-                        <q-img v-if="view?.icon != undefined"
+                        <NuxtImg v-if="view?.icon != undefined"
                             :src="GetImageURL('../../../assets/icons/', view.icon)" >    
-                        </q-img>
+                        </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
@@ -108,9 +108,9 @@
                 <CardComponent v-for="(view, index) in filter('viewdefinition:Typography')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
-                            <q-img v-if="view?.icon != undefined"
+                            <NuxtImg v-if="view?.icon != undefined"
                             :src="GetImageURL('../../../assets/icons/', view.icon)" >    
-                        </q-img>
+                        </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
@@ -134,9 +134,9 @@
                 <CardComponent v-for="(view, index) in filter('viewdefinition:Layout')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image">
                        <div>
-                        <q-img v-if="view?.icon != undefined"
+                        <NuxtImg v-if="view?.icon != undefined"
                             :src="GetImageURL('../../../assets/icons/', view.icon)" >    
-                        </q-img>
+                        </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
@@ -160,9 +160,9 @@
                 <CardComponent v-for="(view, index) in filter('viewdefinition:Media')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                        <div>
-                        <q-img v-if="view?.icon != undefined"
+                        <NuxtImg v-if="view?.icon != undefined"
                             :src="GetImageURL('../../../assets/icons/', view.icon)" >    
-                        </q-img>
+                        </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
@@ -186,9 +186,9 @@
                 <CardComponent v-for="(view, index) in filter('viewdefinition:Form')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
-                            <q-img v-if="view?.icon != undefined"
+                            <NuxtImg v-if="view?.icon != undefined"
                             :src="GetImageURL('../../../assets/icons/', view.icon)" >    
-                        </q-img>
+                        </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
@@ -213,9 +213,9 @@
                     <div :draggable="true"  class="component-card-image" >
                         <div>
                             
-                            <q-img v-if="view?.icon != undefined"
+                            <NuxtImg v-if="view?.icon != undefined"
                             :src="GetImageURL('../../../assets/icons/', view.icon)" >    
-                        </q-img>
+                        </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>

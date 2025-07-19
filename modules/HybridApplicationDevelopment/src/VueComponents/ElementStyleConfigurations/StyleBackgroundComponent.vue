@@ -52,8 +52,8 @@
                             </div>
                         </td>
                         <td>
-                            <q-img  width="80px" :src="currentFocussedBackground.image">
-                            </q-img>
+                            <NuxtImg  width="80px" :src="currentFocussedBackground.image">
+                            </NuxtImg>
                         </td>
                     </tr>
                     <tr v-show="currentFocussedBackground.type == 'image'">

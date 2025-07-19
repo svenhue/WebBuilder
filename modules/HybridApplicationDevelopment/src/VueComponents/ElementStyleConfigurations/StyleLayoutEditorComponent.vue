@@ -16,11 +16,11 @@
             }" 
         @click="displayIsBlock = !displayIsBlock,   updateDisplay(displayIsBlock == true ? 'block' : '')"
         v-model="displayIsBlock">
-                <q-img width="20px" height="20px" src="/icons/developmenticons/blockdisplay.svg" color="white">
+                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/blockdisplay.svg" color="white">
                     <UTooltip>
                         Block
                     </UTooltip>
-                </q-img>
+                </NuxtImg>
         </ButtonComponent>
     </td> 
     <td>   
@@ -30,11 +30,11 @@
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
         @click="displayIsFlex = !displayIsFlex,   updateDisplay(displayIsFlex == true ? 'flex' : '')"
         v-model="displayIsFlex">
-                <q-img width="20px" height="20px" src="/icons/developmenticons/flexlayout.svg">
+                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/flexlayout.svg">
                     <UTooltip>
                         Flex
                     </UTooltip>
-                </q-img>
+                </NuxtImg>
         </ButtonComponent>
     </td>
     <td>    
@@ -44,11 +44,11 @@
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
         @click="displayIsGrid = !displayIsGrid,   updateDisplay(displayIsGrid == true ? 'grid' : '')"
         v-model="displayIsGrid">
-                <q-img width="20px" height="20px" src="/icons/developmenticons/GridLayout.svg">
+                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/GridLayout.svg">
                     <UTooltip>
                         Grid
                     </UTooltip>
-                </q-img>
+                </NuxtImg>
         </ButtonComponent>
     </td>
     <td>
@@ -58,11 +58,11 @@
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
         @click="displayIsInlineBlock = !displayIsInlineBlock,   updateDisplay(displayIsInlineBlock == true ? 'inline-block' : '')"
         v-model="displayIsInlineBlock">
-                <q-img width="20px" height="20px" src="/icons/developmenticons/inlineblockdisplay.svg">
+                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/inlineblockdisplay.svg">
                     <UTooltip>
                         Inline Block
                     </UTooltip>
-                </q-img>
+                </NuxtImg>
         </ButtonComponent>
 
     </td>
@@ -73,11 +73,11 @@
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
         @click="displayIsInline = !displayIsInline,   updateDisplay(displayIsInline == true ? 'inline' : '')"
         v-model="displayIsInline">
-                <q-img width="20px" height="20px" src="/icons/developmenticons/inlinedisplay.svg">
+                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/inlinedisplay.svg">
                     <UTooltip>
                         Inline Flex
                     </UTooltip>
-                </q-img>
+                </NuxtImg>
         </ButtonComponent>
         
     </td>
@@ -180,8 +180,8 @@
                             text-color="white"
                             :class="styles.alignContent == 'baseline' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlign('baseline')">
-                            <q-img  width="25px"  color="white" clickable  class="sle-img" :src="flexDirectionIsHorizontal == false ? '/icons/developmenticons/align_horizontal_center.svg' : '/icons/developmenticons/align_vertical_center.svg' ">
-                        </q-img>
+                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="flexDirectionIsHorizontal == false ? '/icons/developmenticons/align_horizontal_center.svg' : '/icons/developmenticons/align_vertical_center.svg' ">
+                        </NuxtImg>
                         </ButtonComponent>
                        
                     </td>
@@ -197,9 +197,9 @@
                             text-color="white"
                             :class="styles.justifyContent == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('start')">
-                            <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
+                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_flex_start.svg' : '/icons/developmenticons/align_start.svg' ">
-                            </q-img>
+                            </NuxtImg>
                         </ButtonComponent>
                        
                     </td>
@@ -208,9 +208,9 @@
                             text-color="white"
                             :class="styles.justifyContent == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('center')">
-                            <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
+                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_center.svg' : '/icons/developmenticons/align_center.svg' ">
-                            </q-img>
+                            </NuxtImg>
                         </ButtonComponent>
                     </td>
 
@@ -219,9 +219,9 @@
                             text-color="white"
                             :class="styles.justifyContent == 'end' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('end')">
-                            <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
+                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_flex_end.svg' : '/icons/developmenticons/align_end.svg' ">
-                            </q-img>
+                            </NuxtImg>
                         </ButtonComponent>
                     </td>
 
@@ -230,9 +230,9 @@
                             text-color="white"
                             :class="styles.justifyContent == 'space-between' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('space-between')">
-                            <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
+                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_space_around.svg' : '/icons/developmenticons/align_space_between.svg' ">
-                            </q-img>
+                            </NuxtImg>
                         </ButtonComponent>
                     </td>
                     <td>
@@ -240,9 +240,9 @@
                             text-color="white"
                             :class="styles.justifyContent == 'space-around' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('space-around')">
-                            <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
+                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_space_even.svg' : '/icons/developmenticons/align_space_around.svg' ">
-                            </q-img>
+                            </NuxtImg>
                         </ButtonComponent>
                     </td>
                 </tr>
@@ -333,60 +333,60 @@
                             text-color="white"
                             :class="styles.alignItems == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('start')">
-                                <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_justify_flex_start.svg' 
                                     : '/icons/developmenticons/align_rows_start.svg' ">
-                                </q-img>
+                                </NuxtImg>
                             </ButtonComponent>
 
                             <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('center')">
-                                <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_justify_center.svg' 
                                     : '/icons/developmenticons/align_rows_center.svg' ">
-                                </q-img>
+                                </NuxtImg>
                             </ButtonComponent>
                             
                             <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'end' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('end')">
-                                <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_end.svg' 
                                     : '/icons/developmenticons/align_rows_end.svg' ">
-                                </q-img>
+                                </NuxtImg>
                             </ButtonComponent>
                             <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'stretch' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('stretch')">
-                                <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_justify_stretch.svg' 
                             : '/icons/developmenticons/align_rows_items_stretch.svg' ">
-                                </q-img>
+                                </NuxtImg>
                             </ButtonComponent>
                             
                             <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'space-between' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('space-between')">
-                                <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_justify_space_between.svg' 
                             : '/icons/developmenticons/align_rows_space_between.svg' ">
-                                </q-img>
+                                </NuxtImg>
                             </ButtonComponent>
                             <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'space-around' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('space-around')">
-                                <q-img 
+                                <NuxtImg 
                                 @click="changeFlexAlignItems('space-around')"
                                 width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_justify_space_around.svg' 
                             : '/icons/developmenticons/align_rows_space_around.svg' ">
-                                </q-img>
+                                </NuxtImg>
                             </ButtonComponent>
                         </div>
                     </td>

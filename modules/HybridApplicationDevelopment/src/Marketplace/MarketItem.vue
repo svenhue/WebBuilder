@@ -1,10 +1,10 @@
 <template>
         <CardComponent class="market-item" >
             <div class="item-c-s">
-                <q-img class="item-c" :src="item.imageUrl"  fit="scale-down">
+                <NuxtImg class="item-c" :src="item.imageUrl"  fit="scale-down">
 
                     
-                </q-img>
+                </NuxtImg>
             </div>
             <div class="absolute-bottom text-subtitle2 text-left">
                 {{ item.name }}
