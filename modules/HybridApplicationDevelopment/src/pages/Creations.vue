@@ -8,7 +8,7 @@
         <q-list>
             <q-item dense v-for="item in creationsComputed" :key="item.id" clickable>
                 <q-item-section avatar>
-                    <q-icon :name="item.icon" size="2.5rem" class="q-mr-sm" />
+                    <UIcon :name="item.icon" size="2.5rem" class="q-mr-sm" />
                 </q-item-section>
                 <q-item-section>
                     <q-item-label class="text-h6">{{ item.name }}</q-item-label>

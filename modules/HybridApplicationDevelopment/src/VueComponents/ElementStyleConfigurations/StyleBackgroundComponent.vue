@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div :style="{position: 'absolute', top: '2px', right: '20px'}">
-                <q-icon name="add" size="20px" @click="iAgVisibility = !iAgVisibility"></q-icon>
+                <UIcon name="add" size="20px" @click="iAgVisibility = !iAgVisibility"></UIcon>
             </div>
             <div class="sb-settings" v-show="iAgVisibility == true" :style="{position: 'absolute'}">
                 <table>
@@ -25,22 +25,22 @@
                             <div :style="{display: 'inline-flex',alignItems: 'center'}">
                  
                             <div class="icon-wrapper">
-                                <q-icon name="insert_photo" size="30px">
+                                <UIcon name="insert_photo" size="30px">
 
-                                </q-icon>
+                                </UIcon>
                             </div>
                             <div class="icon-wrapper">
-                                <q-icon name="gradient" size="30px">
+                                <UIcon name="gradient" size="30px">
 
-                                </q-icon>
+                                </UIcon>
                             </div>
                             <div class="icon-wrapper">
-                                <q-icon name="vignette" size="30px">
+                                <UIcon name="vignette" size="30px">
 
-                                </q-icon>
+                                </UIcon>
                             </div>
                             <div class="icon-wrapper"> 
-                                <q-icon name="texture" size="30px"></q-icon>
+                                <UIcon name="texture" size="30px"></UIcon>
                             </div>
                         </div>
                         </td>
@@ -257,11 +257,11 @@
                         class="sbc-input"
                     >
                         <template v-slot:append>
-                        <q-icon name="colorize" class="cursor-pointer">
+                        <UIcon name="colorize" class="cursor-pointer">
                             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                             <q-color v-model="currentFocussedBackground.linearGradientColor"></q-color>
                             </q-popup-proxy>
-                        </q-icon>
+                        </UIcon>
                         </template>
                     </InputComponent>
                 </td>
@@ -282,11 +282,11 @@
         class="sbc-input"
       >
         <template v-slot:append>
-          <q-icon name="colorize" class="cursor-pointer">
+          <UIcon name="colorize" class="cursor-pointer">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
               <q-color v-model="styles.backgroundColor"></q-color>
             </q-popup-proxy>
-          </q-icon>
+          </UIcon>
         </template>
       </InputComponent>
         </div>

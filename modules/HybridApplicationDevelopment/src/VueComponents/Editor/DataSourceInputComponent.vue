@@ -22,9 +22,9 @@
             </template>
 
             <template v-slot:after v-if="selectedSource == DataSources['Use Javascript'] || selectedSource == DataSources['Use Array'] || selectedSource == DataSources['Demo Data']">
-                        <q-icon name="open_in_new" @click="openEditor()">
+                        <UIcon name="open_in_new" @click="openEditor()">
 
-                        </q-icon>
+                        </UIcon>
             </template>
         </InputComponent>
      

@@ -119,11 +119,11 @@
                         @update:model-value="(v) => emits('updateElement', [{key: 'style.color', value: v}])"
                     >
                         <template v-slot:append>
-                        <q-icon name="colorize" class="cursor-pointer">
+                        <UIcon name="colorize" class="cursor-pointer">
                             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                             <q-color v-model="styles.color"></q-color>
                             </q-popup-proxy>
-                        </q-icon>
+                        </UIcon>
                         </template>
                     </InputComponent>
                 </td>

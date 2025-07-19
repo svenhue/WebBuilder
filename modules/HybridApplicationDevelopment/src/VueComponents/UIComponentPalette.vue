@@ -32,13 +32,13 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['basic'][index] = true" >
+                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['basic'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['basic'][index]">
                                         {{ GetInfo(view.type) }}
                                     </UTooltip>
-                        </q-icon>
+                        </UIcon>
                     </div>
                     </div>
                     <div class="component-card-name">
@@ -58,13 +58,13 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['structure'][index] = true" >
+                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['structure'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['structure'][index]">
                                         {{ GetInfo(view.type) }}
                                     </UTooltip>
-                                </q-icon>
+                                </UIcon>
                     </div>
                     </div>
                       
@@ -88,13 +88,13 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['navigation'][index] = true" >
+                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['navigation'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['navigation'][index]">
                                         {{ GetInfo(view.type) }}
                                     </UTooltip>
-                                </q-icon>
+                                </UIcon>
                     </div>
                     </div>
                     <div class="component-card-name" >
@@ -114,13 +114,13 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['typography'][index] = true" >
+                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['typography'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['typography'][index]">
                                         {{ GetInfo(view.type) }}
                                     </UTooltip>
-                                </q-icon>
+                                </UIcon>
                     </div>
                     </div>
                     <div class="component-card-name" >
@@ -140,13 +140,13 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['layout'][index] = true" >
+                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['layout'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['layout'][index]">
                                         {{ GetInfo(view.type) }}
                                     </UTooltip>
-                                </q-icon>
+                                </UIcon>
                     </div>
                     </div>
                     <div class="component-card-name" >
@@ -166,13 +166,13 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['media'][index] = true" >
+                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['media'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['media'][index]">
                                         {{ GetInfo(view.type) }}
                                     </UTooltip>
-                                </q-icon>
+                                </UIcon>
                     </div>
                     </div>
                     <div class="component-card-name" >
@@ -192,13 +192,13 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['forms'][index] = true" >
+                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['forms'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['forms'][index]">
                                         {{ GetInfo(view.type) }}
                                     </UTooltip>
-                                </q-icon>
+                                </UIcon>
                     </div>
                     </div>
                     <div class="component-card-name" >
@@ -219,13 +219,13 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['data'][index] = true" >
+                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['data'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['data'][index]">
                                         {{ GetInfo(view.type) }}
                                     </UTooltip>
-                                </q-icon>
+                                </UIcon>
                     </div>
                     </div>
                     <div class="component-card-name" >
@@ -243,13 +243,13 @@
                         
                     </q-item-section>
                    
-                    <q-icon name="info" @mousemove="() => showInfo['advanced'][index] = true" >
+                    <UIcon name="info" @mousemove="() => showInfo['advanced'][index] = true" >
                         <UTooltip 
                         :style="{zIndex: 99999}"
                         :model-value="showInfo['advanced'][index]">
                             {{ GetInfo(view.type) }}
                         </UTooltip>
-                    </q-icon>
+                    </UIcon>
                 </q-item>
             </q-list>
         </q-expansion-item>

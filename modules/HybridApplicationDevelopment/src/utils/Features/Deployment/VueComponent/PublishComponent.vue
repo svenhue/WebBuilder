@@ -1,5 +1,5 @@
 <template>
-    <q-icon size="45px" color="white" class="preview-icon" name="publish"  unelevated >
+    <UIcon size="45px" color="white" class="preview-icon" name="publish"  unelevated >
         <q-menu>
             <q-tabs v-model="tab">
                 <q-tab name="Publish" label="Publish">
@@ -26,7 +26,7 @@
             </q-tab-panels>
          
         </q-menu>
-    </q-icon>
+    </UIcon>
     
 
 </template>

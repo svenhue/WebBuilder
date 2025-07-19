@@ -95,11 +95,11 @@
                 </div>
                 <div :style="{paddingLeft: '15px',paddingTop: '15px', display:'inline-flex'}">
                 <div :style="{width: '50px',  height: '90px', position: 'relative'}">
-                    <q-icon @click="focusBorder('All')"  :class="currentEditingBorder == 'All' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_outer" size="25px" :style="{position:'absolute', left:'32.5px', top:'32.5px'}" />
-                    <q-icon @click="focusBorder('Left')" :class="currentEditingBorder == 'Left' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_left" size="25px" :style="{position:'absolute', left:'0px', top:'32.5px'}" />
-                    <q-icon @click="focusBorder('Right')" :class="currentEditingBorder == 'Right' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_right" size="25px" :style="{position:'absolute', left:'63px', top:'32.5px'}"/>
-                    <q-icon @click="focusBorder('Top')" :class="currentEditingBorder == 'Top' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_top" size="25px" :style="{position:'absolute', left:'32.5px', top:'0px'}"/>
-                    <q-icon @click="focusBorder('Bottom')" :class="currentEditingBorder == 'Bottom' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_bottom" size="25px" :style="{position:'absolute', left:'32.5px', bottom:'0px'}"/>
+                    <UIcon @click="focusBorder('All')"  :class="currentEditingBorder == 'All' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_outer" size="25px" :style="{position:'absolute', left:'32.5px', top:'32.5px'}" />
+                    <UIcon @click="focusBorder('Left')" :class="currentEditingBorder == 'Left' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_left" size="25px" :style="{position:'absolute', left:'0px', top:'32.5px'}" />
+                    <UIcon @click="focusBorder('Right')" :class="currentEditingBorder == 'Right' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_right" size="25px" :style="{position:'absolute', left:'63px', top:'32.5px'}"/>
+                    <UIcon @click="focusBorder('Top')" :class="currentEditingBorder == 'Top' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_top" size="25px" :style="{position:'absolute', left:'32.5px', top:'0px'}"/>
+                    <UIcon @click="focusBorder('Bottom')" :class="currentEditingBorder == 'Bottom' ? 'c-darkgrey' : 'c-brightgrey' " color="white" name="border_bottom" size="25px" :style="{position:'absolute', left:'32.5px', bottom:'0px'}"/>
                 </div>
                 <div :style="{marginLeft: '60px'}">
                         
@@ -157,11 +157,11 @@
                             </div>
                         </template>
                         <template v-slot:append>
-                            <q-icon  name="colorize" class="cursor-pointer">
+                            <UIcon  name="colorize" class="cursor-pointer">
                                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                                 <q-color :style="{backgroundColor: 'red'}" v-model="currentBorderColor" @update:model-value="(v) => updateSpecificBorder('Color', v)"></q-color>
                                 </q-popup-proxy>
-                            </q-icon>
+                            </UIcon>
                         </template>
                     </InputComponent>
                     </div>

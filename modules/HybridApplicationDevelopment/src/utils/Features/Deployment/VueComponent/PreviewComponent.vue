@@ -1,9 +1,9 @@
 <template>
-    <q-icon size="45px"  name="play_circle" color="white" class="preview-icon" @click="async () => await service.startPreview()">
+    <UIcon size="45px"  name="play_circle" color="white" class="preview-icon" @click="async () => await service.startPreview()">
         <UTooltip>
             <div> Preview </div>
         </UTooltip>
-    </q-icon>
+    </UIcon>
 </template> 
 
 
