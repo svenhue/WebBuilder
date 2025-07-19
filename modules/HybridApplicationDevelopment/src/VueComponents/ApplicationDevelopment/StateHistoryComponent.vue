@@ -30,14 +30,14 @@
                     </q-item-section>
                     <q-item-section side :style="{display: 'inline'}"> 
                         <ButtonComponent disable dense icon="undo" borderless unelevated @click="doUndo(item)">
-                            <q-tooltip>
+                            <UTooltip>
                             Discard
-                            </q-tooltip>
+                            </UTooltip>
                         </ButtonComponent>
                         <ButtonComponent disable dense icon="commit" borderless unelevated @click="doUndo(item)">
-                            <q-tooltip>
+                            <UTooltip>
                             Commit
-                            </q-tooltip>
+                            </UTooltip>
                         </ButtonComponent>
                     </q-item-section>
                     <q-item-section side>

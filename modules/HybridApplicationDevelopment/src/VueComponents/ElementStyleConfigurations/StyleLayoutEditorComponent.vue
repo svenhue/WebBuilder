@@ -17,9 +17,9 @@
         @click="displayIsBlock = !displayIsBlock,   updateDisplay(displayIsBlock == true ? 'block' : '')"
         v-model="displayIsBlock">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/blockdisplay.svg" color="white">
-                    <q-tooltip>
+                    <UTooltip>
                         Block
-                    </q-tooltip>
+                    </UTooltip>
                 </q-img>
         </ButtonComponent>
     </td> 
@@ -31,9 +31,9 @@
         @click="displayIsFlex = !displayIsFlex,   updateDisplay(displayIsFlex == true ? 'flex' : '')"
         v-model="displayIsFlex">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/flexlayout.svg">
-                    <q-tooltip>
+                    <UTooltip>
                         Flex
-                    </q-tooltip>
+                    </UTooltip>
                 </q-img>
         </ButtonComponent>
     </td>
@@ -45,9 +45,9 @@
         @click="displayIsGrid = !displayIsGrid,   updateDisplay(displayIsGrid == true ? 'grid' : '')"
         v-model="displayIsGrid">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/GridLayout.svg">
-                    <q-tooltip>
+                    <UTooltip>
                         Grid
-                    </q-tooltip>
+                    </UTooltip>
                 </q-img>
         </ButtonComponent>
     </td>
@@ -59,9 +59,9 @@
         @click="displayIsInlineBlock = !displayIsInlineBlock,   updateDisplay(displayIsInlineBlock == true ? 'inline-block' : '')"
         v-model="displayIsInlineBlock">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/inlineblockdisplay.svg">
-                    <q-tooltip>
+                    <UTooltip>
                         Inline Block
-                    </q-tooltip>
+                    </UTooltip>
                 </q-img>
         </ButtonComponent>
 
@@ -74,9 +74,9 @@
         @click="displayIsInline = !displayIsInline,   updateDisplay(displayIsInline == true ? 'inline' : '')"
         v-model="displayIsInline">
                 <q-img width="20px" height="20px" src="/icons/developmenticons/inlinedisplay.svg">
-                    <q-tooltip>
+                    <UTooltip>
                         Inline Flex
-                    </q-tooltip>
+                    </UTooltip>
                 </q-img>
         </ButtonComponent>
         

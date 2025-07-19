@@ -33,11 +33,11 @@
 
                         </div>
                         <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['basic'][index] = true" >
-                                <q-tooltip 
+                                <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['basic'][index]">
                                         {{ GetInfo(view.type) }}
-                                    </q-tooltip>
+                                    </UTooltip>
                         </q-icon>
                     </div>
                     </div>
@@ -59,11 +59,11 @@
 
                         </div>
                         <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['structure'][index] = true" >
-                                <q-tooltip 
+                                <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['structure'][index]">
                                         {{ GetInfo(view.type) }}
-                                    </q-tooltip>
+                                    </UTooltip>
                                 </q-icon>
                     </div>
                     </div>
@@ -89,11 +89,11 @@
 
                         </div>
                         <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['navigation'][index] = true" >
-                                <q-tooltip 
+                                <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['navigation'][index]">
                                         {{ GetInfo(view.type) }}
-                                    </q-tooltip>
+                                    </UTooltip>
                                 </q-icon>
                     </div>
                     </div>
@@ -115,11 +115,11 @@
 
                         </div>
                         <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['typography'][index] = true" >
-                                <q-tooltip 
+                                <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['typography'][index]">
                                         {{ GetInfo(view.type) }}
-                                    </q-tooltip>
+                                    </UTooltip>
                                 </q-icon>
                     </div>
                     </div>
@@ -141,11 +141,11 @@
 
                         </div>
                         <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['layout'][index] = true" >
-                                <q-tooltip 
+                                <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['layout'][index]">
                                         {{ GetInfo(view.type) }}
-                                    </q-tooltip>
+                                    </UTooltip>
                                 </q-icon>
                     </div>
                     </div>
@@ -167,11 +167,11 @@
 
                         </div>
                         <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['media'][index] = true" >
-                                <q-tooltip 
+                                <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['media'][index]">
                                         {{ GetInfo(view.type) }}
-                                    </q-tooltip>
+                                    </UTooltip>
                                 </q-icon>
                     </div>
                     </div>
@@ -193,11 +193,11 @@
 
                         </div>
                         <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['forms'][index] = true" >
-                                <q-tooltip 
+                                <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['forms'][index]">
                                         {{ GetInfo(view.type) }}
-                                    </q-tooltip>
+                                    </UTooltip>
                                 </q-icon>
                     </div>
                     </div>
@@ -220,11 +220,11 @@
 
                         </div>
                         <q-icon  class="absolute-right" name="info" @mousemove="() => showInfo['data'][index] = true" >
-                                <q-tooltip 
+                                <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['data'][index]">
                                         {{ GetInfo(view.type) }}
-                                    </q-tooltip>
+                                    </UTooltip>
                                 </q-icon>
                     </div>
                     </div>
@@ -244,11 +244,11 @@
                     </q-item-section>
                    
                     <q-icon name="info" @mousemove="() => showInfo['advanced'][index] = true" >
-                        <q-tooltip 
+                        <UTooltip 
                         :style="{zIndex: 99999}"
                         :model-value="showInfo['advanced'][index]">
                             {{ GetInfo(view.type) }}
-                        </q-tooltip>
+                        </UTooltip>
                     </q-icon>
                 </q-item>
             </q-list>
