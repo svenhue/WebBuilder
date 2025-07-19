@@ -1,9 +1,9 @@
 <template>
 
     <div>
-        <q-select :options="creationFilterOptions" v-model="creationTypeFilter" label="Creation Type" option-label="name" option-value="value" filled dense class="q-mb-md">
+        <SelectComponent :options="creationFilterOptions" v-model="creationTypeFilter" label="Creation Type" option-label="name" option-value="value" filled dense class="q-mb-md">
  
-        </q-select>
+        </SelectComponent>
 
         <q-list>
             <q-item dense v-for="item in creationsComputed" :key="item.id" clickable>
@@ -21,7 +21,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+
 import { DataAdapter } from 'alphautils'
 import { ref, computed } from 'vue'
 

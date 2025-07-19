@@ -18,7 +18,7 @@
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="column.position" label="Position" required dense></InputComponent>
                     <UCheckbox v-model="column.required" label="Required" type="checkbox" dense></UCheckbox>
-                    <q-select :multiple="false" :optinos="alignOptions" v-model="column.align" label="Align" dense></q-select>
+                    <SelectComponent :multiple="false" :optinos="alignOptions" v-model="column.align" label="Align" dense></SelectComponent>
                     <UCheckbox v-model="column.sortable" label="Sortable" type="checkbox" dense></UCheckbox>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="column.style" label="Style" dense></InputComponent>
@@ -33,7 +33,8 @@
 </div>
   </template>
   
-  <script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+  <script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { CardComponent } from 'alphaviewlibrary'
 import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 

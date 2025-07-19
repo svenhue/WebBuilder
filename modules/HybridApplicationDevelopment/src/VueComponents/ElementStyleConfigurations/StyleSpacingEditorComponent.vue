@@ -16,11 +16,11 @@
                 @update:model-value="(value) => updateSpacing('style.marginTop', value + styles.marginTopUnit)" 
                 dense autofocus counter @keyup.enter="scope.set">
                     <template v-slot:append>
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.marginTopUnit" :options="styleManager.sizeUnits"
                     @update:model-value="(value) => updateSpacing('style.marginTop', styles.marginTop + value)" >
                         
-                    </q-select>
+                    </SelectComponent>
                     </template>
                 </InputComponent>
             </div>
@@ -38,12 +38,12 @@
                 @update:model-value="(value) => updateSpacing('style.marginLeft', value + styles.marginLeftUnit)" 
                 dense autofocus counter @keyup.enter="scope.set">
                     <template v-slot:append>
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.marginLeftUnit" :options="styleManager.sizeUnits"
                     @update:model-value="(value) => updateSpacing('style.marginLeft', styles.marginLeft + value)" >
 
 
-                    </q-select>
+                    </SelectComponent>
                     </template>
                 </InputComponent>
             </div>
@@ -62,12 +62,12 @@
 
                 dense autofocus counter @keyup.enter="scope.set">
                     <template v-slot:append>
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.marginRightUnit" :options="styleManager.sizeUnits"
                     @update:model-value="(value) => updateSpacing('style.marginRight', styles.marginRight + value)" >
 
 
-                    </q-select>
+                    </SelectComponent>
                     </template>
                 </InputComponent>
             </div>
@@ -85,12 +85,12 @@
                 @update:model-value="(value) => updateSpacing('style.marginBottom', value + styles.marginBottomUnit)" 
                 dense autofocus counter @keyup.enter="scope.set">
                     <template v-slot:append>
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.marginBottomUnit" :options="styleManager.sizeUnits"
                     @update:model-value="(value) => updateSpacing('style.marginBottom', styles.marginBottom + value)" >
 
 
-                    </q-select>
+                    </SelectComponent>
                     </template>
                 </InputComponent>
             </div>
@@ -113,12 +113,12 @@
                 @update:model-value="(value) => updateSpacing('style.paddingTop', value + styles.paddingTopUnit)" 
                 dense autofocus counter @keyup.enter="scope.set">
                     <template v-slot:append>
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.paddingTopUnit" :options="styleManager.sizeUnits"
                     @update:model-value="(value) => updateSpacing('style.paddingTop', styles.paddingTop + value)" >
 
 
-                    </q-select>
+                    </SelectComponent>
                     </template>
                 </InputComponent>
             </div>
@@ -136,12 +136,12 @@
                 @update:model-value="(value) => updateSpacing('style.paddingLeft', value + styles.paddingLeftUnit)" 
                 dense autofocus counter @keyup.enter="scope.set">
                     <template v-slot:append>
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.paddingLeftUnit" :options="styleManager.sizeUnits"
                     @update:model-value="(value) => updateSpacing('style.paddingLeft', styles.paddingLeft + value)" >
 
 
-                    </q-select>
+                    </SelectComponent>
                     </template>
                 </InputComponent>
             </div>
@@ -159,12 +159,12 @@
                 @update:model-value="(value) => updateSpacing('style.paddingRight', value + styles.paddingRightUnit)" 
                 dense autofocus counter @keyup.enter="scope.set">
                     <template v-slot:append>
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.paddingRightUnit" :options="styleManager.sizeUnits"
                     @update:model-value="(value) => updateSpacing('style.paddingRight', styles.paddingRight + value)" >
 >
 
-                    </q-select>
+                    </SelectComponent>
                     </template>
                 </InputComponent>
             </div>
@@ -182,12 +182,12 @@
                 dark color="white" v-model="styles.paddingBottom" 
                 dense autofocus counter @keyup.enter="scope.set">
                     <template v-slot:append>
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.paddingBottomUnit" :options="styleManager.sizeUnits"
                     @update:model-value="(value) => updateSpacing('style.paddingBottom', styles.paddingBottom + value)" >
 
 
-                    </q-select>
+                    </SelectComponent>
                     </template>
                 </InputComponent>
             </div>
@@ -200,7 +200,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 
 import { reactive, inject } from 'vue';
 import { ViewElement } from 'alphautils';

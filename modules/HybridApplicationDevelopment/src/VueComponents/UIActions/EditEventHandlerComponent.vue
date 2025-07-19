@@ -13,7 +13,7 @@
         <q-separator></q-separator>
         <div>
             Event
-            <q-select
+            <SelectComponent
             class="alpha-select"
             popup-content-class="alpha-dropdown-content"
             :options="Object.values(UIEventTypes)"
@@ -24,8 +24,8 @@
                 <template v-slot:before>
                     <div class="editor-input-label"> Event Type </div>
                 </template>
-            </q-select>
-            <q-select
+            </SelectComponent>
+            <SelectComponent
             class="alpha-select"
             popup-content-class="alpha-dropdown-content"
             dense
@@ -36,7 +36,7 @@
                 <template v-slot:before>
                     <div class="editor-input-label"> Trigger </div>
                 </template>
-            </q-select>
+            </SelectComponent>
         </div>
         <q-separator></q-separator>
         <div>
@@ -78,7 +78,8 @@
 </template>
 
 
-<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { CardComponent } from 'alphaviewlibrary'
 
 import { IDataAdapter, IUIEvent, IViewConfiguration, UIActionTypes,UIEventTypes, UIEvents, RestrictedServiceProvider, BOService, IUIAction  } from 'alphautils';
 import { BaseServiceProvider } from 'alphautils';

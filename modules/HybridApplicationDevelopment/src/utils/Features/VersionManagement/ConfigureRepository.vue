@@ -1,14 +1,15 @@
 <template>
     <div>
-        <q-select label="Source" v-model="model.source" @update:model-value="(val) => model.setSource(val.value)" :options="sources" option-value="value" option-label="name">
+        <SelectComponent label="Source" v-model="model.source" @update:model-value="(val) => model.setSource(val.value)" :options="sources" option-value="value" option-label="name">
 
-        </q-select>
+        </SelectComponent>
         
         <GithubRemoteComponent v-show="model.source != undefined" @update-property="(val) => model.setProperty(val)"></GithubRemoteComponent>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+
 import { computed, reactive } from 'vue';
 import GithubRemoteComponent from './GithubRemoteComponent.vue';
 

@@ -29,12 +29,12 @@
 
         <div v-show="showDialog" :style="{zIndex: 999999, width: '200px', height: '200px', position: 'absolute', backgroundColor:'white'}">
             <div>
-                <q-select dense 
+                <SelectComponent dense 
                 :options="ViewConfigurationService.getAvaibleComponentTypes()?.filter(
                     v => ['viewdefinition:Basic:ListItemComponent', 'viewdefinition:Navigation:LinkComponent', 'viewdefinition:Navigation:DropdownMenuComponent'].includes(v))" 
                 
                 :model-value="newComponent.type" @update:model-value="(type) => setComponent(type)">
-                </q-select>
+                </SelectComponent>
             </div>
         </div>
     </div>
@@ -42,7 +42,8 @@
 </template>
 
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { IViewConfiguration } from 'alphautils';
 import { ViewConfigurationService } from '../../../utils/Services/ViewConfigurationService';

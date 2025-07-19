@@ -7,7 +7,7 @@
        
             <CardComponent v-show="show" :style="{zIndex: 9999}">
                 <div>
-                    <q-select  :style="{zIndex: 99999}" v-model="newLocale" label="Locale" :options="viewModel.GetNotUsedLocales()"></q-select>
+                    <SelectComponent  :style="{zIndex: 99999}" v-model="newLocale" label="Locale" :options="viewModel.GetNotUsedLocales()"></SelectComponent>
                 </div>
                 <div>
                     <ButtonComponent label="Cancel" :style="{color: 'black'}" @click="show = false"></ButtonComponent>
@@ -19,7 +19,8 @@
 </template>
 
 
-<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { CardComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ref } from 'vue';

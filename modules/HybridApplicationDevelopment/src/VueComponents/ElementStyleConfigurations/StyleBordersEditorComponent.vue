@@ -119,7 +119,7 @@
                         <div :style="{paddingRight: '13px'}">
                             Style
                         </div>
-                        <q-select class="alpha-select"
+                        <SelectComponent class="alpha-select"
                         :popup-content-class="'alpha-dropdown-content'" dense
                         :popup-content-style="{
                             backgroundColor: '#57595d'
@@ -129,7 +129,7 @@
                         :options="styleManager.borderStyles"
                         v-model="currentBorderStyle"
                         >
-                        </q-select>
+                        </SelectComponent>
                     </div>
                     <InputComponent
                     class="alpha-input"
@@ -172,7 +172,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 
 import { ref, reactive, inject } from 'vue';
 import { ViewElement } from 'alphautils';

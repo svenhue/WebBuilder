@@ -2,16 +2,17 @@
 
     <div>
         Resource
-        <q-select dense :options="resources" v-model="selectedResource" @update:model-value="(val) => viewModel.UpdateNodeType(props.node.id, val.value)">
+        <SelectComponent dense :options="resources" v-model="selectedResource" @update:model-value="(val) => viewModel.UpdateNodeType(props.node.id, val.value)">
 
-        </q-select>
+        </SelectComponent>
 
         <component :is="editorComponent" :node="node" :contextid="contextid" @updateElement="(values) => emits('updateElement', values)" :currentElement="node"></component>  
     </div>
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+
 import { INode } from 'alphanodes';
 import { nodes } from 'alphanodes';
 import { NodeViewModel } from '../../ViewModels/NodeViewModel';

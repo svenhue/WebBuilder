@@ -7,20 +7,21 @@
                 </UCheckbox>
             </q-item>
             <q-item>
-                <q-select 
+                <SelectComponent 
                 dense
                 :model-value="currentElement.appearance?.alignment"
                 @update:model-value="(val) => emits('updateElement', [{key:'appearance.alignment', value: val}])"
                 :options="['center', 'left', 'right', 'justify']">
 
-                </q-select>
+                </SelectComponent>
             </q-item>
         </q-list>
     </div>
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration, useViewConfiguration } from 'alphautils';
 
 

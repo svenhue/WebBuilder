@@ -96,11 +96,11 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select class="alpha-select"
+                                        <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
-                                            </q-select>
+                                            </SelectComponent>
                                     </template>
                                     <template v-slot:hint>
                                         <div :style="{width: '100%', display: 'inline-flex', alignItems:'center', justifyContent:'center'}">
@@ -113,11 +113,11 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select class="alpha-select"
+                                        <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
-                                            </q-select>
+                                            </SelectComponent>
                                     </template>
                                     <template v-slot:hint>
                                         <div :style="{width: '100%', display: 'inline-flex', alignItems:'center', justifyContent:'center'}">
@@ -144,11 +144,11 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select class="alpha-select"
+                                        <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
-                                            </q-select>
+                                            </SelectComponent>
                                     </template>
                                     <template v-slot:hint>
                                         <div :style="{width: '100%', display: 'inline-flex', alignItems:'center', justifyContent:'center'}">
@@ -161,11 +161,11 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select class="alpha-select"
+                                        <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
-                                            </q-select>
+                                            </SelectComponent>
                                     </template>
                                     <template v-slot:hint>
                                         <div :style="{width: '100%', display: 'inline-flex', alignItems:'center', justifyContent:'center'}">
@@ -181,11 +181,11 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select class="alpha-select"
+                                        <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
-                                            </q-select>
+                                            </SelectComponent>
                                     </template>
                                     <template v-slot:hint>
                                         <div :style="{width: '100%', display: 'inline-flex', alignItems:'center', justifyContent:'center'}">
@@ -198,11 +198,11 @@
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
                                     <template v-slot:append>
-                                        <q-select class="alpha-select"
+                                        <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense 
                                             v-model="currentFocussedBackground.widthUnit"
                                             :options="styleManager.sizeUnits">
-                                            </q-select>
+                                            </SelectComponent>
                                     </template>
                                     <template v-slot:hint>
                                         <div :style="{width: '100%', display: 'inline-flex', alignItems:'center', justifyContent:'center'}">
@@ -293,7 +293,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ref, computed, reactive, inject } from 'vue';

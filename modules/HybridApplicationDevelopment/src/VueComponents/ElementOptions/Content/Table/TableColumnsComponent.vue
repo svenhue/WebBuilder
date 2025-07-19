@@ -1,6 +1,6 @@
 <template>
     <div>
-        <q-select dense 
+        <SelectComponent dense 
         :multiple="false"
         
         :options='columnSourceOptions' 
@@ -11,7 +11,7 @@
                 <div class="editor-input-label" > Column source</div>
 
             </template>
-        </q-select>
+        </SelectComponent>
         <div>
             Columns
             <ButtonComponent dense icon='add' @click='AddColumn'></ButtonComponent>
@@ -64,7 +64,8 @@
     
 </template>
 
-<script setup lang='ts'>import { InputComponent } from 'alphaviewlibrary'
+<script setup lang='ts'>import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ITableColumn } from 'alphaviewlibrary';

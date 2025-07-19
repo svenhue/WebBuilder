@@ -2,7 +2,7 @@
     <div>
         <div>
         Fields
-            <q-select dense 
+            <SelectComponent dense 
             :options="formSourceOptions" 
             :model-value="currentElement.dataConfig.fieldSource" 
             @update:model-value="(val) => $emit('updateElement', [{key:'dataConfig.fieldSource', value:val}])">
@@ -11,7 +11,7 @@
                     <div class="editor-input-label" > Field source</div>
 
                 </template>
-            </q-select>
+            </SelectComponent>
         </div>
         <div>
             <ButtonComponent dense icon='add' @click='addField()'></ButtonComponent>
@@ -47,7 +47,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { IFormViewConfiguration,IFormField } from 'alphaviewlibrary';

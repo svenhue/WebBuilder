@@ -262,13 +262,13 @@
                                 Columns
                             </template>
                             <template v-slot:append>
-                                <q-select class="alpha-select"
+                                <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense 
                                 @update:model-value="(v) =>  {emits('updateElement', [{key: 'style.columnGap', value: styles.columnGap +v }]), styles.columnGapUnit = v}"
                                 v-model="styles.rowGapUnit"
                                 :options="styleManager.sizeUnits">
 
-                                </q-select>
+                                </SelectComponent>
                             </template>
                         </InputComponent>
                     </td>
@@ -280,14 +280,14 @@
                                 Rows
                             </template>
                             <template v-slot:append>
-                                <q-select class="alpha-select"
+                                <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense 
                                 @update:model-value="(v) =>  {emits('updateElement', [{key: 'style.rowGap', value: styles.rowGap + v }]), styles.rowGapUnit = v}"
 
                                 v-model="styles.rowGapUnit"
                                 :options="styleManager.sizeUnits">
 
-                                </q-select>
+                                </SelectComponent>
                             </template>
                         </InputComponent>
                     </td>
@@ -399,7 +399,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ref, computed, reactive, inject, toValue } from 'vue';

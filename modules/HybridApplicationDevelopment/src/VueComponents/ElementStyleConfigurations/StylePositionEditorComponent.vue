@@ -6,7 +6,7 @@
             <div>
                 Position
             </div>
-            <q-select class="alpha-select"
+            <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense
                  :popup-content-style="{
                         backgroundColor: '#57595d'
@@ -17,10 +17,10 @@
             v-model="styles.position"
             >
 
-            </q-select>
+            </SelectComponent>
         </div>
         <div v-show="styles.position == 'relative' || styles.position == 'absolute'">
-            <q-select class="alpha-select"
+            <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'"
                  :popup-content-style="{
                         backgroundColor: '#57595d'
@@ -30,7 +30,7 @@
             @update:model-value="(v) => updatePositionPair(v)"
             :options="positionPairs.map(p => { return p.key})">
 
-            </q-select>
+            </SelectComponent>
         </div>
         <div v-show="styles.position != 'static' && styles.position != ''">
             <table>
@@ -197,7 +197,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { reactive, ref,inject } from 'vue'

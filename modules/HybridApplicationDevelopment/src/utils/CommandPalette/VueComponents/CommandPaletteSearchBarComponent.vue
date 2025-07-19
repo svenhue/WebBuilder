@@ -1,5 +1,5 @@
 <template>
-    <q-select 
+    <SelectComponent 
     dense 
     multiple
     use-chips
@@ -27,10 +27,11 @@
                 </q-item-section>
             </q-item>
         </template>
-    </q-select>
+    </SelectComponent>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+
 import { CommandPaletteViewModel } from '../ViewModels/CommandPaletteViewModel';
 import { ref, watch } from 'vue';
 

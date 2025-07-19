@@ -9,7 +9,7 @@
             <template v-slot:before>
                 <div class="editor-input-label"> Data source </div>
 
-                <q-select
+                <SelectComponent
                 ref="dataSourceRef"
                
                 @update:model-value="(val) => updateDataConfig(val)"
@@ -18,7 +18,7 @@
                 :multiple="false"
                 v-model="selectedSource">
                   
-                    </q-select>
+                    </SelectComponent>
             </template>
 
             <template v-slot:after v-if="selectedSource == DataSources['Use Javascript'] || selectedSource == DataSources['Use Array'] || selectedSource == DataSources['Demo Data']">
@@ -43,7 +43,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 
 import { DataSources, IViewDataConfiguration } from 'alphautils';
 import {  computed, ref } from 'vue';

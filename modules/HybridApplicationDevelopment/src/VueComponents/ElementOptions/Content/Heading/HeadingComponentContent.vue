@@ -4,7 +4,7 @@
         :contextid="currentElement.contextid" 
         :value="currentElement?.content?.text" 
         @updateValue="(values) => $emit('updateElement', [{key: 'content.text', value: values}])"></TextInputEditorComponent>
-        <q-select
+        <SelectComponent
         dense
         :options="headingOptions"
         :multiple="false"
@@ -12,11 +12,12 @@
         @update:model-value="(values) =>  { $emit('updateElement', [{key: 'properties.headingTag', value: values.value}]) }"
         >
 
-        </q-select>
+        </SelectComponent>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration } from 'alphautils';
 import {TextInputEditorComponent} from 'alphaviewlibrary'
 

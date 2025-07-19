@@ -12,7 +12,7 @@
         @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.navigation', value: values}])}"
     >
     </UCheckbox>
-    <q-select dense 
+    <SelectComponent dense 
     :options="navigationPositionOptions"
     @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.navigationPosition', value: values.value}])}"
     :model-value="currentElement.content?.navigationPosition ?? '' ">
@@ -21,7 +21,7 @@
             Navigation Position
         </div>
         </template>
-    </q-select>
+    </SelectComponent>
     <UCheckbox
     label="Show navigation arrows"
         :model-value="currentElement.content?.arrows ?? false"
@@ -49,7 +49,8 @@
 </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 
 import { TextInputEditorComponent } from 'alphaviewlibrary';
 import { IViewConfiguration } from 'alphautils';

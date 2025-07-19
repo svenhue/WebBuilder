@@ -22,12 +22,12 @@
                     }">
                     </CommandPaletteSearchBarComponent>
 
-                    <q-select dense 
+                    <SelectComponent dense 
                     :options="['design', 'edit']" 
                     :model-value="store.devSettings?.editorMode" 
                     :style="{width: '80px', backgroundColor: 'white', margin: '4px', borderRadius: '4px'}" 
                     @update:model-value="(val) => viewModel.settingsService.ChangeEditorMode(val, viewModel)">
-                    </q-select>
+                    </SelectComponent>
                     <DeploymentComponent :view-model="viewModel">
 
                     </DeploymentComponent>
@@ -35,7 +35,8 @@
             </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import CommandPaletteSearchBarComponent from '../../utils/CommandPalette/VueComponents/CommandPaletteSearchBarComponent.vue';
 import ApplicationScreenComponent from './ApplicationScreenComponent.vue'

@@ -9,7 +9,7 @@
                 </div>
                 </td>
                 <td colspan="4">
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense
                          :popup-content-style="{
                         backgroundColor: '#57595d'
@@ -24,7 +24,7 @@
                     @update:model-value="(v) => emits('updateElement', [{key: 'style.fontFamily', value: v}])"
                     >
     
-                    </q-select>
+                    </SelectComponent>
                 </td>
             </tr>
             <tr>
@@ -60,7 +60,7 @@
                     @update:model-value="(v) => emits('updateElement', [{key: 'style.fontSize', value: v + styles.fontSizeUnit}])"
                     >
                     <template v-slot:append>
-                                <q-select class="alpha-select"
+                                <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" 
                                      :popup-content-style="{
                                     backgroundColor: '#57595d'
@@ -71,7 +71,7 @@
                                 v-model="styles.fontSizeUnit"
                                 @update:model-value="(v) => emits('updateElement', [{key: 'style.fontSize', value: styles.fontSize + v}])"
                                 :options="styleManager.sizeUnits">
-                                </q-select>
+                                </SelectComponent>
                             </template>
                     </InputComponent>
                 </td>
@@ -88,7 +88,7 @@
                     @update:model-value="(v) => emits('updateElement', [{key: 'style.lineHeight', value: v + styles.lineHeightUnit}])"
                     >
                     <template v-slot:append>
-                                <q-select class="alpha-select"
+                                <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense 
                                 :popup-content-style="{
                                     backgroundColor: '#57595d'
@@ -99,7 +99,7 @@
                                 @update:model-value="(v) => emits('updateElement', [{key: 'style.lineHeight', value: styles.lineHeight + v}])"
                                 :options="styleManager.sizeUnits">
 
-                                </q-select>
+                                </SelectComponent>
                             </template>
                     </InputComponent>
                 </td>
@@ -231,7 +231,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { reactive, inject } from 'vue';

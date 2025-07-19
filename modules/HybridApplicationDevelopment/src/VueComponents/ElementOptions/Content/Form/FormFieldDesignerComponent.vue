@@ -8,8 +8,8 @@
                 <q-form @submit="onSubmit">
                 <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="formField.label" label="Label" required dense></InputComponent>
-                <q-select v-model="formField.componenttype" label="Component type" :options="typeoptions" required dense></q-select>
-                <q-select v-if="formField.inputType == 'Input'" v-model="formField.inputType" :options="inputTypes"></q-select>
+                <SelectComponent v-model="formField.componenttype" label="Component type" :options="typeoptions" required dense></SelectComponent>
+                <SelectComponent v-if="formField.inputType == 'Input'" v-model="formField.inputType" :options="inputTypes"></SelectComponent>
                 <UCheckbox v-model="formField.required" label="Required" type="boolean" dense></UCheckbox>
                 <q-separator></q-separator>
                 <ButtonComponent label="Submit" type="submit" color="primary"></ButtonComponent>
@@ -20,7 +20,8 @@
 </template>
 
 
-<script setup lang="ts">import { CardComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { CardComponent } from 'alphaviewlibrary'
 import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 

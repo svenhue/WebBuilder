@@ -13,7 +13,7 @@
     </q-item>
   <div class="create-action-component" v-if="showEdit">
     
-            <q-select
+            <SelectComponent
             class="alpha-select"
             popup-content-class="alpha-dropdown-content"
             dense
@@ -24,11 +24,11 @@
             <template v-slot:before>
                     <div class="editor-input-label"> Action Type </div>
                 </template>
-            </q-select>  
+            </SelectComponent>  
       
         <q-separator></q-separator>
         <div v-if="actionCopy?.type == UIActionTypes['Control component']">
-            <q-select 
+            <SelectComponent 
             class="alpha-select"
             popup-content-class="alpha-dropdown-content"
             :model-value="actionCopy.targetElement"
@@ -38,8 +38,8 @@
                 <template v-slot:before>
                     <div class="editor-input-label"> Component </div>
                 </template>
-            </q-select>
-            <q-select 
+            </SelectComponent>
+            <SelectComponent 
             class="alpha-select"
             popup-content-class="alpha-dropdown-content"
             :model-value="actionCopy.methodName"
@@ -49,10 +49,10 @@
                 <template v-slot:before>
                     <div class="editor-input-label"> Method </div>
                 </template>
-            </q-select>
+            </SelectComponent>
         </div>
         <div v-else-if="actionCopy?.type == UIActionTypes['Trigger Event']">
-            <q-select 
+            <SelectComponent 
             class="alpha-select"
             popup-content-class="alpha-dropdown-content"
             :model-value="actionCopy.targetElement"
@@ -62,9 +62,9 @@
                 <template v-slot:before>
                     <div class="editor-input-label"> Event </div>
                 </template>
-            </q-select>
+            </SelectComponent>
 
-            <q-select 
+            <SelectComponent 
             class="alpha-select"
             popup-content-class="alpha-dropdown-content"
             :model-value="actionCopy.event"
@@ -74,11 +74,11 @@
                 <template v-slot:before>
                     <div class="editor-input-label"> Component </div>
                 </template>
-            </q-select>
+            </SelectComponent>
             
         </div>
         <div v-else-if="actionCopy.type == UIActionTypes['Call service']">
-            <q-select
+            <SelectComponent
             class="alpha-select"
             popup-content-class="alpha-dropdown-content"
             dense
@@ -87,7 +87,7 @@
             @update:model-value="(value) => {actionCopy.config.service = value}"
             >
 
-            </q-select>
+            </SelectComponent>
         </div>
         <div>
        
@@ -103,7 +103,8 @@
 </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { IDataAdapter, IUIEvent, IViewConfiguration, UIActionTypes,UIEventTypes, UIEvents, RestrictedServiceProvider  } from 'alphautils';
 import { BaseServiceProvider } from 'alphautils';

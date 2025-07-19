@@ -145,7 +145,7 @@
                 </td>
 
                 <td colspan="3">
-                    <q-select class="alpha-select"
+                    <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" 
                     :popup-content-style="{
                         backgroundColor: '#57595d'
@@ -154,7 +154,7 @@
                     dense @update:model-value="(valuee) => emits('updateElement', [{key: 'style.objectFit', value: valuee}])" 
                     v-model="styles.objectFit" :options="styleManager.objectFits">
 
-                    </q-select>
+                    </SelectComponent>
                 </td>
             </tr>
         </tbody>
@@ -162,7 +162,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
 import { reactive, ref, inject } from 'vue';

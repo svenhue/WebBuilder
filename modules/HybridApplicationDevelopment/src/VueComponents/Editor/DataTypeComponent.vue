@@ -1,5 +1,5 @@
 <template>
-    <q-select dense :options="dataTypes" :model-value="currentElement.content.dataType" 
+    <SelectComponent dense :options="dataTypes" :model-value="currentElement.content.dataType" 
     @update:model-value="(val) => $emit('updateElement', [{key: 'content.dataType', value: val.value}])">
 
         <template v-slot:before>
@@ -7,10 +7,11 @@
                 Data Type
             </div>
         </template>
-    </q-select>
+    </SelectComponent>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+
 import {  IViewConfiguration } from 'alphautils';
 
 defineEmits(['updateElement'])
