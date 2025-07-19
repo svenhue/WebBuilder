@@ -1,7 +1,7 @@
 <template>
     <div>
         <div dense>
-            <q-item dense>
+            <div dense>
                 <UCheckbox
                 
                 label="Unelevated"
@@ -9,14 +9,14 @@
                 :model-value="currentElement?.appearence?.unelevated">
 
                 </UCheckbox>
-            </q-item>
-            <q-item dense>
+            </div>
+            <div dense>
                 <UCheckbox
                 label="Round"
                 @update:model-value="(val) => $emit('updateElement', [{key: 'appearence.round', value: val}])"
                 :model-value="currentElement?.appearence?.round">
                 </UCheckbox>
-            </q-item>
+            </div>
         </div>
     </div>
 </template>

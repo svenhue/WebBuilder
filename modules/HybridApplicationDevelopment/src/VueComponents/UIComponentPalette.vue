@@ -237,11 +237,11 @@
         
         <ExpansionItemComponent label="Advanced" dense v-model="AdvancedExpand">
             <div>
-                <q-item v-for="(view, index) in filter('viewdefinition:Advanced')" :key="view.name" clickable>
-                    <q-item-section @mousedown="(e) => startElementTransition(e, view.type)">
-                        <q-item-label>{{ view.name }}</q-item-label>
+                <div v-for="(view, index) in filter('viewdefinition:Advanced')" :key="view.name" clickable>
+                    <div-section @mousedown="(e) => startElementTransition(e, view.type)">
+                        <div-label>{{ view.name }}</div-label>
                         
-                    </q-item-section>
+                    </div-section>
                    
                     <UIcon name="info" @mousemove="() => showInfo['advanced'][index] = true" >
                         <UTooltip 
@@ -250,16 +250,16 @@
                             {{ GetInfo(view.type) }}
                         </UTooltip>
                     </UIcon>
-                </q-item>
+                </div>
             </div>
         </ExpansionItemComponent>
         <ExpansionItemComponent label="Your templates" dense v-model="YourTemplatesExpand">
             <div>
-                <q-item v-for="view in avaibleTemplates" :key="view.name" clickable>
-                    <q-item-section @mousedown="(e) => startElementTransition(e, view.type)">
-                        <q-item-label>{{ view.name }}</q-item-label>
-                    </q-item-section>
-                </q-item>
+                <div v-for="view in avaibleTemplates" :key="view.name" clickable>
+                    <div-section @mousedown="(e) => startElementTransition(e, view.type)">
+                        <div-label>{{ view.name }}</div-label>
+                    </div-section>
+                </div>
             </div>
         </ExpansionItemComponent>
     </div>

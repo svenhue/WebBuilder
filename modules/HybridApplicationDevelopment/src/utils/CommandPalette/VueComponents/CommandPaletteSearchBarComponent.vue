@@ -21,11 +21,11 @@
         }"
     >
         <template #option="scope">
-            <q-item>
-                <q-item-section class="text-grey">
+            <div>
+                <div-section class="text-grey">
                     {{ scope.itemProps.label }}
-                </q-item-section>
-            </q-item>
+                </div-section>
+            </div>
         </template>
     </SelectComponent>
 </template>

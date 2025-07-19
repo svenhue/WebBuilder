@@ -11,17 +11,17 @@
             display: 'flex'
         }">
             <div dense>
-                <q-item>
-                    <q-item-section>
-                        <q-item-label>
+                <div>
+                    <div-section>
+                        <div-label>
                             Add Page
-                        </q-item-label>
-                    </q-item-section>
-                    <q-item-section side>
+                        </div-label>
+                    </div-section>
+                    <div-section side>
                         <ButtonComponent icon="add" class="cursor-pointer" @click="viewModel.AddPage()"></ButtonComponent>
-                    </q-item-section>
-                </q-item>
-                <q-item
+                    </div-section>
+                </div>
+                <div
                 v-for="page of viewModel.GetPageEntitys().value"
                 :key="page.id"
                 clickable
@@ -29,16 +29,16 @@
                 v-ripple
                 :active="viewModel.currentPage.value.id == page.id"
                 @click="viewModel.NavigateToPage(page.name)">
-                    <q-item-section>
-                        <q-item-label>
+                    <div-section>
+                        <div-label>
                             {{page?.name}}
-                        </q-item-label>
-                    </q-item-section>
-                    <q-item-section side>
+                        </div-label>
+                    </div-section>
+                    <div-section side>
                         <ButtonComponent  icon="edit" class="cursor-pointer" @click="() => {selectedPage = page,showEditDialog = true}" ></ButtonComponent>
                         <ButtonComponent icon="delete" class="cursor-pointer" @click="() => {selectedPage = page, showDeletePageDialog = true}"></ButtonComponent>
-                    </q-item-section>
-                </q-item>
+                    </div-section>
+                </div>
             </div>
             <q-dialog v-model="showDeletePageDialog">
                 <CardComponent>

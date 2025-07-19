@@ -1,12 +1,12 @@
 <template>
     <div>
         <div>
-            <q-item dense>
+            <div dense>
                 <UCheckbox label="Vertical" :model-value="currentElement.appearance?.isVertical" @update:model-value="(val) => emits('updateElement', [{key:'appearance.isVertical', value: val}])">
 
                 </UCheckbox>
-            </q-item>
-            <q-item>
+            </div>
+            <div>
                 <SelectComponent 
                 dense
                 :model-value="currentElement.appearance?.alignment"
@@ -14,7 +14,7 @@
                 :options="['center', 'left', 'right', 'justify']">
 
                 </SelectComponent>
-            </q-item>
+            </div>
         </div>
     </div>
 </template>

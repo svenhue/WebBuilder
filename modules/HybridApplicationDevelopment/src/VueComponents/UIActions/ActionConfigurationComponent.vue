@@ -12,18 +12,18 @@
     <div
     bordered
     dense>
-        <q-item 
+        <div 
         v-for="event in currentElement.value?.interaction?.events" :key="event.id" 
         @click="focssedEvent = event, showEdit = true"
         clickable
         dense>
-            <q-item-section>
-                <q-item-label>{{ event?.identifier }}</q-item-label>
-            </q-item-section>
-            <q-item-section>
-                <q-item-label> {{  event?.actions?.map(a => { return a.identifier} ) }}</q-item-label>
-            </q-item-section>
-        </q-item>
+            <div-section>
+                <div-label>{{ event?.identifier }}</div-label>
+            </div-section>
+            <div-section>
+                <div-label> {{  event?.actions?.map(a => { return a.identifier} ) }}</div-label>
+            </div-section>
+        </div>
     </div>
 
     <EditEventHandlerComponent 

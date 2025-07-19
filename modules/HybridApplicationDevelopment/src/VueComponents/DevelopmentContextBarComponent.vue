@@ -2,16 +2,16 @@
     <div class="development-context-bar">
         <q-menu  context-menu  @hide="emits('hide')" class="development-context-bar" ref="test" auto-close   touch-position>
             <div class="development-context-bar" dense>
-                <q-item dense clickable @click="deleteView()">
-                    <q-item-section>
-                        <q-item-label>Delete View</q-item-label>
-                    </q-item-section>
-                </q-item>
-                <q-item disable clickable @click="() => ShowTemplateDialog()">
-                    <q-item-section>
-                        <q-item-label>Save as template (Coming Soon)</q-item-label>
-                    </q-item-section>
-                </q-item>
+                <div dense clickable @click="deleteView()">
+                    <div-section>
+                        <div-label>Delete View</div-label>
+                    </div-section>
+                </div>
+                <div disable clickable @click="() => ShowTemplateDialog()">
+                    <div-section>
+                        <div-label>Save as template (Coming Soon)</div-label>
+                    </div-section>
+                </div>
             </div>
         </q-menu>
 

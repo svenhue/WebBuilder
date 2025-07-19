@@ -1,12 +1,12 @@
 <template>
     <div>
         <div label="Propertys">
-            <q-item dense
+            <div dense
             v-for="(value, propertyName) in viewProperties" :key="propertyName">
-                <q-item-section>
-                    <q-item-label>{{propertyName}}</q-item-label>
-                </q-item-section>
-                <q-item-section>
+                <div-section>
+                    <div-label>{{propertyName}}</div-label>
+                </div-section>
+                <div-section>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" @update:model-value="(value) => emits('updateElement', 
@@ -17,8 +17,8 @@
                         }
                     ])" dense borderless type="text" >
                     </InputComponent>
-                </q-item-section>
-            </q-item>
+                </div-section>
+            </div>
         </div>
     </div>
 </template>

@@ -17,12 +17,12 @@
             <UDropdownMenu>
                 <template #default>
                 <div>
-                    <q-item v-for="option in urlOptions" :key="option" clickable v-ripple
+                    <div v-for="option in urlOptions" :key="option" clickable v-ripple
                     @click="() => $emit('updateUrl', option)">
-                        <q-item-section>
+                        <div-section>
                             {{ option }}
-                        </q-item-section>
-                    </q-item>    
+                        </div-section>
+                    </div>    
                 </div>
                 </template>
             </UDropdownMenu>

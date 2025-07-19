@@ -18,8 +18,8 @@
         </div>
         <div dense >
             
-            <q-item v-show="showNewItem" dense>
-                <q-item-section>
+            <div v-show="showNewItem" dense>
+                <div-section>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense 
                     v-model="newColumnModel.field" 
@@ -27,13 +27,13 @@
                     @update:model-value="(v) => {newColumnModel.name = v, newColumnModel.label = v, newColumnModel.align = 'left'}">
 
                     </InputComponent>
-                </q-item-section>
-                <q-item-section side> 
+                </div-section>
+                <div-section side> 
                     <ButtonComponent dense icon='edit' @click='editColumn(newColumnModel)'></ButtonComponent>
                     <ButtonComponent dense icon='delete' @click='deleteColumn(newColumnModel)'></ButtonComponent>
-                </q-item-section>
-            </q-item>
-            <q-item dense v-for='column in columnsModel' :key='column'>
+                </div-section>
+            </div>
+            <div dense v-for='column in columnsModel' :key='column'>
              
                         <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense v-model="column.field" @update:model-value="UpdateColumns">
@@ -45,14 +45,14 @@
                     }">
                     </InputComponent>
             
-                <q-item-section side> 
+                <div-section side> 
                     <ButtonComponent dense icon='edit' @click='editColumn(column)'></ButtonComponent>
                     
-                </q-item-section>
-                <q-item-section side>
+                </div-section>
+                <div-section side>
                     <ButtonComponent dense icon='delete' @click='deleteColumn(column)'></ButtonComponent>
-                </q-item-section>
-            </q-item>
+                </div-section>
+            </div>
         </div>
        
         <edit-table-column-component

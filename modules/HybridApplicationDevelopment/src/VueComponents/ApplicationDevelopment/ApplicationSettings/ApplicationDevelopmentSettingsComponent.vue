@@ -2,16 +2,16 @@
 
     <div>
         <div>
-            <q-item>
+            <div>
             <UCheckbox :label="'Show Dotted Element Borders'" v-model="service.store.devSettings.showDevBorders" @update:model-value="(val) => service.ChangeDevBorderSetting(val)">
 
             </UCheckbox>
-        </q-item>
-        <q-item>
+        </div>
+        <div>
             <UCheckbox label="Use default component templates" v-model="service.store.devSettings.useViewTemplates" @update:model-value="(val) => service.ChangeTemplateSetting()">
 
             </UCheckbox>
-        </q-item>
+        </div>
         </div>
     </div>
 </template>

@@ -1,54 +1,54 @@
 <template>
     <div class="left-development-options-bar">
         <div dense :style="{width: '40px', height: '1000px'}" > 
-        <q-item  class="ldob-content-btn" dense>
+        <div  class="ldob-content-btn" dense>
             <ButtonComponent dense icon="add_circle_outline" @click="(e) => update(e, 'palette')">
 
             </ButtonComponent>
-        </q-item>
-         <q-item  class="ldob-content-btn" dense>
+        </div>
+         <div  class="ldob-content-btn" dense>
             <ButtonComponent dense icon="smart_toy" @click="(e) => update(e, 'aichat')">
 
             </ButtonComponent>
-        </q-item>
-        <q-item dense class="ldob-content-btn">
+        </div>
+        <div dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="notes" @click="(e) => update(e, 'structure')">
 
             </ButtonComponent>
-        </q-item>
-        <q-item dense class="ldob-content-btn">
+        </div>
+        <div dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="pageview" @click="(e) => update(e, 'pages')">
             
             </ButtonComponent>
-        </q-item>
+        </div>
         
-        <q-item dense class="ldob-content-btn">
+        <div dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="code" @click="(e) => update(e, 'code')">
 
             </ButtonComponent>
-        </q-item>
+        </div>
 
-        <q-item dense class="ldob-content-btn">
+        <div dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="style" @click="(e) => update(e, 'style')">
 
             </ButtonComponent>
-        </q-item>
+        </div>
 
-        <q-item dense class="ldob-content-btn">
+        <div dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="account_tree" @click="(e) => update(e, 'workflows')">
 
             </ButtonComponent>
-        </q-item>
-                <q-item dense class="ldob-content-btn">
+        </div>
+                <div dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="manage_history" @click="(e) => update(e, 'history')">
 
             </ButtonComponent>
-        </q-item>
-                <q-item dense class="ldob-content-btn">
+        </div>
+                <div dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="settings" @click="(e) => update(e, 'settings')">
 
             </ButtonComponent>
-        </q-item>
+        </div>
         </div>
         <div class="ldob-content"
         v-show="tab != ''">

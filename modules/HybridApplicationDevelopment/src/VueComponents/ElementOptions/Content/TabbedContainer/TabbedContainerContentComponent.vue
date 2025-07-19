@@ -7,14 +7,14 @@
             "></ButtonComponent>
         </div>
         <div>
-            <q-item dense v-for="child in children" :key="child.id">
-                <q-item-section><InputComponent class="alpha-input-base spec-input"
-                    :input-class="'alpha-input'" dense @update:model-value="(val) => viewModel.PartialUpdateView(child.id, {keyValuePairs:[{key: 'properties.label', value: val}]})" :model-value="child.properties?.label" > </InputComponent> </q-item-section>
-                <q-item-section side>
+            <div dense v-for="child in children" :key="child.id">
+                <div-section><InputComponent class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" dense @update:model-value="(val) => viewModel.PartialUpdateView(child.id, {keyValuePairs:[{key: 'properties.label', value: val}]})" :model-value="child.properties?.label" > </InputComponent> </div-section>
+                <div-section side>
                     <UIcon name="close" @click="viewModel.DeleteElement(child.id)"></UIcon>
-                </q-item-section>
+                </div-section>
 
-            </q-item>
+            </div>
         </div>
     </div>
 </template>

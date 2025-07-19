@@ -13,22 +13,22 @@
         <div>
             Changes
             <div>
-                <q-item dense
+                <div dense
                 class="history-stack-item"
                 v-for="item in history.history?.value?.values">
 
-                    <q-item-section :style="{position: 'relative'}">
-                        <q-item-label>
+                    <div-section :style="{position: 'relative'}">
+                        <div-label>
                             {{changeDescription(item)}}
-                        </q-item-label>
-                        <q-item-label>
+                        </div-label>
+                        <div-label>
                             <ButtonComponent dense icon="info" borderless unelevated 
                             :style="{position: 'absolute', left: '-18px', top: '-5px'}"  size="sm">
 
                             </ButtonComponent>
-                        </q-item-label>
-                    </q-item-section>
-                    <q-item-section side :style="{display: 'inline'}"> 
+                        </div-label>
+                    </div-section>
+                    <div-section side :style="{display: 'inline'}"> 
                         <ButtonComponent disable dense icon="undo" borderless unelevated @click="doUndo(item)">
                             <UTooltip>
                             Discard
@@ -39,11 +39,11 @@
                             Commit
                             </UTooltip>
                         </ButtonComponent>
-                    </q-item-section>
-                    <q-item-section side>
+                    </div-section>
+                    <div-section side>
                       
-                    </q-item-section>
-                </q-item>
+                    </div-section>
+                </div>
 
             </div>
         </div>

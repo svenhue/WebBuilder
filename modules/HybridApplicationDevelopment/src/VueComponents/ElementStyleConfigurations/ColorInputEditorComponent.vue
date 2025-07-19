@@ -16,16 +16,16 @@
             <UDropdownMenu  auto-close dense>
                 <template #default>
                                     <div dense class="dropdown-list">
-                    <q-item dense clickable @click="updateColor(color.key)" v-for="color in avaibleColors" :key="color.label">
+                    <div dense clickable @click="updateColor(color.key)" v-for="color in avaibleColors" :key="color.label">
                         <div 
                         :style="{backgroundColor: color.value, marginTop: '8px', marginRight: '5px', width: '10px', height: '10px'}">
                       
                         </div>
-                        <q-item-section>
+                        <div-section>
                                 {{ color.label }}
-                        </q-item-section>
+                        </div-section>
                         
-                    </q-item>
+                    </div>
                 </div>
                 </template>
 

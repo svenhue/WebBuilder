@@ -6,15 +6,15 @@
         </SelectComponent>
 
         <div>
-            <q-item dense v-for="item in creationsComputed" :key="item.id" clickable>
-                <q-item-section avatar>
+            <div dense v-for="item in creationsComputed" :key="item.id" clickable>
+                <div-section avatar>
                     <UIcon :name="item.icon" size="2.5rem" class="q-mr-sm" />
-                </q-item-section>
-                <q-item-section>
-                    <q-item-label class="text-h6">{{ item.name }}</q-item-label>
-                    <q-item-label caption>{{ item.description }}</q-item-label>
-                </q-item-section>
-            </q-item>
+                </div-section>
+                <div-section>
+                    <div-label class="text-h6">{{ item.name }}</div-label>
+                    <div-label caption>{{ item.description }}</div-label>
+                </div-section>
+            </div>
         </div>
     </div>
 

@@ -44,38 +44,38 @@ function edit(node){
 
 /*
 <div>
-                <q-item dense
+                <div dense
                 v-for="node in viewModel?.getAll()?.value" :key="node"
                 >
-                    <q-item-section>
+                    <div-section>
                         {{ node?.name }}
-                    </q-item-section>
+                    </div-section>
 
-                    <q-item-section side>
+                    <div-section side>
                         <q-btn dense icon="menu" unelevated>
                             <q-menu dense menu-anchor="bottom right" autoclose>
                                 <div>
-                                    <q-item dense class="codeBtn">
+                                    <div dense class="codeBtn">
                                         View State
-                                    </q-item>
-                                    <q-item dense class="codeBtn">
+                                    </div>
+                                    <div dense class="codeBtn">
                                         Rename
-                                    </q-item dense class="codeBtn">
-                                    <q-item dense class="codeBtn" v-close-popup clickable @click=" edit(node)">
+                                    </div dense class="codeBtn">
+                                    <div dense class="codeBtn" v-close-popup clickable @click=" edit(node)">
                                         Edit
-                                    </q-item>
-                                    <q-item dense class="codeBtn">
+                                    </div>
+                                    <div dense class="codeBtn">
                                         Duplicate
-                                    </q-item>
-                                    <q-item dense class="codeBtn">
+                                    </div>
+                                    <div dense class="codeBtn">
                                         Delete
-                                    </q-item>
+                                    </div>
                                 </div>
                             </q-menu>
                         </q-btn>
-                    </q-item-section>
+                    </div-section>
 
-                </q-item>
+                </div>
             </div>
  <div  class="right">
             <ResourceEditor v-if="editNode"

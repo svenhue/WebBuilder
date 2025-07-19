@@ -6,13 +6,13 @@
             </slot>
         </div>
 
-        <q-item clickable @click="editAction">
-            <q-item-section>
-                <q-item-label>
+        <div clickable @click="editAction">
+            <div-section>
+                <div-label>
                     {{ action.config.actionIdentifier }}
-                </q-item-label>
-            </q-item-section>
-        </q-item>
+                </div-label>
+            </div-section>
+        </div>
     </div>
 </template>
 

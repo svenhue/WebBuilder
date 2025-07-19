@@ -1,16 +1,16 @@
 <template>
   <div class="edit-action-component">
-      <q-item dense>
-        <q-item-section>
+      <div dense>
+        <div-section>
           {{ actionCopy.identifier }}
-        </q-item-section>
-        <q-item-section side :style="{display: 'flex'}">
+        </div-section>
+        <div-section side :style="{display: 'flex'}">
           <div>
             <ButtonComponent dense :icon="showEdit == true ? 'check' : 'edit'" @click="showEdit == true ? updateAndClose() : showEdit = true"></ButtonComponent>
             <ButtonComponent dense icon="delete" @click="$emit('deleteAction', actionCopy)"></ButtonComponent>
           </div>
-        </q-item-section>
-    </q-item>
+        </div-section>
+    </div>
   <div class="create-action-component" v-if="showEdit">
     
             <SelectComponent

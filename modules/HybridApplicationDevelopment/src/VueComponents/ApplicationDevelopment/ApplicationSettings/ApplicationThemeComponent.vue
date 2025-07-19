@@ -6,46 +6,46 @@
             label="Colors">
                    <div class="caption_3"> Brand </div>
                    <div dense>
-                        <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Brand'))" :key="color.key">
-                            <q-item-section>
+                        <div dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Brand'))" :key="color.key">
+                            <div-section>
                                 <InputComponent dense disable :model-value="color.key" class="alpha-input">
 
                                 </InputComponent>
-                            </q-item-section>
-                            <q-item-section>
+                            </div-section>
+                            <div-section>
                                 <ColourPickerComponent :color="color.value" @update-color="(c) => updateColor(color.key, c)">
                                 </ColourPickerComponent>
-                            </q-item-section>
-                        </q-item>
+                            </div-section>
+                        </div>
                    </div>
                    <div class="caption_3"> Status </div>
                    <div dense>
-                        <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Status'))" :key="color.key">
-                            <q-item-section>
+                        <div dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Status'))" :key="color.key">
+                            <div-section>
                                 <InputComponent disable dense :model-value="color.key" class="alpha-input">
 
                                 </InputComponent>
-                            </q-item-section>
-                            <q-item-section>
+                            </div-section>
+                            <div-section>
                                 <ColourPickerComponent :color="color.value" @update-color="(c) => updateColor(color.key, c)">
                                 </ColourPickerComponent>
-                            </q-item-section>
-                        </q-item>
+                            </div-section>
+                        </div>
                    </div>
 
                    <div class="caption_3"> Text </div>
                    <div dense>
-                        <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Text'))" :key="color.key">
-                            <q-item-section>
+                        <div dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Text'))" :key="color.key">
+                            <div-section>
                                 <InputComponent disable dense :model-value="color.key" class="alpha-input">
 
                                 </InputComponent>
-                            </q-item-section>
-                            <q-item-section>
+                            </div-section>
+                            <div-section>
                                 <ColourPickerComponent :color="color.value" @update-color="(c) => updateColor(color.key, c)">
                                 </ColourPickerComponent>
-                            </q-item-section>
-                        </q-item>
+                            </div-section>
+                        </div>
                    </div>
         </ExpansionItemComponent>
         <ExpansionItemComponent

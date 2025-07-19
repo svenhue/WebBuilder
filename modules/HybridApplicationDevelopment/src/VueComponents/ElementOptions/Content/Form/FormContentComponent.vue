@@ -18,7 +18,7 @@
         </div>
         
         <div dense >
-            <q-item dense
+            <div dense
             v-for="field in childrenFields" :key="field">
                 <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense 
@@ -27,13 +27,13 @@
                 @update:model-value="(val) => updateFieldProp(field, 'label',val)">
                 </InputComponent>
                 
-                <q-item-section side> 
+                <div-section side> 
                     <ButtonComponent dense icon='edit' @click='editField(field)'></ButtonComponent>
-                </q-item-section>
-                <q-item-section side>
+                </div-section>
+                <div-section side>
                     <ButtonComponent dense icon='delete' @click='deletefield(field)'></ButtonComponent>
-                </q-item-section>
-            </q-item>
+                </div-section>
+            </div>
         
         </div>
         <FormFieldDesignerComponent 

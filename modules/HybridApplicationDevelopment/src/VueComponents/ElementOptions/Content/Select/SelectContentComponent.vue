@@ -12,16 +12,16 @@
         </div>
         <div dense>
      
-            <q-item dense v-for="option in options" :key="option.value" >
-                <q-item-section>
+            <div dense v-for="option in options" :key="option.value" >
+                <div-section>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense :model-value="option.value" @update:model-value="(val) => saveUpdate(val, option)" @mouseout="updateOptions()" >
                     </InputComponent>
-                </q-item-section>
-                <q-item-section side>
+                </div-section>
+                <div-section side>
                     <ButtonComponent dense icon='delete' @click='deleteOption(option)'></ButtonComponent>^
-                </q-item-section>
-            </q-item>
+                </div-section>
+            </div>
         </div>
 
         <UCheckbox v-model="showLabelInInput"

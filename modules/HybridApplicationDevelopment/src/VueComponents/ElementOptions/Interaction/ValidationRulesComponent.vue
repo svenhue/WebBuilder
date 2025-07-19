@@ -2,26 +2,26 @@
     <div>
 
         <div dense ref="listRef">
-            <q-item dense>
-                <q-item-label>
+            <div dense>
+                <div-label>
                     Validation Rules
-                </q-item-label>
+                </div-label>
                
                 <ButtonComponent dense icon='add' @click='addRule()'></ButtonComponent>
 
-            </q-item>
-            <q-item dense
+            </div>
+            <div dense
             v-for="rule in rules" :key="rule.rule">
-                <q-item-section>
+                <div-section>
                     {{  rule.name }}
-                </q-item-section>
+                </div-section>
 
-                <q-item-section side>
+                <div-section side>
                     <ButtonComponent dense icon='delete' @click='deleteRule(rule)'></ButtonComponent>
                     <ButtonComponent dense icon='edit' @click='openEditor(rule)'></ButtonComponent>
-                </q-item-section>
+                </div-section>
 
-            </q-item>
+            </div>
         </div>
         <EditValidationRuleComponent 
         v-if="showEditor"  @close="showEditor = false" 
