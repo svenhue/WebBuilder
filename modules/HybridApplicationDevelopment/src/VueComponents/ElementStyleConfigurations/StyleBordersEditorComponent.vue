@@ -159,7 +159,7 @@
                         <template v-slot:append>
                             <UIcon  name="colorize" class="cursor-pointer">
                                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                                <q-color :style="{backgroundColor: 'red'}" v-model="currentBorderColor" @update:model-value="(v) => updateSpecificBorder('Color', v)"></q-color>
+                                <UColorPicker :style="{backgroundColor: 'red'}" v-model="currentBorderColor" @update:model-value="(v) => updateSpecificBorder('Color', v)"></UColorPicker>
                                 </q-popup-proxy>
                             </UIcon>
                         </template>

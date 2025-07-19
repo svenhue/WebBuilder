@@ -121,7 +121,7 @@
                         <template v-slot:append>
                         <UIcon name="colorize" class="cursor-pointer">
                             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                            <q-color v-model="styles.color"></q-color>
+                            <UColorPicker v-model="styles.color"></UColorPicker>
                             </q-popup-proxy>
                         </UIcon>
                         </template>

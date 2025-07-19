@@ -259,7 +259,7 @@
                         <template v-slot:append>
                         <UIcon name="colorize" class="cursor-pointer">
                             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                            <q-color v-model="currentFocussedBackground.linearGradientColor"></q-color>
+                            <UColorPicker v-model="currentFocussedBackground.linearGradientColor"></UColorPicker>
                             </q-popup-proxy>
                         </UIcon>
                         </template>
@@ -284,7 +284,7 @@
         <template v-slot:append>
           <UIcon name="colorize" class="cursor-pointer">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-              <q-color v-model="styles.backgroundColor"></q-color>
+              <UColorPicker v-model="styles.backgroundColor"></UColorPicker>
             </q-popup-proxy>
           </UIcon>
         </template>

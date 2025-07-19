@@ -19,9 +19,9 @@
 
             <UIcon name="colorize" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                    <q-color dense :model-value="color" @update:model-value="(val) => $emit('updateColor', val)">
+                    <UColorPicker dense :model-value="color" @update:model-value="(val) => $emit('updateColor', val)">
 
-                    </q-color>
+                    </UColorPicker>
                 </q-popup-proxy>
             </UIcon>
         </template>
