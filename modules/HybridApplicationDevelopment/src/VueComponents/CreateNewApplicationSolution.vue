@@ -1,22 +1,12 @@
 <template>
-    <q-stepper
-    v-model="step"
-    :ref="stepper"
-    animated
-    >
-        <q-step :name="1" title="Create New Application Solution" :done="step > 1">
-            <div class="application-dialog">
+    <div>
                 <InputComponent for="pöUJbowqleriub2341245" v-model="ApplicationSolutionObject.name" label="Name" :rules="[ val => val != '' || 'Please type a name']"></InputComponent>
                 <SelectComponent for="pöUJbowqleriub2341245123" :options="typeoptions" option-value="1" v-model="ApplicationSolutionObject.type" label="Type"></SelectComponent>
                 <SelectComponent for="pöUJbowqleriub234124512341"  v-show="ApplicationSolutionObject.type == 'Application'" :options="apptypes" option-value="1" v-model="ApplicationSolutionObject.deploymentMode" label="Application Type"></SelectComponent>
 
 
-            <q-stepper-navigation>
-                    <ButtonComponent @click="createSolution()" label="Create"></ButtonComponent>
-            </q-stepper-navigation>            </div>
-        </q-step>
-
-    </q-stepper>
+    </div>
+    
 </template>
 
 <script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'

@@ -1,29 +1,10 @@
 <template>
 
     <div>
-        <q-tree
-        ref="tree"
-        :nodes="nodes"
-        node-key="id"
-        label-key="name"
-        v-model:selected="selected"
-        children-key="children"
-        selected-color="primary"
-        dense
-        >
-        <template v-slot:default-header="prop">
-            <div>
-            {{ prop.node.name }}
-            <ButtonComponent icon="add" dense @click="() => openAddDialog(prop.node)">
-            </ButtonComponent>
-            <ButtonComponent icon="delete" dense @click="() => DeleteNode(prop.node)">
-            </ButtonComponent>
-            </div>
-        </template>
-        <template v-slot:default-body="prop">
-            
-        </template>
-        </q-tree>
+        <UTree>
+
+        </UTree>
+    
    
 
 
@@ -49,9 +30,34 @@ import { IViewConfiguration } from 'alphautils';
 import { ViewConfigurationService } from '../../../utils/Services/ViewConfigurationService';
 import { RunTimeVueApplicationViewModel } from '../../../ViewModels/RuntimeVueApplicationViewModel';
 import { h, inject, reactive, ref, computed, MaybeRefOrGetter } from 'vue';
-import {  QBtn } from 'quasar';
 
+//todo!
+/*
+    <q-tree
+        ref="tree"
+        :nodes="nodes"
+        node-key="id"
+        label-key="name"
+        v-model:selected="selected"
+        children-key="children"
+        selected-color="primary"
+        dense
+        >
+        <template v-slot:default-header="prop">
+            <div>
+            {{ prop.node.name }}
+            <ButtonComponent icon="add" dense @click="() => openAddDialog(prop.node)">
+            </ButtonComponent>
+            <ButtonComponent icon="delete" dense @click="() => DeleteNode(prop.node)">
+            </ButtonComponent>
+            </div>
+        </template>
+        <template v-slot:default-body="prop">
+            
+        </template>
+        </q-tree>
 
+        */
 const props = defineProps({
     currentElement: {
         type: Object as () => IViewConfiguration,

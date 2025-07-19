@@ -1,5 +1,5 @@
 <template>
-    <q-dialog :model-value="show">
+    <UModal :model-value="show">
         <CardComponent>
             <div>
                     Create Template based on component {{  value?.publicidentifier }}
@@ -8,9 +8,7 @@
                     <UCheckbox v-model="template.isPublic" label="Public (everyone can use it for free)"></UCheckbox>
                 </div>
                 <div>
-                    <q-uploader ref="Uploader" label="Template image"  hide-upload-btn :filter="checkFileType" @rejected="onRejected">
-
-                    </q-uploader>
+            
                 </div>
                 <div>
                     <div ref="jsoneditorref" id="XXXX" class="jsoneditor1">
@@ -24,7 +22,7 @@
                 </div>
             </div>
         </CardComponent>   
-    </q-dialog>
+    </UModal>
 
 </template>
 

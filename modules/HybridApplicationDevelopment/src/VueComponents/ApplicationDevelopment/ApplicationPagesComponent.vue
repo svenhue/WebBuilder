@@ -40,7 +40,8 @@
                     </div-section>
                 </div>
             </div>
-            <q-dialog v-model="showDeletePageDialog">
+
+                <UModal  v-model="showDeletePageDialog"> 
                 <CardComponent>
                     <div>
                             Delete Page
@@ -54,7 +55,8 @@
                         <ButtonComponent label="Delete" color="negative" @click="() =>{ viewModel.DeletePage(selectedPage.id), showDeletePageDialog = false}"></ButtonComponent>
                     </div>
                 </CardComponent>
-            </q-dialog>
+                </UModal>
+
         
 
         <EditPageDialog 

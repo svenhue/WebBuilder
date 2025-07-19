@@ -10,25 +10,18 @@
             @click="emits('close')"></ButtonComponent>
 
         </div>
-        <q-tree
-        ref="tree"
-        :nodes="nodes"
-        node-key="id"
-        label-key="name"
-        v-model:selected="selected"
-        children-key="children"
-        selected-color="primary"
-        dense
+        <UTree
+        items="nodes"
+        valueKey="id"
+        labelKey="name"
+        v-model="selected"
         >
-        <template v-slot:default-header="prop">
-            <div @click="emits('focusView', prop.node.id)">
-            {{ prop.node.name }}
+            <template #item="{item}">
+                     <div @click="emits('focusView', item.id)">
+            {{ item.name }}
             </div>
-        </template>
-        <template v-slot:default-body="prop">
-            
-        </template>
-        </q-tree>
+            </template>
+        </UTree>
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
     <div >
-        <q-dialog v-model="t" :auto-close="false" >
+        <UModal v-model="t" :auto-close="false" >
             <CardComponent class="editor-column-form">
                 <div>
                     
@@ -28,7 +28,7 @@
                     </UForm>
                 </div>
         </CardComponent>
-        </q-dialog>
+        </UModal>
 </div>
   </template>
   

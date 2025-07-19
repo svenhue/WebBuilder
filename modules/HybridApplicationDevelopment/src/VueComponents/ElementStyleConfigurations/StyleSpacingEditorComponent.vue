@@ -7,8 +7,9 @@
         class="spec-input"
         :style="{left: '92px', top: '2px'}">
         {{  styles.marginTop  }}
-        <q-popup-edit 
+        <UPopover 
         v-model="styles.marginTop" class="c-darkgrey" v-slot="scope">
+        <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
@@ -24,13 +25,15 @@
                     </template>
                 </InputComponent>
             </div>
-        </q-popup-edit>
+            </template>
+        </UPopover>
         </div>
         <div
         class="spec-input"
         :style="{left: '5px', top: '48px'}"> 
                {{  styles.marginLeft  }}
-        <q-popup-edit v-model="styles.marginLeft" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.marginLeft" class="c-darkgrey" v-slot="scope">
+                <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
@@ -47,13 +50,15 @@
                     </template>
                 </InputComponent>
             </div>
-        </q-popup-edit>
+            </template>
+        </UPopover>
         </div>
         <div
         class="spec-input"
         :style="{right: '-8px', top: '49px'}"> 
                {{  styles.marginRight  }}
-        <q-popup-edit v-model="styles.marginLeft" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.marginLeft" class="c-darkgrey" v-slot="scope">
+            <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
@@ -71,13 +76,15 @@
                     </template>
                 </InputComponent>
             </div>
-        </q-popup-edit>
+            </template>
+        </UPopover>
         </div>
         <div
         class="spec-input"
         :style="{left: '95px', bottom: '0px'}"> 
                {{  styles.marginBottom  }}
-        <q-popup-edit v-model="styles.marginBottom" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.marginBottom" class="c-darkgrey" v-slot="scope">
+            <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
@@ -94,7 +101,8 @@
                     </template>
                 </InputComponent>
             </div>
-        </q-popup-edit>
+            </template>
+        </UPopover>
         </div>
 
         <div class="spec-middle" >
@@ -105,7 +113,8 @@
         class="spec-input"
         :style="{left: '95px', top: '25px'}"> 
                {{  styles.paddingTop  }}
-        <q-popup-edit v-model="styles.paddingTop" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.paddingTop" class="c-darkgrey" v-slot="scope">
+            <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
@@ -122,13 +131,15 @@
                     </template>
                 </InputComponent>
             </div>
-        </q-popup-edit>
+            </template>
+        </UPopover>
         </div>
         <div
         class="spec-input"
         :style="{left: '35px', top: '48px'}"> 
                {{  styles.paddingLeft  }}
-        <q-popup-edit v-model="styles.paddingLeft" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.paddingLeft" class="c-darkgrey" v-slot="scope">
+            <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
@@ -145,13 +156,15 @@
                     </template>
                 </InputComponent>
             </div>
-        </q-popup-edit>
+            </template>
+        </UPopover>
         </div>
         <div
         class="spec-input"
         :style="{right: '19px', top: '48px'}"> 
                {{  styles.paddingRight  }}
-        <q-popup-edit v-model="styles.paddingRight" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.paddingRight" class="c-darkgrey" v-slot="scope">
+            <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
@@ -168,13 +181,15 @@
                     </template>
                 </InputComponent>
             </div>
-        </q-popup-edit>
+            </template>
+        </UPopover>
         </div>
         <div
         class="spec-input"
         :style="{left: '95px', bottom: '25px'}"> 
                {{  styles.paddingBottom  }}
-        <q-popup-edit v-model="styles.paddingBottom" class="c-darkgrey" v-slot="scope">
+        <UPopover v-model="styles.paddingBottom" class="c-darkgrey" v-slot="scope">
+            <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
@@ -191,7 +206,8 @@
                     </template>
                 </InputComponent>
             </div>
-        </q-popup-edit>
+            </template>
+        </UPopover>
         </div>
             <div class="spec-inner">
 

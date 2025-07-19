@@ -65,19 +65,7 @@ const essentialLinks = [
     }
 ]
 /*
-                    <q-tabs dense :model-value="tabService.ActiveTab.value.title"  align="left" active-color="primary"
-                    
-                 
-                    indicator-color="primary"          
-                narrow-indicator>
-                        <q-tab
 
-                        v-for="tab in tabService.GetTabs().value" :key="tab.title"
-                        clickable
-                        :name="tab.title"
-                        :label="tab.title"
-                        />
-                    </q-tabs>
 */
 </script>
 

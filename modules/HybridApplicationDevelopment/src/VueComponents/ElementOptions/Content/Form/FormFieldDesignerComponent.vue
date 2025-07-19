@@ -1,5 +1,5 @@
 <template>
-    <q-dialog v-model="show" >
+    <UModal v-model="show" >
         <CardComponent class="editor-formfield-form">
             <div>
                 Form Field
@@ -15,7 +15,7 @@
                 </UForm>
             </div>
         </CardComponent>
-    </q-dialog>
+    </UModal>
 </template>
 
 

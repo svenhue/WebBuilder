@@ -2,12 +2,7 @@
     <div>
         <div>
             Row Selection
-        <q-option-group 
-        dense inline 
-        v-model="rowSelectionModel" 
-        :options="rowSelectionOptions" 
-        @update:model-value="(val) => emits('updateElement', [{key: 'properties.selection', value:val}])">
-        </q-option-group>
+      
     </div>
     </div>
 </template>

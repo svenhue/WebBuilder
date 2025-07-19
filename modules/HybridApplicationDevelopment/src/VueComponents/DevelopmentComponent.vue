@@ -2,7 +2,7 @@
 <template>
     <ClientOnly>
         <Suspense>
-        <q-layout v-if="viewModel?.isReady.value" view="hHh lpr fFr" >
+
             <UHeader class="dev-toolbar-header">
                 <div id="dev-toolbar">
                     
@@ -12,13 +12,13 @@
 
                 </div>
             </UHeader>
-            <q-footer elevated class="dev-toolbar-footer">
+            <UFooter elevated class="dev-toolbar-footer">
                     <TreePathComponent
                     @focus-view="(id) => viewModel.focusView(id, true)">
                         
                     </TreePathComponent>
-            </q-footer>
-        <q-page-container>
+            </UFooter>
+   
             <ButtonComponent 
             dense 
            
@@ -27,16 +27,17 @@
             @click="optionsBar = !optionsBar"
             :style="buttonStyle">
             </ButtonComponent>
-            <q-drawer side="right"  v-model="optionsBar" :width="350" no-swipe-close no-swipe-backdrop no-swipe-open >
-                        
-                <DevelopmentOptionsDrawer
+            <UDrawer v-model="optionsBar">
+                <template #content>
+                                <DevelopmentOptionsDrawer
                 @focusView="(view) => viewModel.focusView(view, true)"
                 @updateelement="(values) => viewModel.UpdateFocusedElement(values)"
                 :contextid="viewModel.model?.contextid"
                 :currentElement="viewModel.GetFocussedElement()">
                 </DevelopmentOptionsDrawer>
+</template>
+            </UDrawer>
 
-            </q-drawer>
             <div class="development-root-component" id="XXX" ref="XXX">
                 <LeftDevelopmentOptionsBar 
                 :viewModel="viewModel"
@@ -113,8 +114,7 @@
                 </div>
                 
             </div>
-        </q-page-container>
-    </q-layout>
+
     </Suspense>
     </ClientOnly>
 </template>

@@ -258,9 +258,9 @@
                     >
                         <template v-slot:append>
                         <UIcon name="colorize" class="cursor-pointer">
-                            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                            <UPopover cover transition-show="scale" transition-hide="scale">
                             <UColorPicker v-model="currentFocussedBackground.linearGradientColor"></UColorPicker>
-                            </q-popup-proxy>
+                            </UPopover>
                         </UIcon>
                         </template>
                     </InputComponent>
@@ -283,9 +283,9 @@
       >
         <template v-slot:append>
           <UIcon name="colorize" class="cursor-pointer">
-            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+            <UPopover cover transition-show="scale" transition-hide="scale">
               <UColorPicker v-model="styles.backgroundColor"></UColorPicker>
-            </q-popup-proxy>
+            </UPopover>
           </UIcon>
         </template>
       </InputComponent>

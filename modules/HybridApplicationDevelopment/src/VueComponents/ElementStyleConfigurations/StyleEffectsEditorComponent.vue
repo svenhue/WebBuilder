@@ -5,10 +5,10 @@
                 Opacity
             </div>
      
-                <q-slider
+                <USlider
                 v-model="styles.opacity">
 
-                </q-slider>
+                </USlider>
                 <InputComponent type="number" dense v-model="styles.opacity">
 
                 </InputComponent>

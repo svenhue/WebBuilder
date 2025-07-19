@@ -18,11 +18,13 @@
 
 
             <UIcon name="colorize" class="cursor-pointer">
-                <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                <UPopover cover transition-show="scale" transition-hide="scale">
+                    <template #content>
                     <UColorPicker dense :model-value="color" @update:model-value="(val) => $emit('updateColor', val)">
 
                     </UColorPicker>
-                </q-popup-proxy>
+                    </template>
+                </UPopover>
             </UIcon>
         </template>
     </InputComponent>
