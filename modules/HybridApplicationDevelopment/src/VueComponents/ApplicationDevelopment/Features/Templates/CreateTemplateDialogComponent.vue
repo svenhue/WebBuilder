@@ -5,7 +5,7 @@
                     Create Template based on component {{  value?.publicidentifier }}
                 <div>
                     <InputComponent v-model="template.name" label="Template Name"  />
-                    <q-checkbox v-model="template.isPublic" label="Public (everyone can use it for free)"></q-checkbox>
+                    <UCheckbox v-model="template.isPublic" label="Public (everyone can use it for free)"></UCheckbox>
                 </div>
                 <div>
                     <q-uploader ref="Uploader" label="Template image"  hide-upload-btn :filter="checkFileType" @rejected="onRejected">

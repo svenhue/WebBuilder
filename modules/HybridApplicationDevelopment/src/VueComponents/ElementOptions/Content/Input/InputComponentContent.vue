@@ -11,11 +11,11 @@
         @update-element="($event) => $emit('updateElement', $event)" 
         :currentElement="currentElement">
         </DataTypeComponent>
-        <q-checkbox v-model="showLabelInInput"
+        <UCheckbox v-model="showLabelInInput"
         :label="'Zeige Label im Feld'"
         @update:model-value="(v) => $emit('updateElement', [{key: 'properties.showLabelInInput', value: v}])"
         >
-        </q-checkbox>
+        </UCheckbox>
     </div>
 </template>
 

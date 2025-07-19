@@ -3,14 +3,14 @@
     <div>
         <q-list>
             <q-item>
-            <q-checkbox :label="'Show Dotted Element Borders'" v-model="service.store.devSettings.showDevBorders" @update:model-value="(val) => service.ChangeDevBorderSetting(val)">
+            <UCheckbox :label="'Show Dotted Element Borders'" v-model="service.store.devSettings.showDevBorders" @update:model-value="(val) => service.ChangeDevBorderSetting(val)">
 
-            </q-checkbox>
+            </UCheckbox>
         </q-item>
         <q-item>
-            <q-checkbox label="Use default component templates" v-model="service.store.devSettings.useViewTemplates" @update:model-value="(val) => service.ChangeTemplateSetting()">
+            <UCheckbox label="Use default component templates" v-model="service.store.devSettings.useViewTemplates" @update:model-value="(val) => service.ChangeTemplateSetting()">
 
-            </q-checkbox>
+            </UCheckbox>
         </q-item>
         </q-list>
     </div>

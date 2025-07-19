@@ -10,12 +10,12 @@
         :value="currentElement?.content?.text ?? ''" 
         @updateValue="(values) => $emit('updateElement', [{key: 'content.caption', value: values}])">
         </TextInputEditorComponent>
-        <q-checkbox dense
+        <UCheckbox dense
         label="Show toggle on left side"
         @update:model-value="(values) =>  { $emit('updateElement', [{key: 'properties.switchToggleSide', value: values}])}"
         :model-value="currentElement.properties?.switchToggleSide">
 
-        </q-checkbox>
+        </UCheckbox>
     </div>
 </template>
 

@@ -2,9 +2,9 @@
     <div>
         <q-list>
             <q-item dense>
-                <q-checkbox label="Vertical" :model-value="currentElement.appearance?.isVertical" @update:model-value="(val) => emits('updateElement', [{key:'appearance.isVertical', value: val}])">
+                <UCheckbox label="Vertical" :model-value="currentElement.appearance?.isVertical" @update:model-value="(val) => emits('updateElement', [{key:'appearance.isVertical', value: val}])">
 
-                </q-checkbox>
+                </UCheckbox>
             </q-item>
             <q-item>
                 <q-select 

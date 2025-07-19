@@ -17,9 +17,9 @@
                     :input-class="'alpha-input'" v-model="column.field" label="Field" required dense></InputComponent>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="column.position" label="Position" required dense></InputComponent>
-                    <q-checkbox v-model="column.required" label="Required" type="checkbox" dense></q-checkbox>
+                    <UCheckbox v-model="column.required" label="Required" type="checkbox" dense></UCheckbox>
                     <q-select :multiple="false" :optinos="alignOptions" v-model="column.align" label="Align" dense></q-select>
-                    <q-checkbox v-model="column.sortable" label="Sortable" type="checkbox" dense></q-checkbox>
+                    <UCheckbox v-model="column.sortable" label="Sortable" type="checkbox" dense></UCheckbox>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="column.style" label="Style" dense></InputComponent>
                     <InputComponent class="alpha-input-base spec-input"

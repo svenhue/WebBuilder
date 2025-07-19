@@ -6,12 +6,12 @@
         @updateValue="(values) => $emit('updateElement', [{key: 'content.currentPanel', value: values}])">
         </TextInputEditorComponent>
        
-    <q-checkbox
+    <UCheckbox
     label="Navigation"
         :model-value="currentElement.content?.navigation ?? false"
         @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.navigation', value: values}])}"
     >
-    </q-checkbox>
+    </UCheckbox>
     <q-select dense 
     :options="navigationPositionOptions"
     @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.navigationPosition', value: values.value}])}"
@@ -22,12 +22,12 @@
         </div>
         </template>
     </q-select>
-    <q-checkbox
+    <UCheckbox
     label="Show navigation arrows"
         :model-value="currentElement.content?.arrows ?? false"
         @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.arrows', value: values}])}"
     >
-    </q-checkbox>
+    </UCheckbox>
     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense :model-value="currentElement.content?.prevIcon ?? ''" 
     @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.prevIcon', value: values}])}">

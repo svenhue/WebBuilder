@@ -2,20 +2,20 @@
     <div>
         <q-list dense>
             <q-item dense>
-                <q-checkbox
+                <UCheckbox
                 
                 label="Unelevated"
                 @update:model-value="(val) => $emit('updateElement', [{key: 'appearence.unelevated', value: val}])"
                 :model-value="currentElement?.appearence?.unelevated">
 
-                </q-checkbox>
+                </UCheckbox>
             </q-item>
             <q-item dense>
-                <q-checkbox
+                <UCheckbox
                 label="Round"
                 @update:model-value="(val) => $emit('updateElement', [{key: 'appearence.round', value: val}])"
                 :model-value="currentElement?.appearence?.round">
-                </q-checkbox>
+                </UCheckbox>
             </q-item>
         </q-list>
     </div>

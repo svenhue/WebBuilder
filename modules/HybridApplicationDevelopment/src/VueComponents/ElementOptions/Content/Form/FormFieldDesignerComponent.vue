@@ -10,7 +10,7 @@
                     :input-class="'alpha-input'" v-model="formField.label" label="Label" required dense></InputComponent>
                 <q-select v-model="formField.componenttype" label="Component type" :options="typeoptions" required dense></q-select>
                 <q-select v-if="formField.inputType == 'Input'" v-model="formField.inputType" :options="inputTypes"></q-select>
-                <q-checkbox v-model="formField.required" label="Required" type="boolean" dense></q-checkbox>
+                <UCheckbox v-model="formField.required" label="Required" type="boolean" dense></UCheckbox>
                 <q-separator></q-separator>
                 <ButtonComponent label="Submit" type="submit" color="primary"></ButtonComponent>
                 </q-form>
