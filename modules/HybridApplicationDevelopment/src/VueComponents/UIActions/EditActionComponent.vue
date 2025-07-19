@@ -6,8 +6,8 @@
         </q-item-section>
         <q-item-section side :style="{display: 'flex'}">
           <div>
-            <q-btn dense :icon="showEdit == true ? 'check' : 'edit'" @click="showEdit == true ? updateAndClose() : showEdit = true"></q-btn>
-            <q-btn dense icon="delete" @click="$emit('deleteAction', actionCopy)"></q-btn>
+            <ButtonComponent dense :icon="showEdit == true ? 'check' : 'edit'" @click="showEdit == true ? updateAndClose() : showEdit = true"></ButtonComponent>
+            <ButtonComponent dense icon="delete" @click="$emit('deleteAction', actionCopy)"></ButtonComponent>
           </div>
         </q-item-section>
     </q-item>
@@ -103,7 +103,8 @@
 </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { IDataAdapter, IUIEvent, IViewConfiguration, UIActionTypes,UIEventTypes, UIEvents, RestrictedServiceProvider  } from 'alphautils';
 import { BaseServiceProvider } from 'alphautils';
 import { ViewDefinition } from '../../utils/Models/ViewDefinition';

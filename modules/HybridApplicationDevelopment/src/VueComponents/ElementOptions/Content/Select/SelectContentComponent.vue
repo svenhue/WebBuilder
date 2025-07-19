@@ -8,7 +8,7 @@
         </TextInputEditorComponent>
         <div>
             Options   
-            <q-btn dense icon='add' @click='addOption()'></q-btn>
+            <ButtonComponent dense icon='add' @click='addOption()'></ButtonComponent>
         </div>
         <q-list dense>
      
@@ -19,7 +19,7 @@
                     </q-input>
                 </q-item-section>
                 <q-item-section side>
-                    <q-btn dense icon='delete' @click='deleteOption(option)'></q-btn>^
+                    <ButtonComponent dense icon='delete' @click='deleteOption(option)'></ButtonComponent>^
                 </q-item-section>
             </q-item>
         </q-list>
@@ -34,7 +34,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration } from 'alphautils';
 import { ref, watch } from 'vue';
 import { TextInputEditorComponent } from 'alphaviewlibrary';

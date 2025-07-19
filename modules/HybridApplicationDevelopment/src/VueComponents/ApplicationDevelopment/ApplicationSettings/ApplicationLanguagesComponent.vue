@@ -28,12 +28,12 @@
         <div class="jsoneditor1" ref="refEditorX" >
             
             <div  v-show="showButtons">
-                <q-btn dense icon='close' @click="() => { CloseEditor(), showButtons = false}">
+                <ButtonComponent dense icon='close' @click="() => { CloseEditor(), showButtons = false}">
 
-                </q-btn>
-                <q-btn  dense icon='check' @click="() => {SaveValue(), CloseEditor(), showButtons = false}">
+                </ButtonComponent>
+                <ButtonComponent  dense icon='check' @click="() => {SaveValue(), CloseEditor(), showButtons = false}">
 
-                </q-btn>
+                </ButtonComponent>
             </div>
 
         </div>
@@ -41,7 +41,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { BaseServiceProvider } from 'alphautils';
 import { InternationalizationViewModel } from '../../../utils/Features/Internationalization/InternationalizationViewModel';
 import { inject, onUnmounted, ref } from 'vue';

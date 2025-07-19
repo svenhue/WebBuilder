@@ -1,14 +1,14 @@
 <template>
   <div class="action-configuration-component" v-if="currentElement.value != undefined">
     <div>
-        <q-btn
+        <ButtonComponent
         dense
         icon="add"
         label="create Event"
         @click="createEvent"
         :style="{ width: '100%' }"
       >    
-        </q-btn>    
+        </ButtonComponent>    
     <q-list
     bordered
     dense>
@@ -40,7 +40,8 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { BOService, IViewConfiguration } from 'alphautils';
 import { IUIEvent } from 'alphautils';
 import EditEventHandlerComponent from './EditEventHandlerComponent.vue';

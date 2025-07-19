@@ -2,8 +2,8 @@
     <div class="application-settings">
          <div class="drawer-header">
             Settings
-            <q-btn class="close-btn" dense unelevated size="10px" icon="close" 
-            @click="$emit('close')"></q-btn>
+            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            @click="$emit('close')"></ButtonComponent>
 
         </div>
     <q-splitter class="alpha-splitter-tabs"  v-model="splitter" :style="{
@@ -38,7 +38,8 @@
 
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { ref, inject } from 'vue';
 import { RunTimeVueApplicationViewModel } from '../../ViewModels/RuntimeVueApplicationViewModel';
 import ApplicationDevelopmentSettingsComponent from './ApplicationSettings/ApplicationDevelopmentSettingsComponent.vue';

@@ -12,7 +12,7 @@
                 <q-select v-if="formField.inputType == 'Input'" v-model="formField.inputType" :options="inputTypes"></q-select>
                 <q-checkbox v-model="formField.required" label="Required" type="boolean" dense></q-checkbox>
                 <q-separator></q-separator>
-                <q-btn label="Submit" type="submit" color="primary"></q-btn>
+                <ButtonComponent label="Submit" type="submit" color="primary"></ButtonComponent>
                 </q-form>
             </q-card-section>
         </q-card>
@@ -20,7 +20,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { IFormField } from 'alphaviewlibrary';
 import { reactive, ref } from 'vue';
 

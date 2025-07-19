@@ -2,8 +2,8 @@
     <div class="application-style alpha-left-drawer-options-tab-content">
         <div class="drawer-header">
             Style
-            <q-btn class="close-btn" dense unelevated size="10px" icon="close" 
-            @click="$emit('close')"></q-btn>
+            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            @click="$emit('close')"></ButtonComponent>
 
         </div>
 
@@ -36,7 +36,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { ref, inject } from 'vue';
 import ApplicationThemeComponent from './ApplicationSettings/ApplicationThemeComponent.vue';
 

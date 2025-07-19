@@ -25,7 +25,7 @@
                     <q-input class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="column.classes" label="Classes" dense></q-input>
                     <q-separator></q-separator>
-                    <q-btn label="Save" type="submit" color="primary"></q-btn>
+                    <ButtonComponent label="Save" type="submit" color="primary"></ButtonComponent>
                     </q-form>
                 </q-card-section>
         </q-card>
@@ -33,7 +33,8 @@
 </div>
   </template>
   
-  <script setup lang="ts">
+  <script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
   import { ref } from 'vue';
   
 const emits = defineEmits(['updateColumn'])

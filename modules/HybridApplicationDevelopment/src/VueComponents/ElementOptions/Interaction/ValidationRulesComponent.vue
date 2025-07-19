@@ -7,7 +7,7 @@
                     Validation Rules
                 </q-item-label>
                
-                <q-btn dense icon='add' @click='addRule()'></q-btn>
+                <ButtonComponent dense icon='add' @click='addRule()'></ButtonComponent>
 
             </q-item>
             <q-item dense
@@ -17,8 +17,8 @@
                 </q-item-section>
 
                 <q-item-section side>
-                    <q-btn dense icon='delete' @click='deleteRule(rule)'></q-btn>
-                    <q-btn dense icon='edit' @click='openEditor(rule)'></q-btn>
+                    <ButtonComponent dense icon='delete' @click='deleteRule(rule)'></ButtonComponent>
+                    <ButtonComponent dense icon='edit' @click='openEditor(rule)'></ButtonComponent>
                 </q-item-section>
 
             </q-item>
@@ -35,7 +35,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { IValueValidationViewConfiguration } from 'alphautils'
 import { computed, ref, toValue } from 'vue';
 import EditValidationRuleComponent from './EditValidationRuleComponent.vue';

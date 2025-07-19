@@ -2,9 +2,9 @@
     <div>
         <div>
             Tabs
-            <q-btn dense icon="add" @click="add()
+            <ButtonComponent dense icon="add" @click="add()
             
-            "></q-btn>
+            "></ButtonComponent>
         </div>
         <q-list>
             <q-item dense v-for="child in children" :key="child.id">
@@ -19,7 +19,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration, useViewConfiguration } from 'alphautils';
 import { RunTimeVueApplicationViewModel } from 'src/ViewModels/RuntimeVueApplicationViewModel';
 import { inject } from 'vue';

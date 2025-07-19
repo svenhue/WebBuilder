@@ -14,7 +14,7 @@
         </q-select>
         <div>
             Columns
-            <q-btn dense icon='add' @click='AddColumn'></q-btn>
+            <ButtonComponent dense icon='add' @click='AddColumn'></ButtonComponent>
         </div>
         <q-list dense >
             
@@ -29,8 +29,8 @@
                     </q-input>
                 </q-item-section>
                 <q-item-section side> 
-                    <q-btn dense icon='edit' @click='editColumn(newColumnModel)'></q-btn>
-                    <q-btn dense icon='delete' @click='deleteColumn(newColumnModel)'></q-btn>
+                    <ButtonComponent dense icon='edit' @click='editColumn(newColumnModel)'></ButtonComponent>
+                    <ButtonComponent dense icon='delete' @click='deleteColumn(newColumnModel)'></ButtonComponent>
                 </q-item-section>
             </q-item>
             <q-item dense v-for='column in columnsModel' :key='column'>
@@ -46,11 +46,11 @@
                     </q-input>
             
                 <q-item-section side> 
-                    <q-btn dense icon='edit' @click='editColumn(column)'></q-btn>
+                    <ButtonComponent dense icon='edit' @click='editColumn(column)'></ButtonComponent>
                     
                 </q-item-section>
                 <q-item-section side>
-                    <q-btn dense icon='delete' @click='deleteColumn(column)'></q-btn>
+                    <ButtonComponent dense icon='delete' @click='deleteColumn(column)'></ButtonComponent>
                 </q-item-section>
             </q-item>
         </q-list>
@@ -64,7 +64,8 @@
     
 </template>
 
-<script setup lang='ts'>
+<script setup lang='ts'>import { ButtonComponent } from 'alphaviewlibrary'
+
 import { ITableColumn } from 'alphaviewlibrary';
 import { reactive, ref } from 'vue';
 import EditTableColumnComponent from './EditTableColumnComponent.vue';

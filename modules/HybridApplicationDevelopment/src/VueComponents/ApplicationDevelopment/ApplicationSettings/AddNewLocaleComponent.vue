@@ -1,8 +1,8 @@
 <template>
     <div :style="{zIndex: 9999}">
-        <q-btn dense icon="add" @click="show = !show">
+        <ButtonComponent dense icon="add" @click="show = !show">
 
-        </q-btn>
+        </ButtonComponent>
 
        
             <q-card v-show="show" :style="{zIndex: 9999}">
@@ -10,8 +10,8 @@
                     <q-select  :style="{zIndex: 99999}" v-model="newLocale" label="Locale" :options="viewModel.GetNotUsedLocales()"></q-select>
                 </q-card-section>
                 <q-card-actions>
-                    <q-btn label="Cancel" :style="{color: 'black'}" @click="show = false"></q-btn>
-                    <q-btn label="Add" @click="addLocale" :style="{color: 'black'}"></q-btn>
+                    <ButtonComponent label="Cancel" :style="{color: 'black'}" @click="show = false"></ButtonComponent>
+                    <ButtonComponent label="Add" @click="addLocale" :style="{color: 'black'}"></ButtonComponent>
                 </q-card-actions>
             </q-card>
       
@@ -19,7 +19,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { ref } from 'vue';
 import { InternationalizationViewModel } from '../../../utils/Features/Internationalization/InternationalizationViewModel';
 

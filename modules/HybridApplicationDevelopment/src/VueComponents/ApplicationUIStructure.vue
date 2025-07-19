@@ -2,12 +2,12 @@
     <div class="application-ui-structure">
         <div class="drawer-header">
             Navigator
-            <q-btn class="expand-btn" dense unelevated size="10px" 
+            <ButtonComponent class="expand-btn" dense unelevated size="10px" 
             :icon="treeExpanded == false ? 'unfold_more' : 'unfold_less' " 
-            @click="changeTreeExpand"></q-btn>
+            @click="changeTreeExpand"></ButtonComponent>
 
-            <q-btn class="close-btn" dense unelevated size="10px" icon="close" 
-            @click="emits('close')"></q-btn>
+            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            @click="emits('close')"></ButtonComponent>
 
         </div>
         <q-tree
@@ -32,7 +32,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { BaseServiceProvider } from 'alphautils';
 import { FocussedViewContextService } from '../utils/Services/Designer/FocussedViewContextService';
 import {  ref } from 'vue';

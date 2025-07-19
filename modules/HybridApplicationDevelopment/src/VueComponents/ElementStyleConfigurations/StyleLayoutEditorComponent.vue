@@ -9,7 +9,7 @@
         </div>
     </td>
     <td>
-        <q-btn dense unelevated 
+        <ButtonComponent dense unelevated 
         :class="styles.display == 'block' ? 'c-darkgrey' : 'c-brightgrey'"
         :style="{
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'
@@ -21,10 +21,10 @@
                         Block
                     </q-tooltip>
                 </q-img>
-        </q-btn>
+        </ButtonComponent>
     </td> 
     <td>   
-        <q-btn dense unelevated 
+        <ButtonComponent dense unelevated 
         :class="styles.display == 'flex' ? 'c-darkgrey' : 'c-brightgrey'"
         :style="{
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
@@ -35,10 +35,10 @@
                         Flex
                     </q-tooltip>
                 </q-img>
-        </q-btn>
+        </ButtonComponent>
     </td>
     <td>    
-        <q-btn dense unelevated 
+        <ButtonComponent dense unelevated 
         :class="styles.display == 'grid' ? 'c-darkgrey' : 'c-brightgrey'"
         :style="{
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
@@ -49,10 +49,10 @@
                         Grid
                     </q-tooltip>
                 </q-img>
-        </q-btn>
+        </ButtonComponent>
     </td>
     <td>
-        <q-btn dense unelevated 
+        <ButtonComponent dense unelevated 
         :class="styles.display == 'inline-block' ? 'c-darkgrey' : 'c-brightgrey'"
         :style="{
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
@@ -63,11 +63,11 @@
                         Inline Block
                     </q-tooltip>
                 </q-img>
-        </q-btn>
+        </ButtonComponent>
 
     </td>
     <td>
-    <q-btn dense unelevated 
+    <ButtonComponent dense unelevated 
         :class="styles.display == 'inline' ? 'c-darkgrey' : 'c-brightgrey'"
         :style="{
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
@@ -78,11 +78,11 @@
                         Inline Flex
                     </q-tooltip>
                 </q-img>
-        </q-btn>
+        </ButtonComponent>
         
     </td>
     <td>
-        <q-btn dense unelevated 
+        <ButtonComponent dense unelevated 
         icon="visibility_off"
         
         :class="styles.display == 'none' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -91,7 +91,7 @@
         @click="displayIsNone = !displayIsNone,   updateDisplay(displayIsNone == true ? 'none' : '')"
         v-model="displayIsNone">
 
-        </q-btn>
+        </ButtonComponent>
     </td>
     </tr>
 </tbody>
@@ -108,7 +108,7 @@
                        
                     </td>
                     <td>
-                        <q-btn dense unelevated  label="Horizontal"
+                        <ButtonComponent dense unelevated  label="Horizontal"
                             text-color="white"
                             :class="styles.flexDirection == 'row' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{
@@ -116,11 +116,11 @@
                             @click="changeFlexDirection('row')"
                             v-model="flexDirectionIsHorizontal">
 
-                            </q-btn>
+                            </ButtonComponent>
                     </td>
                     <td>
                         
-                        <q-btn dense unelevated  label="Vertical"
+                        <ButtonComponent dense unelevated  label="Vertical"
                         text-color="white"
                             :class="styles.flexDirection == 'column' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{
@@ -128,7 +128,7 @@
                             @click="changeFlexDirection('column')"
                             v-model="flexDirectionIsVertical">
 
-                            </q-btn>
+                            </ButtonComponent>
                     </td>
                 </tr>
             </tbody>
@@ -142,47 +142,47 @@
                         </div>
                     </td>
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :icon="flexDirectionIsHorizontal == true ? 'align_vertical_top' : 'align_horizontal_left'"
                             :class="styles.alignContent == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlign('start')">
-                        </q-btn>
+                        </ButtonComponent>
                     </td>
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :icon="flexDirectionIsHorizontal == true ? 'align_vertical_center' : 'align_horizontal_center'"
                             :class="styles.alignContent == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlign('center')">
-                        </q-btn>
+                        </ButtonComponent>
                     </td>
 
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :icon="flexDirectionIsHorizontal == true ? 'align_vertical_bottom' : 'align_horizontal_right'"
                             :class="styles.alignContent == 'end' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlign('end')">
-                        </q-btn>
+                        </ButtonComponent>
                     </td>
 
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :icon="flexDirectionIsHorizontal == false ?'horizontal_distribute' : 'vertical_distribute'"
                             :class="styles.alignContent == 'stretch' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlign('stretch')">
-                        </q-btn>
+                        </ButtonComponent>
                     </td>
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignContent == 'baseline' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlign('baseline')">
                             <q-img  width="25px"  color="white" clickable  class="sle-img" :src="flexDirectionIsHorizontal == false ? '/icons/developmenticons/align_horizontal_center.svg' : '/icons/developmenticons/align_vertical_center.svg' ">
                         </q-img>
-                        </q-btn>
+                        </ButtonComponent>
                        
                     </td>
                 </tr>
@@ -193,57 +193,57 @@
                         </div>
                     </td>
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.justifyContent == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('start')">
                             <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_flex_start.svg' : '/icons/developmenticons/align_start.svg' ">
                             </q-img>
-                        </q-btn>
+                        </ButtonComponent>
                        
                     </td>
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.justifyContent == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('center')">
                             <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_center.svg' : '/icons/developmenticons/align_center.svg' ">
                             </q-img>
-                        </q-btn>
+                        </ButtonComponent>
                     </td>
 
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.justifyContent == 'end' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('end')">
                             <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_flex_end.svg' : '/icons/developmenticons/align_end.svg' ">
                             </q-img>
-                        </q-btn>
+                        </ButtonComponent>
                     </td>
 
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.justifyContent == 'space-between' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('space-between')">
                             <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_space_around.svg' : '/icons/developmenticons/align_space_between.svg' ">
                             </q-img>
-                        </q-btn>
+                        </ButtonComponent>
                     </td>
                     <td>
-                        <q-btn dense unelevated 
+                        <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.justifyContent == 'space-around' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexJustify('space-around')">
                             <q-img  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_space_even.svg' : '/icons/developmenticons/align_space_around.svg' ">
                             </q-img>
-                        </q-btn>
+                        </ButtonComponent>
                     </td>
                 </tr>
                 <tr>
@@ -299,7 +299,7 @@
                         </div>
                     </td>
                     <td colspan="6">
-                        <q-btn dense unelevated  label="Don't Wrap"
+                        <ButtonComponent dense unelevated  label="Don't Wrap"
                                 text-color="white"
                                 :class="wrapChildren == false ? 'c-darkgrey' : 'c-brightgrey'"
                                 :style="{
@@ -308,8 +308,8 @@
                                 @click="wrapChildren = false,  styles.alignItems = '', emits('updateElement', [{key: 'style.alignItems', value: 'normal'}])"
                             >
 
-                            </q-btn>
-                            <q-btn dense unelevated  label="Wrap"
+                            </ButtonComponent>
+                            <ButtonComponent dense unelevated  label="Wrap"
                                 text-color="white"
                                 :class="wrapChildren == true ? 'c-darkgrey' : 'c-brightgrey'"
                                 :style="{
@@ -318,7 +318,7 @@
                                 @click="wrapChildren = true "
                             >
 
-                            </q-btn>
+                            </ButtonComponent>
                     </td>
 
                 </tr>
@@ -329,7 +329,7 @@
 
                             Align
                             </div>
-                            <q-btn dense unelevated 
+                            <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('start')">
@@ -337,9 +337,9 @@
                                 '/icons/developmenticons/align_columns_justify_flex_start.svg' 
                                     : '/icons/developmenticons/align_rows_start.svg' ">
                                 </q-img>
-                            </q-btn>
+                            </ButtonComponent>
 
-                            <q-btn dense unelevated 
+                            <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('center')">
@@ -347,9 +347,9 @@
                                 '/icons/developmenticons/align_columns_justify_center.svg' 
                                     : '/icons/developmenticons/align_rows_center.svg' ">
                                 </q-img>
-                            </q-btn>
+                            </ButtonComponent>
                             
-                            <q-btn dense unelevated 
+                            <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'end' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('end')">
@@ -357,8 +357,8 @@
                                 '/icons/developmenticons/align_columns_end.svg' 
                                     : '/icons/developmenticons/align_rows_end.svg' ">
                                 </q-img>
-                            </q-btn>
-                            <q-btn dense unelevated 
+                            </ButtonComponent>
+                            <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'stretch' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('stretch')">
@@ -366,9 +366,9 @@
                                 '/icons/developmenticons/align_columns_justify_stretch.svg' 
                             : '/icons/developmenticons/align_rows_items_stretch.svg' ">
                                 </q-img>
-                            </q-btn>
+                            </ButtonComponent>
                             
-                            <q-btn dense unelevated 
+                            <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'space-between' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('space-between')">
@@ -376,8 +376,8 @@
                                 '/icons/developmenticons/align_columns_justify_space_between.svg' 
                             : '/icons/developmenticons/align_rows_space_between.svg' ">
                                 </q-img>
-                            </q-btn>
-                            <q-btn dense unelevated 
+                            </ButtonComponent>
+                            <ButtonComponent dense unelevated 
                             text-color="white"
                             :class="styles.alignItems == 'space-around' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlignItems('space-around')">
@@ -387,7 +387,7 @@
                                 '/icons/developmenticons/align_columns_justify_space_around.svg' 
                             : '/icons/developmenticons/align_rows_space_around.svg' ">
                                 </q-img>
-                            </q-btn>
+                            </ButtonComponent>
                         </div>
                     </td>
 
@@ -399,7 +399,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { ref, computed, reactive, inject, toValue } from 'vue';
 import { ViewElement } from 'alphautils';
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';

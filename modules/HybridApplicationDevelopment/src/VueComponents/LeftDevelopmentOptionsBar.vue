@@ -2,55 +2,55 @@
     <div class="left-development-options-bar">
         <q-list dense :style="{width: '40px', height: '1000px'}" > 
         <q-item  class="ldob-content-btn" dense>
-            <q-btn dense icon="add_circle_outline" @click="(e) => update(e, 'palette')">
+            <ButtonComponent dense icon="add_circle_outline" @click="(e) => update(e, 'palette')">
 
-            </q-btn>
+            </ButtonComponent>
         </q-item>
          <q-item  class="ldob-content-btn" dense>
-            <q-btn dense icon="smart_toy" @click="(e) => update(e, 'aichat')">
+            <ButtonComponent dense icon="smart_toy" @click="(e) => update(e, 'aichat')">
 
-            </q-btn>
+            </ButtonComponent>
         </q-item>
         <q-item dense class="ldob-content-btn">
-            <q-btn dense unelevated icon="notes" @click="(e) => update(e, 'structure')">
+            <ButtonComponent dense unelevated icon="notes" @click="(e) => update(e, 'structure')">
 
-            </q-btn>
+            </ButtonComponent>
         </q-item>
         <q-item dense class="ldob-content-btn">
-            <q-btn dense unelevated icon="pageview" @click="(e) => update(e, 'pages')">
+            <ButtonComponent dense unelevated icon="pageview" @click="(e) => update(e, 'pages')">
             
-            </q-btn>
+            </ButtonComponent>
         </q-item>
         <q-separator color="black" ></q-separator>
         
         <q-item dense class="ldob-content-btn">
-            <q-btn dense unelevated icon="code" @click="(e) => update(e, 'code')">
+            <ButtonComponent dense unelevated icon="code" @click="(e) => update(e, 'code')">
 
-            </q-btn>
+            </ButtonComponent>
         </q-item>
 
         <q-item dense class="ldob-content-btn">
-            <q-btn dense unelevated icon="style" @click="(e) => update(e, 'style')">
+            <ButtonComponent dense unelevated icon="style" @click="(e) => update(e, 'style')">
 
-            </q-btn>
+            </ButtonComponent>
         </q-item>
 
         <q-item dense class="ldob-content-btn">
-            <q-btn dense unelevated icon="account_tree" @click="(e) => update(e, 'workflows')">
+            <ButtonComponent dense unelevated icon="account_tree" @click="(e) => update(e, 'workflows')">
 
-            </q-btn>
+            </ButtonComponent>
         </q-item>
         <q-separator color="black"></q-separator>
                 <q-item dense class="ldob-content-btn">
-            <q-btn dense unelevated icon="manage_history" @click="(e) => update(e, 'history')">
+            <ButtonComponent dense unelevated icon="manage_history" @click="(e) => update(e, 'history')">
 
-            </q-btn>
+            </ButtonComponent>
         </q-item>
         <q-separator color="black" ></q-separator>
                 <q-item dense class="ldob-content-btn">
-            <q-btn dense unelevated icon="settings" @click="(e) => update(e, 'settings')">
+            <ButtonComponent dense unelevated icon="settings" @click="(e) => update(e, 'settings')">
 
-            </q-btn>
+            </ButtonComponent>
         </q-item>
         </q-list>
         <div class="ldob-content"
@@ -114,7 +114,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import UIComponentPalette from './UIComponentPalette.vue';
 import ApplicationUIStructure from './ApplicationUIStructure.vue';
 import { ref } from 'vue'

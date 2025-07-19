@@ -19,14 +19,14 @@
                     </TreePathComponent>
             </q-footer>
         <q-page-container>
-            <q-btn 
+            <ButtonComponent 
             dense 
            
             :icon="optionsBar == true ? 'chevron_right' : 'menu_open'"  
             no-caps  
             @click="optionsBar = !optionsBar"
             :style="buttonStyle">
-            </q-btn>
+            </ButtonComponent>
             <q-drawer side="right"  v-model="optionsBar" :width="350" no-swipe-close no-swipe-backdrop no-swipe-open >
                         
                 <DevelopmentOptionsDrawer
@@ -119,7 +119,8 @@
     </ClientOnly>
 </template>
 
-<script setup lang="ts">   
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+   
 
 import { defineExpose, ref, computed, getCurrentInstance, watch, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router'

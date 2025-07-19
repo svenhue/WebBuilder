@@ -14,10 +14,10 @@
         <template v-slot:default-header="prop">
             <div>
             {{ prop.node.name }}
-            <q-btn icon="add" dense @click="() => openAddDialog(prop.node)">
-            </q-btn>
-            <q-btn icon="delete" dense @click="() => DeleteNode(prop.node)">
-            </q-btn>
+            <ButtonComponent icon="add" dense @click="() => openAddDialog(prop.node)">
+            </ButtonComponent>
+            <ButtonComponent icon="delete" dense @click="() => DeleteNode(prop.node)">
+            </ButtonComponent>
             </div>
         </template>
         <template v-slot:default-body="prop">
@@ -42,7 +42,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration } from 'alphautils';
 import { ViewConfigurationService } from '../../../utils/Services/ViewConfigurationService';
 import { RunTimeVueApplicationViewModel } from '../../../ViewModels/RuntimeVueApplicationViewModel';

@@ -14,7 +14,8 @@
         </template>
 
         <template v-slot:after>
-            <q-btn-dropdown dense>
+            <UDropdownMenu>
+                <template #default>
                 <q-list>
                     <q-item v-for="option in urlOptions" :key="option" clickable v-ripple
                     @click="() => $emit('updateUrl', option)">
@@ -23,7 +24,8 @@
                         </q-item-section>
                     </q-item>    
                 </q-list>
-            </q-btn-dropdown>
+                </template>
+            </UDropdownMenu>
         </template>
 
     </q-input>

@@ -14,7 +14,7 @@
             </q-select>
         </div>
         <div>
-            <q-btn dense icon='add' @click='addField()'></q-btn>
+            <ButtonComponent dense icon='add' @click='addField()'></ButtonComponent>
         </div>
         
         <q-list dense >
@@ -28,10 +28,10 @@
                 </q-input>
                 
                 <q-item-section side> 
-                    <q-btn dense icon='edit' @click='editField(field)'></q-btn>
+                    <ButtonComponent dense icon='edit' @click='editField(field)'></ButtonComponent>
                 </q-item-section>
                 <q-item-section side>
-                    <q-btn dense icon='delete' @click='deletefield(field)'></q-btn>
+                    <ButtonComponent dense icon='delete' @click='deletefield(field)'></ButtonComponent>
                 </q-item-section>
             </q-item>
         
@@ -47,7 +47,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { IFormViewConfiguration,IFormField } from 'alphaviewlibrary';
 import { computed, inject, ref, toValue, watch } from 'vue';
 import FormFieldDesignerComponent from './FormFieldDesignerComponent.vue';

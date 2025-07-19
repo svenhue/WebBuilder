@@ -2,8 +2,8 @@
     <div>
      <div class="drawer-header">
             State
-            <q-btn class="close-btn" dense unelevated size="10px" icon="close" 
-            @click="$emit('close')"></q-btn>
+            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            @click="$emit('close')"></ButtonComponent>
 
     </div>
     <TableComponent
@@ -61,7 +61,8 @@
 </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { BaseServiceProvider,ValueResolver } from 'alphautils';
 import { onBeforeMount, ref } from 'vue';
 import { GlobalVariableDataProvider } from '../../utils/Application/GlobalsVariableProvider/GlobalVariableDataProvider';

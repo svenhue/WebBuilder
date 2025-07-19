@@ -2,19 +2,20 @@
     
     <div  class="jsoneditor1" ref="refEditorX"
     >
-        <q-btn dense icon='close' @click="() => { emit('close')}">
+        <ButtonComponent dense icon='close' @click="() => { emit('close')}">
 
-        </q-btn>
-        <q-btn dense icon='check' @click="() => {updateValue(), emit('close')}">
+        </ButtonComponent>
+        <ButtonComponent dense icon='check' @click="() => {updateValue(), emit('close')}">
 
-        </q-btn>
+        </ButtonComponent>
     </div>
 
 
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 
 import { ref, onMounted, onUnmounted, inject } from 'vue';
 

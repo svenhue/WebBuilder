@@ -3,7 +3,7 @@
 
             <q-card-section>
                 Edit Rule
-                <q-btn dense icon='close' @click="$emit('close')"></q-btn>
+                <ButtonComponent dense icon='close' @click="$emit('close')"></ButtonComponent>
             </q-card-section>
             
             <q-card-section>
@@ -36,7 +36,8 @@
     
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { IValueValidationViewConfiguration } from 'alphautils';
 import { TextInputEditorComponent } from 'alphaviewlibrary';
 

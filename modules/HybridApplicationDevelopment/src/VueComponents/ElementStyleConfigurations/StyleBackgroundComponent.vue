@@ -61,7 +61,7 @@
                         <td colspan="4">
 
                         <div>
-                            <q-btn dense> Choose Image</q-btn>
+                            <ButtonComponent dense> Choose Image</ButtonComponent>
                         </div>
                         </td>
                     </tr>
@@ -73,15 +73,15 @@
                         </td>
                         <td colspan="4">
                             <div :style="{display:'inline-flex'}">
-                                <q-btn  :color="currentFocussedBackground.size == 'custom' ? darkgrey : brightgrey" dense >
+                                <ButtonComponent  :color="currentFocussedBackground.size == 'custom' ? darkgrey : brightgrey" dense >
                                     Custom
-                                </q-btn>
-                                <q-btn  :color="currentFocussedBackground.size == 'cover' ? darkgrey : brightgrey" dense >
+                                </ButtonComponent>
+                                <ButtonComponent  :color="currentFocussedBackground.size == 'cover' ? darkgrey : brightgrey" dense >
                                     Cover
-                                </q-btn>
-                                <q-btn  :color="currentFocussedBackground.size == 'contain' ? darkgrey : brightgrey" dense >
+                                </ButtonComponent>
+                                <ButtonComponent  :color="currentFocussedBackground.size == 'contain' ? darkgrey : brightgrey" dense >
                                     Contain
-                                </q-btn>
+                                </ButtonComponent>
                             </div>
                         </td>
                     </tr>
@@ -222,13 +222,13 @@
                                 <div class="small-block-header">
                                     Fixed
                                 </div>
-                                <q-btn dense :style="{width:'80px', height: '30px'}">
+                                <ButtonComponent dense :style="{width:'80px', height: '30px'}">
                                     Fixed
-                                </q-btn>
+                                </ButtonComponent>
 
-                                <q-btn dense :style="{width:'120px', height: '30px'}">
+                                <ButtonComponent dense :style="{width:'120px', height: '30px'}">
                                     Not Fixed
-                                </q-btn>
+                                </ButtonComponent>
                          </div>
                         </td>
                     </tr>
@@ -293,7 +293,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { ref, computed, reactive, inject } from 'vue';
 import { colors } from 'quasar';
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';

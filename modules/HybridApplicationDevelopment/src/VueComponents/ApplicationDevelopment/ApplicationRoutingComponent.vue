@@ -7,18 +7,19 @@
         v-on:keyup.enter="PushRoute"
         >
             <template v-slot:after>
-                <q-btn 
+                <ButtonComponent 
                 dense
                 icon="navigation"
                 @click="PushRoute">
 
-                </q-btn>
+                </ButtonComponent>
             </template>
         </q-input>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { ref } from 'vue';
 import { RouteRecordNormalized } from 'vue-router'
 

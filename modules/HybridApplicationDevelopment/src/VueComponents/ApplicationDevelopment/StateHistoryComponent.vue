@@ -2,12 +2,12 @@
     <div :style="{color: 'white', minWidth: '250px'}">
         <div class="drawer-header">
             Version control
-            <q-btn class="close-btn" dense unelevated size="10px" icon="close" 
-            @click="emits('close')"></q-btn>
+            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            @click="emits('close')"></ButtonComponent>
 
         </div>
         <div>
-            <q-btn :style="{margin: '5px'}" dense :label="$t('Save Changes')" @click="viewModel.SaveChanges()" ></q-btn>
+            <ButtonComponent :style="{margin: '5px'}" dense :label="$t('Save Changes')" @click="viewModel.SaveChanges()" ></ButtonComponent>
             <p> {{unsavedChanges}} unsaved Changes</p>
         </div>
         <div>
@@ -22,23 +22,23 @@
                             {{changeDescription(item)}}
                         </q-item-label>
                         <q-item-label>
-                            <q-btn dense icon="info" borderless unelevated 
+                            <ButtonComponent dense icon="info" borderless unelevated 
                             :style="{position: 'absolute', left: '-18px', top: '-5px'}"  size="sm">
 
-                            </q-btn>
+                            </ButtonComponent>
                         </q-item-label>
                     </q-item-section>
                     <q-item-section side :style="{display: 'inline'}"> 
-                        <q-btn disable dense icon="undo" borderless unelevated @click="doUndo(item)">
+                        <ButtonComponent disable dense icon="undo" borderless unelevated @click="doUndo(item)">
                             <q-tooltip>
                             Discard
                             </q-tooltip>
-                        </q-btn>
-                        <q-btn disable dense icon="commit" borderless unelevated @click="doUndo(item)">
+                        </ButtonComponent>
+                        <ButtonComponent disable dense icon="commit" borderless unelevated @click="doUndo(item)">
                             <q-tooltip>
                             Commit
                             </q-tooltip>
-                        </q-btn>
+                        </ButtonComponent>
                     </q-item-section>
                     <q-item-section side>
                       
@@ -51,7 +51,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { BaseServiceProvider, BORepository } from 'alphautils';
 import { IHistoryEntrys, IHistoryStack } from 'alphautils/src/Data/StateManagement/StateHistory/IHistoryStack';
 import { RunTimeVueApplicationViewModel } from '../../ViewModels/RuntimeVueApplicationViewModel';

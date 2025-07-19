@@ -3,21 +3,18 @@
         <div class="left">
             <div class="drawer-header">
                 Code
-                <q-btn class="close-btn" dense unelevated size="10px" icon="close" 
-                @click="emits('close')"></q-btn>
+                <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+                @click="emits('close')"></ButtonComponent>
 
             </div>
-            
-            <q-btn-dropdown dense>
-
-            </q-btn-dropdown>
         </div>   
     </div>
 
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import ResourceEditor from '../../ResourceEditors/ResourceEditor.vue';
 import { NodeViewModel } from '../../../ViewModels/NodeViewModel';
 import { ref } from 'vue';

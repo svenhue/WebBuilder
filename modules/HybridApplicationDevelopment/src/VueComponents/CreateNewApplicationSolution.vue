@@ -12,14 +12,15 @@
 
 
             <q-stepper-navigation>
-                    <q-btn @click="createSolution()" label="Create"></q-btn>
+                    <ButtonComponent @click="createSolution()" label="Create"></ButtonComponent>
             </q-stepper-navigation>            </div>
         </q-step>
 
     </q-stepper>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { ApplicationConfiguration, IApplicationConfiguration } from 'alphautils';
 import { reactive, ref } from 'vue';
 import { ApplicationDevelopmentTypes } from '../utils/Application/ApplicationDevelopmentTypes';

@@ -18,8 +18,9 @@
                     </div>
                 </q-card-section>
                 <q-card-actions align="right">
-                    <q-btn label="Cancel" @click="$emit('close')" />
-                    <q-btn label="Create" color="primary" @click="() => {CreateTemplate()}" />
+                    <ButtonComponent label="Cancel" @click="$emit('close')"  />
+                         <ButtonComponent label="Create" @click="() => {CreateTemplate()}"  />
+
                 </q-card-actions>
             </q-card-section>
         </q-card>   
@@ -28,7 +29,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import {  onMounted, onUnmounted, reactive, ref } from 'vue';
 import { UITemplateService } from './UITemplateService';
 import { BaseServiceProvider, IApplicationConfiguration, IDataAdapter, IHTTPClientService, IPageConfiguration, IViewConfiguration, waitForElm } from 'alphautils';

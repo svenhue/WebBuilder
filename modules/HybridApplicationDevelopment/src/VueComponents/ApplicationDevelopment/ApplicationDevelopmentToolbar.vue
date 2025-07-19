@@ -3,11 +3,11 @@
     <div v-if="ready == true" to="#dev-toolbar" class="dev-toolbar">
         <div :style="{display: 'flex', alignItems: 'center'}">
                 <div>
-                    <q-btn dense icon="undo" @click="() => viewModel.repository.Undo(viewModel.model.contextid)" :disable="history.undoStack.value?.values.length > 0 ? false : true">
+                    <ButtonComponent dense icon="undo" @click="() => viewModel.repository.Undo(viewModel.model.contextid)" :disable="history.undoStack.value?.values.length > 0 ? false : true">
 
-                    </q-btn>
-                    <q-btn dense icon="redo" @click="() => viewModel.repository.Redo(viewModel.model.contextid)" :disable="history.redoStack.value?.values.length > 0 ? false : true">
-                    </q-btn>
+                    </ButtonComponent>
+                    <ButtonComponent dense icon="redo" @click="() => viewModel.repository.Redo(viewModel.model.contextid)" :disable="history.redoStack.value?.values.length > 0 ? false : true">
+                    </ButtonComponent>
                 </div>
                     <ApplicationScreenComponent :style="{
                         marginRight: 0,
@@ -35,7 +35,8 @@
             </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import CommandPaletteSearchBarComponent from '../../utils/CommandPalette/VueComponents/CommandPaletteSearchBarComponent.vue';
 import ApplicationScreenComponent from './ApplicationScreenComponent.vue'
 import DeploymentComponent from '../../utils/Features/Deployment/VueComponent/DeploymentComponent.vue';

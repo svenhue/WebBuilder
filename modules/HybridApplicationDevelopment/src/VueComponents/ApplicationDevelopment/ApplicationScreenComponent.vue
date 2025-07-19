@@ -1,14 +1,14 @@
 <template>
     <div :style="{display: 'flex'}">  
-        <q-btn  
+        <ButtonComponent  
         class="application-screen-btn"
         dense
         icon="monitor"
         @click="SetScreen(varProvider.GetVariable(props.contextid, 'defaultDesktopWidth'), varProvider.GetVariable(props.contextid, 'defaultDesktopHeight'))"
         >
 
-        </q-btn>
-        <q-btn
+        </ButtonComponent>
+        <ButtonComponent
  
         class="application-screen-btn"
         dense
@@ -16,8 +16,8 @@
         @click="SetScreen(varProvider.GetVariable(props.contextid, 'defaultTabletWidth'), varProvider.GetVariable(props.contextid, 'defaultTabletHeight'))"
         >
 
-        </q-btn>
-        <q-btn
+        </ButtonComponent>
+        <ButtonComponent
 
         class="application-screen-btn"
         dense
@@ -25,11 +25,12 @@
         @click="SetScreen(varProvider.GetVariable(props.contextid, 'defaultMobileWidth'), varProvider.GetVariable(props.contextid, 'defaultMobileHeight'))"
         >
 
-        </q-btn>
+        </ButtonComponent>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { Screen } from 'alphautils'
 import { BaseServiceProvider } from 'alphautils';
 import { GlobalVariableDataProvider } from '../../utils/Application/GlobalsVariableProvider/GlobalVariableDataProvider';

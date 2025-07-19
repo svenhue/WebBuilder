@@ -3,8 +3,8 @@
  
         <div class="drawer-header">
             Pages
-            <q-btn class="close-btn" dense unelevated size="10px" icon="close" 
-            @click="emits('close')"></q-btn>
+            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            @click="emits('close')"></ButtonComponent>
 
         </div>
         <div :style="{
@@ -18,7 +18,7 @@
                         </q-item-label>
                     </q-item-section>
                     <q-item-section side>
-                        <q-btn icon="add" class="cursor-pointer" @click="viewModel.AddPage()"></q-btn>
+                        <ButtonComponent icon="add" class="cursor-pointer" @click="viewModel.AddPage()"></ButtonComponent>
                     </q-item-section>
                 </q-item>
                 <q-item
@@ -35,8 +35,8 @@
                         </q-item-label>
                     </q-item-section>
                     <q-item-section side>
-                        <q-btn  icon="edit" class="cursor-pointer" @click="() => {selectedPage = page,showEditDialog = true}" ></q-btn>
-                        <q-btn icon="delete" class="cursor-pointer" @click="() => {selectedPage = page, showDeletePageDialog = true}"></q-btn>
+                        <ButtonComponent  icon="edit" class="cursor-pointer" @click="() => {selectedPage = page,showEditDialog = true}" ></ButtonComponent>
+                        <ButtonComponent icon="delete" class="cursor-pointer" @click="() => {selectedPage = page, showDeletePageDialog = true}"></ButtonComponent>
                     </q-item-section>
                 </q-item>
             </q-list>
@@ -50,8 +50,8 @@
                         Are you sure you want to delete this page?
                     </q-card-section>
                     <q-card-actions align="right">
-                        <q-btn label="Cancel" color="primary" @click="showDeletePageDialog = false"></q-btn>
-                        <q-btn label="Delete" color="negative" @click="() =>{ viewModel.DeletePage(selectedPage.id), showDeletePageDialog = false}"></q-btn>
+                        <ButtonComponent label="Cancel" color="primary" @click="showDeletePageDialog = false"></ButtonComponent>
+                        <ButtonComponent label="Delete" color="negative" @click="() =>{ viewModel.DeletePage(selectedPage.id), showDeletePageDialog = false}"></ButtonComponent>
                     </q-card-actions>
                 </q-card>
             </q-dialog>
@@ -67,7 +67,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { inject, ref } from 'vue';
 import { RunTimeVueApplicationViewModel } from '../../ViewModels/RuntimeVueApplicationViewModel';
 import EditPageDialog from './Pages/EditPageDialog.vue';

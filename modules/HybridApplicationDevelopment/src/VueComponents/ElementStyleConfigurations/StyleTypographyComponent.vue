@@ -136,7 +136,7 @@
                 </td>
                 <td colspan="4">
                     <div :style="{display: 'inline-flex'}">
-                        <q-btn dense unelevated
+                        <ButtonComponent dense unelevated
                             icon="format_align_left"
                             text-color="white" 
                             :class="styles.textAlign == 'left' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -144,8 +144,8 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateTextAlign('left')">
                                     
-                        </q-btn>
-                        <q-btn dense unelevated
+                        </ButtonComponent>
+                        <ButtonComponent dense unelevated
                             icon="format_align_center"
                             text-color="white" 
                             :class="styles.textAlign == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -153,8 +153,8 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateTextAlign('center')">
                                     
-                        </q-btn>
-                        <q-btn dense unelevated
+                        </ButtonComponent>
+                        <ButtonComponent dense unelevated
                             icon="format_align_right"
                             text-color="white" 
                             :class="styles.textAlign == 'right' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -162,8 +162,8 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateTextAlign('right')">
                                     
-                        </q-btn>
-                        <q-btn dense unelevated
+                        </ButtonComponent>
+                        <ButtonComponent dense unelevated
                             icon="format_align_justify"
                             text-color="white" 
                             :class="styles.textAlign == 'justify' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -171,7 +171,7 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateTextAlign('justify')">
                                     
-                        </q-btn>
+                        </ButtonComponent>
                     </div>
                 </td>
                 </tr>
@@ -183,46 +183,46 @@
                     </td>
                     <td colspan="4">
                         <div :style="{display: 'inline-flex'}">
-                            <q-btn dense unelevated
+                            <ButtonComponent dense unelevated
                             icon="format_italic"
                             text-color="white" 
                             :class="styles.fontStyle == 'italic' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateTextStyle('italic')">   
-                            </q-btn>
-                            <q-btn dense unelevated
+                            </ButtonComponent>
+                            <ButtonComponent dense unelevated
                             icon="close"
                             text-color="white" 
                             :class="styles.fontStyle == 'none' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateTextStyle('none')">   
-                            </q-btn>
-                            <q-btn dense unelevated
+                            </ButtonComponent>
+                            <ButtonComponent dense unelevated
                             icon="format_strikethrough"
                             text-color="white" 
                             :class="styles.fontStyle == 'strikethrough' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateTextStyle('strikethrough')">   
-                            </q-btn>
-                            <q-btn dense unelevated
+                            </ButtonComponent>
+                            <ButtonComponent dense unelevated
                             icon="format_underlined"
                             text-color="white" 
                             :class="styles.fontStyle == 'underline' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateTextStyle('underline')">   
-                            </q-btn>
-                            <q-btn dense unelevated
+                            </ButtonComponent>
+                            <ButtonComponent dense unelevated
                             icon="format_overline"
                             text-color="white" 
                             :class="styles.fontStyle == 'overline' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{
                                 display:'inline-flex', alignItems: 'overline', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateTextStyle('underline')">   
-                            </q-btn>
+                            </ButtonComponent>
                         </div>
                     </td>
             </tr>
@@ -231,7 +231,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { reactive, inject } from 'vue';
 import { ViewElement } from 'alphautils';
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';

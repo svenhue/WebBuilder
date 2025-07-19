@@ -37,7 +37,7 @@
               </div>
             </div>
           </div>
-          <q-btn @click="createConfigAndRouteToEditor"  :style="{position: 'absolute', width: '180px', height: '50px', bottom: '140px', left: 'calc(50% - 60px)'}" label="Create Website"> </q-btn>
+          <ButtonComponent @click="createConfigAndRouteToEditor"  :style="{position: 'absolute', width: '180px', height: '50px', bottom: '140px', left: 'calc(50% - 60px)'}" label="Create Website"> </ButtonComponent>
       </div>
         
     </div>
@@ -52,6 +52,7 @@ import { OpenEditorAndConfigureAppConfiguration } from './Tools/OpenEditorAndCon
 import { ref, onMounted} from 'vue'
 import { ConversationViewModel } from 'agenticBusinessIntegration';
 import { BaseServiceProvider, IHTTPClientService } from 'alphautils';
+import { ButtonComponent } from 'alphaviewlibrary'
 
 const requirements = reactive<WebsiteCreationRequirementsObject>({})
 const chatComponent = ref(null);

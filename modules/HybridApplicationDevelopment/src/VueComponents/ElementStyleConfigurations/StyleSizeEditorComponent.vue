@@ -114,26 +114,26 @@
 
                 <td colspan="4"  :style="{justifyContent: 'space-between'}">
                     <div :style="{display: 'inline-flex', width:'100%', justifyContent:'space-evenly'}">
-                    <q-btn dense icon="visibility" unelevated 
+                    <ButtonComponent dense icon="visibility" unelevated 
                     :style="{color: overflowIsVisibility == true ? 'black' : 'white'}"
                         @click="overflowIsVisibility = !overflowIsVisibility ,
                         changeOverflow(overflowIsVisibility == false ? '' : 'visibel')">
-                    </q-btn>
-                    <q-btn dense icon="visibility_off" unelevated 
+                    </ButtonComponent>
+                    <ButtonComponent dense icon="visibility_off" unelevated 
                     :style="{color: overflowIsVisibilityOff == true ? 'black' : 'white'}"
                         @click="overflowIsVisibilityOff = !overflowIsVisibilityOff ,
                         changeOverflow(overflowIsVisibilityOff == false ? '' : 'hidden')">
-                    </q-btn>
-                    <q-btn dense icon="format_line_spacing" unelevated 
+                    </ButtonComponent>
+                    <ButtonComponent dense icon="format_line_spacing" unelevated 
                     :style="{color: overflowIsLineSpacing == true ? 'black' : 'white'}"
                         @click="overflowIsLineSpacing = !overflowIsLineSpacing ,
                         changeOverflow(overflowIsLineSpacing == false ? '' : 'scroll')">
-                    </q-btn>
-                    <q-btn dense label="Auto" unelevated 
+                    </ButtonComponent>
+                    <ButtonComponent dense label="Auto" unelevated 
                     :style="{color: overflowIsAuto == true ? 'black' : 'white'}"
                         @click="overflowIsAuto = !overflowIsAuto ,
                         changeOverflow(overflowIsAuto == false ? '' : 'auto')">
-                    </q-btn>
+                    </ButtonComponent>
 
                     </div>
                   
@@ -162,7 +162,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { reactive, ref, inject } from 'vue';
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';
 import { IViewConfiguration, ViewConfiguration } from 'alphautils';

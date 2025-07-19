@@ -122,7 +122,7 @@
                         <div>
                             Float
                         </div>
-                        <q-btn dense unelevated
+                        <ButtonComponent dense unelevated
                             icon="close"
                             text-color="white" 
                             :class="styles.float == 'none' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -130,8 +130,8 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateFloat('none')">
                                     
-                        </q-btn>
-                        <q-btn dense unelevated
+                        </ButtonComponent>
+                        <ButtonComponent dense unelevated
                             icon="chevron_left"
                             text-color="white" 
                             :class="styles.float == 'left' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -139,8 +139,8 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateFloat('left')">
                                     
-                        </q-btn>
-                        <q-btn dense unelevated
+                        </ButtonComponent>
+                        <ButtonComponent dense unelevated
                             icon="chevron_right"
                             text-color="white" 
                             :class="styles.float == 'right' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -148,13 +148,13 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateFloat('right')">
                                     
-                        </q-btn>
+                        </ButtonComponent>
                     </div>
                     <div :style="{display:'inline-flex', justifyContent: 'center', alignItems:'center'}">
                         <div>
                             Clear
                         </div>
-                        <q-btn dense unelevated
+                        <ButtonComponent dense unelevated
                             icon="close"
                             text-color="white" 
                             :class="styles.clear == 'none' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -162,8 +162,8 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateClear('none')">
                                     
-                        </q-btn>
-                        <q-btn dense unelevated
+                        </ButtonComponent>
+                        <ButtonComponent dense unelevated
                             icon="chevron_left"
                             text-color="white" 
                             :class="styles.clear == 'left' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -171,8 +171,8 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateClear('left')">
                                     
-                        </q-btn>
-                        <q-btn dense unelevated
+                        </ButtonComponent>
+                        <ButtonComponent dense unelevated
                             icon="chevron_right"
                             text-color="white" 
                             :class="styles.clear == 'right' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -180,8 +180,8 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateClear('right')">
                                     
-                        </q-btn>
-                        <q-btn dense unelevated
+                        </ButtonComponent>
+                        <ButtonComponent dense unelevated
                             icon="compare_arrows"
                             text-color="white" 
                             :class="styles.clear == 'both' ? 'c-darkgrey' : 'c-brightgrey'"
@@ -189,7 +189,7 @@
                                 display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
                             @click="updateClear('both')">
                                     
-                        </q-btn>
+                        </ButtonComponent>
                     </div>
                 </q-expansion-item>
             </div>
@@ -197,7 +197,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+
 import { reactive, ref,inject } from 'vue'
 import { ViewElement } from 'alphautils';
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';
