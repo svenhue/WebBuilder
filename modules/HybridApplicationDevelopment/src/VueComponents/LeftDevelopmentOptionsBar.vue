@@ -21,7 +21,6 @@
             
             </ButtonComponent>
         </q-item>
-        <q-separator color="black" ></q-separator>
         
         <q-item dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="code" @click="(e) => update(e, 'code')">
@@ -40,13 +39,11 @@
 
             </ButtonComponent>
         </q-item>
-        <q-separator color="black"></q-separator>
                 <q-item dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="manage_history" @click="(e) => update(e, 'history')">
 
             </ButtonComponent>
         </q-item>
-        <q-separator color="black" ></q-separator>
                 <q-item dense class="ldob-content-btn">
             <ButtonComponent dense unelevated icon="settings" @click="(e) => update(e, 'settings')">
 

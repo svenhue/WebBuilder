@@ -26,7 +26,6 @@
                 </template>
             </SelectComponent>  
       
-        <q-separator></q-separator>
         <div v-if="actionCopy?.type == UIActionTypes['Control component']">
             <SelectComponent 
             class="alpha-select"

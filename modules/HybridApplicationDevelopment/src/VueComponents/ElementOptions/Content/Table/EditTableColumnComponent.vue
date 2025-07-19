@@ -24,7 +24,6 @@
                     :input-class="'alpha-input'" v-model="column.style" label="Style" dense></InputComponent>
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="column.classes" label="Classes" dense></InputComponent>
-                    <q-separator></q-separator>
                     <ButtonComponent label="Save" type="submit" color="primary"></ButtonComponent>
                     </q-form>
                 </div>

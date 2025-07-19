@@ -10,7 +10,6 @@
                 <i class="material-icons">cancel</i>
             </button>
         </div>
-        <q-separator></q-separator>
         <div>
             Event
             <SelectComponent
@@ -38,7 +37,6 @@
                 </template>
             </SelectComponent>
         </div>
-        <q-separator></q-separator>
         <div>
             Actions
             <button class="custom-button custom-button--flat" @click="addAction()" :style="{
@@ -49,7 +47,6 @@
             }">
                 <i class="material-icons">add</i>
             </button>
-            <q-separator></q-separator>
             <q-list>
                 <q-item v-for="action in eventCopy.actions" :key="action">
                     <q-item-section>
@@ -66,9 +63,7 @@
         </div>
 
         <div >
-            <q-separator>
 
-            </q-separator>
             <div >
                 <div id="jfiopqehf73408956234">
                     </div>

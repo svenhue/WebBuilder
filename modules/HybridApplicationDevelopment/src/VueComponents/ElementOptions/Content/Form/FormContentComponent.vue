@@ -43,7 +43,6 @@
         >
 
         </FormFieldDesignerComponent>
-        <q-separator></q-separator>
     </div>
 </template>
 

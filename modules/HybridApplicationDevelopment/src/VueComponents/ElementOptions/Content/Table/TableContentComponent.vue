@@ -6,13 +6,11 @@
         :initial-data-config="currentElement.dataConfig" 
         :contextid="currentElement.contextid">
         </DataSourceInputComponent>   
-        <q-separator></q-separator>
         <TableColumnsComponent
         @update-column-source="(val) => UpdateColumnSource(val)"
         @updateColumns="(val) => emits('updateElement', [{key: 'content.columns', value: val}])"
         ref="columnsEditor">
         </TableColumnsComponent>
-        <q-separator></q-separator>
         <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" :type="'number'" dense v-model="rowsPerPageOptinos"  @update:model-value="() => {
             emits('updateElement', [{

@@ -11,7 +11,6 @@
                 <SelectComponent v-model="formField.componenttype" label="Component type" :options="typeoptions" required dense></SelectComponent>
                 <SelectComponent v-if="formField.inputType == 'Input'" v-model="formField.inputType" :options="inputTypes"></SelectComponent>
                 <UCheckbox v-model="formField.required" label="Required" type="boolean" dense></UCheckbox>
-                <q-separator></q-separator>
                 <ButtonComponent label="Submit" type="submit" color="primary"></ButtonComponent>
                 </q-form>
             </div>

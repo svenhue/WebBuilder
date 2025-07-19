@@ -18,7 +18,6 @@
                             </q-item-section>
                         </q-item>
                    </q-list>
-                   <q-separator class="seperator"></q-separator>
                    <div class="caption_3"> Status </div>
                    <q-list dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Status'))" :key="color.key">
@@ -33,7 +32,6 @@
                             </q-item-section>
                         </q-item>
                    </q-list>
-                   <q-separator class="seperator"></q-separator>
 
                    <div class="caption_3"> Text </div>
                    <q-list dense>
