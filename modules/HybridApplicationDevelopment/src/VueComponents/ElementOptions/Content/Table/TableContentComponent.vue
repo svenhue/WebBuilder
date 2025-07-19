@@ -13,7 +13,7 @@
         ref="columnsEditor">
         </TableColumnsComponent>
         <q-separator></q-separator>
-        <q-input class="alpha-input-base spec-input"
+        <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" :type="'number'" dense v-model="rowsPerPageOptinos"  @update:model-value="() => {
             emits('updateElement', [{
               key: 'properties.isactive',
@@ -34,12 +34,13 @@
               <div class="editor-input-label"> Rows per page </div>
           </template>
 
-        </q-input>
+        </InputComponent>
     </div>
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 //@ts-ignore
 //@ts-nocheck
 import { ITableViewConfiguration } from '../../../../../../ViewLibrary/src/Data/Table/TableViewConfiguration';

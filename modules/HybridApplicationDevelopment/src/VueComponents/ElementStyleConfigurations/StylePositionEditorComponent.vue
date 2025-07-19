@@ -40,25 +40,25 @@
                     Left
                 </td>
                 <td>
-                    <q-input 
+                    <InputComponent 
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.left"
                     @update:model-value="(v) => emits('updateElement', [{key:'style.left', value: v+ styles.leftUnit}])"
                      hide-bottom-space  dense class="spec-input">
-                    </q-input>
+                    </InputComponent>
                 </td>
                 <td>
                     Right
                 </td>
                 
                 <td>
-                    <q-input 
+                    <InputComponent 
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.right"
                     color="fontwhite"
                     @update:model-value="(v) => emits('updateElement', [{key:'style.right', value: v + styles.rightUnit}])"
                      hide-bottom-space  dense class="spec-input">
-                    </q-input>
+                    </InputComponent>
 
                 </td>
             </tr>
@@ -68,7 +68,7 @@
                     Top
                 </td>
                 <td>
-                    <q-input 
+                    <InputComponent 
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.top"
                     color="fontwhite"
@@ -76,14 +76,14 @@
 
                      hide-bottom-space  dense class="spec-input">
 
-                    </q-input>
+                    </InputComponent>
                 </td>
                 <td>
                     Bottom
                 </td>
 
                 <td>
-                    <q-input 
+                    <InputComponent 
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.bottom"
                     @update:model-value="(v) => emits('updateElement', [{key:'style.bottom', value: v + styles.bottomUnit}])"
@@ -91,7 +91,7 @@
                     color="fontwhite"
                      hide-bottom-space  dense class="spec-input">
 
-                    </q-input>
+                    </InputComponent>
 
                 </td>
             </tr>
@@ -100,7 +100,7 @@
 
                 </td>
                 <td>
-                    <q-input 
+                    <InputComponent 
                     label="Z-Index"
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.bottom"
@@ -108,7 +108,7 @@
 
                     color="fontwhite"
                      hide-bottom-space  dense class="spec-input">
-                    </q-input>
+                    </InputComponent>
 
                 </td>
             </tr>
@@ -197,7 +197,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { reactive, ref,inject } from 'vue'
 import { ViewElement } from 'alphautils';

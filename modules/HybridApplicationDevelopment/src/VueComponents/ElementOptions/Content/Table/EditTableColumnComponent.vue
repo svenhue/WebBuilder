@@ -9,21 +9,21 @@
                 </q-card-section>
                 <q-card-section>
                     <q-form  @submit="onSubmit">
-                    <q-input class="alpha-input-base spec-input"
-                    :input-class="'alpha-input'" v-model="column.name" label="Name" required dense></q-input>
-                    <q-input class="alpha-input-base spec-input"
-                    :input-class="'alpha-input'" v-model="column.label" label="Label" required dense></q-input>
-                    <q-input class="alpha-input-base spec-input"
-                    :input-class="'alpha-input'" v-model="column.field" label="Field" required dense></q-input>
-                    <q-input class="alpha-input-base spec-input"
-                    :input-class="'alpha-input'" v-model="column.position" label="Position" required dense></q-input>
+                    <InputComponent class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.name" label="Name" required dense></InputComponent>
+                    <InputComponent class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.label" label="Label" required dense></InputComponent>
+                    <InputComponent class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.field" label="Field" required dense></InputComponent>
+                    <InputComponent class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.position" label="Position" required dense></InputComponent>
                     <q-checkbox v-model="column.required" label="Required" type="checkbox" dense></q-checkbox>
                     <q-select :multiple="false" :optinos="alignOptions" v-model="column.align" label="Align" dense></q-select>
                     <q-checkbox v-model="column.sortable" label="Sortable" type="checkbox" dense></q-checkbox>
-                    <q-input class="alpha-input-base spec-input"
-                    :input-class="'alpha-input'" v-model="column.style" label="Style" dense></q-input>
-                    <q-input class="alpha-input-base spec-input"
-                    :input-class="'alpha-input'" v-model="column.classes" label="Classes" dense></q-input>
+                    <InputComponent class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.style" label="Style" dense></InputComponent>
+                    <InputComponent class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="column.classes" label="Classes" dense></InputComponent>
                     <q-separator></q-separator>
                     <ButtonComponent label="Save" type="submit" color="primary"></ButtonComponent>
                     </q-form>
@@ -33,7 +33,8 @@
 </div>
   </template>
   
-  <script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+  <script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
   import { ref } from 'vue';
   

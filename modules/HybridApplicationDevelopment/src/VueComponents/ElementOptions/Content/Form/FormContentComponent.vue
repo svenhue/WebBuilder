@@ -20,12 +20,12 @@
         <q-list dense >
             <q-item dense
             v-for="field in childrenFields" :key="field">
-                <q-input class="alpha-input-base spec-input"
+                <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense 
                 disable
                 :model-value="field?.content.label" 
                 @update:model-value="(val) => updateFieldProp(field, 'label',val)">
-                </q-input>
+                </InputComponent>
                 
                 <q-item-section side> 
                     <ButtonComponent dense icon='edit' @click='editField(field)'></ButtonComponent>
@@ -47,7 +47,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { IFormViewConfiguration,IFormField } from 'alphaviewlibrary';
 import { computed, inject, ref, toValue, watch } from 'vue';

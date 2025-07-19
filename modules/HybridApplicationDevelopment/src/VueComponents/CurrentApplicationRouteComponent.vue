@@ -1,12 +1,13 @@
 <template>
     <div>
-        <q-input v-model="route">
+        <InputComponent v-model="route">
 
-        </q-input>
+        </InputComponent>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 
 import { inject } from 'vue';
 

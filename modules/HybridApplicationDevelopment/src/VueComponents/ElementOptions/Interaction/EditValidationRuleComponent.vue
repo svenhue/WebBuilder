@@ -8,20 +8,20 @@
             
             <q-card-section>
             
-            <q-input class="alpha-input-base spec-input"
+            <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense :model-value="rule.name" @update:model-value="(val) => $emit('updateElement', {key: 'name', value: val})">
                 <template v-slot:before>
                     <div class="editor-input-label" > Name</div>
                 </template>
-            </q-input>
+            </InputComponent>
 
-            <q-input class="alpha-input-base spec-input"
+            <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense :model-value="rule.errorMessage"  @update:model-value="(val) => $emit('updateElement', {key: 'errorMessage', value: val})">
                 <template v-slot:before>
                     <div class="editor-input-label" > Error Message</div>
                 </template>
             
-            </q-input>
+            </InputComponent>
             
             
             <TextInputEditorComponent
@@ -36,7 +36,8 @@
     
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { IValueValidationViewConfiguration } from 'alphautils';
 import { TextInputEditorComponent } from 'alphaviewlibrary';

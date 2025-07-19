@@ -6,19 +6,19 @@
         
         
         <q-card-section>
-            <q-input label="Url" :model-value="page.route" @update:model-value="(val) => $emit('updatePage', [{key: 'route', value: val}])">
-            </q-input>
-            <q-input label="Name" :model-value="page.name" @update:model-value="(val) => $emit('updatePage', [{key: 'name', value: val}])">
-            </q-input>
+            <InputComponent label="Url" :model-value="page.route" @update:model-value="(val) => $emit('updatePage', [{key: 'route', value: val}])">
+            </InputComponent>
+            <InputComponent label="Name" :model-value="page.name" @update:model-value="(val) => $emit('updatePage', [{key: 'name', value: val}])">
+            </InputComponent>
         </q-card-section>
         <q-card-section>
             <div>
                 Meta
             </div>
-            <q-input label="Title" :model-value="page.meta.title" @update:model-value="(val) => $emit('updatePage', [{key: 'meta.title', value: val}])">
-            </q-input>
-            <q-input label="Description" :model-value="page.meta.description" @update:model-value="(val) => $emit('updatePage', [{key: 'meta.description', value: val}])">
-            </q-input>
+            <InputComponent label="Title" :model-value="page.meta.title" @update:model-value="(val) => $emit('updatePage', [{key: 'meta.title', value: val}])">
+            </InputComponent>
+            <InputComponent label="Description" :model-value="page.meta.description" @update:model-value="(val) => $emit('updatePage', [{key: 'meta.description', value: val}])">
+            </InputComponent>
             <q-select dense :options="pageKeywordOptions" :model-value="page.meta.keywords" @update:model-value="(val) => $emit('updatePage', [{key: 'meta.keywords', value: val}])">
                 <template v-slot:before>
                     <div class="editor-input-label">
@@ -32,7 +32,8 @@
     </q-card>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { IPageConfiguration } from 'alphautils';
 
 defineProps({

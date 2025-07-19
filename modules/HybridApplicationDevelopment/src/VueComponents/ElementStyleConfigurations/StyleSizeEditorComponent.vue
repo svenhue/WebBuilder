@@ -10,7 +10,7 @@
                     Width
                 </td>
                 <td>
-                    <q-input 
+                    <InputComponent 
                     
                     class="alpha-input-base"
                     :input-class="'alpha-input'"
@@ -19,14 +19,14 @@
                     type="text"
                     @update:model-value="(v) => UpdateStyle('style.width', v)"
                     hide-bottom-space  dense>
-                    </q-input>
+                    </InputComponent>
                 </td>
                 <td>
                     Height
                 </td>
                 
                 <td>
-                    <q-input 
+                    <InputComponent 
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.height"
                     color="fontwhite"
@@ -35,7 +35,7 @@
                       class="alpha-input-base"
                     :input-class="'alpha-input'"
                     >
-                    </q-input>
+                    </InputComponent>
 
                 </td>
             </tr>
@@ -45,7 +45,7 @@
                     Min W
                 </td>
                 <td>
-                    <q-input 
+                    <InputComponent 
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.minWidth"
                     color="fontwhite"
@@ -53,14 +53,14 @@
                      hide-bottom-space  dense  class="alpha-input-base"
                     :input-class="'alpha-input'">
 
-                    </q-input>
+                    </InputComponent>
                 </td>
                 <td>
                     Min H
                 </td>
 
                 <td>
-                    <q-input 
+                    <InputComponent 
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.minHeight"
                     @update:model-value="(v) => UpdateStyle('style.minHeight', v )"
@@ -68,7 +68,7 @@
                      hide-bottom-space  dense  class="alpha-input-base"
                     :input-class="'alpha-input'">
 
-                    </q-input>
+                    </InputComponent>
 
                 </td>
             </tr>
@@ -78,7 +78,7 @@
                 </td>
 
                 <td>
-                    <q-input 
+                    <InputComponent 
                     :style="{left: '22px', top: '40px'}"
                     v-model="styles.maxWidth"
                     color="fontwhite"
@@ -86,7 +86,7 @@
                      hide-bottom-space  dense  class="alpha-input-base"
                     :input-class="'alpha-input'">
  
-                    </q-input>
+                    </InputComponent>
                 </td>
 
                 <td>
@@ -94,7 +94,7 @@
                 </td>
 
                 <td>
-                    <q-input 
+                    <InputComponent 
                     @update:model-value="(v) => UpdateStyle('style.maxHeight', v)"
                     :style="{left: '', top: '40px'}"
                     v-model="styles.maxHeight"
@@ -102,7 +102,7 @@
 
                      hide-bottom-space  dense  class="alpha-input-base"
                     :input-class="'alpha-input'">
-                    </q-input>
+                    </InputComponent>
 
                 </td>
             </tr>
@@ -162,7 +162,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { reactive, ref, inject } from 'vue';
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';

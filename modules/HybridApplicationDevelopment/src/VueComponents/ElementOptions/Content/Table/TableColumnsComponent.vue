@@ -20,13 +20,13 @@
             
             <q-item v-show="showNewItem" dense>
                 <q-item-section>
-                    <q-input class="alpha-input-base spec-input"
+                    <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense 
                     v-model="newColumnModel.field" 
                     @focusout="() => { UpdateColumns(), showNewItem = false}" 
                     @update:model-value="(v) => {newColumnModel.name = v, newColumnModel.label = v, newColumnModel.align = 'left'}">
 
-                    </q-input>
+                    </InputComponent>
                 </q-item-section>
                 <q-item-section side> 
                     <ButtonComponent dense icon='edit' @click='editColumn(newColumnModel)'></ButtonComponent>
@@ -35,15 +35,15 @@
             </q-item>
             <q-item dense v-for='column in columnsModel' :key='column'>
              
-                        <q-input class="alpha-input-base spec-input"
+                        <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense v-model="column.field" @update:model-value="UpdateColumns">
-                        </q-input>
+                        </InputComponent>
           
-                    <q-input class="alpha-input-base spec-input"
+                    <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense v-model="column.position" @update:model-value="UpdateColumns" :style="{
                         width: '25px'
                     }">
-                    </q-input>
+                    </InputComponent>
             
                 <q-item-section side> 
                     <ButtonComponent dense icon='edit' @click='editColumn(column)'></ButtonComponent>
@@ -64,7 +64,8 @@
     
 </template>
 
-<script setup lang='ts'>import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang='ts'>import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ITableColumn } from 'alphaviewlibrary';
 import { reactive, ref } from 'vue';

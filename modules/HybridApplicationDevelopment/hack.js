@@ -16,7 +16,7 @@ for (const file of files) {
 
   if (descriptor.template) {
     const template = descriptor.template.content
-    const hasQBtn = template.includes('<q-btn')
+    const hasQBtn = template.includes('<q-input')
 
     if (hasQBtn) {
       const updatedTemplate = template
@@ -31,7 +31,7 @@ for (const file of files) {
         const scriptBlock = descriptor.script || descriptor.scriptSetup
         if (scriptBlock) {
           const scriptContent = scriptBlock.content
-          const importStatement = `import { ButtonComponent } from 'alphaviewlibrary'`
+          const importStatement = `import { InputComponent } from 'alphaviewlibrary'`
 
           // Prevent duplicate import
           if (!scriptContent.includes(importStatement)) {
@@ -40,7 +40,7 @@ for (const file of files) {
           }
         } else {
           // No script block – insert <script setup> manually
-          replaced = `<script setup>\nimport { ButtonComponent } from 'alphaviewlibrary'\n</script>\n` + replaced
+          replaced = `<script setup>\nimport { InputComponent } from 'alphaviewlibrary'\n</script>\n` + replaced
         }
 
         console.log(`✔ Replaced and updated import in: ${file}`)

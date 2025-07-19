@@ -1,6 +1,6 @@
 <template>
     <div>
-        <q-input class="alpha-input-base spec-input"
+        <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense 
         
         :input-style="{color: 'white!important'}"
@@ -9,7 +9,7 @@
             <template v-slot:before>
                 <div class="editor-input-label">Label </div>
             </template>
-        </q-input>
+        </InputComponent>
 
         <TextInputEditorComponent
         :label="'Icon'"
@@ -21,7 +21,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration } from 'alphautils';
 import TextInputEditorComponent from 'alphaviewlibrary/src/Editor/TextInputEditorComponent.vue';
 

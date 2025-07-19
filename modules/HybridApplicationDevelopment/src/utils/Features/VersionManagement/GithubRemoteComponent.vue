@@ -1,12 +1,13 @@
 <template>
     <div>
-        <q-input @update:model-value="(val) => emits('updateProperty', {key: 'url', value: val})" label="Url" v-model="url" ></q-input>
+        <InputComponent @update:model-value="(val) => emits('updateProperty', {key: 'url', value: val})" label="Url" v-model="url" ></InputComponent>
 
-        <q-input @update:model-value="(val) => emits('updateProperty', {key: 'token', value: val})" label="Token" v-model="token"></q-input>
+        <InputComponent @update:model-value="(val) => emits('updateProperty', {key: 'token', value: val})" label="Token" v-model="token"></InputComponent>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { ref } from 'vue';
 
 

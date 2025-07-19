@@ -254,7 +254,7 @@
 
                         </td>
                         <td colspan="3">
-                        <q-input
+                        <InputComponent
                         v-model="styles.columnGap" 
                         @update:model-value="(v) =>  {emits('updateElement', [{key: 'style.columnGap', value: v + styles.columnGapUnit}]), styles.columnGap = v}"
                         hide-bottom-space bottom-slots :dense="true" >
@@ -270,10 +270,10 @@
 
                                 </q-select>
                             </template>
-                        </q-input>
+                        </InputComponent>
                     </td>
                     <td colspan="3">
-                        <q-input  hide-bottom-space bottom-slots :dense="true" 
+                        <InputComponent  hide-bottom-space bottom-slots :dense="true" 
                         v-model="styles.rowGap"
                         @update:model-value="(v) =>  {emits('updateElement', [{key: 'style.rowGap', value: v + styles.rowGapUnit}]), styles.rowGap = v} ">
                             <template v-slot:hint>
@@ -289,7 +289,7 @@
 
                                 </q-select>
                             </template>
-                        </q-input>
+                        </InputComponent>
                     </td>
                 </tr>
                 <tr>
@@ -399,7 +399,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ref, computed, reactive, inject, toValue } from 'vue';
 import { ViewElement } from 'alphautils';

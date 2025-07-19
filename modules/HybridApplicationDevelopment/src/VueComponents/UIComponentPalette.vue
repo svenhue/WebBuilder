@@ -16,8 +16,8 @@
                 <i class="material-icons">close</i>
             </button>
         </div>
-        <q-input dense v-model="tagFilterString" v-on:update:model-value="(v) => handleFilterChanged()">
-        </q-input>
+        <InputComponent dense v-model="tagFilterString" v-on:update:model-value="(v) => handleFilterChanged()">
+        </InputComponent>
         <q-expansion-item label="Basic" dense v-model="BasicExpand">
             <div class="palette-grid">
                 <q-card v-for="(view, index) in filter('viewdefinition:Basic')" :key="view.name" clickable class="component-card" 
@@ -265,7 +265,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { computed, reactive, ref } from 'vue';
 import { BORepository, BaseServiceProvider, TabService, useWebNodeTemplateStore } from 'alphautils';
 import { GetImageURL } from '../utils/composables/GetImageURL';

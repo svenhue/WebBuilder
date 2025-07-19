@@ -1,6 +1,6 @@
 <template>
     <div>
-        <q-input
+        <InputComponent
         unelevated
         v-model="path"
         dense
@@ -14,11 +14,12 @@
 
                 </ButtonComponent>
             </template>
-        </q-input>
+        </InputComponent>
     </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ref } from 'vue';
 import { RouteRecordNormalized } from 'vue-router'

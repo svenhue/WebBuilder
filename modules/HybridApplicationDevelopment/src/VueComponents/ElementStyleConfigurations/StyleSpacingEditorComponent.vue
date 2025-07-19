@@ -10,7 +10,7 @@
         <q-popup-edit 
         v-model="styles.marginTop" class="c-darkgrey" v-slot="scope">
             <div :style="{display:'inline-flex', alignItems:'center'}">
-                <q-input
+                <InputComponent
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.marginTop" 
                 @update:model-value="(value) => updateSpacing('style.marginTop', value + styles.marginTopUnit)" 
@@ -22,7 +22,7 @@
                         
                     </q-select>
                     </template>
-                </q-input>
+                </InputComponent>
             </div>
         </q-popup-edit>
         </div>
@@ -32,7 +32,7 @@
                {{  styles.marginLeft  }}
         <q-popup-edit v-model="styles.marginLeft" class="c-darkgrey" v-slot="scope">
             <div :style="{display:'inline-flex', alignItems:'center'}">
-                <q-input
+                <InputComponent
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.marginLeft" 
                 @update:model-value="(value) => updateSpacing('style.marginLeft', value + styles.marginLeftUnit)" 
@@ -45,7 +45,7 @@
 
                     </q-select>
                     </template>
-                </q-input>
+                </InputComponent>
             </div>
         </q-popup-edit>
         </div>
@@ -55,7 +55,7 @@
                {{  styles.marginRight  }}
         <q-popup-edit v-model="styles.marginLeft" class="c-darkgrey" v-slot="scope">
             <div :style="{display:'inline-flex', alignItems:'center'}">
-                <q-input
+                <InputComponent
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.marginRight" 
                 @update:model-value="(value) => updateSpacing('style.marginRight', value + styles.marginRightUnit)" 
@@ -69,7 +69,7 @@
 
                     </q-select>
                     </template>
-                </q-input>
+                </InputComponent>
             </div>
         </q-popup-edit>
         </div>
@@ -79,7 +79,7 @@
                {{  styles.marginBottom  }}
         <q-popup-edit v-model="styles.marginBottom" class="c-darkgrey" v-slot="scope">
             <div :style="{display:'inline-flex', alignItems:'center'}">
-                <q-input
+                <InputComponent
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.marginBottom" 
                 @update:model-value="(value) => updateSpacing('style.marginBottom', value + styles.marginBottomUnit)" 
@@ -92,7 +92,7 @@
 
                     </q-select>
                     </template>
-                </q-input>
+                </InputComponent>
             </div>
         </q-popup-edit>
         </div>
@@ -107,7 +107,7 @@
                {{  styles.paddingTop  }}
         <q-popup-edit v-model="styles.paddingTop" class="c-darkgrey" v-slot="scope">
             <div :style="{display:'inline-flex', alignItems:'center'}">
-                <q-input
+                <InputComponent
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.paddingTop" 
                 @update:model-value="(value) => updateSpacing('style.paddingTop', value + styles.paddingTopUnit)" 
@@ -120,7 +120,7 @@
 
                     </q-select>
                     </template>
-                </q-input>
+                </InputComponent>
             </div>
         </q-popup-edit>
         </div>
@@ -130,7 +130,7 @@
                {{  styles.paddingLeft  }}
         <q-popup-edit v-model="styles.paddingLeft" class="c-darkgrey" v-slot="scope">
             <div :style="{display:'inline-flex', alignItems:'center'}">
-                <q-input
+                <InputComponent
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.paddingLeft" 
                 @update:model-value="(value) => updateSpacing('style.paddingLeft', value + styles.paddingLeftUnit)" 
@@ -143,7 +143,7 @@
 
                     </q-select>
                     </template>
-                </q-input>
+                </InputComponent>
             </div>
         </q-popup-edit>
         </div>
@@ -153,7 +153,7 @@
                {{  styles.paddingRight  }}
         <q-popup-edit v-model="styles.paddingRight" class="c-darkgrey" v-slot="scope">
             <div :style="{display:'inline-flex', alignItems:'center'}">
-                <q-input
+                <InputComponent
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.paddingRight" 
                 @update:model-value="(value) => updateSpacing('style.paddingRight', value + styles.paddingRightUnit)" 
@@ -166,7 +166,7 @@
 
                     </q-select>
                     </template>
-                </q-input>
+                </InputComponent>
             </div>
         </q-popup-edit>
         </div>
@@ -176,7 +176,7 @@
                {{  styles.paddingBottom  }}
         <q-popup-edit v-model="styles.paddingBottom" class="c-darkgrey" v-slot="scope">
             <div :style="{display:'inline-flex', alignItems:'center'}">
-                <q-input
+                <InputComponent
                 :style="{width: '200px'}" 
                 @update:model-value="(value) => updateSpacing('style.paddingBottom', value + styles.paddingBottomUnit)" 
                 dark color="white" v-model="styles.paddingBottom" 
@@ -189,7 +189,7 @@
 
                     </q-select>
                     </template>
-                </q-input>
+                </InputComponent>
             </div>
         </q-popup-edit>
         </div>
@@ -200,7 +200,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { reactive, inject } from 'vue';
 import { ViewElement } from 'alphautils';
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';

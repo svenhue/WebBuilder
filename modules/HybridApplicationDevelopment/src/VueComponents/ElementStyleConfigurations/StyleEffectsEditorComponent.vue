@@ -9,16 +9,17 @@
                 v-model="styles.opacity">
 
                 </q-slider>
-                <q-input type="number" dense v-model="styles.opacity">
+                <InputComponent type="number" dense v-model="styles.opacity">
 
-                </q-input>
+                </InputComponent>
       
 
         </div>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { reactive } from 'vue';
 
 const styles= reactive({

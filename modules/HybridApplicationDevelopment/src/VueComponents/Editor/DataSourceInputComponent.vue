@@ -1,6 +1,6 @@
 <template>
     <div>
-        <q-input 
+        <InputComponent 
         
         dense 
         :modelValue="modelValueX" 
@@ -26,7 +26,7 @@
 
                         </q-icon>
             </template>
-        </q-input>
+        </InputComponent>
      
         <div :style="{
             position: 'relative'
@@ -43,7 +43,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { DataSources, IViewDataConfiguration } from 'alphautils';
 import {  computed, ref } from 'vue';
 import { JSCodeEditorComponent } from 'alphaviewlibrary';

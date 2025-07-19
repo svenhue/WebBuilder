@@ -1,5 +1,5 @@
 <template>
-    <q-input
+    <InputComponent
     dense
     class="alpha-input-color"
     @update:model-value="(val) => $emit('updateColor', val)"
@@ -32,10 +32,11 @@
             </UDropdownMenu>
         </template>
 
-    </q-input>
+    </InputComponent>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { BaseServiceProvider } from 'alphautils';
 import { StyleService } from 'src/utils/Services/Designer/StyleService';
 import { computed, ref } from 'vue';

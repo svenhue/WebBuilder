@@ -1,27 +1,28 @@
 <template>
     <div>
-        <q-input class="alpha-input-base spec-input"
+        <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense 
         :model-value="currentElement?.content?.text" 
         @update:model-value="(val) => $emit('updateElement', [{key: 'content.text', value: val}])">
             <template v-slot:before>
                 <div class="editor-input-label">Text </div>
             </template>
-        </q-input>
-        <q-input class="alpha-input-base spec-input"
+        </InputComponent>
+        <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense
         :model-value="currentElement?.content?.url"
         @update:model-value="(val) => $emit('updateElement', [{key: 'content.url', value: val}])">
             <template v-slot:before>
                 <div class="editor-input-label">URL </div>
             </template>
-        </q-input>
+        </InputComponent>
     </div>
 
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration } from 'alphautils';
 import TextInputEditorComponent from 'alphaviewlibrary/src/Editor/TextInputEditorComponent.vue';
 

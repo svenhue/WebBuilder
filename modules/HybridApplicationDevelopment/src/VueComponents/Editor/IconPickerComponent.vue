@@ -1,14 +1,15 @@
 <template>
-    <q-input dense :model-value="iconPath" @update:model-value="(val) => $emit('updateIconPath', val)">
+    <InputComponent dense :model-value="iconPath" @update:model-value="(val) => $emit('updateIconPath', val)">
         <template v-slot:before>
             <div class="editor-input-label">
                 {{label}}
             </div>
         </template>
-    </q-input>
+    </InputComponent>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 
 defineProps({
     iconPath: {

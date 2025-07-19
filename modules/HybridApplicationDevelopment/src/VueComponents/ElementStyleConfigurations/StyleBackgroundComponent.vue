@@ -91,7 +91,7 @@
                         </td>
                         <td>
                             <div :style="{display:'inline-flex'}">
-                                <q-input
+                                <InputComponent
                                 dense
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
@@ -107,8 +107,8 @@
                                             Width
                                         </div>
                                     </template>
-                                </q-input>
-                                <q-input
+                                </InputComponent>
+                                <InputComponent
                                 dense
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
@@ -125,7 +125,7 @@
                                         </div>
                                     </template>
                                   
-                                </q-input>
+                                </InputComponent>
                             </div>
                         </td>
                     </tr>
@@ -139,7 +139,7 @@
 
                      
                             <div :style="{display:'inline-flex'}">
-                                <q-input
+                                <InputComponent
                                 dense
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
@@ -155,8 +155,8 @@
                                             Top
                                         </div>
                                     </template>
-                                </q-input>
-                                <q-input
+                                </InputComponent>
+                                <InputComponent
                                 dense
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
@@ -173,10 +173,10 @@
                                         </div>
                                     </template>
                                   
-                                </q-input>
+                                </InputComponent>
                             </div>
                             <div :style="{display:'inline-flex'}">
-                                <q-input
+                                <InputComponent
                                 dense
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
@@ -192,8 +192,8 @@
                                             Left
                                         </div>
                                     </template>
-                                </q-input>
-                                <q-input
+                                </InputComponent>
+                                <InputComponent
                                 dense
                                 bottom-slots
                                 v-model="currentFocussedBackground.width">
@@ -210,7 +210,7 @@
                                         </div>
                                     </template>
                                   
-                                </q-input>
+                                </InputComponent>
                             </div>
                             </div>
                         </div>
@@ -240,7 +240,7 @@
                             Angle
                         </div>
                         
-                            <q-input 
+                            <InputComponent 
                             :style="{width: '110px'}"
                             dense v-model="currentFocussedBackground.linearGradientAngle"
                             :rules="[val => val <= 360 && val >= 0 || 'Select a value between 0 and 360']">
@@ -249,9 +249,9 @@
                                         Degree
                                 </div>
                             </template>
-                            </q-input>
+                            </InputComponent>
                     </div>
-                    <q-input
+                    <InputComponent
                         filled dense
                         v-model="styles.backgroundColor"
                         class="sbc-input"
@@ -263,7 +263,7 @@
                             </q-popup-proxy>
                         </q-icon>
                         </template>
-                    </q-input>
+                    </InputComponent>
                 </td>
                     </tr>
                 </tbody>
@@ -275,7 +275,7 @@
             <div class="small-block-header">
                 Color
             </div>
-            <q-input
+            <InputComponent
             
         filled dense
         v-model="styles.backgroundColor"
@@ -288,12 +288,13 @@
             </q-popup-proxy>
           </q-icon>
         </template>
-      </q-input>
+      </InputComponent>
         </div>
     </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { ref, computed, reactive, inject } from 'vue';
 import { colors } from 'quasar';

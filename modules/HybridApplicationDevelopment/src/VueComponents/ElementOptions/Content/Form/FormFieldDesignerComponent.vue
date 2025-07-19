@@ -6,8 +6,8 @@
             </q-card-section>
             <q-card-section>
                 <q-form @submit="onSubmit">
-                <q-input class="alpha-input-base spec-input"
-                    :input-class="'alpha-input'" v-model="formField.label" label="Label" required dense></q-input>
+                <InputComponent class="alpha-input-base spec-input"
+                    :input-class="'alpha-input'" v-model="formField.label" label="Label" required dense></InputComponent>
                 <q-select v-model="formField.componenttype" label="Component type" :options="typeoptions" required dense></q-select>
                 <q-select v-if="formField.inputType == 'Input'" v-model="formField.inputType" :options="inputTypes"></q-select>
                 <q-checkbox v-model="formField.required" label="Required" type="boolean" dense></q-checkbox>
@@ -20,7 +20,8 @@
 </template>
 
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { IFormField } from 'alphaviewlibrary';
 import { reactive, ref } from 'vue';

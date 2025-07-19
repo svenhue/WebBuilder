@@ -1,13 +1,13 @@
 <template>
     <div>
-        <q-input class="alpha-input-base spec-input"
+        <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense 
         :model-value="currentElement?.content?.label" 
         @update:model-value="(val) => $emit('updateElement', [{key: 'content.label', value: val}])">
             <template v-slot:before>
                 <div class="editor-input-label">Label </div>
             </template>
-        </q-input>
+        </InputComponent>
 
         <ComponentChildrenConfiguraton
         :current-element="currentElement">
@@ -18,7 +18,8 @@
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration } from 'alphautils';
 import ComponentChildrenConfiguraton from '../ComponentChildrenConfiguraton.vue';
 

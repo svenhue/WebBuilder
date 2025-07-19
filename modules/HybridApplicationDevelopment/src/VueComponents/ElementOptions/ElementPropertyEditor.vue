@@ -7,7 +7,7 @@
                     <q-item-label>{{propertyName}}</q-item-label>
                 </q-item-section>
                 <q-item-section>
-                    <q-input class="alpha-input-base spec-input"
+                    <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" @update:model-value="(value) => emits('updateElement', 
                     [
@@ -16,14 +16,15 @@
                             value: value
                         }
                     ])" dense borderless type="text" >
-                    </q-input>
+                    </InputComponent>
                 </q-item-section>
             </q-item>
         </q-list>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 
 import { computed } from 'vue';
 import { defineEmits } from 'vue';

@@ -28,7 +28,7 @@
         @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.arrows', value: values}])}"
     >
     </q-checkbox>
-    <q-input class="alpha-input-base spec-input"
+    <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense :model-value="currentElement.content?.prevIcon ?? ''" 
     @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.prevIcon', value: values}])}">
         <template v-slot:before >
@@ -36,8 +36,8 @@
             Previous Icon
         </div>
         </template>
-    </q-input>
-    <q-input class="alpha-input-base spec-input"
+    </InputComponent>
+    <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense :model-value="currentElement.content?.nextIcon ?? ''" 
     @update:model-value="(values) =>  { $emit('updateElement', [{key: 'content.nextIcon', value: values}])}">
         <template v-slot:before >
@@ -45,11 +45,12 @@
             Next Icon
         </div>
         </template>
-    </q-input>
+    </InputComponent>
 </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { TextInputEditorComponent } from 'alphaviewlibrary';
 import { IViewConfiguration } from 'alphautils';
 

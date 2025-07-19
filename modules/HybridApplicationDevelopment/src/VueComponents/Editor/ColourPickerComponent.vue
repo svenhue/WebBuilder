@@ -1,6 +1,6 @@
 <template>
     
-    <q-input dense :model-value="color" @update:model-value="(val) => $emit('updateColor', val)" class="alpha-color-picker alpha-input">
+    <InputComponent dense :model-value="color" @update:model-value="(val) => $emit('updateColor', val)" class="alpha-color-picker alpha-input">
         <template v-slot:before>
             <div class="editor-input-label" :style="{color: 'white!important'}">
                 {{ label }}
@@ -25,11 +25,12 @@
                 </q-popup-proxy>
             </q-icon>
         </template>
-    </q-input>
+    </InputComponent>
 
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 
 defineProps({
     color: {

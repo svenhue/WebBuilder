@@ -1,5 +1,5 @@
 <template>
-    <q-input class="alpha-input-base spec-input"
+    <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'"
     dense
     filled
@@ -28,12 +28,13 @@
             </UDropdownMenu>
         </template>
 
-    </q-input>
+    </InputComponent>
 
 </template>
 
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { StaticContentURLs } from 'cms';
 
 defineProps({

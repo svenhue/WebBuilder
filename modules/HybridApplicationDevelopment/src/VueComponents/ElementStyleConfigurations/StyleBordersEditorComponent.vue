@@ -9,7 +9,7 @@
             <br/>
             <div :style="{display:'inline-flex', alignItems: 'center'}">
           
-                <q-input
+                <InputComponent
                     dense
                     :style="{width: '130px'}"
                     class="alpha-input"
@@ -20,14 +20,14 @@
                             All
                             </div>
                         </template>
-                    </q-input>
+                    </InputComponent>
             </div>
             <div v-show="allCorners == false">
                 <table>
                     <tbody>
                     <tr>
                         <td>
-                            <q-input
+                            <InputComponent
                             class="alpha-input"
                                     dense
                                 
@@ -38,10 +38,10 @@
                                         Top Left
                                         </div>
                                     </template>
-                                    </q-input>
+                                    </InputComponent>
                         </td>
                         <td>
-                            <q-input
+                            <InputComponent
                              class="alpha-input"
                                     dense
                                   
@@ -52,12 +52,12 @@
                                     Top Right
                                     </div>
                                 </template>
-                            </q-input>
+                            </InputComponent>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <q-input
+                            <InputComponent
                             dense
                             class="alpha-input"
                                     @update:model-value="(v) => updateBorderRadius('borderRadius', v)"
@@ -67,10 +67,10 @@
                                 Bottom Left
                                 </div>
                             </template>
-                            </q-input>
+                            </InputComponent>
                         </td>
                         <td>
-                            <q-input
+                            <InputComponent
                             class="alpha-input"
                             dense
                         
@@ -82,7 +82,7 @@
                                 Bottom Right
                                 </div>
                             </template>
-                            </q-input>
+                            </InputComponent>
                         </td>
                     </tr>
                 </tbody>
@@ -103,7 +103,7 @@
                 </div>
                 <div :style="{marginLeft: '60px'}">
                         
-                    <q-input dense
+                    <InputComponent dense
                     class="alpha-input"
                     :style="{width: '150px'}"
                     @update:model-value="(v: string) => updateBorder(v)"
@@ -114,7 +114,7 @@
                             Border
                             </div>
                     </template>
-                    </q-input>          
+                    </InputComponent>          
                     <div :style="{display: 'inline-flex', alignItems: 'center'}">
                         <div :style="{paddingRight: '13px'}">
                             Style
@@ -131,7 +131,7 @@
                         >
                         </q-select>
                     </div>
-                    <q-input
+                    <InputComponent
                     class="alpha-input"
                     :style="{width: '150px'}"
                     dense
@@ -142,9 +142,9 @@
                         Width
                         </div>
                     </template>
-                    </q-input>             
+                    </InputComponent>             
                          
-                    <q-input
+                    <InputComponent
                     class="alpha-input"
                     dense
                     @update:model-value="(v) => updateSpecificBorder('Color', v)"
@@ -163,7 +163,7 @@
                                 </q-popup-proxy>
                             </q-icon>
                         </template>
-                    </q-input>
+                    </InputComponent>
                     </div>
                 
                 </div>
@@ -172,7 +172,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { ref, reactive, inject } from 'vue';
 import { ViewElement } from 'alphautils';
 import { StyleManagerViewModel } from '../../ViewModels/StyleManagerViewModel';

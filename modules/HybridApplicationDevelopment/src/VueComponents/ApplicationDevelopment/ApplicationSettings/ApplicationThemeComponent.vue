@@ -8,9 +8,9 @@
                    <q-list dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Brand'))" :key="color.key">
                             <q-item-section>
-                                <q-input dense disable :model-value="color.key" class="alpha-input">
+                                <InputComponent dense disable :model-value="color.key" class="alpha-input">
 
-                                </q-input>
+                                </InputComponent>
                             </q-item-section>
                             <q-item-section>
                                 <ColourPickerComponent :color="color.value" @update-color="(c) => updateColor(color.key, c)">
@@ -23,9 +23,9 @@
                    <q-list dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Status'))" :key="color.key">
                             <q-item-section>
-                                <q-input disable dense :model-value="color.key" class="alpha-input">
+                                <InputComponent disable dense :model-value="color.key" class="alpha-input">
 
-                                </q-input>
+                                </InputComponent>
                             </q-item-section>
                             <q-item-section>
                                 <ColourPickerComponent :color="color.value" @update-color="(c) => updateColor(color.key, c)">
@@ -39,9 +39,9 @@
                    <q-list dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Text'))" :key="color.key">
                             <q-item-section>
-                                <q-input disable dense :model-value="color.key" class="alpha-input">
+                                <InputComponent disable dense :model-value="color.key" class="alpha-input">
 
-                                </q-input>
+                                </InputComponent>
                             </q-item-section>
                             <q-item-section>
                                 <ColourPickerComponent :color="color.value" @update-color="(c) => updateColor(color.key, c)">
@@ -59,7 +59,8 @@
         </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+
 import { BaseServiceProvider } from 'alphautils';
 import { StyleService } from '../../../utils/Services/Designer/StyleService';
 import { ref } from 'vue';

@@ -14,9 +14,9 @@
      
             <q-item dense v-for="option in options" :key="option.value" >
                 <q-item-section>
-                    <q-input class="alpha-input-base spec-input"
+                    <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense :model-value="option.value" @update:model-value="(val) => saveUpdate(val, option)" @mouseout="updateOptions()" >
-                    </q-input>
+                    </InputComponent>
                 </q-item-section>
                 <q-item-section side>
                     <ButtonComponent dense icon='delete' @click='deleteOption(option)'></ButtonComponent>^
@@ -34,7 +34,8 @@
 </template>
 
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { IViewConfiguration } from 'alphautils';
 import { ref, watch } from 'vue';

@@ -4,7 +4,7 @@
             <q-card-section>
                     Create Template based on component {{  value?.publicidentifier }}
                 <q-card-section>
-                    <q-input v-model="template.name" label="Template Name" />
+                    <InputComponent v-model="template.name" label="Template Name"  />
                     <q-checkbox v-model="template.isPublic" label="Public (everyone can use it for free)"></q-checkbox>
                 </q-card-section>
                 <q-card-section>
@@ -29,7 +29,8 @@
 </template>
 
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import {  onMounted, onUnmounted, reactive, ref } from 'vue';
 import { UITemplateService } from './UITemplateService';

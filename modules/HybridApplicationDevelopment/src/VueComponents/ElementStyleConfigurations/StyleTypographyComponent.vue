@@ -34,7 +34,7 @@
                 </div>
                 </td>
                 <td colspan="4">
-                    <q-input dense
+                    <InputComponent dense
                     autocomplete
                     use-input
                     class="stc-input"
@@ -43,7 +43,7 @@
                     v-model="styles.fontWeight"
                     >
     
-                    </q-input>
+                    </InputComponent>
                 </td>
             </tr>
             <tr>
@@ -53,7 +53,7 @@
                 </div>
                 </td>
                 <td colspan="1">
-                    <q-input dense 
+                    <InputComponent dense 
                     class="stc-input"
                     :style="{width: '75px', marginRight:'-10px'}"
                     v-model="styles.fontSize"
@@ -73,7 +73,7 @@
                                 :options="styleManager.sizeUnits">
                                 </q-select>
                             </template>
-                    </q-input>
+                    </InputComponent>
                 </td>
                 <td>
                     <div class="small-block-header">
@@ -81,7 +81,7 @@
                     </div>
                 </td>
                 <td>
-                    <q-input dense 
+                    <InputComponent dense 
                     class="stc-input"
                     :style="{width: '87px'}"
                     v-model="styles.lineHeight"
@@ -101,7 +101,7 @@
 
                                 </q-select>
                             </template>
-                    </q-input>
+                    </InputComponent>
                 </td>
             </tr>
             <tr>
@@ -111,7 +111,7 @@
                     </div>
                 </td>
                 <td colspan="4">
-                    <q-input
+                    <InputComponent
                     :style="{width: '208px'}"
                         filled dense
                         v-model="styles.color"
@@ -125,7 +125,7 @@
                             </q-popup-proxy>
                         </q-icon>
                         </template>
-                    </q-input>
+                    </InputComponent>
                 </td>
             </tr>
             <tr>
@@ -231,7 +231,8 @@
     </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+import { ButtonComponent } from 'alphaviewlibrary'
 
 import { reactive, inject } from 'vue';
 import { ViewElement } from 'alphautils';
