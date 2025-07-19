@@ -1,6 +1,6 @@
 <template>
     <div class="alpha-options-content" :style="{width: '450px', padding: '10px'}">
-        <q-expansion-item
+        <ExpansionItemComponent
             dense
             :expand-icon-class="'expand-icon-class'"
             label="Colors">
@@ -47,17 +47,18 @@
                             </q-item-section>
                         </q-item>
                    </q-list>
-        </q-expansion-item>
-        <q-expansion-item
+        </ExpansionItemComponent>
+        <ExpansionItemComponent
             dense
             :expand-icon-class="'expand-icon-class'"
             label="Typography">
         
-        </q-expansion-item>
+        </ExpansionItemComponent>
         </div>
 </template>
 
-<script setup lang="ts">import { InputComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { ExpansionItemComponent } from 'alphaviewlibrary'
+import { InputComponent } from 'alphaviewlibrary'
 
 import { BaseServiceProvider } from 'alphautils';
 import { StyleService } from '../../../utils/Services/Designer/StyleService';

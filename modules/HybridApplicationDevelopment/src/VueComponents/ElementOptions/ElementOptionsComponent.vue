@@ -1,23 +1,23 @@
 <template>
     <div v-if="viewCopy?.id != undefined" class="element-options" :style="{color: 'white!important'}">
         <div>
-            <q-expansion-item dense label="Content" v-if="optionsComponent != undefined">
+            <ExpansionItemComponent dense label="Content" v-if="optionsComponent != undefined">
                 <component :is="optionsComponent" @updateElement="(values) => emits('updateElement', values)" :currentElement="viewCopy"></component>
-            </q-expansion-item>
-            <q-expansion-item dense label="Appearence" v-if="appearenceComponent != undefined ">
+            </ExpansionItemComponent>
+            <ExpansionItemComponent dense label="Appearence" v-if="appearenceComponent != undefined ">
                 <component :is="appearenceComponent" @updateElement="(values) => emits('updateElement', values)" :currentElement="viewCopy"></component>
 
-            </q-expansion-item>
+            </ExpansionItemComponent>
             
-            <q-expansion-item dense label="Behavior" v-if="behaviorComponent != undefined ">
+            <ExpansionItemComponent dense label="Behavior" v-if="behaviorComponent != undefined ">
                 <component :is="behaviorComponent" @updateElement="(values) => emits('updateElement', values)" :currentElement="viewCopy"></component>
 
-            </q-expansion-item>
-            <q-expansion-item dense label="Interaction" v-if="interactionsComponent != undefined">
+            </ExpansionItemComponent>
+            <ExpansionItemComponent dense label="Interaction" v-if="interactionsComponent != undefined">
                 <component :is="interactionsComponent" @updateElement="(values) => emits('updateElement', values)" :currentElement="viewCopy"></component>  
-            </q-expansion-item>
+            </ExpansionItemComponent>
             
-            <q-expansion-item dense label="Configuration">
+            <ExpansionItemComponent dense label="Configuration">
                 <div style="
                     width: 150px;
                     height: 300px
@@ -34,7 +34,7 @@
 
                     </TextInputEditorComponent>
                 </div>
-            </q-expansion-item>
+            </ExpansionItemComponent>
             
         </div>
         <div>
@@ -47,7 +47,8 @@
 
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ExpansionItemComponent } from 'alphaviewlibrary'
+
 import { ComputedRef, computed, ref } from 'vue';
 //import {  JSONEditor } from 'alphaviewlibrary';
 import TableContentComponent from './Content/Table/TableContentComponent.vue'; 

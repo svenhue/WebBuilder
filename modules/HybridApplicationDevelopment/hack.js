@@ -16,12 +16,12 @@ for (const file of files) {
 
   if (descriptor.template) {
     const template = descriptor.template.content
-    const hasQBtn = template.includes('<q-select')
+    const hasQBtn = template.includes('<q-expansion-item')
 
     if (hasQBtn) {
       const updatedTemplate = template
-        .replace(/<q-select([^>]*)>([\s\S]*?)<\/q-select>/g, '<SelectComponent$1>$2</SelectComponent>')
-        .replace(/<q-select([^>]*)\/>/g, '<SelectComponent$1 />')
+        .replace(/<q-expansion-item([^>]*)>([\s\S]*?)<\/q-expansion-item>/g, '<ExpansionItemComponent$1>$2</ExpansionItemComponent>')
+        .replace(/<q-expansion-item([^>]*)\/>/g, '<ExpansionItemComponent$1 />')
 
       if (updatedTemplate !== template) {
         // Replace template block
@@ -31,7 +31,7 @@ for (const file of files) {
         const scriptBlock = descriptor.script || descriptor.scriptSetup
         if (scriptBlock) {
           const scriptContent = scriptBlock.content
-          const importStatement = `import { SelectComponent } from 'alphaviewlibrary'`
+          const importStatement = `import { ExpansionItemComponent } from 'alphaviewlibrary'`
 
           // Prevent duplicate import
           if (!scriptContent.includes(importStatement)) {
@@ -40,7 +40,7 @@ for (const file of files) {
           }
         } else {
           // No script block – insert <script setup> manually
-          replaced = `<script setup>\nimport { SelectComponent } from 'alphaviewlibrary'\n</script>\n` + replaced
+          replaced = `<script setup>\nimport { ExpansionItemComponent } from 'alphaviewlibrary'\n</script>\n` + replaced
         }
 
         console.log(`✔ Replaced and updated import in: ${file}`)

@@ -1,7 +1,7 @@
 <template>
     <div class="escc">
         <q-list dense>
-            <q-expansion-item
+            <ExpansionItemComponent
             dense
             :expand-icon-class="'expand-icon-class'"
             label="Colors">
@@ -10,8 +10,8 @@
                 ref="colorEditor"
                 @updateElement="updateFocussedElement">
                 </StyleColorEditorComponent>
-            </q-expansion-item>
-            <q-expansion-item
+            </ExpansionItemComponent>
+            <ExpansionItemComponent
             dense
             label="Spacing">
             <div :style="{display: 'flex', justifyContent: 'center'}">
@@ -22,8 +22,8 @@
                 >
                 </StyleSpacingEditorComponent>
             </div>
-            </q-expansion-item>
-            <q-expansion-item
+            </ExpansionItemComponent>
+            <ExpansionItemComponent
             dense
             label="Layout">
                 <StyleLayoutEditorComponent
@@ -31,8 +31,8 @@
                 ref="layoutEditor"
                 @updateElement="updateFocussedElement">
                 </StyleLayoutEditorComponent>
-            </q-expansion-item>
-            <q-expansion-item
+            </ExpansionItemComponent>
+            <ExpansionItemComponent
             dense
             label="Spacing">
             <div :style="{display: 'flex', justifyContent: 'center'}">
@@ -43,8 +43,8 @@
                 >
                 </StyleSpacingEditorComponent>
             </div>
-            </q-expansion-item>
-            <q-expansion-item
+            </ExpansionItemComponent>
+            <ExpansionItemComponent
             dense
             label="Size">
                 <StyleSizeEditorComponent
@@ -52,8 +52,8 @@
                 ref="sizeEditor"
                 @updateElement="updateFocussedElement">
                 </StyleSizeEditorComponent>
-                </q-expansion-item>
-            <q-expansion-item
+                </ExpansionItemComponent>
+            <ExpansionItemComponent
             dense
             label="Position">
                 <StylePositionEditorComponent
@@ -61,8 +61,8 @@
                 @updateElement="updateFocussedElement"
                 ref="positionEditor">
                 </StylePositionEditorComponent>
-            </q-expansion-item>
-            <q-expansion-item
+            </ExpansionItemComponent>
+            <ExpansionItemComponent
             dense
             label="Typography">
                 <StyleTypographyComponent
@@ -70,8 +70,8 @@
                 ref="typographyEditor"
                 @updateElement="updateFocussedElement">
                 </StyleTypographyComponent>
-            </q-expansion-item>
-            <q-expansion-item
+            </ExpansionItemComponent>
+            <ExpansionItemComponent
             dense
             label="Borders">
             <StyleBordersEditorComponent
@@ -80,12 +80,13 @@
            @updateElement="updateFocussedElement">
 
             </StyleBordersEditorComponent>
-            </q-expansion-item>
+            </ExpansionItemComponent>
         </q-list>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ExpansionItemComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration } from 'alphautils';
 import { ref,ComputedRef } from 'vue';
 import StyleLayoutEditorComponent from './StyleLayoutEditorComponent.vue';

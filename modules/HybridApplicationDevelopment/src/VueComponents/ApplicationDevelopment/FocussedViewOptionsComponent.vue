@@ -1,7 +1,7 @@
 <template>
     <div>
         <div >
-            <q-expansion-item 
+            <ExpansionItemComponent 
             close
             hide-expand-icon
             v-model="isExpanded"
@@ -12,7 +12,7 @@
             header-class="f-component-options-header" 
             
             :label="focussedView?.tag.substring(focussedView?.tag.lastIndexOf(':')+ 1)">
-            </q-expansion-item>
+            </ExpansionItemComponent>
         </div>
 
         <div :style="styleHovered" v-if="hoveredView != undefined && showHovered == true" class="f-component-options-hovered" id="focussed-helper">
@@ -24,7 +24,8 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ExpansionItemComponent } from 'alphaviewlibrary'
+
 import { IViewConfiguration, BaseServiceProvider, waitForElm } from 'alphautils';
 import { FocussedViewContextService } from '../../utils/Services/Designer/FocussedViewContextService';
 import { reactive, watch,onMounted, ref, computed } from 'vue';

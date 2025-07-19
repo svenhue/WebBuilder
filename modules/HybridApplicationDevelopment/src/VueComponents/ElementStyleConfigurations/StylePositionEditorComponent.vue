@@ -117,7 +117,7 @@
 
         </div>
             <div>
-                <q-expansion-item label="Float and clear" dense>
+                <ExpansionItemComponent label="Float and clear" dense>
                     <div :style="{display:'inline-flex', justifyContent: 'center', alignItems:'center'}">
                         <div>
                             Float
@@ -191,13 +191,14 @@
                                     
                         </ButtonComponent>
                     </div>
-                </q-expansion-item>
+                </ExpansionItemComponent>
             </div>
         </div>
     </div>
 </template>
 
-<script setup lang="ts">import { SelectComponent } from 'alphaviewlibrary'
+<script setup lang="ts">import { ExpansionItemComponent } from 'alphaviewlibrary'
+import { SelectComponent } from 'alphaviewlibrary'
 import { InputComponent } from 'alphaviewlibrary'
 import { ButtonComponent } from 'alphaviewlibrary'
 
