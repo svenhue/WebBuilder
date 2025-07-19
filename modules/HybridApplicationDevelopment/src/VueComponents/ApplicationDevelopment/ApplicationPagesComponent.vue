@@ -10,7 +10,7 @@
         <div :style="{
             display: 'flex'
         }">
-            <q-list dense>
+            <div dense>
                 <q-item>
                     <q-item-section>
                         <q-item-label>
@@ -39,7 +39,7 @@
                         <ButtonComponent icon="delete" class="cursor-pointer" @click="() => {selectedPage = page, showDeletePageDialog = true}"></ButtonComponent>
                     </q-item-section>
                 </q-item>
-            </q-list>
+            </div>
             <q-dialog v-model="showDeletePageDialog">
                 <CardComponent>
                     <div>

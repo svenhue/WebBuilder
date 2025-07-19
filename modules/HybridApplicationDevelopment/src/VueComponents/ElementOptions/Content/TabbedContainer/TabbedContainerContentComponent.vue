@@ -6,7 +6,7 @@
             
             "></ButtonComponent>
         </div>
-        <q-list>
+        <div>
             <q-item dense v-for="child in children" :key="child.id">
                 <q-item-section><InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" dense @update:model-value="(val) => viewModel.PartialUpdateView(child.id, {keyValuePairs:[{key: 'properties.label', value: val}]})" :model-value="child.properties?.label" > </InputComponent> </q-item-section>
@@ -15,7 +15,7 @@
                 </q-item-section>
 
             </q-item>
-        </q-list>
+        </div>
     </div>
 </template>
 

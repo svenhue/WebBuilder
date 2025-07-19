@@ -16,7 +16,7 @@
             Columns
             <ButtonComponent dense icon='add' @click='AddColumn'></ButtonComponent>
         </div>
-        <q-list dense >
+        <div dense >
             
             <q-item v-show="showNewItem" dense>
                 <q-item-section>
@@ -53,7 +53,7 @@
                     <ButtonComponent dense icon='delete' @click='deleteColumn(column)'></ButtonComponent>
                 </q-item-section>
             </q-item>
-        </q-list>
+        </div>
        
         <edit-table-column-component
         @update-column="(val) => { AddColumnModel(val), showNewItem = false}"

@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <q-list dense ref="listRef">
+        <div dense ref="listRef">
             <q-item dense>
                 <q-item-label>
                     Validation Rules
@@ -22,7 +22,7 @@
                 </q-item-section>
 
             </q-item>
-        </q-list>
+        </div>
         <EditValidationRuleComponent 
         v-if="showEditor"  @close="showEditor = false" 
         :current-element="currentElement"

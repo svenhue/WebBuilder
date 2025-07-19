@@ -1,9 +1,9 @@
 <template>
     <div>
 
-        <q-list dense>
+        <div dense>
             
-        </q-list>
+        </div>
     </div>
 
 </template>

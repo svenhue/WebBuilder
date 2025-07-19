@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <q-list>
+        <div>
             <q-item>
             <UCheckbox :label="'Show Dotted Element Borders'" v-model="service.store.devSettings.showDevBorders" @update:model-value="(val) => service.ChangeDevBorderSetting(val)">
 
@@ -12,7 +12,7 @@
 
             </UCheckbox>
         </q-item>
-        </q-list>
+        </div>
     </div>
 </template>
 

@@ -15,7 +15,7 @@
         <template v-slot:after>
             <UDropdownMenu  auto-close dense>
                 <template #default>
-                                    <q-list dense class="dropdown-list">
+                                    <div dense class="dropdown-list">
                     <q-item dense clickable @click="updateColor(color.key)" v-for="color in avaibleColors" :key="color.label">
                         <div 
                         :style="{backgroundColor: color.value, marginTop: '8px', marginRight: '5px', width: '10px', height: '10px'}">
@@ -26,7 +26,7 @@
                         </q-item-section>
                         
                     </q-item>
-                </q-list>
+                </div>
                 </template>
 
             </UDropdownMenu>

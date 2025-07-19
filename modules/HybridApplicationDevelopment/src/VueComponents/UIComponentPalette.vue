@@ -236,7 +236,7 @@
         </ExpansionItemComponent>
         
         <ExpansionItemComponent label="Advanced" dense v-model="AdvancedExpand">
-            <q-list>
+            <div>
                 <q-item v-for="(view, index) in filter('viewdefinition:Advanced')" :key="view.name" clickable>
                     <q-item-section @mousedown="(e) => startElementTransition(e, view.type)">
                         <q-item-label>{{ view.name }}</q-item-label>
@@ -251,16 +251,16 @@
                         </UTooltip>
                     </UIcon>
                 </q-item>
-            </q-list>
+            </div>
         </ExpansionItemComponent>
         <ExpansionItemComponent label="Your templates" dense v-model="YourTemplatesExpand">
-            <q-list>
+            <div>
                 <q-item v-for="view in avaibleTemplates" :key="view.name" clickable>
                     <q-item-section @mousedown="(e) => startElementTransition(e, view.type)">
                         <q-item-label>{{ view.name }}</q-item-label>
                     </q-item-section>
                 </q-item>
-            </q-list>
+            </div>
         </ExpansionItemComponent>
     </div>
 </template>

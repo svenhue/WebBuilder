@@ -1,6 +1,6 @@
 <template>
     <div>
-        <q-list>
+        <div>
             <q-item dense>
                 <UCheckbox label="Vertical" :model-value="currentElement.appearance?.isVertical" @update:model-value="(val) => emits('updateElement', [{key:'appearance.isVertical', value: val}])">
 
@@ -15,7 +15,7 @@
 
                 </SelectComponent>
             </q-item>
-        </q-list>
+        </div>
     </div>
 </template>
 

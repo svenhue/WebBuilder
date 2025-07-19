@@ -1,6 +1,6 @@
 <template>
     <div>
-        <q-list dense>
+        <div dense>
             <q-item dense>
                 <UCheckbox
                 
@@ -17,7 +17,7 @@
                 :model-value="currentElement?.appearence?.round">
                 </UCheckbox>
             </q-item>
-        </q-list>
+        </div>
     </div>
 </template>
 

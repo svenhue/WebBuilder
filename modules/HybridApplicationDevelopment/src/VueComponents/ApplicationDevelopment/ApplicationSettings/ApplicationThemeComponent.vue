@@ -5,7 +5,7 @@
             :expand-icon-class="'expand-icon-class'"
             label="Colors">
                    <div class="caption_3"> Brand </div>
-                   <q-list dense>
+                   <div dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Brand'))" :key="color.key">
                             <q-item-section>
                                 <InputComponent dense disable :model-value="color.key" class="alpha-input">
@@ -17,9 +17,9 @@
                                 </ColourPickerComponent>
                             </q-item-section>
                         </q-item>
-                   </q-list>
+                   </div>
                    <div class="caption_3"> Status </div>
-                   <q-list dense>
+                   <div dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Status'))" :key="color.key">
                             <q-item-section>
                                 <InputComponent disable dense :model-value="color.key" class="alpha-input">
@@ -31,10 +31,10 @@
                                 </ColourPickerComponent>
                             </q-item-section>
                         </q-item>
-                   </q-list>
+                   </div>
 
                    <div class="caption_3"> Text </div>
-                   <q-list dense>
+                   <div dense>
                         <q-item dense v-for="color in styleService.GetColors().filter(c => c.key?.includes('Text'))" :key="color.key">
                             <q-item-section>
                                 <InputComponent disable dense :model-value="color.key" class="alpha-input">
@@ -46,7 +46,7 @@
                                 </ColourPickerComponent>
                             </q-item-section>
                         </q-item>
-                   </q-list>
+                   </div>
         </ExpansionItemComponent>
         <ExpansionItemComponent
             dense

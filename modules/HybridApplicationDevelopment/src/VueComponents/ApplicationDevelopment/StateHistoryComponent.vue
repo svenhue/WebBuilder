@@ -12,7 +12,7 @@
         </div>
         <div>
             Changes
-            <q-list>
+            <div>
                 <q-item dense
                 class="history-stack-item"
                 v-for="item in history.history?.value?.values">
@@ -45,7 +45,7 @@
                     </q-item-section>
                 </q-item>
 
-            </q-list>
+            </div>
         </div>
     </div>
 </template>

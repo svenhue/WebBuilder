@@ -47,7 +47,7 @@
             }">
                 <i class="material-icons">add</i>
             </button>
-            <q-list>
+            <div>
                 <q-item v-for="action in eventCopy.actions" :key="action">
                     <q-item-section>
                         <EditActionComponent
@@ -59,7 +59,7 @@
                         </EditActionComponent>
                     </q-item-section>
                 </q-item>
-            </q-list>
+            </div>
         </div>
 
         <div >

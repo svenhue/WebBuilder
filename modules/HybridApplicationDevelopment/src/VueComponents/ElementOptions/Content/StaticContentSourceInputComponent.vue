@@ -16,14 +16,14 @@
         <template v-slot:after>
             <UDropdownMenu>
                 <template #default>
-                <q-list>
+                <div>
                     <q-item v-for="option in urlOptions" :key="option" clickable v-ripple
                     @click="() => $emit('updateUrl', option)">
                         <q-item-section>
                             {{ option }}
                         </q-item-section>
                     </q-item>    
-                </q-list>
+                </div>
                 </template>
             </UDropdownMenu>
         </template>

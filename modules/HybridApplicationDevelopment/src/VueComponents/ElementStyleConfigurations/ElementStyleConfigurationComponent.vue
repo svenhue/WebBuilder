@@ -1,6 +1,6 @@
 <template>
     <div class="escc">
-        <q-list dense>
+        <div dense>
             <ExpansionItemComponent
             dense
             :expand-icon-class="'expand-icon-class'"
@@ -81,7 +81,7 @@
 
             </StyleBordersEditorComponent>
             </ExpansionItemComponent>
-        </q-list>
+        </div>
     </div>
 </template>
 

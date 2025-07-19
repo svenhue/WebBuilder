@@ -17,7 +17,7 @@
             <ButtonComponent dense icon='add' @click='addField()'></ButtonComponent>
         </div>
         
-        <q-list dense >
+        <div dense >
             <q-item dense
             v-for="field in childrenFields" :key="field">
                 <InputComponent class="alpha-input-base spec-input"
@@ -35,7 +35,7 @@
                 </q-item-section>
             </q-item>
         
-        </q-list>
+        </div>
         <FormFieldDesignerComponent 
         ref="formFieldDesigner"
         @updateField="(val) => updateField(val)"

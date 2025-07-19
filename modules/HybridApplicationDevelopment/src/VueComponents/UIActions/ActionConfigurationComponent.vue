@@ -9,7 +9,7 @@
         :style="{ width: '100%' }"
       >    
         </ButtonComponent>    
-    <q-list
+    <div
     bordered
     dense>
         <q-item 
@@ -24,7 +24,7 @@
                 <q-item-label> {{  event?.actions?.map(a => { return a.identifier} ) }}</q-item-label>
             </q-item-section>
         </q-item>
-    </q-list>
+    </div>
 
     <EditEventHandlerComponent 
     :key="key" 

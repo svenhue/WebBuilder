@@ -43,7 +43,7 @@ function edit(node){
 
 
 /*
-<q-list>
+<div>
                 <q-item dense
                 v-for="node in viewModel?.getAll()?.value" :key="node"
                 >
@@ -54,7 +54,7 @@ function edit(node){
                     <q-item-section side>
                         <q-btn dense icon="menu" unelevated>
                             <q-menu dense menu-anchor="bottom right" autoclose>
-                                <q-list>
+                                <div>
                                     <q-item dense class="codeBtn">
                                         View State
                                     </q-item>
@@ -70,13 +70,13 @@ function edit(node){
                                     <q-item dense class="codeBtn">
                                         Delete
                                     </q-item>
-                                </q-list>
+                                </div>
                             </q-menu>
                         </q-btn>
                     </q-item-section>
 
                 </q-item>
-            </q-list>
+            </div>
  <div  class="right">
             <ResourceEditor v-if="editNode"
                 :contextid="props.contextid"

@@ -1,6 +1,6 @@
 <template>
     <div class="left-development-options-bar">
-        <q-list dense :style="{width: '40px', height: '1000px'}" > 
+        <div dense :style="{width: '40px', height: '1000px'}" > 
         <q-item  class="ldob-content-btn" dense>
             <ButtonComponent dense icon="add_circle_outline" @click="(e) => update(e, 'palette')">
 
@@ -49,7 +49,7 @@
 
             </ButtonComponent>
         </q-item>
-        </q-list>
+        </div>
         <div class="ldob-content"
         v-show="tab != ''">
             <UIComponentPalette

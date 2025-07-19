@@ -1,6 +1,6 @@
 <template>
     <div>
-        <q-list label="Propertys">
+        <div label="Propertys">
             <q-item dense
             v-for="(value, propertyName) in viewProperties" :key="propertyName">
                 <q-item-section>
@@ -19,7 +19,7 @@
                     </InputComponent>
                 </q-item-section>
             </q-item>
-        </q-list>
+        </div>
     </div>
 </template>
 

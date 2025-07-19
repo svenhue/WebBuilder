@@ -5,7 +5,7 @@
  
         </SelectComponent>
 
-        <q-list>
+        <div>
             <q-item dense v-for="item in creationsComputed" :key="item.id" clickable>
                 <q-item-section avatar>
                     <UIcon :name="item.icon" size="2.5rem" class="q-mr-sm" />
@@ -15,7 +15,7 @@
                     <q-item-label caption>{{ item.description }}</q-item-label>
                 </q-item-section>
             </q-item>
-        </q-list>
+        </div>
     </div>
 
 </template>

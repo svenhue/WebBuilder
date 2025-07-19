@@ -10,7 +10,7 @@
             Options   
             <ButtonComponent dense icon='add' @click='addOption()'></ButtonComponent>
         </div>
-        <q-list dense>
+        <div dense>
      
             <q-item dense v-for="option in options" :key="option.value" >
                 <q-item-section>
@@ -22,7 +22,7 @@
                     <ButtonComponent dense icon='delete' @click='deleteOption(option)'></ButtonComponent>^
                 </q-item-section>
             </q-item>
-        </q-list>
+        </div>
 
         <UCheckbox v-model="showLabelInInput"
         :label="'Zeige Label im Feld'"
