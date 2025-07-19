@@ -5,14 +5,14 @@
                 Form Field
             </div>
             <div>
-                <q-form @submit="onSubmit">
+                <UForm @submit="onSubmit">
                 <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="formField.label" label="Label" required dense></InputComponent>
                 <SelectComponent v-model="formField.componenttype" label="Component type" :options="typeoptions" required dense></SelectComponent>
                 <SelectComponent v-if="formField.inputType == 'Input'" v-model="formField.inputType" :options="inputTypes"></SelectComponent>
                 <UCheckbox v-model="formField.required" label="Required" type="boolean" dense></UCheckbox>
                 <ButtonComponent label="Submit" type="submit" color="primary"></ButtonComponent>
-                </q-form>
+                </UForm>
             </div>
         </CardComponent>
     </q-dialog>

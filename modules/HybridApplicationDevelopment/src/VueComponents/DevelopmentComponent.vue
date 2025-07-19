@@ -3,7 +3,7 @@
     <ClientOnly>
         <Suspense>
         <q-layout v-if="viewModel?.isReady.value" view="hHh lpr fFr" >
-            <q-header class="dev-toolbar-header">
+            <UHeader class="dev-toolbar-header">
                 <div id="dev-toolbar">
                     
                     <ApplicationDevelopmentToolbar  :view-model="viewModel" :contextid="viewModel?.currentPage?.value" :route="useRoute()">
@@ -11,7 +11,7 @@
                     </ApplicationDevelopmentToolbar>
 
                 </div>
-            </q-header>
+            </UHeader>
             <q-footer elevated class="dev-toolbar-footer">
                     <TreePathComponent
                     @focus-view="(id) => viewModel.focusView(id, true)">

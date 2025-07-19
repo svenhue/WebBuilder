@@ -6,33 +6,17 @@
             @click="$emit('close')"></ButtonComponent>
 
         </div>
-    <q-splitter class="alpha-splitter-tabs"  v-model="splitter" :style="{
-        height: '100%',
-    }">
-        <template v-slot:before>
-            <q-tabs
-            dense
-            v-model="tab"
-            vertical
-            >
-                <q-tab name="DevSettings" label="Development"></q-tab>
-                <q-tab name="languages" label="Internationalization"></q-tab>
-            </q-tabs>
-        </template>
-        <template v-slot:after>
-            <q-tab-panels  dense v-model="tab" swipeable vertical animated>
-                <q-tab-panel dense name="DevSettings">
-                   <ApplicationDevelopmentSettingsComponent></ApplicationDevelopmentSettingsComponent>
-                </q-tab-panel>
 
-                <q-tab-panel name="languages">
-                    <ApplicationLanguagesComponent :contextid="appContext">
+        <UTabs :items="items" orientation="vertical" :ui="{ trigger: 'grow' }" class="gap-4 w-full">
+             <template #DevSettings="{ item }">
+                      <ApplicationDevelopmentSettingsComponent></ApplicationDevelopmentSettingsComponent>
+             </template>
+             <template #languages="{ item }">
+                             <ApplicationLanguagesComponent :contextid="appContext">
 
                     </ApplicationLanguagesComponent>
-                </q-tab-panel>
-            </q-tab-panels> 
-        </template>
-    </q-splitter>
+             </template>
+        </UTabs>
 </div>
 </template> 
 
@@ -51,7 +35,17 @@ const props = defineProps({
         required: true
     }
 })
-
+const items = [
+    {
+        value: 'DevSettings',
+        label: 'DevSettings',
+        slot: 'DevSettings'
+    },{
+        value: 'languages',
+        label: 'Languages',
+        slot: 'languages'
+    }
+]
 const tab = ref('mails')
 const splitter = ref(20)
 

@@ -1,16 +1,16 @@
 <template>
     <div class="tree-path">
-        <q-breadcrumbs  gutter="xs" class="tree-step">
+        <UBreadcrumb  gutter="xs" class="tree-step">
             
-            <q-breadcrumbs-el 
+            <UBreadcrumb-el 
             v-for="el in tree" 
             :class="getClass(el)"
             :key="el.id" 
             :label="formatElementTag(el.tag)" 
             @click="$emit('focusView', el.id, true)" 
             >
-            </q-breadcrumbs-el>
-        </q-breadcrumbs>
+            </UBreadcrumb-el>
+        </UBreadcrumb>
     </div>
 </template>
 

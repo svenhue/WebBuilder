@@ -1,29 +1,13 @@
 <template>
     <UIcon size="45px" color="white" class="preview-icon" name="publish"  unelevated >
         <div>
-            <q-tabs v-model="tab">
-                <q-tab name="Publish" label="Publish">
 
-                </q-tab>
-                <q-tab name="Download" label="Download">
-
-                </q-tab>
-                <q-tab>
-
-                </q-tab>
-            </q-tabs>
-            <q-tab-panels v-model="tab">
-                <q-tab-panel name="Publish" label="Publish">
-                    
-                </q-tab-panel>
-                <q-tab-panel name="Download" label="Download">
                     <DownloadComponent
                     @download-config="service.DownloadJson(viewModel.GetConfiguration())"
                     @download-project="service.DownloadProject(viewModel.GetConfiguration(), viewModel.languageViewModel.GetLanguageFileStrings())"
                     @download-bundle="service.Download(viewModel.GetConfiguration(), viewModel.languageViewModel.GetLanguageFileStrings())"
                     ></DownloadComponent>
-                </q-tab-panel>
-            </q-tab-panels>
+
          
         </div>
     </UIcon>

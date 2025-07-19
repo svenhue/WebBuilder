@@ -8,51 +8,39 @@
       color: 'white!important'
     }"
   >
-    <div>
-      <q-tabs v-model="tab" class="text-teal">
-        <q-tab name="edit" icon="brush" class="tab-class"></q-tab>
-        <q-tab name="settings" icon="settings" class="tab-class"></q-tab>
-        <q-tab name="actions" icon="bolt" class="tab-class"></q-tab>
-      </q-tabs>
-      <div :style="{padding: '10px'}"  v-if="currentElement?.value != undefined">
-        Id: {{  currentElement?.value?.publicidentifier }} 
-      </div>
-    </div>
 
-    <div>
-      <q-tab-panels v-model="tab" class="tab-panels">
-        <q-tab-panel name="edit">
+  <UTabs :items="items" class="w-full">
+    <template #edit="{ item }">
           <ElementStyleConfigurationComponent
           @updateelement="(values) => emits('updateelement', values)"
           :contextid="contextid"
           ref="styleComponent"
           :current-element="currentElement">
           </ElementStyleConfigurationComponent>
-        </q-tab-panel>
-
-        <q-tab-panel name="settings"> 
-
-          <ElementOptionsComponent
+    </template>
+    <template #settings="{item}">
+                <ElementOptionsComponent
           :style="{width: '100%', height: 'max-content'}"
           ref="optionsComponent"
           :view="currentElement"
           @updateElement="(values) =>emits('updateelement', values) ">
           </ElementOptionsComponent>
-        </q-tab-panel>
-        <q-tab-panel name="actions">
-          <ActionConfigurationComponent
+    </template>
+    <template #actions="{item}">
+           <ActionConfigurationComponent
           :current-element="currentElement"
           @update-element="(values) => emits('updateelement', values)"
           ref="actionComponent"
           > </ActionConfigurationComponent>
-        </q-tab-panel>
-      </q-tab-panels>
-    </div>
+    </template>
+  
+  </UTabs>
+
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, ComputedRef, watch, onMounted } from 'vue';
+import { ref, ComputedRef, watch, onMounted, computed } from 'vue';
 import ElementStyleConfigurationComponent from './ElementStyleConfigurations/ElementStyleConfigurationComponent.vue';
 import ActionConfigurationComponent from './UIActions/ActionConfigurationComponent.vue';
 import { IViewConfiguration } from 'alphautils';
@@ -76,6 +64,23 @@ const emits = defineEmits(['updateelement', 'focusView'])
 
 const tab = ref('edit');
 const splitterModel = ref(20);
+
+const items = [
+  {
+    label: 'Edit',
+    value: 'edit'
+  },
+  {
+    label: 'Settings',
+    value: 'settings'
+  },
+  {
+    label: 'Actions',
+    value: 'actions'
+  }
+]
+
+
 
 watch(props.currentElement, (v) => {
   if(v?.id != undefined){

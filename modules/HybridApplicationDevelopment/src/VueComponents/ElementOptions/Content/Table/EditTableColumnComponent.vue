@@ -8,7 +8,7 @@
                     
                 </div>
                 <div>
-                    <q-form  @submit="onSubmit">
+                    <UForm  @submit="onSubmit">
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="column.name" label="Name" required dense></InputComponent>
                     <InputComponent class="alpha-input-base spec-input"
@@ -25,7 +25,7 @@
                     <InputComponent class="alpha-input-base spec-input"
                     :input-class="'alpha-input'" v-model="column.classes" label="Classes" dense></InputComponent>
                     <ButtonComponent label="Save" type="submit" color="primary"></ButtonComponent>
-                    </q-form>
+                    </UForm>
                 </div>
         </CardComponent>
         </q-dialog>

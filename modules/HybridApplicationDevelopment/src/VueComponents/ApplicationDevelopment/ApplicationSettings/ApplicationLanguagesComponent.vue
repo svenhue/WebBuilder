@@ -11,19 +11,7 @@
                     }"
             >
             </AddNewLocaleComponent>
-        <q-tabs
-            :style="{marginLeft: '20px'}"
-            dense
-            v-model="tab"
-            
-            class="app-settings-panels"
-            >
-                <q-tab v-for="lang in viewModel.GetLocales()" 
-                clickable
-                @click="() => {OpenLocaleString(viewModel.GetFileStringByCode(lang.code)), showButtons=true}"
-                :name="lang.code"  
-                :label="lang.name"></q-tab>
-        </q-tabs>
+
     </div>
         <div class="jsoneditor1" ref="refEditorX" >
             
@@ -51,7 +39,7 @@ import { ILanguageFileString } from '../../../utils/Features/Internationalizatio
 
 import AddNewLocaleComponent from './AddNewLocaleComponent.vue';
 
-
+//todo show locales dropdown
 const props = defineProps({
     contextid: {
         type: Number, //this must be the app context!
