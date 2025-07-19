@@ -12,7 +12,7 @@ export class BaseServiceProvider{
 
 
     }
-    public GetService<T>(serviceIdentifier: symbol | string | NewableFunction, contextid?: number): T{
+    public GetService<T>(serviceIdentifier: symbol | string | NewableFunction, contextid?: number): T | undefined{
             if(this.container == undefined){
                 if(contextid != undefined){
                     this.container = inject('iotcontainer_'+ contextid, undefined) as Container;
@@ -21,10 +21,10 @@ export class BaseServiceProvider{
                 }
             }
             if(this.container == undefined){
-            return BaseServiceProvider.GetContainer(contextid != undefined ? contextid : this.contextid).get<T>(serviceIdentifier)
+                return BaseServiceProvider.GetContainer(contextid != undefined ? contextid : this.contextid)?.get<T>(serviceIdentifier)
             }
        
-         return this.container.get<T>(serviceIdentifier)
+         return this.container  != undefined ? this.container.get<T>(serviceIdentifier) : undefined
     }
 
     public static Service<T>(serviceIdentifier: string ): T {
@@ -53,7 +53,7 @@ export class BaseServiceProvider{
             }
         }
         if(container == undefined){
-            throw new Error('No iot container found for appcontext: ' + contextid)
+            return undefined
         }
         return container;
     }

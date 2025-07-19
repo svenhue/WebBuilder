@@ -28,11 +28,11 @@ import { DialogViewElement } from './Dialog/DialogViewElement';
 const props = defineProps({
     viewId: {
         type: Number,
-        required: true,
+        required: false,
     },
     contextid: {
         type: Number,
-        required: true,
+        required: false,
     }
 })
 const viewRef = ref(null);

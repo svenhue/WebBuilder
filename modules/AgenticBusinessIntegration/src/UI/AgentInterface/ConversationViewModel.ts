@@ -27,7 +27,7 @@ export class ConversationViewModel extends WSClient{
     constructor(
         config: IConversationConfiguration
     ) {
-        super(config.serverUrl)
+        super(config?.serverUrl)
         this.toolRegistry = new ClientSideToolRegistry()
 
         if(config.clientSideTools){

@@ -39,16 +39,16 @@ const props = defineProps({
     }
 });
 
+console.log(props.config)
 
-
-const viewModel = new ConversationViewModel(props.config);
+const viewModel = new ConversationViewModel(props?.config);
 
 defineExpose({
     viewModel
 })
 
 const el = ref(null)
-const md = new MarkdownIt();
+const md = MarkdownIt();
 
 function getMessageClass(messageRole: string){
     if(messageRole == 'user'){

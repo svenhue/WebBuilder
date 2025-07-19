@@ -28,7 +28,7 @@ export class ViewElement extends BaseView implements IViewElement, IEventHandler
     constructor(config: MaybeRefOrGetter<ViewConfiguration>) {
         super(config);
         this.actionFactory = this.GetService<UIActionFactory>('UIActionFactory');
-        this.identifier = toValue(config.publicIdentifier)
+        this.identifier = toValue(config?.publicIdentifier)
   
     }
 
@@ -127,6 +127,9 @@ export class ViewElement extends BaseView implements IViewElement, IEventHandler
         if(this.viewContextProvider == undefined){
             this.viewContextProvider = this.GetService<IExecutionContextProvider>('ExecutionContextProvider');
         }
+        if(this?.config?.contextid){
+            return ''
+        }
         const result =  ValueResolver(this.viewContextProvider, this.GetConfiguration().contextid, propertyValue, this.GetConfiguration());
 
         if(typeof result != 'string' && typeof result != 'number'){
@@ -148,6 +151,11 @@ export class ViewElement extends BaseView implements IViewElement, IEventHandler
         }
         if(this.viewContextProvider == undefined){
             this.viewContextProvider = this.GetService<IExecutionContextProvider>('ExecutionContextProvider');
+        }
+        if(!this.config?.contextid){
+            return {
+
+            }
         }
         return ObjectValueResolver(this.viewContextProvider, this.GetConfiguration().contextid, propertyValue);
     }

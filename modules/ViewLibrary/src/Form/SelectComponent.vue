@@ -1,15 +1,13 @@
 <template>
     <USelect
-    :rules="viewElement.ValidateRules()"
+    :rules="viewElement?.ValidateRules()"
     dense
-    :style="viewElement.ResolverObjectProperty(view.style)"
-    :label="t(viewElement.ResolveTemplateProperty(view.content.label))" 
+    :style="viewElement?.ResolverObjectProperty(view.style)"
+    :label="t(viewElement?.ResolveTemplateProperty(view?.content?.label))" 
     :model-value="view.modelValue ?? ''"
-    @update:model-value="(val) => viewModel.PartialUpdate(view, {key:'modelValue', value:val})"
-    :options="view.content?.options ?? []"
-    v-bind="view.htmlattributes">
-
-
+    @update:model-value="(val) => viewModel?.PartialUpdate(view, {key:'modelValue', value:val})"
+    :options="view?.content?.options ?? []"
+    v-bind="view?.htmlattributes">
     </USelect>
 </template>
 
@@ -28,25 +26,25 @@ import { useI18n } from 'vue-i18n'
 const props = defineProps({
     viewId: {
         type: Number,
-        required: true,
+        required: false,
     },
     contextid: {
         type: Number,
-        required: true,
+        required: false,
     }
 })
 const { t } = useI18n()
-const { view } = useViewConfiguration(props.contextid, props.viewId)
+const { view } = useViewConfiguration(props?.contextid, props?.viewId)
 
 const viewElement = new ValueValidationViewElement(view)
 
-const viewModel = new BaseViewModel(props.contextid)
+const viewModel = new BaseViewModel(props?.contextid)
 
 onMounted(() => {
-    viewElement.bind()
+    viewElement?.bind()
 })
 
 onUnmounted(() => {
-    viewElement.unbind()
+    viewElement?.unbind()
 })
 </script>

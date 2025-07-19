@@ -9,11 +9,11 @@
     dense
     :style="viewElement.ResolverObjectProperty(view.style)"
     :required="view.properties?.required ?? false"
-    :type="view.content.dataType ?? 'text'"
-    :label="view.properties?.showLabelInInput == true ? t(viewElement.ResolveTemplateProperty(view.content.label)) : undefined" 
-    :model-value="view.modelValue" 
-    v-bind="view.htmlattributes"
-    :rules="viewElement.ValidateRules()"
+    :type="view.content?.dataType ?? 'text'"
+    :label="view.properties?.showLabelInInput == true ? t(viewElement.ResolveTemplateProperty(view?.content.label)) : undefined" 
+    :model-value="view?.modelValue" 
+    v-bind="view?.htmlattributes"
+    :rules="viewElement?.ValidateRules()"
     @update:model-value="(value) => { viewModel.PartialUpdate(view, {key:'modelValue', value:value}), formViewModel != undefined ? formViewModel.SetValue(`${view.content.label?.replace(/\s/g, '').toLowerCase()}`, value) : null}"
     >
 
@@ -32,11 +32,11 @@ import { useI18n } from 'vue-i18n'
 const props = defineProps({
     viewId: {
         type: Number,
-        required: true,
+        required: false,
     },
     contextid: {
         type: Number,
-        required: true,
+        required: false,
     }
 })
 const { t } = useI18n();

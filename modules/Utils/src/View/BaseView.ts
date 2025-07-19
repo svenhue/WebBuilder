@@ -9,18 +9,17 @@ export class BaseView extends BaseServiceProvider
   public config: MaybeRefOrGetter<ViewConfiguration>;
   public templateRef:  Ref<HTMLElement>
 
+  public untracked: boolean = false
   constructor(config: MaybeRefOrGetter<ViewConfiguration>) {
     super(toValue(config)?.contextid);
     this.config = config;
     
     const rawConfig = this.GetConfiguration();
 
-    if(rawConfig.id == undefined){
-      throw new Error('ViewConfiguration id is undefined');
+    if(!rawConfig?.id || !rawConfig.contextid ){
+      this.untracked = true
     }
-    if(rawConfig.contextid == undefined){
-      throw new Error('ViewConfiguration contextid is undefined');
-    }
+
   }
 
   public GetConfiguration(): ViewConfiguration{

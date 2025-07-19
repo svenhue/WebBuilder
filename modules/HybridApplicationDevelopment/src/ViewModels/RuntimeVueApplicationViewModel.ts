@@ -84,6 +84,7 @@ export class RunTimeVueApplicationViewModel{
         instance
 
         ){
+   
             console.log("RunTimeVueApplicationViewModel constructor called with config:", config);
         this.vueApp = instance;
         this.contextManager = BaseServiceProvider.ServiceWithContext<DataContextManager>('DataContextManager', 0);

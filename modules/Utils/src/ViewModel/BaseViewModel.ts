@@ -24,9 +24,11 @@ export class BaseViewModel {
    
     this.syncStateMode = syncstateMode;
     this.sessioncontextid = contextid;
-    const boService = new BaseServiceProvider().GetService<BOService>('BOService', contextid)  
-    this.boService = boService
+    if(contextid){
+    this.boService = new BaseServiceProvider().GetService<BOService>('BOService', contextid)
     this.CreateBOAdapter({boType:{name:'ViewConfiguration'},contextId: contextid}, contextid)
+    }
+
   }
   Id(bo: IBOInstance){
     return this.boService.NewId(bo)

@@ -12,11 +12,11 @@ import BaseViewTreeRenderer from '../Renderer/BaseViewTreeRenderer.vue';
 const props = defineProps({
     viewId:{
         type: Number,
-        required: true
+        required: false
     },
     contextid:{
         type: Number,
-        required: true
+        required: false
     }
 })
 const viewRef = ref(null);
