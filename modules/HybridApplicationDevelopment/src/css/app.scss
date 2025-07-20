@@ -14,12 +14,12 @@
 }
 
 .alpha-options-content{
-    background-color: theme('colors.darkgrey')!important;
+    background-color: var(--color-darkgrey)!important;
     
 }
 
 .alpha-splitter-tabs{
-  background-color: theme('colors.brightgrey');
+  background-color: var(--color-brightgrey);
   color:white;
 
   .q-splitter__separator{
@@ -32,11 +32,11 @@
     align-items: start;
   }
   .q-splitter__after{
-    background-color: theme('colors.brightgrey')!important;
+    background-color: var(--color-brightgrey)!important;
     color:white;
 
       .q-tab-panels {
-        background-color: theme('colors.brightgrey')!important;
+        background-color: var(--color-brightgrey)!important;
         color:white;
       }
   }
@@ -49,7 +49,7 @@
   color: white;
 }
 .app-header{
-  background-color: theme('colors.primary');
+  background-color: var(--color-primary);
 }
 .left-toolbar {
   background-color: green;
@@ -97,7 +97,7 @@
   }
   input{
     border-radius: 5px; 
-    background-color: theme('colors.darkgrey')!important;
+    background-color: var(--color-darkgrey)!important;
     color:white;
     
 
@@ -105,7 +105,7 @@
 }
 .alpha-select{
   color: white;
-  background-color: theme('colors.darkgrey');
+  background-color: var(--color-darkgrey);
   border-radius: 5px; 
   padding-left: 5px;
 
@@ -115,7 +115,7 @@
 }
 
 .alpha-dropdown-content{
-  background-color: theme('colors.darkgrey');
+  background-color: var(--color-darkgrey);
   color: white;
 }
 .focussed-element > .q-btn__content *{
@@ -127,13 +127,13 @@
 }
 
 .c-brightgrey {
-  background-color: theme('colors.brightgrey');
-  color: theme('colors.brightgrey');
+  background-color: var(--color-brightgrey);
+  color: var(--color-brightgrey);
 }
 
 .c-darkgrey {
-  background-color: theme('colors.darkgrey');
-  color: theme('colors.darkgrey')
+  background-color: var(--color-darkgrey);
+  color: var(--color-darkgrey)
 }
 .targetDropDown {
   outline-color: black;
@@ -154,7 +154,7 @@
 .drawer-header {
   position: relative;
   font-size: x-large;
-  background-color: theme('colors.brightgrey');
+  background-color: var(--color-brightgrey);
   width: 100%;
   display: inline-flex;
   padding-left: 10px;
@@ -189,7 +189,7 @@
   align-items: center;
 }
 .active-container {
-  background-color:theme('colors.darkgrey');
+  background-color:var(--color-darkgrey);
 }
 
 .disable-hindering-events {
@@ -197,12 +197,12 @@
 }
 
 .drop_before {
-  border-left: 3px solid theme('colors.primary') !important;
-  border-top: 3px solid theme('colors.primary') !important;
+  border-left: 3px solid var(--color-primary) !important;
+  border-top: 3px solid var(--color-primary) !important;
 
 }
 
 .drop_after {
-  border-bottom: 3px solid theme('colors.primary') ;
-  border-right: 3px solid theme('colors.primary');
+  border-bottom: 3px solid var(--color-primary) ;
+  border-right: 3px solid var(--color-primary);
 }

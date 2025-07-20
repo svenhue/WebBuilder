@@ -1,25 +1,15 @@
 <template>
-  <button
-    ref="viewRef"
+  <UButton
+  :icon="iconName()"
+      ref="viewRef"
     :class="buttonClasses"
     :style="buttonStyles"
     :type="buttonType"
     :disabled="isDisabled"
     v-bind="view?.htmlattributes"
-    @click="handleClick"
-  >
-    <span v-if="view?.iconName" class="button-icon button-icon--left">
-      <i :class="getIconClass(view.iconName)"></i>
-    </span>
-    
-    <span class="button-content">
-      {{ t(view?.content ?? 'Button') }}
-    </span>
-    
-    <span v-if="view?.properties?.iconRight" class="button-icon button-icon--right">
-      <i :class="getIconClass(view.properties.iconRight)"></i>
-    </span>
-  </button>
+    @click="handleClick">
+    {{ t(labelFunc()) }}
+  </UButton>
 </template>
 
 <script setup lang='ts'>
@@ -36,6 +26,18 @@ const props = defineProps({
   contextid: {
     type: Number,
     required: false,
+  },
+  icon: {
+    type: String,
+    required:false
+  },
+  label: {
+    required: false,
+    type: String
+  },
+  dense: {
+    type: Boolean,
+    required: false
   }
 });
 
@@ -45,7 +47,7 @@ const { t } = useI18n();
 const viewRef = ref<HTMLButtonElement | null>(null);
 const {view, children } = useViewConfiguration(props.contextid, props.viewId) as MaybeRefOrGetter<[ MaybeRefOrGetter<IViewConfiguration>, MaybeRefOrGetter<Array<IViewConfiguration>>]>;
 
-  const viewelement = new ViewElement<HTMLButtonElement>(view);
+ const viewelement = new ViewElement<HTMLButtonElement>(view);
 
 // Computed properties for styling and behavior
 const buttonClasses = computed(() => {
@@ -64,6 +66,9 @@ const buttonClasses = computed(() => {
   if (view?.appearence?.round) {
     classes.push('custom-button--round');
   }
+  if(props.dense || view?.appearance?.dense){
+    classes.push('custom-button--dense')
+  }
   
   if (view?.appearence?.unelevated) {
     classes.push('custom-button--unelevated');
@@ -76,7 +81,15 @@ const buttonClasses = computed(() => {
   
   return classes.join(' ');
 });
-
+function labelFunc(){
+  return props.label != undefined ? props.label : view.content != undefined ? view.content : ""
+}
+function iconName(){
+  if(props.icon){
+    return props.icon
+  }
+  return view?.icon
+}
 const buttonStyles = computed(() => {
   if (view?.style) {
     return viewelement.ResolverObjectProperty(view.style);
@@ -130,23 +143,19 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .custom-button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  align-content: center;
   justify-content: center;
-  padding: 8px 16px;
   border: 1px solid #ccc;
+  min-height: 20px;
+  margin-left: 40px;
   border-radius: 4px;
   background-color: #f5f5f5;
   color: #333;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  outline: none;
-  min-height: 36px;
-  position: relative;
-  overflow: hidden;
 }
 
 .custom-button:hover {
@@ -203,7 +212,9 @@ onBeforeUnmount(() => {
 .custom-button--unelevated {
   box-shadow: none;
 }
-
+.custom-button--dense{
+  width: min-content;
+}
 /* Alignment variants */
 .custom-button--align-left {
   justify-content: flex-start;

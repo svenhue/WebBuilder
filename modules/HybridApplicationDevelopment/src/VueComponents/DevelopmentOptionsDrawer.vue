@@ -103,13 +103,13 @@ onMounted(() => {
 
 <style lang="scss">
 .development-options-drawer{
-  background-color: theme('colors.primary-dark');
+  background-color: var(--color-primary-dark);
 
   .tab-class{
-    color: theme('colors.primary');
+    color: var(--color-primary);
   }
   .tab-panels{
-    background-color: theme('colors.primary-dark');
+    background-color: var(--color-primary-dark);
 
   }
 }

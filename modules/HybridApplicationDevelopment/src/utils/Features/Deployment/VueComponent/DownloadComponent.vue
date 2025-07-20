@@ -1,19 +1,19 @@
 <template>
     <div>
-        <ButtonComponent dense label="Bundle" icon="download" @click="emits('downloadBundle')">
-        </ButtonComponent>
+        <UButton dense label="Bundle" icon="download" @click="emits('downloadBundle')">
+        </UButton>
         <br />
-        <ButtonComponent dense label="Project" icon="download"  @click="emits('downloadProject')">
+        <UButton dense label="Project" icon="download"  @click="emits('downloadProject')">
 
-        </ButtonComponent>
-        <ButtonComponent dense label="Config" icon="download" @click="emits('downloadConfig')">
+        </UButton>
+        <UButton dense label="Config" icon="download" @click="emits('downloadConfig')">
 
-        </ButtonComponent>
+        </UButton>
     </div>
 </template>
 
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">
 
 
 const emits = defineEmits(['downloadBundle', 'downloadProject', 'downloadConfig'])

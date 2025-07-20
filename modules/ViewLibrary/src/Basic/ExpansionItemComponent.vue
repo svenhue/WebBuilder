@@ -1,6 +1,7 @@
 <template>
+    <UCollapsible>
 
-
+    </UCollapsible>
 </template>
 
 

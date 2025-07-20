@@ -161,7 +161,7 @@ function DeleteAction(action: IUIAction){
 @import '../../assets/custom-buttons.css';
 
 .edit-event-handler {
-    background-color: theme('colors.brightgrey');
+    background-color: var(--color-brightgrey);
 }
 
 </style>

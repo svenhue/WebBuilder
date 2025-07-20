@@ -3,11 +3,11 @@
     <div v-if="ready == true" to="#dev-toolbar" class="dev-toolbar">
         <div :style="{display: 'flex', alignItems: 'center'}">
                 <div>
-                    <ButtonComponent dense icon="undo" @click="() => viewModel.repository.Undo(viewModel.model.contextid)" :disable="history.undoStack.value?.values.length > 0 ? false : true">
+                    <UButton dense icon="mdi:undo" @click="() => viewModel.repository.Undo(viewModel.model.contextid)" :disable="history.undoStack.value?.values.length > 0 ? false : true">
 
-                    </ButtonComponent>
-                    <ButtonComponent dense icon="redo" @click="() => viewModel.repository.Redo(viewModel.model.contextid)" :disable="history.redoStack.value?.values.length > 0 ? false : true">
-                    </ButtonComponent>
+                    </UButton>
+                    <UButton dense icon="mdi:redo" @click="() => viewModel.repository.Redo(viewModel.model.contextid)" :disable="history.redoStack.value?.values.length > 0 ? false : true">
+                    </UButton>
                 </div>
                     <ApplicationScreenComponent :style="{
                         marginRight: 0,
@@ -22,12 +22,13 @@
                     }">
                     </CommandPaletteSearchBarComponent>
 
-                    <SelectComponent dense 
-                    :options="['design', 'edit']" 
-                    :model-value="store.devSettings?.editorMode" 
+                    <USelect dense 
+                    :items="['design', 'edit']" 
+                    v-model="proxy"
+                     
                     :style="{width: '80px', backgroundColor: 'white', margin: '4px', borderRadius: '4px'}" 
                     @update:model-value="(val) => viewModel.settingsService.ChangeEditorMode(val, viewModel)">
-                    </SelectComponent>
+                    </USelect>
                     <DeploymentComponent :view-model="viewModel">
 
                     </DeploymentComponent>
@@ -61,6 +62,7 @@ const props = defineProps({
         required: true
     }
 })
+const proxy = ref()
 const ready = ref(false)
 const store = useApplicationStore()
 

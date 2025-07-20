@@ -267,7 +267,7 @@ function UpdateShowIf(val){
 <style lang="scss">
 
 .element-options{
-    background-color: theme('colors.primary-dark');
+    background-color: var(--color-primary-dark);
 }
 .editor-input-label{
     font-size: medium;

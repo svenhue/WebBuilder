@@ -19,23 +19,21 @@
                     </TreePathComponent>
             </UFooter>
    
-            <ButtonComponent 
-            dense 
-           
-            :icon="optionsBar == true ? 'chevron_right' : 'menu_open'"  
-            no-caps  
+            <UButton 
+     
+            :icon="optionsBar == true ? 'mdi:chevron_right' : 'mdi:menu_open'"  
             @click="optionsBar = !optionsBar"
             :style="buttonStyle">
-            </ButtonComponent>
-            <UDrawer v-model="optionsBar">
+            </UButton>
+            <UDrawer v-model:open="optionsBar" direction="right" :modal="false" :style="{width: '400px!important'}">
                 <template #content>
-                                <DevelopmentOptionsDrawer
-                @focusView="(view) => viewModel.focusView(view, true)"
-                @updateelement="(values) => viewModel.UpdateFocusedElement(values)"
-                :contextid="viewModel.model?.contextid"
-                :currentElement="viewModel.GetFocussedElement()">
-                </DevelopmentOptionsDrawer>
-</template>
+                    <DevelopmentOptionsDrawer
+                    @focusView="(view) => viewModel.focusView(view, true)"
+                    @updateelement="(values) => viewModel.UpdateFocusedElement(values)"
+                    :contextid="viewModel.model?.contextid"
+                    :currentElement="viewModel.GetFocussedElement()">
+                    </DevelopmentOptionsDrawer>
+                </template>
             </UDrawer>
 
             <div class="development-root-component" id="XXX" ref="XXX">
@@ -234,14 +232,14 @@ defineExpose({
 <style scoped lang="scss">
 
 .dev-toolbar-header{
-    background-color: theme('colors.primary-dark');
+    background-color: var(--color-primary-dark);
 }
 .dev-toolbar-footer{
     display: flex;
     align-content: center;
     align-items: center;
     padding-left: 45px;
-    background-color: theme('colors.primary-dark');
+    background-color: var(--color-primary-dark);
     height: 30px;
 }
 .development-root-component{

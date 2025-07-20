@@ -234,14 +234,14 @@ defineExpose({
 <style scoped lang="scss">
 
 .dev-toolbar-header{
-    background-color: theme('colors.primary-dark');
+    background-color: var(--color-primary-dark);
 }
 .dev-toolbar-footer{
     display: flex;
     align-content: center;
     align-items: center;
     padding-left: 45px;
-    background-color: theme('colors.primary-dark');
+    background-color: var(--color-primary-dark);
     height: 30px;
 }
 .development-root-component{

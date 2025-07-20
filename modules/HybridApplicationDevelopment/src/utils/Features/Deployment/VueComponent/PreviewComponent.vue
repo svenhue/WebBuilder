@@ -1,5 +1,5 @@
 <template>
-    <UIcon size="45px"  name="play_circle" color="white" class="preview-icon" @click="async () => await service.startPreview()">
+    <UIcon size="45px"  name="mdi:play_circle" color="white" class="preview-icon" @click="async () => await service.startPreview()">
         <UTooltip>
             <div> Preview </div>
         </UTooltip>
@@ -23,6 +23,6 @@ const service = new ApplicationPreviewService()
 }
 
 .preview-icon:hover{
-    background-color: theme('colors.darkgrey')
+    background-color: var(--color-darkgrey)
 }
 </style>

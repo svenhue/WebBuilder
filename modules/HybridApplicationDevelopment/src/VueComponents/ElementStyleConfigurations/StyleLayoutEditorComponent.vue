@@ -595,7 +595,7 @@ function updateDisplay(display: string){
 
 <style scoped lang="scss">
  .style-layout-editor{
-     background-color: theme('colors.brightgrey');
+     background-color: var(--color-brightgrey);
      width:100%;
      .sle-img{
         margin-right:4px;

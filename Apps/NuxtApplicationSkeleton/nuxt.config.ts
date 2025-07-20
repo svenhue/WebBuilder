@@ -8,7 +8,17 @@ export default defineNuxtConfig({
 
   ssr: false, // Enable server-side rendering
   devtools: { enabled: true },
-  modules:[/*'nuxt-electron',*/ 'alphaauthmodule', '@nuxt/ui-pro', 'nuxt-monaco-editor', "@pinia/nuxt", "@nuxtjs/i18n", "alphaviewlibrary/nuxt", "hybridappdev/nuxt", '@nuxt/image'],
+  modules:[
+    /*'nuxt-electron',*/ 'alphaauthmodule',
+    '@nuxt/ui-pro',
+    'nuxt-monaco-editor',
+    "@pinia/nuxt",
+    "@nuxtjs/i18n",
+    "alphaviewlibrary/nuxt",
+    "hybridappdev/nuxt",
+    '@nuxt/image',
+    '@nuxt/icon'
+  ],
 
   css: ['~/assets/css/tailwind.css'],
 

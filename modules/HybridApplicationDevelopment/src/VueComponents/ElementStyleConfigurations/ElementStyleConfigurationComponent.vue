@@ -148,7 +148,7 @@ defineExpose({
 <style scoped lang="scss">
  .escc{
      color: theme('colors.fontwhite');
-     background-color: theme('colors.primary-dark');
+     background-color: var(--color-primary-dark);
      width:100%;
      padding-left: 10px;
  }

@@ -131,7 +131,7 @@ function SetPosition(view: IViewConfiguration, hovered = false){
 
 .f-component-options{
     position: absolute;
-    background-color: theme('colors.primary');
+    background-color: var(--color-primary);
     width: min-content;
     z-index: 99;
     color:white;
@@ -149,7 +149,7 @@ function SetPosition(view: IViewConfiguration, hovered = false){
     width: min-content;
     height: 20px;
     z-index: 99;
-    color:theme('colors.primary');
+    color:var(--color-primary);
     border-radius: 5px;
     padding-bottom: 2px;
     padding-left: 2px;

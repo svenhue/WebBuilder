@@ -152,15 +152,15 @@ function UpdateValue(code: string) {
 
 .t-input-editor-input{
     color: white;
-    background-color: theme('colors.darkgrey');
+    background-color: var(--color-darkgrey);
 
     .t-input-editor-select{
         color: white;
-        background-color: theme('colors.darkgrey');
+        background-color: var(--color-darkgrey);
     }
 }
 .t-input-editor-select{
     color: white;
-    background-color: theme('colors.darkgrey');
+    background-color: var(--color-darkgrey);
 }
 </style>

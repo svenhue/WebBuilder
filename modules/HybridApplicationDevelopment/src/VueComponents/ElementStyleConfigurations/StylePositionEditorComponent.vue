@@ -377,7 +377,7 @@ function setStylesFromElement(view: ViewElement){
 
 <style scoped lang="scss">
  .specc{
-     background-color: theme('colors.brightgrey');
+     background-color: var(--color-brightgrey);
      display:inline-flex;
 
      width: 100%;

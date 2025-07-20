@@ -97,7 +97,7 @@ function doUndo(item: IHistoryEntrys){
 <style lang="scss">
 
 .history-stack-item{
-    border: 1px solid theme('colors.primary');
+    border: 1px solid var(--color-primary);
     margin: 3px;
 }
 </style>

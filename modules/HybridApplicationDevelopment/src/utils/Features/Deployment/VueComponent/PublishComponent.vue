@@ -44,6 +44,6 @@ const tab = ref("Publish")
 }
 
 .preview-icon:hover{
-    background-color: theme('colors.darkgrey')
+    background-color: var(--color-darkgrey)
 }
 </style>

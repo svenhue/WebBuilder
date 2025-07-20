@@ -46,7 +46,7 @@ function close(){
 <style scoped lang="scss">
 .diagram-dialog{
     width: 500px;
-    background-color: theme('colors.primary');
+    background-color: var(--color-primary);
     .placeholder{
         height:auto;
     }

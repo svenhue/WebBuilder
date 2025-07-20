@@ -1,35 +1,35 @@
 <template>
     <div :style="{display: 'flex'}">  
-        <ButtonComponent  
+        <UButton  
         class="application-screen-btn"
         dense
-        icon="monitor"
+        icon="mdi:monitor"
         @click="SetScreen(varProvider.GetVariable(props.contextid, 'defaultDesktopWidth'), varProvider.GetVariable(props.contextid, 'defaultDesktopHeight'))"
         >
 
-        </ButtonComponent>
-        <ButtonComponent
+        </UButton>
+        <UButton
  
         class="application-screen-btn"
         dense
-        icon="tablet"
+        icon="mdi:tablet"
         @click="SetScreen(varProvider.GetVariable(props.contextid, 'defaultTabletWidth'), varProvider.GetVariable(props.contextid, 'defaultTabletHeight'))"
         >
 
-        </ButtonComponent>
-        <ButtonComponent
+        </UButton>
+        <UButton
 
         class="application-screen-btn"
         dense
-        icon="phone_iphone"
+        icon="mdi:mobile-phone"
         @click="SetScreen(varProvider.GetVariable(props.contextid, 'defaultMobileWidth'), varProvider.GetVariable(props.contextid, 'defaultMobileHeight'))"
         >
 
-        </ButtonComponent>
+        </UButton>
     </div>
 </template>
 
-<script setup lang="ts">import { ButtonComponent } from 'alphaviewlibrary'
+<script setup lang="ts">
 
 import { Screen } from 'alphautils'
 import { BaseServiceProvider } from 'alphautils';

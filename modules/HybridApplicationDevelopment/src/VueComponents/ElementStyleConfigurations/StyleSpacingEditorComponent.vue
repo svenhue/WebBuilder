@@ -284,21 +284,21 @@ const styles = reactive({
      display: flex;
      justify-content: center;
      align-items: center;
-     background-color: theme('colors.brightgrey');
+     background-color: var(--color-brightgrey);
      .spec-middle {
          width: 150px;
          height: 70px;
          display: flex;
          justify-content: center;
          align-items: center;
-         background-color: theme('colors.darkgrey');
+         background-color: var(--color-darkgrey);
          .spec-inner {
              width: 90px;
              height: 30px;
              display: flex;
              justify-content: center;
              align-items: center;
-             background-color: theme('colors.brightgrey');
+             background-color: var(--color-brightgrey);
          }
      }
      .spec-header{

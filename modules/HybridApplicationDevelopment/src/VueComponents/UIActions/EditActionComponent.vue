@@ -181,6 +181,6 @@ function updateAndClose(){
 <style lang="scss" scoped>
 
 .edit-action-component{
-    background-color: theme('colors.brightgrey');
+    background-color: var(--color-brightgrey);
 }
 </style>

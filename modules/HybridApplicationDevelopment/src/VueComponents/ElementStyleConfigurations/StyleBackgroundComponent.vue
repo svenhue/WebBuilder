@@ -339,15 +339,15 @@ var currentFocussedBackground = reactive({
 
 <style scoped lang="scss">
  .sbc{
-     background-color: theme('colors.brightgrey');
+     background-color: var(--color-brightgrey);
      .sb-settings{
-         background-color: theme('colors.brightgrey');
+         background-color: var(--color-brightgrey);
          z-index: 2;
          width: 100%;
         
      }
      .sbc-input{
-         background-color: theme('colors.brightgrey');
+         background-color: var(--color-brightgrey);
         
      }
  }

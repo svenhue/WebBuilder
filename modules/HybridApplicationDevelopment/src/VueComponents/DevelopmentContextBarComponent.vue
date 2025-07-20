@@ -77,7 +77,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .development-context-bar{
-    background-color: theme('colors.darkgrey');
+    background-color: var(--color-darkgrey);
     color:white;
 }
 </style>

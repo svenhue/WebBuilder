@@ -1,12 +1,6 @@
 <template>
 
     <div>
-        <UTree>
-
-        </UTree>
-    
-   
-
 
         <div v-show="showDialog" :style="{zIndex: 999999, width: '200px', height: '200px', position: 'absolute', backgroundColor:'white'}">
             <div>

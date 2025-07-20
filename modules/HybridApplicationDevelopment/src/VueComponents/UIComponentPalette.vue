@@ -16,18 +16,25 @@
                 <i class="material-icons">close</i>
             </button>
         </div>
-        <InputComponent dense v-model="tagFilterString" v-on:update:model-value="(v) => handleFilterChanged()">
-        </InputComponent>
-        <ExpansionItemComponent label="Basic" dense v-model="BasicExpand">
+        <UInput dense v-model="tagFilterString" v-on:update:model-value="(v) => handleFilterChanged()">
+        </UInput>
+        <UCollapsible label="Basic" dense v-model:open="BasicExpand">
+            <UButton
+      label="Basic"
+      color="neutral"
+      variant="subtle"
+      trailing-icon="i-lucide-chevron-down"
+      block
+    />  <template #content>
             <div class="palette-grid">
-                <CardComponent v-for="(view, index) in filter('viewdefinition:Basic')" :key="view.name" clickable class="component-card" 
+                <div v-for="(view, index) in filter('viewdefinition:Basic')" :key="view.name" clickable class="component-card" 
                     @mousedown="(e) => startElementTransition(e, view.type , )"
                     >
+                 
                     <div  class="component-card-image" >
                        <div>
-                        
                         <NuxtImg v-if="view?.icon != undefined"
-                            :src="GetImageURL('../../../assets/icons/', view.icon)" >    
+                            :src="'/icons/' + view.icon" >  
                         </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
@@ -44,16 +51,24 @@
                     <div class="component-card-name">
                             {{ view.name.replace('Component','') }}
                     </div>
-                </CardComponent>
-            </div>
-        </ExpansionItemComponent>
-        <ExpansionItemComponent label="Structure" dense v-model="StructureExpand">
+            
+                </div>
+            </div></template>
+        </UCollapsible>
+        <UCollapsible label="Structure" dense v-model:open="StructureExpand">
+                 <UButton
+      label="Structure"
+      color="neutral"
+      variant="subtle"
+      trailing-icon="i-lucide-chevron-down"
+      block
+    />  <template #content>
             <div class="palette-grid">
-                <CardComponent v-for="(view, index) in filter('viewdefinition:Structure')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <div v-for="(view, index) in filter('viewdefinition:Structure')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
                             <NuxtImg v-if="view?.icon != undefined"
-                            :src="GetImageURL('../../../assets/icons/', view.icon)" >    
+                            :src="'/icons/' + view.icon" >    
                         </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
@@ -73,17 +88,24 @@
                     <div class="component-card-name" >
                             {{ view.name.replace('Component','') }}
                     </div>
-                </CardComponent>
+                </div>
                 
-            </div>
-        </ExpansionItemComponent>
-        <ExpansionItemComponent label="Navigation" dense v-model="NavigationExpand">
+            </div></template>
+        </UCollapsible>
+        <UCollapsible label="Navigation" dense v-model:open="NavigationExpand">
+                 <UButton
+      label="Navigation"
+      color="neutral"
+      variant="subtle"
+      trailing-icon="i-lucide-chevron-down"
+      block
+    />  <template #content>
             <div class="palette-grid">
-                <CardComponent v-for="(view, index) in filter('viewdefinition:Navigation')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <div v-for="(view, index) in filter('viewdefinition:Navigation')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image">
                       <div>
                         <NuxtImg v-if="view?.icon != undefined"
-                            :src="GetImageURL('../../../assets/icons/', view.icon)" >    
+                            :src="'/icons/' + view.icon" >    
                         </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
@@ -100,16 +122,23 @@
                     <div class="component-card-name" >
                             {{ view.name.replace('Component','') }}
                     </div>
-                </CardComponent>
-            </div>
-        </ExpansionItemComponent>
-        <ExpansionItemComponent label="Typography" dense v-model="TypographyExpand">
+                </div>
+            </div></template>
+        </UCollapsible>
+        <UCollapsible label="Typography" dense v-model:open="TypographyExpand">
+                 <UButton
+      label="Typography"
+      color="neutral"
+      variant="subtle"
+      trailing-icon="i-lucide-chevron-down"
+      block
+    />  <template #content>
             <div class="palette-grid">
-                <CardComponent v-for="(view, index) in filter('viewdefinition:Typography')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <div v-for="(view, index) in filter('viewdefinition:Typography')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
                             <NuxtImg v-if="view?.icon != undefined"
-                            :src="GetImageURL('../../../assets/icons/', view.icon)" >    
+                            :src="'/icons/' + view.icon" >    
                         </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
@@ -126,16 +155,23 @@
                     <div class="component-card-name" >
                             {{ view.name.replace('Component','') }}
                     </div>
-                </CardComponent>
-            </div>
-        </ExpansionItemComponent>
-        <ExpansionItemComponent label="Layout" dense v-model="LayoutExpand">
+                </div>
+            </div></template>
+        </UCollapsible>
+        <UCollapsible label="Layout" dense v-model:open="LayoutExpand">
+                 <UButton
+      label="Layout"
+      color="neutral"
+      variant="subtle"
+      trailing-icon="i-lucide-chevron-down"
+      block
+    />  <template #content>
             <div class="palette-grid">
-                <CardComponent v-for="(view, index) in filter('viewdefinition:Layout')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <div v-for="(view, index) in filter('viewdefinition:Layout')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image">
                        <div>
                         <NuxtImg v-if="view?.icon != undefined"
-                            :src="GetImageURL('../../../assets/icons/', view.icon)" >    
+                            :src="'/icons/' + view.icon" >    
                         </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
@@ -152,16 +188,23 @@
                     <div class="component-card-name" >
                             {{ view.name.replace('Component','') }}
                     </div>
-                </CardComponent>
-            </div>
-        </ExpansionItemComponent>
-        <ExpansionItemComponent label="Media" dense v-model="MediaExpand">
+                </div>
+            </div></template>
+        </UCollapsible>
+        <UCollapsible label="Media" dense v-model:open="MediaExpand">
+                 <UButton
+      label="Media"
+      color="neutral"
+      variant="subtle"
+      trailing-icon="i-lucide-chevron-down"
+      block
+    />  <template #content>
             <div class="palette-grid">
-                <CardComponent v-for="(view, index) in filter('viewdefinition:Media')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <div v-for="(view, index) in filter('viewdefinition:Media')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                        <div>
                         <NuxtImg v-if="view?.icon != undefined"
-                            :src="GetImageURL('../../../assets/icons/', view.icon)" >    
+                            :src="'/icons/' + view.icon" >    
                         </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
@@ -178,16 +221,23 @@
                     <div class="component-card-name" >
                             {{ view.name.replace('Component','') }}
                     </div>
-                </CardComponent>
-            </div>
-        </ExpansionItemComponent>
-        <ExpansionItemComponent label="Forms" dense v-model="FormsExpand">
+                </div>
+            </div></template>
+        </UCollapsible>
+        <UCollapsible label="Forms" dense v-model:open="FormsExpand">
+                 <UButton
+      label="Forms"
+      color="neutral"
+      variant="subtle"
+      trailing-icon="i-lucide-chevron-down"
+      block
+    />  <template #content>
             <div class="palette-grid">
-                <CardComponent v-for="(view, index) in filter('viewdefinition:Form')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <div v-for="(view, index) in filter('viewdefinition:Form')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
                             <NuxtImg v-if="view?.icon != undefined"
-                            :src="GetImageURL('../../../assets/icons/', view.icon)" >    
+                            :src="'/icons/' + view.icon" >    
                         </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
@@ -204,17 +254,24 @@
                     <div class="component-card-name" >
                             {{ view.name.replace('Component','') }}
                     </div>
-                </CardComponent>
-            </div>
-        </ExpansionItemComponent>
-        <ExpansionItemComponent label="Data" dense v-model="DataExpand">
+                </div>
+            </div></template>
+        </UCollapsible>
+        <UCollapsible label="Data" dense v-model:open="DataExpand">
+                 <UButton
+      label="Data"
+      color="neutral"
+      variant="subtle"
+      trailing-icon="i-lucide-chevron-down"
+      block
+    />  <template #content>
             <div class="palette-grid">
-                <CardComponent v-for="(view, index) in filter('viewdefinition:Data')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
+                <div v-for="(view, index) in filter('viewdefinition:Data')" :key="view.name" clickable class="component-card" @mousedown="(e) => startElementTransition(e, view.type)">
                     <div :draggable="true"  class="component-card-image" >
                         <div>
                             
                             <NuxtImg v-if="view?.icon != undefined"
-                            :src="GetImageURL('../../../assets/icons/', view.icon)" >    
+                            :src="'/icons/' + view.icon" >    
                         </NuxtImg>
                         <div v-else :style="{width: '50px', height: '50px'}">
 
@@ -231,11 +288,20 @@
                     <div class="component-card-name" >
                             {{ view.name.replace('Component','') }}
                     </div>
-                </CardComponent>
+                </div>
             </div>
-        </ExpansionItemComponent>
+        </template>
+        </UCollapsible>
         
-        <ExpansionItemComponent label="Advanced" dense v-model="AdvancedExpand">
+        <UCollapsible label="Advanced" dense v-model:open="AdvancedExpand">
+                 <UButton
+      label="Advanced"
+      color="neutral"
+      variant="subtle"
+      trailing-icon="i-lucide-chevron-down"
+      block
+    />
+    <template #content>
             <div>
                 <div v-for="(view, index) in filter('viewdefinition:Advanced')" :key="view.name" clickable>
                     <div @mousedown="(e) => startElementTransition(e, view.type)">
@@ -252,8 +318,9 @@
                     </UIcon>
                 </div>
             </div>
-        </ExpansionItemComponent>
-        <ExpansionItemComponent label="Your templates" dense v-model="YourTemplatesExpand">
+        </template>
+        </UCollapsible>
+        <UCollapsible label="Your templates" dense v-model:open="YourTemplatesExpand">
             <div>
                 <div v-for="view in avaibleTemplates" :key="view.name" clickable>
                     <div @mousedown="(e) => startElementTransition(e, view.type)">
@@ -261,12 +328,12 @@
                     </div>
                 </div>
             </div>
-        </ExpansionItemComponent>
+        </UCollapsible>
     </div>
 </template>
 
-<script setup lang="ts">import { ExpansionItemComponent } from 'alphaviewlibrary'
-import { CardComponent } from 'alphaviewlibrary'
+<script setup lang="ts">
+import { div } from 'alphaviewlibrary'
 import { InputComponent } from 'alphaviewlibrary'
 
 import { computed, reactive, ref } from 'vue';
@@ -415,7 +482,7 @@ function bindDragElementToMouse(event: MouseEvent){
         
         
         .component-card-image{
-            background-color: theme('colors.darkgrey');
+            background-color: var(--color-darkgrey);
         }
         .component-card-name{
             width: 100%;

@@ -302,11 +302,11 @@ const styles = reactive({
 
 <style scoped lang="scss">
  .stc{
-     background-color: theme('colors.brightgrey');
+     background-color: var(--color-brightgrey);
      width:100%;
      display:table;
      .stc-input{
-         background-color: theme('colors.darkgrey');
+         background-color: var(--color-darkgrey);
      }
  }
 </style>

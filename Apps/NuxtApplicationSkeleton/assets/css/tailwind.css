@@ -15,3 +15,32 @@ body{
     height: 100%;
     width: 100%;
 }
+
+@theme static{
+
+        --color-primary: #4C9AFF;
+        --color-primary-dark: #1F2223;
+        --color-primary-white: #ffffff;
+        --color-akzent: #0a1082;
+
+        --color-purple: #7e5bef;
+        --color-pink: #ff49db;
+        --color-orange: #ff7849;
+        --color-green: #13ce66;
+        --color-yellow: #ffc82c;
+        --color-gray-dark: #273444;
+        --color-gray: #8492a6;
+        --color-gray-light: #d3dce6;
+
+        --color-fontwhite: #ffffff;
+        --color-darkgrey: #57595d;
+        --color-brightgrey: #34373B;
+
+
+        --color-dark: #1d1d1d;
+        --color-dark-page: #121212;
+        --color-positive: #21ba45;
+        --color-negative: #c10015;
+        --color-info: #31ccec;
+        --color-warning: #f2c037
+}

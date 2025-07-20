@@ -83,7 +83,7 @@ function updateColor(val){
 
 }
     .dropdown-list{
-        background-color: theme('colors.brightgrey');
+        background-color: var(--color-brightgrey);
         color: white;
     }
 </style>

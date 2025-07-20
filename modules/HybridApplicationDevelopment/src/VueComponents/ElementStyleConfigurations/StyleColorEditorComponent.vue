@@ -78,7 +78,7 @@ function updateElement(val, key: string){
 <style scoped lang="scss">
 
 .YYYY{
-    background-color: theme('colors.brightgrey');
+    background-color: var(--color-brightgrey);
     overflow:hidden;
 }
 

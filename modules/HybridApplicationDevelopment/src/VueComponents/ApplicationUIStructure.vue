@@ -2,16 +2,16 @@
     <div class="application-ui-structure">
         <div class="drawer-header">
             Navigator
-            <ButtonComponent class="expand-btn" dense unelevated size="10px" 
+            <UButton class="expand-btn" dense unelevated size="10px" 
             :icon="treeExpanded == false ? 'unfold_more' : 'unfold_less' " 
-            @click="changeTreeExpand"></ButtonComponent>
+            @click="changeTreeExpand"></UButton>
 
-            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
-            @click="emits('close')"></ButtonComponent>
+            <UButton class="close-btn" dense unelevated size="10px" icon="close" 
+            @click="emits('close')"></UButton>
 
         </div>
         <UTree
-        items="nodes"
+        :items="nodes"
         valueKey="id"
         labelKey="name"
         v-model="selected"
@@ -39,6 +39,7 @@ const treeExpanded = ref(false)
 const service = BaseServiceProvider.Service<FocussedViewContextService>('FocussedViewContextService') as FocussedViewContextService
 const selected = ref(null)
 const nodes = service.GetApplicationTree();
+console.log(12356, nodes)
 function changeTreeExpand(){
     treeExpanded.value = !treeExpanded.value
     if(treeExpanded.value == true){

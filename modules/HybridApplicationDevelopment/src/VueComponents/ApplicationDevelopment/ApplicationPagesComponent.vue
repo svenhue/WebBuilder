@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div side>
-                        <ButtonComponent icon="add" class="cursor-pointer" @click="viewModel.AddPage()"></ButtonComponent>
+                        <UButton icon="add" class="cursor-pointer" @click="viewModel.AddPage()"></UButton>
                     </div>
                 </div>
                 <div
@@ -26,7 +26,6 @@
                 :key="page.id"
                 clickable
                 dense
-                v-ripple
                 :active="viewModel.currentPage.value.id == page.id"
                 @click="viewModel.NavigateToPage(page.name)">
                     <div>
@@ -35,8 +34,8 @@
                         </div>
                     </div>
                     <div side>
-                        <ButtonComponent  icon="edit" class="cursor-pointer" @click="() => {selectedPage = page,showEditDialog = true}" ></ButtonComponent>
-                        <ButtonComponent icon="delete" class="cursor-pointer" @click="() => {selectedPage = page, showDeletePageDialog = true}"></ButtonComponent>
+                        <UButton  icon="edit" class="cursor-pointer" @click="() => {selectedPage = page,showEditDialog = true}" ></UButton>
+                        <UButton icon="delete" class="cursor-pointer" @click="() => {selectedPage = page, showDeletePageDialog = true}"></UButton>
                     </div>
                 </div>
             </div>

@@ -261,7 +261,7 @@ function UpdateStyle(key: string, value: string){
 
 <style scoped lang="scss">
  .sdec{
-     background-color: theme('colors.brightgrey');
+     background-color: var(--color-brightgrey);
      input{
         width: 90px;
        
@@ -272,6 +272,6 @@ function UpdateStyle(key: string, value: string){
      
  }
  .fit-dropdown{
-        background-color: theme('colors.darkgrey');
+        background-color: var(--color-darkgrey);
     }
 </style>

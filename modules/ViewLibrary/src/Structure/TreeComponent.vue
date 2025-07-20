@@ -1,6 +1,7 @@
 <template>
     <div ref="viewRef">
         <UTree
+        :items="view.data"
         :no-selection-unset="view.properties?.noSelectionUnset"
         :default-expand-all="view.properties?.defaultExpandAll"
         :accordion="view.properties?.accordion"

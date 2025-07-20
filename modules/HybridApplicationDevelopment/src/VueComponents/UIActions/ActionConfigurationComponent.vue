@@ -117,6 +117,6 @@ defineExpose({
 
 <style scoped lang="scss">
 .action-configuration-component{
-  background-color: theme('colors.brightgrey');
+  background-color: var(--color-brightgrey);
 }
 </style>

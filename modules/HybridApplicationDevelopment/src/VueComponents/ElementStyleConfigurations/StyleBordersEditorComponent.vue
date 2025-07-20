@@ -454,7 +454,7 @@ function setStylesFromElement(view: ViewElement){
 <style scoped lang="scss">
 
 .sbec{
-    background-color: theme('colors.brightgrey');
+    background-color: var(--color-brightgrey);
     position: relative;
 }
 </style>

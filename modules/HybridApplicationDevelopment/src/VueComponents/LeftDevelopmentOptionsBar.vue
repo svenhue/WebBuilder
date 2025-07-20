@@ -2,7 +2,7 @@
     <div class="left-development-options-bar">
         <div dense :style="{width: '40px', height: '1000px'}" > 
         <div  class="ldob-content-btn" dense>
-            <ButtonComponent dense icon="add_circle_outline" @click="(e) => update(e, 'palette')">
+            <ButtonComponent dense icon="mdi:add-circle" @click="(e) => update(e, 'palette')">
 
             </ButtonComponent>
         </div>
@@ -12,24 +12,24 @@
             </ButtonComponent>
         </div>
         <div dense class="ldob-content-btn">
-            <ButtonComponent dense unelevated icon="notes" @click="(e) => update(e, 'structure')">
+            <ButtonComponent dense unelevated icon="mdi:notes-search" @click="(e) => update(e, 'structure')">
 
             </ButtonComponent>
         </div>
         <div dense class="ldob-content-btn">
-            <ButtonComponent dense unelevated icon="pageview" @click="(e) => update(e, 'pages')">
+            <ButtonComponent dense unelevated icon="mdi:pageview" @click="(e) => update(e, 'pages')">
             
             </ButtonComponent>
         </div>
         
         <div dense class="ldob-content-btn">
-            <ButtonComponent dense unelevated icon="code" @click="(e) => update(e, 'code')">
+            <ButtonComponent dense unelevated icon="mdi:code" @click="(e) => update(e, 'code')">
 
             </ButtonComponent>
         </div>
 
         <div dense class="ldob-content-btn">
-            <ButtonComponent dense unelevated icon="style" @click="(e) => update(e, 'style')">
+            <ButtonComponent dense unelevated icon="mdi:style" @click="(e) => update(e, 'style')">
 
             </ButtonComponent>
         </div>
@@ -40,12 +40,12 @@
             </ButtonComponent>
         </div>
                 <div dense class="ldob-content-btn">
-            <ButtonComponent dense unelevated icon="manage_history" @click="(e) => update(e, 'history')">
+            <ButtonComponent dense unelevated icon="mdi:source-branch" @click="(e) => update(e, 'history')">
 
             </ButtonComponent>
         </div>
                 <div dense class="ldob-content-btn">
-            <ButtonComponent dense unelevated icon="settings" @click="(e) => update(e, 'settings')">
+            <ButtonComponent dense unelevated icon="mdi:settings-outline" @click="(e) => update(e, 'settings')">
 
             </ButtonComponent>
         </div>
@@ -167,13 +167,13 @@ defineExpose({
     top: 1;
     left: 0;
     height: 100%;
-    color: theme('colors.fontwhite');
+    color: var(--colors-fontwhite);
     border-right: 1px solid #e0e0e0;
-    background-color: theme('colors.primary-dark');
+    background-color: var(--color-primary-dark);
     z-index: 999;
 
     .ldob-content-btn{
-        margin-left: -12px
+        
     }
     .ldob-content{
         position:absolute;
@@ -182,7 +182,7 @@ defineExpose({
         top:0;
         color: black;
         z-index: 100;
-        background-color: theme('colors.darkgrey');
+        background-color: var(--color-darkgrey);
         border: 1px solid black;
     }
 }
