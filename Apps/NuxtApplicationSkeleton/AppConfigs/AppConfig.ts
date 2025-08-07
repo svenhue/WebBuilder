@@ -21,8 +21,8 @@ import { AuthenticationMechanism } from 'alphautils';
         client_id: "WebCreator_App",
         client_secret: "",
         grant_type: "password",
-        username: undefined,
-        password: undefined
+        username: "sven-huening@web.de",
+        password: "I.AM.aSt3ongPW"
 
       },
       headers: {
