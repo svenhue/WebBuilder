@@ -71,7 +71,6 @@ watch(props.currentElement, (newVal) => {
 
 const emits = defineEmits(['updateElement'])
 function updateRows(rows: Array<object>) {
-    console.log(rows)
     if(!Array.isArray(rows)){
         //log error
         return;
@@ -80,7 +79,6 @@ function updateRows(rows: Array<object>) {
     emits('updateElement', [{key: 'content.initialRows', value: rows}])
 }
 function updateDataConfig(dataConfig: object) {
-    console.log(dataConfig)
     // use demo rows
     if(dataConfig.datasource == DataSources['Demo Data']){
         emits('updateElement', [{key: 'content.initialRows', value: demoRows}])

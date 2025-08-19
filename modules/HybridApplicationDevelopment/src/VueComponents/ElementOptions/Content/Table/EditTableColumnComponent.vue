@@ -1,6 +1,7 @@
 <template>
     <div >
-        <UModal v-model="t" :auto-close="false" >
+        <UModal  title="Delete Page" description="Delete a Page" v-model="t" :auto-close="false" >
+          <template #content> 
             <CardComponent class="editor-column-form">
                 <div>
                     
@@ -28,6 +29,7 @@
                     </UForm>
                 </div>
         </CardComponent>
+          </template>
         </UModal>
 </div>
   </template>

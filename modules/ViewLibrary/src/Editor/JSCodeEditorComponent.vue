@@ -2,7 +2,7 @@
     
         <div  class="code-editor" :style="style" ref="refEditor"
         >
-            <UButton dense icon='close' @click="() => { emit('close')}">
+            <UButton dense :icon="'mdi:close-circle'" @click="() => { emit('close')}">
 
             </UButton>
             <UButton dense icon='check' @click="() => {updateValue(), emit('close')}">

@@ -33,7 +33,6 @@ export class GlobalStateProvider{
 
     public CallState(viewId: string, methodName: string){
         const viewContext = this.viewContexts.find(vc => vc.viewId == viewId)
-        console.log('viewContext', viewId, methodName, viewContext)
         if(viewContext == undefined){
             return;
         }

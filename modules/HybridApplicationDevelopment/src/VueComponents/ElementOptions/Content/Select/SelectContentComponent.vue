@@ -57,7 +57,6 @@ const savedValue = ref<object>({})
 
 watch(props.currentElement, (newVal) => {
     options.value = newVal.content?.options ?? []
-    console.log(options.value)
 })
 options.value = props.currentElement.content?.options ?? []
 

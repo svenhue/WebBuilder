@@ -1,5 +1,5 @@
 <template>
-    <UIcon size="45px" color="white" class="preview-icon" name="publish"  unelevated >
+    <UIcon size="45px" color="white" class="preview-icon" name="mdi:publish"  unelevated >
         <div>
 
                     <DownloadComponent
@@ -29,7 +29,7 @@ const props = defineProps({
 })
 
 const service = new ApplicationBuildService();
-const tab = ref("Publish")
+const tab = ref("mdi:publish")
 
 
 

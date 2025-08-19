@@ -59,7 +59,6 @@ export class AlphaTokenAuthenticationMiddleware{
             },
             data: formBody.join('&')
             })
-            console.log(result)
         return result.data['access_token']
             
     }

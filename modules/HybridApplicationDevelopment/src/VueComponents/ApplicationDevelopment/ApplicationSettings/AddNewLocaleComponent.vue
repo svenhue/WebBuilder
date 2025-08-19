@@ -1,6 +1,6 @@
 <template>
     <div :style="{zIndex: 9999}">
-        <ButtonComponent dense icon="add" @click="show = !show">
+        <ButtonComponent dense icon="mdi:add" @click="show = !show">
 
         </ButtonComponent>
 

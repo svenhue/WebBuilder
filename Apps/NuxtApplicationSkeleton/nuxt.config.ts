@@ -19,7 +19,11 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon'
   ],
-
+   icon: {
+    serverBundle: {
+      collections: ['uil', 'mdi'] // <!--- this
+    },
+   },
   css: ['~/assets/css/tailwind.css'],
 
   i18n:{

@@ -28,7 +28,6 @@ export class TabService{
     }
 
     public OpenTab(tab:  {name: string, title: string, path?: string}){
-        console.log("Opening tab", tab)
         if(this.navigationHandler == undefined){
             throw new Error("Navigation handler not set")
         }

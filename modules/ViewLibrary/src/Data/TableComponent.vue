@@ -2,6 +2,7 @@
     <UTable
     :style="viewElement.ResolverObjectProperty(viewConfig.style)"
     v-bind="viewConfig?.htmlattributes"
+    :data="viewModel.GetRows().value"
     :rows="viewModel.GetRows().value"
     :rows-per-page-options="viewModel.GetRowsPerPageOptions().value"
     :row-key="viewModel.rowKey"

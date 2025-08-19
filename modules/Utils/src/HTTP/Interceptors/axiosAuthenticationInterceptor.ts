@@ -7,13 +7,11 @@ export function AxiosAuthenticationInterceptor(
 
 ) {
     async function intercept(request: AxiosRequestConfig){
-        console.log("hello interceptors")
         if(!authService.isAuthenticated()){
             await authService.Authenticate()
            
         }
         authService.SetAuthenticationHeader(request);
-        console.log(request, request.headers)
         return request;
     }
 

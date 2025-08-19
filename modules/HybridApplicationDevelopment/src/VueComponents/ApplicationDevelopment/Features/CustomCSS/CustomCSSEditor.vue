@@ -2,7 +2,7 @@
     
     <div  class="jsoneditor1" ref="refEditorX"
     >
-        <ButtonComponent dense icon='close' @click="() => { emit('close')}">
+        <ButtonComponent dense :icon="'mdi:close-circle'" @click="() => { emit('close')}">
 
         </ButtonComponent>
         <ButtonComponent dense icon='check' @click="() => {updateValue(), emit('close')}">

@@ -16,7 +16,7 @@
         <div class="jsoneditor1" ref="refEditorX" >
             
             <div  v-show="showButtons">
-                <ButtonComponent dense icon='close' @click="() => { CloseEditor(), showButtons = false}">
+                <ButtonComponent dense :icon="'mdi:close-circle'" @click="() => { CloseEditor(), showButtons = false}">
 
                 </ButtonComponent>
                 <ButtonComponent  dense icon='check' @click="() => {SaveValue(), CloseEditor(), showButtons = false}">

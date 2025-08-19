@@ -4,7 +4,7 @@
     multiple
     use-chips
     v-model="viewModel.modelValue.value"
-    :id="132"
+    :id="'132'"
     filled
     disable
     

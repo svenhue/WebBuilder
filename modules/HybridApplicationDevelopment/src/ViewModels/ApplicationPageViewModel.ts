@@ -39,7 +39,6 @@ export class ApplicationPageViewModel{
             persistGlobalStorage: false,
             contextId: page.contextid // the root context has always the id = 0
         }, page.contextid, container)
-        console.log("page", page, this.dataAdapter, this.viewservice)
         const npage = this.dataAdapter.Create(page, undefined, addToHistory) as unknown as IPageConfiguration 
         this.model = reactive(new PageModel(npage))
         this.model.views = []

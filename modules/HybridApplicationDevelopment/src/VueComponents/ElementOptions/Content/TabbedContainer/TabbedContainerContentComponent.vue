@@ -2,7 +2,7 @@
     <div>
         <div>
             Tabs
-            <ButtonComponent dense icon="add" @click="add()
+            <ButtonComponent dense icon="mdi:add" @click="add()
             
             "></ButtonComponent>
         </div>

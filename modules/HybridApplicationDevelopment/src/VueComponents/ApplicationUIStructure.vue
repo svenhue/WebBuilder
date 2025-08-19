@@ -3,10 +3,10 @@
         <div class="drawer-header">
             Navigator
             <UButton class="expand-btn" dense unelevated size="10px" 
-            :icon="treeExpanded == false ? 'unfold_more' : 'unfold_less' " 
+            :icon="treeExpanded == false ? 'mdi:unfold-less-horizontal' : 'unfold_less' " 
             @click="changeTreeExpand"></UButton>
 
-            <UButton class="close-btn" dense unelevated size="10px" icon="close" 
+            <UButton class="close-btn" dense unelevated size="10px" :icon="'mdi:close-circle'" 
             @click="emits('close')"></UButton>
 
         </div>
@@ -39,7 +39,6 @@ const treeExpanded = ref(false)
 const service = BaseServiceProvider.Service<FocussedViewContextService>('FocussedViewContextService') as FocussedViewContextService
 const selected = ref(null)
 const nodes = service.GetApplicationTree();
-console.log(12356, nodes)
 function changeTreeExpand(){
     treeExpanded.value = !treeExpanded.value
     if(treeExpanded.value == true){

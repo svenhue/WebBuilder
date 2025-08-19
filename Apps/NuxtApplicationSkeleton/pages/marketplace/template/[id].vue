@@ -15,9 +15,9 @@
             <NuxtLink to="/marketplace" class="tw-text-gray hover:tw-text-fontwhite tw-transition-colors">
               Marketplace
             </NuxtLink>
-            <Icon name="heroicons:chevron-right" class="tw-w-4 tw-h-4 tw-text-gray" />
+            <Icon name="heroicons:mdi:chevron-right" class="tw-w-4 tw-h-4 tw-text-gray" />
             <span class="tw-text-gray tw-capitalize">{{ template.category }}</span>
-            <Icon name="heroicons:chevron-right" class="tw-w-4 tw-h-4 tw-text-gray" />
+            <Icon name="heroicons:mdi:chevron-right" class="tw-w-4 tw-h-4 tw-text-gray" />
             <span class="tw-text-fontwhite">{{ template.name }}</span>
           </nav>
 

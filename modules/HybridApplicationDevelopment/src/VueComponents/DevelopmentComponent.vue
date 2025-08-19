@@ -21,7 +21,7 @@
    
             <UButton 
      
-            :icon="optionsBar == true ? 'mdi:chevron_right' : 'mdi:menu_open'"  
+            :icon="optionsBar == true ? 'mdi:chevron-right' : 'mdi:menu_open'"  
             @click="optionsBar = !optionsBar"
             :style="buttonStyle">
             </UButton>
@@ -150,7 +150,6 @@ const config = await httpService.sendRequest<IApplicationConfiguration>(
         method: 'GET',
     }
 )
-console.log("Config fetched:", config)
 const showleftBar = ref(true)
 const optionsBar = ref(true)
 const facade = ref(null)

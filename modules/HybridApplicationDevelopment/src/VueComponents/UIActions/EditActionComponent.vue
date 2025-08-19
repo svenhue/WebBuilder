@@ -7,7 +7,7 @@
         <div side :style="{display: 'flex'}">
           <div>
             <ButtonComponent dense :icon="showEdit == true ? 'check' : 'edit'" @click="showEdit == true ? updateAndClose() : showEdit = true"></ButtonComponent>
-            <ButtonComponent dense icon="delete" @click="$emit('deleteAction', actionCopy)"></ButtonComponent>
+            <ButtonComponent dense icon="mdi:delete" @click="$emit('deleteAction', actionCopy)"></ButtonComponent>
           </div>
         </div>
     </div>

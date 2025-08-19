@@ -18,7 +18,6 @@ export class RestrictedServiceProvider{
     }
 
     public Service(service: string){
-        console.log(service)
         if(!RestrictedServiceProvider.allowedServices.includes(service)){
             throw new Error('Service not allowed');
         }

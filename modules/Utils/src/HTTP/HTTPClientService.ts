@@ -28,7 +28,6 @@ export class HTTPClientService implements IHTTPClientService {
             if(!this.authService){
                 this.authService = new AuthenticationService(config.authentication, this);
             }
-            console.log("add interceptor")
             requestInterceptors.push(AxiosAuthenticationInterceptor(this.authService).intercept)
         }
         const client = new AxiosWrapper(config, requestInterceptors);
@@ -74,7 +73,6 @@ export class HTTPClientService implements IHTTPClientService {
             const client = this.GetOrCreateClient(request);
 
             let result = await client.sendRequest(request) as Promise<AxiosResponse>;
-            console.log("Result from HTTPClientService:", result);
             return result;
 
         }catch(error){

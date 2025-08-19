@@ -3,7 +3,7 @@
     <div>
         <ButtonComponent
         dense
-        icon="add"
+        icon="mdi:add"
         label="create Event"
         @click="createEvent"
         :style="{ width: '100%' }"

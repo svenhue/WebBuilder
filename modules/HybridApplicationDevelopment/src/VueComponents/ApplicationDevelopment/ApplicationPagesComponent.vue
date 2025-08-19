@@ -3,7 +3,7 @@
  
         <div class="drawer-header">
             Pages
-            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            <ButtonComponent class="close-btn" dense unelevated size="10px" :icon="'mdi:close-circle'" 
             @click="emits('close')"></ButtonComponent>
 
         </div>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div side>
-                        <UButton icon="add" class="cursor-pointer" @click="viewModel.AddPage()"></UButton>
+                        <UButton icon="mdi:add" class="cursor-pointer" @click="viewModel.AddPage()"></UButton>
                     </div>
                 </div>
                 <div
@@ -34,13 +34,14 @@
                         </div>
                     </div>
                     <div side>
-                        <UButton  icon="edit" class="cursor-pointer" @click="() => {selectedPage = page,showEditDialog = true}" ></UButton>
-                        <UButton icon="delete" class="cursor-pointer" @click="() => {selectedPage = page, showDeletePageDialog = true}"></UButton>
+                        <UButton  icon="mdi:edit" class="cursor-pointer" @click="() => {selectedPage = page,showEditDialog = true}" ></UButton>
+                        <UButton icon="mdi:delete" class="cursor-pointer" @click="() => {selectedPage = page, showDeletePageDialog = true}"></UButton>
                     </div>
                 </div>
             </div>
 
-                <UModal  v-model="showDeletePageDialog"> 
+                <UModal  title="Delete Page" description="Delete a Page" v-model="showDeletePageDialog"> 
+                    <template #content>
                 <CardComponent>
                     <div>
                             Delete Page
@@ -54,6 +55,7 @@
                         <ButtonComponent label="Delete" color="negative" @click="() =>{ viewModel.DeletePage(selectedPage.id), showDeletePageDialog = false}"></ButtonComponent>
                     </div>
                 </CardComponent>
+                </template>
                 </UModal>
 
         

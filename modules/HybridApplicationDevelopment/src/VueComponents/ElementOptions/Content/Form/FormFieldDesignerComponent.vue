@@ -1,5 +1,6 @@
 <template>
-    <UModal v-model="show" >
+    <UModal v-model="show" title="Form Field" description="Form Field" >
+         <template #content>
         <CardComponent class="editor-formfield-form">
             <div>
                 Form Field
@@ -15,6 +16,7 @@
                 </UForm>
             </div>
         </CardComponent>
+        </template>
     </UModal>
 </template>
 

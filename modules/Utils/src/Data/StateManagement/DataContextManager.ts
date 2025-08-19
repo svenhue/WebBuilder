@@ -61,7 +61,6 @@ export class DataContextManager{
     public getApplicationContext(contextid: number): IDataContext{
         const context = this.findContextById(contextid);
         if(context.contextLevel != undefined && context.contextLevel == ContextLevel.Application){
-            console.log("XXX", context)
             return context;
         }
         if(context.parentId == undefined && context.contextLevel == ContextLevel.Application){

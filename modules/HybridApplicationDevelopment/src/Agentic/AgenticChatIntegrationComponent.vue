@@ -19,7 +19,6 @@ const props = defineProps({
 })
 
 const chatComponent = useTemplateRef("chatComponent")
-console.log(props.config)
 defineExpose({
     viewModel: chatComponent
 })

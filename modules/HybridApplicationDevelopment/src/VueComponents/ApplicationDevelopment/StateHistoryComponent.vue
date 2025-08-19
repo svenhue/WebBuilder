@@ -2,7 +2,7 @@
     <div :style="{color: 'white', minWidth: '250px'}">
         <div class="drawer-header">
             Version control
-            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            <ButtonComponent class="close-btn" dense unelevated size="10px" :icon="'mdi:close-circle'" 
             @click="emits('close')"></ButtonComponent>
 
         </div>
@@ -22,7 +22,7 @@
                             {{changeDescription(item)}}
                         </div>
                         <div>
-                            <ButtonComponent dense icon="info" borderless unelevated 
+                            <ButtonComponent dense icon="mdi:info" borderless unelevated 
                             :style="{position: 'absolute', left: '-18px', top: '-5px'}"  size="sm">
 
                             </ButtonComponent>

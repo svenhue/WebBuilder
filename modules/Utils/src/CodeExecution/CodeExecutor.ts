@@ -17,8 +17,5 @@ export function CodeExecutor(
         const x = ExpressionExecutor(contextProvider, contextid, match[1], requestingComponent);
         result = result.replace(match[0], x.value.toString());
     }
-
-    console.log(result)
-
     return new Function().apply(contextProvider.GetContext(contextid), contextProvider.GetContextAttributes())
 }

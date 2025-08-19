@@ -68,7 +68,6 @@ export class ApplicationService extends BaseServiceProvider{
         })
         config = this.InitializeApplication(config)
         config = await this.dataAdapter.CreateAsync(config, undefined, false);
-        console.log(config)
         this.tabService.AddAndOpenTab({title: "App:" + config.name, path: `appdevelopment/development/${config._id}`})
         return config;
     }
@@ -82,7 +81,6 @@ export class ApplicationService extends BaseServiceProvider{
         await this.dataAdapter.IsolatedRequest('/applications', 'POST', config, undefined).catch((e) => {
             console.error('Error creating application on backend', e)
         }).then((response) => {
-            console.log('Response from backend', response)
             if(response?.data){
                 this.tabService.AddAndOpenTab({title: "App:" + config.name, path: `appdevelopment/development/${response.data._id}`})
             }
@@ -98,7 +96,6 @@ export class ApplicationService extends BaseServiceProvider{
         if(application?.id == undefined){
             // occurs on page reload
             application = await this.dataAdapter.Fetch<IApplicationConfiguration>(`/applications?id=${id}`, 'GET', undefined, 0);
-            console.log('application', application)
             application.mode = ApplicationModes.shadow; // remove this!
             if(application == undefined){
                 throw new Error('Application with id ' + id + ' not found')

@@ -1,5 +1,6 @@
 <template>
     <UModal
+    title="Delete Page" description="Delete a Page"
     :model-value="view?.properties?.isActive"
     dense
     :class="view?.class"
@@ -9,12 +10,14 @@
     :style="viewElement.ResolverObjectProperty(view.style)"
     v-bind="view?.htmlattributes"
     >
+    <template #content>
         <BaseViewTreeRenderer
         v-for="child in children" :key="child.id"
         :view="child"
         :contextid="contextid"
         >
         </BaseViewTreeRenderer>
+    </template>
     </UModal>
 </template>
 

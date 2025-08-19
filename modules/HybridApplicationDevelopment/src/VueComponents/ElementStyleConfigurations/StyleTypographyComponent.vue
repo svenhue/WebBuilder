@@ -192,7 +192,7 @@
                             @click="updateTextStyle('italic')">   
                             </ButtonComponent>
                             <ButtonComponent dense unelevated
-                            icon="close"
+                            :icon="'mdi:close-circle'"
                             text-color="white" 
                             :class="styles.fontStyle == 'none' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{

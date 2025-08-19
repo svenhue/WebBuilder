@@ -7,7 +7,7 @@
             </ButtonComponent>
         </div>
          <div  class="ldob-content-btn" dense>
-            <ButtonComponent dense icon="smart_toy" @click="(e) => update(e, 'aichat')">
+            <ButtonComponent dense icon="mdi:chat" @click="(e) => update(e, 'aichat')">
 
             </ButtonComponent>
         </div>
@@ -35,7 +35,7 @@
         </div>
 
         <div dense class="ldob-content-btn">
-            <ButtonComponent dense unelevated icon="account_tree" @click="(e) => update(e, 'workflows')">
+            <ButtonComponent dense unelevated icon="mdi:flowchart" @click="(e) => update(e, 'workflows')">
 
             </ButtonComponent>
         </div>

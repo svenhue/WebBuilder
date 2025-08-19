@@ -39,7 +39,7 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['basic'][index] = true" >
+                        <UIcon  class="absolute-right" name="mdi:info" @mousemove="() => showInfo['basic'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['basic'][index]">
@@ -73,7 +73,7 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['structure'][index] = true" >
+                        <UIcon  class="absolute-right" name="mdi:info" @mousemove="() => showInfo['structure'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['structure'][index]">
@@ -110,7 +110,7 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['navigation'][index] = true" >
+                        <UIcon  class="absolute-right" name="mdi:info" @mousemove="() => showInfo['navigation'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['navigation'][index]">
@@ -143,7 +143,7 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['typography'][index] = true" >
+                        <UIcon  class="absolute-right" name="mdi:info" @mousemove="() => showInfo['typography'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['typography'][index]">
@@ -176,7 +176,7 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['layout'][index] = true" >
+                        <UIcon  class="absolute-right" name="mdi:info" @mousemove="() => showInfo['layout'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['layout'][index]">
@@ -209,7 +209,7 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['media'][index] = true" >
+                        <UIcon  class="absolute-right" name="mdi:info" @mousemove="() => showInfo['media'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['media'][index]">
@@ -242,7 +242,7 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['forms'][index] = true" >
+                        <UIcon  class="absolute-right" name="mdi:info" @mousemove="() => showInfo['forms'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['forms'][index]">
@@ -276,7 +276,7 @@
                         <div v-else :style="{width: '50px', height: '50px'}">
 
                         </div>
-                        <UIcon  class="absolute-right" name="info" @mousemove="() => showInfo['data'][index] = true" >
+                        <UIcon  class="absolute-right" name="mdi:info" @mousemove="() => showInfo['data'][index] = true" >
                                 <UTooltip 
                                 :style="{zIndex: 999999}"
                                     :model-value="showInfo['data'][index]">
@@ -309,7 +309,7 @@
                         
                     </div>
                    
-                    <UIcon name="info" @mousemove="() => showInfo['advanced'][index] = true" >
+                    <UIcon name="mdi:info" @mousemove="() => showInfo['advanced'][index] = true" >
                         <UTooltip 
                         :style="{zIndex: 99999}"
                         :model-value="showInfo['advanced'][index]">

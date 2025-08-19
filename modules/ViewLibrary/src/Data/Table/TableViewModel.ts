@@ -76,10 +76,21 @@ export class TableViewModel extends BaseViewModel{
         })
     }
     public SetRows(rows: Array<object>){
+        if(rows[0].id == undefined){
+            rows.forEach((row, index) => {
+                row['id'] = index.toString(); // Assign an id if not present
+            });
+        }
         this.rows.value = rows;
     }
     public SetColumns(columns: Array<object>){
+        if(columns[0].id == undefined){
+            columns.forEach((column, index) => {
+                column['id'] = index.toString();
+            });
+        }
         this.columns.value = columns;
+        console.log("SetColumns", this.columns.value)
     }
     public GetSelected(){
         return computed(() => {

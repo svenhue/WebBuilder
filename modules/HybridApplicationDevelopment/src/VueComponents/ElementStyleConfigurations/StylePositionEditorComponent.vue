@@ -123,7 +123,7 @@
                             Float
                         </div>
                         <ButtonComponent dense unelevated
-                            icon="close"
+                            :icon="'mdi:close-circle'"
                             text-color="white" 
                             :class="styles.float == 'none' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{
@@ -155,7 +155,7 @@
                             Clear
                         </div>
                         <ButtonComponent dense unelevated
-                            icon="close"
+                            :icon="'mdi:close-circle'"
                             text-color="white" 
                             :class="styles.clear == 'none' ? 'c-darkgrey' : 'c-brightgrey'"
                             :style="{

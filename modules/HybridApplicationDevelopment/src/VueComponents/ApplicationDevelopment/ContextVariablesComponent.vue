@@ -2,7 +2,7 @@
     <div>
      <div class="drawer-header">
             State
-            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            <ButtonComponent class="close-btn" dense unelevated size="10px" :icon="'mdi:close-circle'" 
             @click="$emit('close')"></ButtonComponent>
 
     </div>

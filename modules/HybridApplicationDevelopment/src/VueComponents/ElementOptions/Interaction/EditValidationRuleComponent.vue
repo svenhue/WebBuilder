@@ -3,7 +3,7 @@
 
             <div>
                 Edit Rule
-                <ButtonComponent dense icon='close' @click="$emit('close')"></ButtonComponent>
+                <ButtonComponent dense :icon="'mdi:close-circle'" @click="$emit('close')"></ButtonComponent>
             </div>
             
             <div>

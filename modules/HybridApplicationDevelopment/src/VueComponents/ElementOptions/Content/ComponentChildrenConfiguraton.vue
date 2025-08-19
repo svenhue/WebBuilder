@@ -40,9 +40,9 @@ import { h, inject, reactive, ref, computed, MaybeRefOrGetter } from 'vue';
         <template v-slot:default-header="prop">
             <div>
             {{ prop.node.name }}
-            <ButtonComponent icon="add" dense @click="() => openAddDialog(prop.node)">
+            <ButtonComponent icon="mdi:add" dense @click="() => openAddDialog(prop.node)">
             </ButtonComponent>
-            <ButtonComponent icon="delete" dense @click="() => DeleteNode(prop.node)">
+            <ButtonComponent icon="mdi:delete" dense @click="() => DeleteNode(prop.node)">
             </ButtonComponent>
             </div>
         </template>

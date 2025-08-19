@@ -2,7 +2,7 @@
     <div class="application-style alpha-left-drawer-options-tab-content">
         <div class="drawer-header">
             Style
-            <ButtonComponent class="close-btn" dense unelevated size="10px" icon="close" 
+            <ButtonComponent class="close-btn" dense unelevated size="10px" :icon="'mdi:close-circle'" 
             @click="$emit('close')"></ButtonComponent>
 
         </div>
