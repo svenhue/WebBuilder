@@ -11,18 +11,7 @@
                 @updateElement="updateFocussedElement">
                 </StyleColorEditorComponent>
             </ExpansionItemComponent>
-            <ExpansionItemComponent
-            dense
-            label="Spacing">
-            <div :style="{display: 'flex', justifyContent: 'center'}">
-                <StyleSpacingEditorComponent
-                :contextid="contextid"
-                ref="spacingEditor"
-                @updateElement="updateFocussedElement"
-                >
-                </StyleSpacingEditorComponent>
-            </div>
-            </ExpansionItemComponent>
+
             <ExpansionItemComponent
             dense
             label="Layout">

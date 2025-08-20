@@ -1,24 +1,25 @@
 <template>
-    <div>
-   
+    <div :style="view?.style" :class="[view.class, 'input-component']">
+        <slot name="before">
+
+        </slot>
         <span   v-if="view.properties?.showLabelBefore == true"textnode>
                 {{ t(viewElement.ResolveTemplateProperty(view.content.label)) }}
         </span>
-    <UInput
-    ref="test"
-    dense
-    :style="viewElement.ResolverObjectProperty(view.style)"
-    :required="view.properties?.required ?? false"
-    :type="view.content?.dataType ?? 'text'"
-    :label="view.properties?.showLabelInInput == true ? t(viewElement.ResolveTemplateProperty(view?.content.label)) : undefined" 
-    :model-value="view?.modelValue" 
-    v-bind="view?.htmlattributes"
-    :rules="viewElement?.ValidateRules()"
-    @update:model-value="(value) => { viewModel.PartialUpdate(view, {key:'modelValue', value:value}), formViewModel != undefined ? formViewModel.SetValue(`${view.content.label?.replace(/\s/g, '').toLowerCase()}`, value) : null}"
-    >
+        <UInput
+        :style="viewElement.ResolverObjectProperty(view.style)"
+        :required="view.properties?.required ?? false"
+        :type="view.content?.dataType ?? 'text'"
+        :label="view.properties?.showLabelInInput == true ? t(viewElement.ResolveTemplateProperty(view?.content.label)) : undefined" 
+        :model-value="view?.modelValue" 
+        v-bind="view?.htmlattributes"
+        :rules="viewElement?.ValidateRules()"
+        @update:model-value="(value) => { viewModel.PartialUpdate(view, {key:'modelValue', value:value}), formViewModel != undefined ? formViewModel.SetValue(`${view.content.label?.replace(/\s/g, '').toLowerCase()}`, value) : null}">
+        </UInput>
 
+        <slot name="after">
 
-    </UInput>
+        </slot>
     </div>
 
 </template>
@@ -56,3 +57,11 @@ onUnmounted(() => {
 })
 
 </script>
+
+<style lang="scss" scoped>
+
+.input-component{
+    display: flex;
+    flex-direction: row;
+}
+</style>

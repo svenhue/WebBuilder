@@ -9,7 +9,7 @@
     }"
   >
 
-  <UTabs :items="items" class="w-full">
+  <UTabs :is="tab" :items="items" class="w-full">
     <template #edit="{ item }">
           <ElementStyleConfigurationComponent
           @updateelement="(values) => emits('updateelement', values)"
@@ -63,20 +63,22 @@ const actionComponent = ref(null);
 const emits = defineEmits(['updateelement', 'focusView'])
 
 const tab = ref('edit');
-const splitterModel = ref(20);
 
 const items = [
   {
     label: 'Edit',
-    value: 'edit'
+    value: 'edit',
+    slot: 'edit'
   },
   {
     label: 'Settings',
-    value: 'settings'
+    value: 'settings',
+    slot: 'settings'
   },
   {
     label: 'Actions',
-    value: 'actions'
+    value: 'actions',
+    slot: 'actions'
   }
 ]
 

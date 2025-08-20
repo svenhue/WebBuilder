@@ -13,7 +13,7 @@
                     }"
             :style="{width: '120px'}"
             @update:model-value="(v) => emits('updateElement', [{key:'style.position', value: v}])"
-            :options="styleManager.positionValues"
+            :items="styleManager.positionValues"
             v-model="styles.position"
             >
 

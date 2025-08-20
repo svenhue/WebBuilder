@@ -1,6 +1,14 @@
 <template>
-    <UCollapsible>
-
+    <UCollapsible class="flex flex-col">
+        <UButton
+            :label="getLabel()"
+            color="neutral"
+            variant="subtle"
+            trailing-icon="i-lucide-chevron-down"
+            />
+        <template #content>
+            <slot></slot>
+        </template>
     </UCollapsible>
 </template>
 
@@ -18,6 +26,10 @@ const props = defineProps({
     contextid:{
         type: Number,
         required: false
+    },
+    label: {
+        type: String,
+        required: false
     }
 })
 const viewRef = ref(null);
@@ -25,8 +37,10 @@ const viewRef = ref(null);
 const { view, children } = useViewConfiguration(props.contextid, props.viewId);
 
 const viewElement = new ViewElement(view);
-const viewModel = new BaseViewModel(viewElement.GetConfiguration().contextid);
 
+function getLabel() {
+    return props.label || view?.content?.label;
+}
 onMounted(() => {
     viewElement.bind(props.contextid, viewRef);
 })

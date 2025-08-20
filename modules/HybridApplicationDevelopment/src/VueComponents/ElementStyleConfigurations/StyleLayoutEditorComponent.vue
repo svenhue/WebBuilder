@@ -9,81 +9,88 @@
         </div>
     </td>
     <td>
-        <ButtonComponent dense unelevated 
-        :class="styles.display == 'block' ? 'c-darkgrey' : 'c-brightgrey'"
-        :style="{
+
+
+        <NuxtImg 
+          :class="styles.display == 'block' ? 'c-darkgrey' : 'c-brightgrey'"
+        :style="{marginLeft: '5px',
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'
             }" 
         @click="displayIsBlock = !displayIsBlock,   updateDisplay(displayIsBlock == true ? 'block' : '')"
-        v-model="displayIsBlock">
-                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/blockdisplay.svg" color="white">
-                    <UTooltip>
-                        Block
-                    </UTooltip>
-                </NuxtImg>
-        </ButtonComponent>
+      
+        width="25" height="25" src="/icons/developmenticons/blockdisplay.svg" color="white">
+            <UTooltip>
+                Block
+            </UTooltip>
+        </NuxtImg>
+
     </td> 
     <td>   
-        <ButtonComponent dense unelevated 
-        :class="styles.display == 'flex' ? 'c-darkgrey' : 'c-brightgrey'"
-        :style="{
-            display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
-        @click="displayIsFlex = !displayIsFlex,   updateDisplay(displayIsFlex == true ? 'flex' : '')"
-        v-model="displayIsFlex">
-                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/flexlayout.svg">
-                    <UTooltip>
-                        Flex
-                    </UTooltip>
-                </NuxtImg>
-        </ButtonComponent>
+    
+        <NuxtImg 
+            :class="styles.display == 'flex' ? 'c-darkgrey' : 'c-brightgrey'"
+            :style="{marginLeft: '5px',
+                display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
+            @click="displayIsFlex = !displayIsFlex,   updateDisplay(displayIsFlex == true ? 'flex' : '')"
+        
+        width="25" height="25" src="/icons/developmenticons/flexlayout.svg">
+            <UTooltip>
+                Flex
+            </UTooltip>
+        </NuxtImg>
+  
     </td>
     <td>    
-        <ButtonComponent dense unelevated 
-        :class="styles.display == 'grid' ? 'c-darkgrey' : 'c-brightgrey'"
-        :style="{
-            display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
-        @click="displayIsGrid = !displayIsGrid,   updateDisplay(displayIsGrid == true ? 'grid' : '')"
-        v-model="displayIsGrid">
-                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/GridLayout.svg">
+
+                <NuxtImg 
+                       :class="styles.display == 'flex' ? 'c-darkgrey' : 'c-brightgrey'"
+            :style="{marginLeft: '5px',
+                display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
+            @click="displayIsGrid = !displayIsGrid,   updateDisplay(displayIsGrid == true ? 'grid' : '')"
+        
+                width="25" height="25" src="/icons/developmenticons/GridLayout.svg">
                     <UTooltip>
                         Grid
                     </UTooltip>
                 </NuxtImg>
-        </ButtonComponent>
+
     </td>
     <td>
-        <ButtonComponent dense unelevated 
-        :class="styles.display == 'inline-block' ? 'c-darkgrey' : 'c-brightgrey'"
-        :style="{
+
+                <NuxtImg 
+                    :class="styles.display == 'inline-block' ? 'c-darkgrey' : 'c-brightgrey'"
+        :style="{marginLeft: '5px',
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
         @click="displayIsInlineBlock = !displayIsInlineBlock,   updateDisplay(displayIsInlineBlock == true ? 'inline-block' : '')"
-        v-model="displayIsInlineBlock">
-                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/inlineblockdisplay.svg">
+      
+                width="25" height="25" src="/icons/developmenticons/inlineblockdisplay.svg">
                     <UTooltip>
                         Inline Block
                     </UTooltip>
                 </NuxtImg>
-        </ButtonComponent>
+
 
     </td>
     <td>
-    <ButtonComponent dense unelevated 
-        :class="styles.display == 'inline' ? 'c-darkgrey' : 'c-brightgrey'"
+
+                <NuxtImg 
+                     :class="styles.display == 'inline' ? 'c-darkgrey' : 'c-brightgrey'"
         :style="{
+            marginLeft: '5px',
             display:'inline-flex', alignItems: 'center', justifyContent:'center', alignContent: 'center'}" 
         @click="displayIsInline = !displayIsInline,   updateDisplay(displayIsInline == true ? 'inline' : '')"
-        v-model="displayIsInline">
-                <NuxtImg width="20px" height="20px" src="/icons/developmenticons/inlinedisplay.svg">
+      
+                width="25" height="25" src="/icons/developmenticons/inlinedisplay.svg">
                     <UTooltip>
                         Inline Flex
                     </UTooltip>
                 </NuxtImg>
-        </ButtonComponent>
+
         
     </td>
     <td>
         <ButtonComponent dense unelevated 
-        icon="visibility_off"
+        icon="mdi:add_circle"
         
         :class="styles.display == 'none' ? 'c-darkgrey' : 'c-brightgrey'"
         :style="{
@@ -142,47 +149,46 @@
                         </div>
                     </td>
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :icon="flexDirectionIsHorizontal == true ? 'align_vertical_top' : 'align_horizontal_left'"
-                            :class="styles.alignContent == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexAlign('start')">
-                        </ButtonComponent>
+                        <MdiIcon  width="25" height="25"
+                        @click="changeFlexAlign('start')"
+                        :class="styles.alignContent == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
+                        :icon="flexDirectionIsHorizontal == true ? 'mdiAlignVerticalTop' : 'mdiAlignHorizontalLeft'">
+                        </MdiIcon>
                     </td>
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :icon="flexDirectionIsHorizontal == true ? 'align_vertical_center' : 'align_horizontal_center'"
+                        <MdiIcon  width="25" height="25"
+                        @click="changeFlexAlign('center')"
                             :class="styles.alignContent == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexAlign('center')">
-                        </ButtonComponent>
+                        :icon="flexDirectionIsHorizontal == true ? 'mdiAlignVerticalCenter' : 'mdiAlignHorizontalCenter'">
+                        </MdiIcon>
+    
                     </td>
 
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :icon="flexDirectionIsHorizontal == true ? 'align_vertical_bottom' : 'align_horizontal_right'"
+                            <MdiIcon  width="25" height="25"
+                       :icon="flexDirectionIsHorizontal == true ? 'mdiAlignVerticalBottom' : 'mdiAlignHorizontalRight'"
                             :class="styles.alignContent == 'end' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlign('end')">
-                        </ButtonComponent>
+                            
+                        </MdiIcon>
                     </td>
 
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :icon="flexDirectionIsHorizontal == false ?'horizontal_distribute' : 'vertical_distribute'"
+                        <MdiIcon 
+
+                            width="25" height="25"
+                            :icon="flexDirectionIsHorizontal == false ? 'mdiHorizontalDistribute' : 'mdiVerticalDistribute'"
                             :class="styles.alignContent == 'stretch' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlign('stretch')">
-                        </ButtonComponent>
+                            
+                        </MdiIcon>
                     </td>
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.alignContent == 'baseline' ? 'c-darkgrey' : 'c-brightgrey'"
+                        <NuxtImg   width="25"  color="white" 
+                            :src="flexDirectionIsHorizontal == false ? '/icons/developmenticons/align_horizontal_center.svg' : '/icons/developmenticons/align_vertical_center.svg' "                             :class="styles.alignContent == 'baseline' ? 'c-darkgrey' : 'c-brightgrey'"
                             @click="changeFlexAlign('baseline')">
-                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="flexDirectionIsHorizontal == false ? '/icons/developmenticons/align_horizontal_center.svg' : '/icons/developmenticons/align_vertical_center.svg' ">
+    
                         </NuxtImg>
-                        </ButtonComponent>
                        
                     </td>
                 </tr>
@@ -193,57 +199,59 @@
                         </div>
                     </td>
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.justifyContent == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
+
+                        <NuxtImg 
+                         width="25" height="25" 
+                                                     :class="styles.justifyContent == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
+
+                           :src="isDirectionVertical == false ? '/icons/developmenticons/align_justify_flex_start.svg' : '/icons/developmenticons/align_start.svg' "
                             @click="changeFlexJustify('start')">
-                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
-                            '/icons/developmenticons/align_justify_flex_start.svg' : '/icons/developmenticons/align_start.svg' ">
-                            </NuxtImg>
-                        </ButtonComponent>
+                          
+                        </NuxtImg>
                        
                     </td>
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.justifyContent == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexJustify('center')">
-                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
-                            '/icons/developmenticons/align_justify_center.svg' : '/icons/developmenticons/align_center.svg' ">
-                            </NuxtImg>
-                        </ButtonComponent>
+                        <NuxtImg 
+                        :class="styles.justifyContent == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
+                        @click="changeFlexJustify('center')"
+                          width="25"  color="white" clickable  class="sle-img" 
+                        :src="isDirectionVertical == false ? 
+                        '/icons/developmenticons/align_justify_center.svg' : '/icons/developmenticons/align_center.svg' ">        
+                      
+                        </NuxtImg>
                     </td>
 
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
+                        <NuxtImg 
+                          text-color="white"
                             :class="styles.justifyContent == 'end' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexJustify('end')">
-                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
+                            @click="changeFlexJustify('end')"
+                            width="25"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_flex_end.svg' : '/icons/developmenticons/align_end.svg' ">
-                            </NuxtImg>
-                        </ButtonComponent>
+                           
+                         
+                        </NuxtImg>
                     </td>
 
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.justifyContent == 'space-between' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexJustify('space-between')">
-                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
+                        <NuxtImg 
+                          text-color="white"
+                              :class="styles.justifyContent == 'space-between' ? 'c-darkgrey' : 'c-brightgrey'"
+                            @click="changeFlexJustify('space-between')"
+                                                     width="25"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_space_around.svg' : '/icons/developmenticons/align_space_between.svg' ">
-                            </NuxtImg>
-                        </ButtonComponent>
+                           
+
+                        </NuxtImg>
                     </td>
                     <td>
-                        <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.justifyContent == 'space-around' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexJustify('space-around')">
-                            <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
+                          <NuxtImg 
+                          text-color="white"
+                           :class="styles.justifyContent == 'space-around' ? 'c-darkgrey' : 'c-brightgrey'"
+                            @click="changeFlexJustify('space-around')"
+                                                     width="25"  color="white" clickable  class="sle-img" :src="isDirectionVertical == false ? 
                             '/icons/developmenticons/align_justify_space_even.svg' : '/icons/developmenticons/align_space_around.svg' ">
-                            </NuxtImg>
-                        </ButtonComponent>
+                        </NuxtImg>
                     </td>
                 </tr>
                 <tr>
@@ -329,65 +337,53 @@
 
                             Align
                             </div>
-                            <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.alignItems == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexAlignItems('start')">
-                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                                  <NuxtImg 
+                          text-color="white"
+                           :class="styles.alignItems == 'start' ? 'c-darkgrey' : 'c-brightgrey'"
+                          @click="changeFlexAlignItems('start')"
+                                                     width="25"  color="white"    :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_justify_flex_start.svg' 
-                                    : '/icons/developmenticons/align_rows_start.svg' ">
-                                </NuxtImg>
-                            </ButtonComponent>
+                                    : '/icons/developmenticons/align_rows_start.svg' "></NuxtImg>
 
-                            <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.alignItems == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexAlignItems('center')">
-                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                                                                     <NuxtImg 
+                          text-color="white"
+                           :class="styles.alignItems == 'center' ? 'c-darkgrey' : 'c-brightgrey'"
+                             @click="changeFlexAlignItems('center')"
+                                                     width="25"  color="white"   :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_justify_center.svg' 
-                                    : '/icons/developmenticons/align_rows_center.svg' ">
-                                </NuxtImg>
-                            </ButtonComponent>
+                                    : '/icons/developmenticons/align_rows_center.svg' "></NuxtImg>
                             
-                            <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.alignItems == 'end' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexAlignItems('end')">
-                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                                                                            <NuxtImg 
+                          text-color="white"
+                           :class="styles.alignItems == 'end' ? 'c-darkgrey' : 'c-brightgrey'"
+    @click="changeFlexAlignItems('end')">                                                     width="25"  color="white"   :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_end.svg' 
-                                    : '/icons/developmenticons/align_rows_end.svg' ">
-                                </NuxtImg>
-                            </ButtonComponent>
-                            <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.alignItems == 'stretch' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexAlignItems('stretch')">
-                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                                    : '/icons/developmenticons/align_rows_end.svg' "></NuxtImg>
+
+
+                                                                                              <NuxtImg 
+                          text-color="white"
+                           :class="styles.alignItems == 'stretch' ? 'c-darkgrey' : 'c-brightgrey'"
+    @click="changeFlexAlignItems('strech')">                                                     width="25"  color="white"  :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_justify_stretch.svg' 
-                            : '/icons/developmenticons/align_rows_items_stretch.svg' ">
-                                </NuxtImg>
-                            </ButtonComponent>
-                            
-                            <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.alignItems == 'space-between' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexAlignItems('space-between')">
-                                <NuxtImg  width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
+                            : '/icons/developmenticons/align_rows_items_stretch.svg' "></NuxtImg>
+
+
+                                                                                                                 <NuxtImg 
+                          text-color="white"
+                           :class="styles.alignItems == 'space-between' ? 'c-darkgrey' : 'c-brightgrey'"
+    @click="changeFlexAlignItems('space-between')">                                                     width="25"  :src="isDirectionVertical == true ? 
                                 '/icons/developmenticons/align_columns_justify_space_between.svg' 
-                            : '/icons/developmenticons/align_rows_space_between.svg' ">
-                                </NuxtImg>
-                            </ButtonComponent>
-                            <ButtonComponent dense unelevated 
-                            text-color="white"
-                            :class="styles.alignItems == 'space-around' ? 'c-darkgrey' : 'c-brightgrey'"
-                            @click="changeFlexAlignItems('space-around')">
-                                <NuxtImg 
-                                @click="changeFlexAlignItems('space-around')"
-                                width="25px"  color="white" clickable  class="sle-img" :src="isDirectionVertical == true ? 
-                                '/icons/developmenticons/align_columns_justify_space_around.svg' 
-                            : '/icons/developmenticons/align_rows_space_around.svg' ">
-                                </NuxtImg>
-                            </ButtonComponent>
+                            : '/icons/developmenticons/align_rows_space_between.svg' "></NuxtImg>
+
+
+                            
+                                      <NuxtImg 
+                          text-color="white"
+                       :class="styles.alignItems == 'space-around' ? 'c-darkgrey' : 'c-brightgrey'"
+    @click="changeFlexAlignItems('space-around')"                                                     width="25"  color="white" clickable  :src="isDirectionVertical == true ? '/icons/developmenticons/align_columns_justify_space_around.svg' : '/icons/developmenticons/align_rows_space_around.svg' " ></NuxtImg>
+
+
                         </div>
                     </td>
 

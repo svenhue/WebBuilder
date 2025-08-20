@@ -17,7 +17,8 @@ export default defineNuxtConfig({
     "alphaviewlibrary/nuxt",
     "hybridappdev/nuxt",
     '@nuxt/image',
-    '@nuxt/icon'
+    '@nuxt/icon',
+     'nuxt-mdi'
   ],
    icon: {
     serverBundle: {

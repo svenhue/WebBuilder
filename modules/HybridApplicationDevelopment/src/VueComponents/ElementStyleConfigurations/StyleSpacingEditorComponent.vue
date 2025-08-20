@@ -6,16 +6,20 @@
         <div
         class="spec-input"
         :style="{left: '92px', top: '2px'}">
-        {{  styles.marginTop  }}
+   
         <UPopover 
         v-model="styles.marginTop" class="c-darkgrey" >
+
+        <UButton :label="styles.marginTop?.toString()" color="neutral" variant="subtle" >
+            
+        </UButton>
         <template #content>
             <div :style="{display:'inline-flex', alignItems:'center'}">
                 <InputComponent
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.marginTop" 
                 @update:model-value="(value) => updateSpacing('style.marginTop', value + styles.marginTopUnit)" 
-                dense autofocus counter @keyup.enter="scope.set">
+                dense autofocus counter >
                     <template v-slot:append>
                     <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.marginTopUnit" :options="styleManager.sizeUnits"
@@ -39,7 +43,7 @@
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.marginLeft" 
                 @update:model-value="(value) => updateSpacing('style.marginLeft', value + styles.marginLeftUnit)" 
-                dense autofocus counter @keyup.enter="scope.set">
+                dense autofocus counter >
                     <template v-slot:append>
                     <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.marginLeftUnit" :options="styleManager.sizeUnits"
@@ -65,7 +69,7 @@
                 dark color="white" v-model="styles.marginRight" 
                 @update:model-value="(value) => updateSpacing('style.marginRight', value + styles.marginRightUnit)" 
 
-                dense autofocus counter @keyup.enter="scope.set">
+                dense autofocus counter >
                     <template v-slot:append>
                     <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.marginRightUnit" :options="styleManager.sizeUnits"
@@ -90,7 +94,7 @@
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.marginBottom" 
                 @update:model-value="(value) => updateSpacing('style.marginBottom', value + styles.marginBottomUnit)" 
-                dense autofocus counter @keyup.enter="scope.set">
+                dense autofocus counter >
                     <template v-slot:append>
                     <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.marginBottomUnit" :options="styleManager.sizeUnits"
@@ -120,7 +124,7 @@
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.paddingTop" 
                 @update:model-value="(value) => updateSpacing('style.paddingTop', value + styles.paddingTopUnit)" 
-                dense autofocus counter @keyup.enter="scope.set">
+                dense autofocus counter >
                     <template v-slot:append>
                     <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.paddingTopUnit" :options="styleManager.sizeUnits"
@@ -145,7 +149,7 @@
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.paddingLeft" 
                 @update:model-value="(value) => updateSpacing('style.paddingLeft', value + styles.paddingLeftUnit)" 
-                dense autofocus counter @keyup.enter="scope.set">
+                dense autofocus counter >
                     <template v-slot:append>
                     <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.paddingLeftUnit" :options="styleManager.sizeUnits"
@@ -170,7 +174,7 @@
                 :style="{width: '200px'}" 
                 dark color="white" v-model="styles.paddingRight" 
                 @update:model-value="(value) => updateSpacing('style.paddingRight', value + styles.paddingRightUnit)" 
-                dense autofocus counter @keyup.enter="scope.set">
+                dense autofocus counter >
                     <template v-slot:append>
                     <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.paddingRightUnit" :options="styleManager.sizeUnits"
@@ -195,7 +199,7 @@
                 :style="{width: '200px'}" 
                 @update:model-value="(value) => updateSpacing('style.paddingBottom', value + styles.paddingBottomUnit)" 
                 dark color="white" v-model="styles.paddingBottom" 
-                dense autofocus counter @keyup.enter="scope.set">
+                dense autofocus counter >
                     <template v-slot:append>
                     <SelectComponent class="alpha-select"
                 :popup-content-class="'alpha-dropdown-content'" dense v-model="styles.paddingBottomUnit" :options="styleManager.sizeUnits"

@@ -8,27 +8,27 @@
     :input-style="{ color: 'white' }"
     >
         <template v-slot:before>
-            <div :style="{color: 'white', fontSize: '14px'}">
+            <div :style="{width: '100px', color: 'white', fontSize: '14px'}">
             {{  label  }}
             </div>
         </template>
         <template v-slot:after>
-            <UDropdownMenu  auto-close dense>
-                <template #default>
-                                    <div dense class="dropdown-list">
-                    <div dense clickable @click="updateColor(color.key)" v-for="color in avaibleColors" :key="color.label">
+            <UDropdownMenu
+            :items="avaibleColors"
+            >
+            <UButton icon="i-lucide-menu" color="neutral" variant="outline" />
+            <template #color="{ item }">
+                    <div dense clickable @click="updateColor(item?.key)" :style="{display: 'flex', alignItems: 'center', gap: '5px'}">
                         <div 
-                        :style="{backgroundColor: color.value, marginTop: '8px', marginRight: '5px', width: '10px', height: '10px'}">
+                        :style="{backgroundColor: item?.value, marginTop: '8px', marginRight: '5px', width: '10px', height: '10px'}">
                       
                         </div>
                         <div>
-                                {{ color.label }}
+                                {{ item?.label }}
                         </div>
                         
                     </div>
-                </div>
-                </template>
-
+            </template>
             </UDropdownMenu>
         </template>
 
@@ -40,6 +40,7 @@
 import { BaseServiceProvider } from 'alphautils';
 import { StyleService } from 'src/utils/Services/Designer/StyleService';
 import { computed, ref } from 'vue';
+import { ExpansionItemComponent } from 'alphaviewlibrary';
 
 const props = defineProps({
     color: {
@@ -64,7 +65,8 @@ const avaibleColors = computed(() => {
         return {
             key: color.key,
             label: color.key + ':' + color.value,
-            value: color.value
+            value: color.value,
+            slot: 'color' as const
         }
     });
 })
